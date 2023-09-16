@@ -1,0 +1,12 @@
+nonbib:
+  hodayot: ['1QHa'] # , '1QHb'
+  community_rule: ['1QS']
+  the_rule_of_the_congregation: ['1QSa']
+  the_rule_of_the_blessings: ['1QSb']
+  instructions: ['4Q415','4Q416','4Q417','4Q418','4Q418a', '4Q423', '1Q26']
+  ben_sira: ['2Q18']
+
+bib:
+  deuteronomy: ['Deut']
+  proverbs: ['Prov']
+  psalms: ['Ps']

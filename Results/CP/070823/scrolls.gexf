@@ -1,0 +1,4600 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2023-08-29">
+    <creator>NetworkX 3.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="size" type="double" />
+    </attributes>
+    <nodes>
+      <node id="סֵפֶר" label="סֵפֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סֶרֶךְ" label="סֶרֶךְ">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="יַחַד" label="יַחַד">
+        <attvalues>
+          <attvalue for="0" value="0.12244897959183673" />
+        </attvalues>
+      </node>
+      <node id="יָד" label="יָד">
+        <attvalues>
+          <attvalue for="0" value="0.6538461538461539" />
+        </attvalues>
+      </node>
+      <node id="מֹשֶה" label="מֹשֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַעֲשֶה" label="מַעֲשֶה">
+        <attvalues>
+          <attvalue for="0" value="0.7142857142857143" />
+        </attvalues>
+      </node>
+      <node id="טוֹב" label="טוֹב">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="שְרִירוּת" label="שְרִירוּת">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="לֵב" label="לֵב">
+        <attvalues>
+          <attvalue for="0" value="0.1388888888888889" />
+        </attvalues>
+      </node>
+      <node id="אַשְמָה" label="אַשְמָה">
+        <attvalues>
+          <attvalue for="0" value="0.4" />
+        </attvalues>
+      </node>
+      <node id="עַיִן" label="עַיִן">
+        <attvalues>
+          <attvalue for="0" value="0.8571428571428571" />
+        </attvalues>
+      </node>
+      <node id="זְנוּת" label="זְנוּת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֹק" label="חֹק">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="אֵל" label="אֵל">
+        <attvalues>
+          <attvalue for="0" value="0.25925925925925924" />
+        </attvalues>
+      </node>
+      <node id="בְּרִית" label="בְּרִית">
+        <attvalues>
+          <attvalue for="0" value="0.34615384615384615" />
+        </attvalues>
+      </node>
+      <node id="חֶסֶד" label="חֶסֶד">
+        <attvalues>
+          <attvalue for="0" value="0.16666666666666666" />
+        </attvalues>
+      </node>
+      <node id="עֵצָה" label="עֵצָה">
+        <attvalues>
+          <attvalue for="0" value="0.8205128205128205" />
+        </attvalues>
+      </node>
+      <node id="מוֹעֵד" label="מוֹעֵד">
+        <attvalues>
+          <attvalue for="0" value="0.7142857142857143" />
+        </attvalues>
+      </node>
+      <node id="תְּעוּדָה" label="תְּעוּדָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="בֵּן" label="בֵּן">
+        <attvalues>
+          <attvalue for="0" value="0.8571428571428571" />
+        </attvalues>
+      </node>
+      <node id="אוֹר" label="אוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.2727272727272727" />
+        </attvalues>
+      </node>
+      <node id="חֹשֶךְ" label="חֹשֶךְ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נְקָמָה" label="נְקָמָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תֹּם" label="תֹּם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דֶּרֶךְ" label="דֶּרֶךְ">
+        <attvalues>
+          <attvalue for="0" value="0.6" />
+        </attvalues>
+      </node>
+      <node id="צֶדֶק" label="צֶדֶק">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דָּבָר" label="דָּבָר">
+        <attvalues>
+          <attvalue for="0" value="0.5384615384615384" />
+        </attvalues>
+      </node>
+      <node id="אֱמֶת" label="אֱמֶת">
+        <attvalues>
+          <attvalue for="0" value="0.04225352112676056" />
+        </attvalues>
+      </node>
+      <node id="מַצְרֵף" label="מַצְרֵף">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="נִסּוּי" label="נִסּוּי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מֶמְשָלָה" label="מֶמְשָלָה">
+        <attvalues>
+          <attvalue for="0" value="0.7692307692307693" />
+        </attvalues>
+      </node>
+      <node id="בְּלִיָעָל" label="בְּלִיָעָל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="יְשוּעָה" label="יְשוּעָה">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="צְדָקָה" label="צְדָקָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="גְּבוּרָה" label="גְּבוּרָה">
+        <attvalues>
+          <attvalue for="0" value="0.21428571428571427" />
+        </attvalues>
+      </node>
+      <node id="רַחֲמִים" label="רַחֲמִים">
+        <attvalues>
+          <attvalue for="0" value="0.2" />
+        </attvalues>
+      </node>
+      <node id="עָוֹן" label="עָוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.6363636363636364" />
+        </attvalues>
+      </node>
+      <node id="יִשְרָאֵל" label="יִשְרָאֵל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּשָע" label="פֶּשָע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חַטַּאת" label="חַטַּאת">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="אִיש" label="אִיש">
+        <attvalues>
+          <attvalue for="0" value="0.6075949367088608" />
+        </attvalues>
+      </node>
+      <node id="גּוֹרָל" label="גּוֹרָל">
+        <attvalues>
+          <attvalue for="0" value="0.375" />
+        </attvalues>
+      </node>
+      <node id="שֶכֶל" label="שֶכֶל">
+        <attvalues>
+          <attvalue for="0" value="0.375" />
+        </attvalues>
+      </node>
+      <node id="חַיִּים" label="חַיִּים">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="דַּעַת" label="דַּעַת">
+        <attvalues>
+          <attvalue for="0" value="0.35294117647058826" />
+        </attvalues>
+      </node>
+      <node id="עוֹלָם" label="עוֹלָם">
+        <attvalues>
+          <attvalue for="0" value="0.07692307692307693" />
+        </attvalues>
+      </node>
+      <node id="פָּנֶה" label="פָּנֶה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="שָלוֹם" label="שָלוֹם">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="גּוֹרָׁל" label="גּוֹרָׁל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רֶשַע" label="רֶשַע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נֹקֵם" label="נֹקֵם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נָקָם" label="נָקָם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְשַלֵּם" label="מְשַלֵּם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="גְּמוּל" label="גְּמוּל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֲפֵלָה" label="אֲפֵלָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֵש" label="אֵש">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="אַף" label="אַף">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="פֶּה" label="פֶּה">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="אֹחֶז" label="אֹחֶז">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אָב" label="אָב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גִּלּוּל" label="גִּלּוּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִכְשוֹל" label="מִכְשוֹל">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="עָוֶן" label="עָוֶן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="קִנְאָה" label="קִנְאָה">
+        <attvalues>
+          <attvalue for="0" value="0.9090909090909091" />
+        </attvalues>
+      </node>
+      <node id="מִשְפָּט" label="מִשְפָּט">
+        <attvalues>
+          <attvalue for="0" value="0.673469387755102" />
+        </attvalues>
+      </node>
+      <node id="כָּלָה" label="כָּלָה">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="אָלָה" label="אָלָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אָרוּר" label="אָרוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בָּא" label="בָּא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יוֹם" label="יוֹם">
+        <attvalues>
+          <attvalue for="0" value="0.6363636363636364" />
+        </attvalues>
+      </node>
+      <node id="דֵּעָה" label="דֵּעָה">
+        <attvalues>
+          <attvalue for="0" value="0.125" />
+        </attvalues>
+      </node>
+      <node id="בַּיִת" label="בַּיִת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַעֲמָד" label="מַעֲמָד">
+        <attvalues>
+          <attvalue for="0" value="0.6" />
+        </attvalues>
+      </node>
+      <node id="מָקוֹם" label="מָקוֹם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֲנָוָה" label="עֲנָוָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="אַהֲבָה" label="אַהֲבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַחֲשָבָה" label="מַחֲשָבָה">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="קֹדֶש" label="קֹדֶש">
+        <attvalues>
+          <attvalue for="0" value="0.03225806451612903" />
+        </attvalues>
+      </node>
+      <node id="סוֹד" label="סוֹד">
+        <attvalues>
+          <attvalue for="0" value="0.9473684210526315" />
+        </attvalues>
+      </node>
+      <node id="יִסּוֹר" label="יִסּוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סָאוֹן" label="סָאוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָתוֹר" label="מָתוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תָּמִים" label="תָּמִים">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="מַיִם" label="מַיִם">
+        <attvalues>
+          <attvalue for="0" value="0.38095238095238093" />
+        </attvalues>
+      </node>
+      <node id="נִדָּה" label="נִדָּה">
+        <attvalues>
+          <attvalue for="0" value="0.09090909090909091" />
+        </attvalues>
+      </node>
+      <node id="רַחַץ" label="רַחַץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְאֹס" label="מְאֹס">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רוּחַ" label="רוּחַ">
+        <attvalues>
+          <attvalue for="0" value="0.76" />
+        </attvalues>
+      </node>
+      <node id="עצה" label="עצה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חַיִּים" label="חַיִּים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רוּח" label="רוּח">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֹשֶר" label="יֹשֶר">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="נֶפֶש" label="נֶפֶש">
+        <attvalues>
+          <attvalue for="0" value="0.5789473684210527" />
+        </attvalues>
+      </node>
+      <node id="דּוֹכִי" label="דּוֹכִי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כִּפּוּר" label="כִּפּוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="ניחוֹח" label="ניחוֹח">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹלְדוֹת" label="תּוֹלְדוֹת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִין" label="מִין">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פְּקֻדָּה" label="פְּקֻדָּה">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="נֶגַע" label="נֶגַע">
+        <attvalues>
+          <attvalue for="0" value="0.375" />
+        </attvalues>
+      </node>
+      <node id="קֵץ" label="קֵץ">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="כָּבוֹד" label="כָּבוֹד">
+        <attvalues>
+          <attvalue for="0" value="0.2903225806451613" />
+        </attvalues>
+      </node>
+      <node id="כֹּל" label="כֹּל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תֵּבֵל" label="תֵּבֵל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פְּקֻּדָּה" label="פְּקֻּדָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עָוֶל" label="עָוֶל">
+        <attvalues>
+          <attvalue for="0" value="0.07142857142857142" />
+        </attvalues>
+      </node>
+      <node id="מָעוֹן" label="מָעוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָקוֹר" label="מָקוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.9444444444444444" />
+        </attvalues>
+      </node>
+      <node id="שַר" label="שַר">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="מַלְאָךְ" label="מַלְאָךְ">
+        <attvalues>
+          <attvalue for="0" value="0.7777777777777778" />
+        </attvalues>
+      </node>
+      <node id="תָּעוּת" label="תָּעוּת">
+        <attvalues>
+          <attvalue for="0" value="0.4" />
+        </attvalues>
+      </node>
+      <node id="בֵּן" label="בֵּן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּשַע" label="פֶּשַע">
+        <attvalues>
+          <attvalue for="0" value="0.1" />
+        </attvalues>
+      </node>
+      <node id="רָז" label="רָז">
+        <attvalues>
+          <attvalue for="0" value="0.9565217391304348" />
+        </attvalues>
+      </node>
+      <node id="צָרָה" label="צָרָה">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="מַשְטֵמָה" label="מַשְטֵמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֵד" label="עֵד">
+        <attvalues>
+          <attvalue for="0" value="0.4" />
+        </attvalues>
+      </node>
+      <node id="אֹרֶךְ" label="אֹרֶךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֹב" label="רֹב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חָכְמָה" label="חָכְמָה">
+        <attvalues>
+          <attvalue for="0" value="0.9230769230769231" />
+        </attvalues>
+      </node>
+      <node id="טָהֳרָה" label="טָהֳרָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="גִּלוּל" label="גִּלוּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָרְמָה" label="עָרְמָה">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="דַּעַת" label="דַּעַת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בְּרָכָה" label="בְּרָכָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עַד" label="עַד">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שִמְחָה" label="שִמְחָה">
+        <attvalues>
+          <attvalue for="0" value="0.7777777777777778" />
+        </attvalues>
+      </node>
+      <node id="נֶַצח" label="נֶַצח">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כָּלִיל" label="כָּלִיל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִדָּה" label="מִדָּה">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="הָדָר" label="הָדָר">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="רְחוֹב" label="רְחוֹב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֲבוֹדָה" label="עֲבוֹדָה">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="רוּם" label="רוּם">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="לֵבָב" label="לֵבָב">
+        <attvalues>
+          <attvalue for="0" value="0.16666666666666666" />
+        </attvalues>
+      </node>
+      <node id="חֹנֶף" label="חֹנֶף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="קָצוּר" label="קָצוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אִוֶּלֶת" label="אִוֶּלֶת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זָדוֹן" label="זָדוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹעֵבָה" label="תּוֹעֵבָה">
+        <attvalues>
+          <attvalue for="0" value="0.7142857142857143" />
+        </attvalues>
+      </node>
+      <node id="טֻמְאָה" label="טֻמְאָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="לָשוֹן" label="לָשוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.2" />
+        </attvalues>
+      </node>
+      <node id="גִּדּוּף" label="גִּדּוּף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עִוָּרוֹן" label="עִוָּרוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֹזֶן" label="אֹזֶן">
+        <attvalues>
+          <attvalue for="0" value="0.6" />
+        </attvalues>
+      </node>
+      <node id="קֹשִי" label="קֹשִי">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֹרֶף" label="עֹרֶף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כִּיבּוּד" label="כִּיבּוּד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֹעַ" label="רֹעַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֶבֶל" label="חֶבֶל">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="שַחַת" label="שַחַת">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="עֶבְרָה" label="עֶבְרָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זַעֲוָה" label="זַעֲוָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נֶצַח" label="נֶצַח">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="חֶרְפָּה" label="חֶרְפָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כְּלִמָּה" label="כְּלִמָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כָּלָה" label="כָּלָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַחְשָךְ" label="מַחְשָךְ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֵבֶל" label="אֵבֶל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָגוֹן" label="יָגוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רָעָה" label="רָעָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָרוֹר" label="מָרוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.4" />
+        </attvalues>
+      </node>
+      <node id="הֲוָיָה" label="הֲוָיָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="פְּעֻלָּה" label="פְּעֻלָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֵיבָה" label="אֵיבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עַוְלָה" label="עַוְלָה">
+        <attvalues>
+          <attvalue for="0" value="0.0625" />
+        </attvalues>
+      </node>
+      <node id="רִיב" label="רִיב">
+        <attvalues>
+          <attvalue for="0" value="0.375" />
+        </attvalues>
+      </node>
+      <node id="תֵּבֶל" label="תֵּבֶל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גֶּבֶר" label="גֶּבֶר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תְּכָמִים" label="תְּכָמִים">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בָּשָר" label="בָּשָר">
+        <attvalues>
+          <attvalue for="0" value="0.09523809523809523" />
+        </attvalues>
+      </node>
+      <node id="עֲלִילָה" label="עֲלִילָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רִשְעָה" label="רִשְעָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֶקֶר" label="שֶקֶר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֶלְיוֹן" label="עֶלְיוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָמַיִם" label="שָמַיִם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אָדָם" label="אָדָם">
+        <attvalues>
+          <attvalue for="0" value="0.045454545454545456" />
+        </attvalues>
+      </node>
+      <node id="רְמִיָּה" label="רְמִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נַחֲלָה" label="נַחֲלָה">
+        <attvalues>
+          <attvalue for="0" value="0.8888888888888888" />
+        </attvalues>
+      </node>
+      <node id="עֵדָה" label="עֵדָה">
+        <attvalues>
+          <attvalue for="0" value="0.6785714285714286" />
+        </attvalues>
+      </node>
+      <node id="צָדוֹק" label="צָדוֹק">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֹמֵר" label="שֹמֵר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תִּכּוּן" label="תִּכּוּן">
+        <attvalues>
+          <attvalue for="0" value="0.8181818181818182" />
+        </attvalues>
+      </node>
+      <node id="שְרִרוּת" label="שְרִרוּת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֶצֶר" label="יֶצֶר">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="עָרְלָה" label="עָרְלָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹסָד" label="מוֹסָד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֹבֵר" label="עֹבֵר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִתְנַדֵּב" label="מִתְנַדֵּב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שְבוּעָה" label="שְבוּעָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אִסָּר" label="אִסָּר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹרָה" label="תּוֹרָה">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="שֹמֶר" label="שֹמֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דֹּרֵש" label="דֹּרֵש">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="רָצוֹן" label="רָצוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.15384615384615385" />
+        </attvalues>
+      </node>
+      <node id="הֶבֶל" label="הֶבֶל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְנַאֵץ" label="מְנַאֵץ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אַהֲרֹן" label="אַהֲרֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כֹּהֵן" label="כֹּהֵן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רֵאשִית" label="רֵאשִית">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לֶחֶם" label="לֶחֶם">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="תִּירוֹש" label="תִּירוֹש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="לַיְלָה" label="לַיְלָה">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="שָנָה" label="שָנָה">
+        <attvalues>
+          <attvalue for="0" value="0.2222222222222222" />
+        </attvalues>
+      </node>
+      <node id="מוֹשָב" label="מוֹשָב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רַב" label="רַב">
+        <attvalues>
+          <attvalue for="0" value="0.05263157894736842" />
+        </attvalues>
+      </node>
+      <node id="רֵעַ" label="רֵעַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֵפֶץ" label="חֵפֶץ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֹאש" label="רֹאש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הוֹן" label="הוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="מְלָאכָה" label="מְלָאכָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַשְקֶה" label="מַשְקֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִדְרָש" label="מִדְרָש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קֹצֶר" label="קֹצֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֶסוֹד" label="יֶסוֹד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָמִית" label="עָמִית">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="יְסוֹד" label="יְסוֹד">
+        <attvalues>
+          <attvalue for="0" value="0.875" />
+        </attvalues>
+      </node>
+      <node id="עֹשֶה" label="עֹשֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֵת" label="עֵת">
+        <attvalues>
+          <attvalue for="0" value="0.2" />
+        </attvalues>
+      </node>
+      <node id="מַטַּעַת" label="מַטַּעַת">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="בָּחִיר" label="בָּחִיר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חוֹמָה" label="חוֹמָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בֹּחַן" label="בֹּחַן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פִּנָה" label="פִּנָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָקָר" label="יָקָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דַעַת" label="דַעַת">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="רֵיחַ" label="רֵיחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִיחוֹחַ" label="נִיחוֹחַ">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="חֻקָּה" label="חֻקָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יִרְאָה" label="יִרְאָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַעַל" label="מַעַל">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="עֹלָה" label="עֹלָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֵלֶב" label="חֵלֶב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="זֶבַח" label="זֶבַח">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תְּרוּמָה" label="תְּרוּמָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שָפָה" label="שָפָה">
+        <attvalues>
+          <attvalue for="0" value="0.1875" />
+        </attvalues>
+      </node>
+      <node id="נְדָבָה" label="נְדָבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִנְחָה" label="מִנְחָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָשִיחַ" label="מָשִיחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְקָל" label="מִשְקָל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בּוֹר" label="בּוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כַּף" label="כַּף">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="שָחָת" label="שָחָת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּלֶא" label="פֶּלֶא">
+        <attvalues>
+          <attvalue for="0" value="0.047619047619047616" />
+        </attvalues>
+      </node>
+      <node id="תִּכּוּן" label="תִּכּוּן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שִנְאָה" label="שִנְאָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סֵתֶר" label="סֵתֶר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עָמָל" label="עָמָל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְלוֹחַ" label="מִשְלוֹחַ">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="אֵמֶר" label="אֵמֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אַשְמוּר" label="אַשְמוּר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זְבֻל" label="זְבֻל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָבוֹא" label="מָבוֹא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חֹדֶש" label="חֹדֶש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִפְתָּח" label="מִפְתָּח">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָרֵחַ" label="יָרֵחַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תְּקוּפָה" label="תְּקוּפָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קָצִיר" label="קָצִיר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זֶרַע" label="זֶרַע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דֶּשֶא" label="דֶּשֶא">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָבוּעַ" label="שָבוּעַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דְּרוֹר" label="דְּרוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פְּרִי" label="פְּרִי">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="תְּהִלָּה" label="תְּהִלָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָנָה" label="מָנָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כִּנּוֹר" label="כִּנּוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נֵבֶל" label="נֵבֶל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חָלִיל" label="חָלִיל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קַו" label="קַו">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹצָא" label="מוֹצָא">
+        <attvalues>
+          <attvalue for="0" value="0.8571428571428571" />
+        </attvalues>
+      </node>
+      <node id="עֶרֶב" label="עֶרֶב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בֹּקֶר" label="בֹּקֶר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="טוּב" label="טוּב">
+        <attvalues>
+          <attvalue for="0" value="0.2857142857142857" />
+        </attvalues>
+      </node>
+      <node id="תִּפְאֶרֶת" label="תִּפְאֶרֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֶגֶל" label="רֶגֶל">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="אַבְרֵךְ" label="אַבְרֵךְ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְכָּב" label="מִשְכָּב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יְצוּעַ" label="יְצוּעַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַעֲרֶכֶת" label="מַעֲרֶכֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֶדֶן" label="עֶדֶן">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="תְּנוּבָה" label="תְּנוּבָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פַּחַד" label="פַּחַד">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="אֵימָה" label="אֵימָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָכוֹן" label="מָכוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.6" />
+        </attvalues>
+      </node>
+      <node id="חַי" label="חַי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חָָמָס" label="חָָמָס">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָב" label="שָב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סֹרֵר" label="סֹרֵר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כַּחַש" label="כַּחַש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תּוּשִיָּה" label="תּוּשִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְפָּט" label="מִשְפָּט">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֹז" label="עֹז">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תֹּעֶה" label="תֹּעֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בִּינָה" label="בִּינָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רָם" label="רָם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַטֶּה" label="מַטֶּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֹלֵח" label="שֹלֵח">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֶצְבַּע" label="אֶצְבַּע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְדַבֵּר" label="מְדַבֵּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אָוֶן" label="אָוֶן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַקְנֶה" label="מַקְנֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="ישור" label="ישור">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אוֹרָה" label="אוֹרָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִהְיֶה" label="נִהְיֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְעָן" label="מִשְעָן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָמִין" label="יָמִין">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="סֶלַע" label="סֶלַע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פַּעַם" label="פַּעַם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְעֶנֶת" label="מִשְעֶנֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מְזִמָּה" label="מְזִמָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִקְוֶה" label="מִקְוֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַעְיָן" label="מַעְיָן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֲחֻזָּה" label="אֲחֻזָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="גוֹרָל" label="גוֹרָל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַבְנִית" label="מַבְנִית">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נעויה" label="נעויה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רִמָּה" label="רִמָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֱנוֹש" label="אֱנוֹש">
+        <attvalues>
+          <attvalue for="0" value="0.42857142857142855" />
+        </attvalues>
+      </node>
+      <node id="עֶבֶד" label="עֶבֶד">
+        <attvalues>
+          <attvalue for="0" value="0.15384615384615385" />
+        </attvalues>
+      </node>
+      <node id="עֶמֶק" label="עֶמֶק">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כֹּח" label="כֹּח">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="רִמָּה" label="רִמָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אַחֲרִית" label="אַחֲרִית">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עַם" label="עַם">
+        <attvalues>
+          <attvalue for="0" value="0.42857142857142855" />
+        </attvalues>
+      </node>
+      <node id="צָבָא" label="צָבָא">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="הָגוּי" label="הָגוּי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֶשְרִים" label="עֶשְרִים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זָכָר" label="זָכָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="משמע" label="משמע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חָמֵש" label="חָמֵש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שְלוֹשִים" label="שְלוֹשִים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מֵאָה" label="מֵאָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֲמִשִּים" label="חֲמִשִּים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּתִי" label="פֶּתִי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַס" label="מַס">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="לֵוִי" label="לֵוִי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִסְפָּר" label="מִסְפָּר">
+        <attvalues>
+          <attvalue for="0" value="0.75" />
+        </attvalues>
+      </node>
+      <node id="מִלְחָמָה" label="מִלְחָמָה">
+        <attvalues>
+          <attvalue for="0" value="0.4166666666666667" />
+        </attvalues>
+      </node>
+      <node id="חַיִל" label="חַיִל">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="אֶלֶף" label="אֶלֶף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַחְלֹקֶת" label="מַחְלֹקֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֵם" label="שֵם">
+        <attvalues>
+          <attvalue for="0" value="0.2" />
+        </attvalues>
+      </node>
+      <node id="קָרִיא" label="קָרִיא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קֹדֵש" label="קֹדֵש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֻלְחָן" label="שֻלְחָן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שִפְלָה" label="שִפְלָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הַר" label="הַר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַעֲנֶה" label="מַעֲנֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אָרֹךְ" label="אָרֹךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כֹּחַ" label="כֹּחַ">
+        <attvalues>
+          <attvalue for="0" value="0.5714285714285714" />
+        </attvalues>
+      </node>
+      <node id="חֵקֶר" label="חֵקֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קֶדֶם" label="קֶדֶם">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="רַע" label="רַע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רָקִיעַ" label="רָקִיעַ">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="נהיה" label="נהיה">
+        <attvalues>
+          <attvalue for="0" value="0.047619047619047616" />
+        </attvalues>
+      </node>
+      <node id="יָלוּד" label="יָלוּד">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="אִשָּה" label="אִשָּה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="מִבְנֶה" label="מִבְנֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָפָר" label="עָפָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִגְבָּל" label="מִגְבָּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֶרְוָה" label="עֶרְוָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="קָלוֹן" label="קָלוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְבַקֵּש" label="מְבַקֵּש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֹהֵב" label="אֹהֵב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָנָו" label="עָנָו">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="מְזֻקָּק" label="מְזֻקָּק">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָנִי" label="עָנִי">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בָּרוּר" label="בָּרוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דּוֹר" label="דּוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חָזוֹן" label="חָזוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="פֹּעֵל" label="פֹּעֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סוֹדֹ" label="סוֹדֹ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גָּדוֹל" label="גָּדוֹל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כָּנָף" label="כָּנָף">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="הָמוֹן" label="הָמוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.875" />
+        </attvalues>
+      </node>
+      <node id="הֲרֵגָה" label="הֲרֵגָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְלֹא" label="מְלֹא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֶרֶץ" label="אֶרֶץ">
+        <attvalues>
+          <attvalue for="0" value="0.16666666666666666" />
+        </attvalues>
+      </node>
+      <node id="עֲלִילִיָּה" label="עֲלִילִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="צָדִיק" label="צָדִיק">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִצְוָה" label="מִצְוָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אוֹצָר" label="אוֹצָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דוֹר" label="דוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="יֵצֶר" label="יֵצֶר">
+        <attvalues>
+          <attvalue for="0" value="0.9032258064516129" />
+        </attvalues>
+      </node>
+      <node id="חֵמָר" label="חֵמָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כּוּר" label="כּוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חַטָּאָה" label="חַטָּאָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹעָה" label="תּוֹעָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֶרֶת" label="חֶרֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="זִכָּרוֹן" label="זִכָּרוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="עוָֹלם" label="עוָֹלם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַבָּע" label="מַבָּע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שִיחַ" label="שִיחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סָמוּךְ" label="סָמוּךְ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֱוִיל" label="אֱוִיל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹכִיחַ" label="מוֹכִיחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַחַץ" label="מַחַץ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַכָּה" label="מַכָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַשְמִיעַ" label="מַשְמִיעַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָרוֹל" label="עָרוֹל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֹמֶץ" label="אֹמֶץ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="גְּבוּל" label="גְּבוּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִמְהָר" label="נִמְהָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָשָר" label="יָשָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רָשָע" label="רָשָע">
+        <attvalues>
+          <attvalue for="0" value="0.25" />
+        </attvalues>
+      </node>
+      <node id="עָרִיץ" label="עָרִיץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="קְהִלָּה" label="קְהִלָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נַחְשוֹל" label="נַחְשוֹל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָם" label="יָם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מֵלִיץ" label="מֵלִיץ">
+        <attvalues>
+          <attvalue for="0" value="0.8" />
+        </attvalues>
+      </node>
+      <node id="מוּסָר" label="מוּסָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חוֹזֵה" label="חוֹזֵה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נְכֹחָה" label="נְכֹחָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֶלְקָה" label="חֶלְקָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="קוֹל" label="קוֹל">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="צְרוֹר" label="צְרוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹקְש" label="מוֹקְש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שַוְא" label="שַוְא">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כְּלִי" label="כְּלִי">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לְהוֹב" label="לְהוֹב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חֲנִית" label="חֲנִית">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַיִּם" label="מַיִּם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָאוֹן" label="שָאוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כָּזָב" label="כָּזָב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רָש" label="רָש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חָזָק" label="חָזָק">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="הֹוָה" label="הֹוָה">
+        <attvalues>
+          <attvalue for="0" value="0.5714285714285714" />
+        </attvalues>
+      </node>
+      <node id="מְצוֹלָה" label="מְצוֹלָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עִיר" label="עִיר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִבְצָר" label="מִבְצָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="לֵדָה" label="לֵדָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נִמְרָץ" label="נִמְרָץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="הָרִיָּה" label="הָרִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="מַשְבֵּר" label="מַשְבֵּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָוֶת" label="מָוֶת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שְאוֹל" label="שְאוֹל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מֶרֶץ" label="מֶרֶץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֶפְעָה" label="אֶפְעָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פַּלָּצוּת" label="פַּלָּצוּת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אוֹש" label="אוֹש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קִיר" label="קִיר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="יֹשֵב" label="יֹשֵב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֹרֵד" label="יֹרֵד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נָבוֹךְ" label="נָבוֹךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דֶּלֶת" label="דֶּלֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בָּרִיחַ" label="בָּרִיחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קָדוֹש" label="קָדוֹש">
+        <attvalues>
+          <attvalue for="0" value="0.16666666666666666" />
+        </attvalues>
+      </node>
+      <node id="אֶבְיוֹן" label="אֶבְיוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="מְהוּמָה" label="מְהוּמָה">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="מַדְהֵבָה" label="מַדְהֵבָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פַּח" label="פַּח">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="מְצוּדָה" label="מְצוּדָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִכְמֹרֶת" label="מִכְמֹרֶת">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="חֵלְכָה" label="חֵלְכָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַתָּךְ" label="מַתָּךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חֵמָה" label="חֵמָה">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="חָרוֹן" label="חָרוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נַחַל" label="נַחַל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֲגַף" label="אֲגַף">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שָבִיב" label="שָבִיב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לָהוֹב" label="לָהוֹב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רִקֻּעַ" label="רִקֻּעַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יַבָּשָה" label="יַבָּשָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זֶפֶת" label="זֶפֶת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מְחַשֵּךְ" label="מְחַשֵּךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תְּהוֹם" label="תְּהוֹם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גֹּרֵש" label="גֹּרֵש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֶפֶש" label="רֶפֶש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גִּבּוֹר" label="גִּבּוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.42857142857142855" />
+        </attvalues>
+      </node>
+      <node id="חוֹזֶה" label="חוֹזֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="זִמָּה" label="זִמָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נָבִיא" label="נָבִיא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פֹּתֶה" label="פֹּתֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לֹעֵג" label="לֹעֵג">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִרְמָה" label="מִרְמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כּוֹחַ" label="כּוֹחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֹבֵר" label="שֹבֵר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֶצֶם" label="עֶצֶם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אַדִּיר" label="אַדִּיר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֹתֶה" label="שֹתֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="דַּם" label="דַּם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גִּבוֹר" label="גִּבוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פֹּרֵש" label="פֹּרֵש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כְּפִיר" label="כְּפִיר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תַּנִּין" label="תַּנִּין">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רִנָּה" label="רִנָּה">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="אַרְיֵה" label="אַרְיֵה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="ַעַם" label="ַעַם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="טאטאי" label="טאטאי">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִמְהַר" label="נִמְהַר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִצְמָד" label="נִצְמָד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תַּנּין" label="תַּנּין">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זֹחֵל" label="זֹחֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="צִיר" label="צִיר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֹלֵד" label="יֹלֵד">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָאוֹר" label="מָאוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.6666666666666666" />
+        </attvalues>
+      </node>
+      <node id="אֲנָחָה" label="אֲנָחָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בַּעַל" label="בַּעַל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מְדָן" label="מְדָן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חוֹמה" label="חוֹמה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בַּרְזֵל" label="בַּרְזֵל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָוְא" label="שָוְא">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חָמָס" label="חָמָס">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֹזֵב" label="עֹזֵב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חַטַּאה" label="חַטַּאה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַמְלָכָה" label="מַמְלָכָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִצְעָר" label="מִצְעָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִחְיָה" label="מִחְיָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="סְלִיחָה" label="סְלִיחָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֱפִי" label="עֱפִי">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נָהָר" label="נָהָר">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="נֹגַהּ" label="נֹגַהּ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זַעַף" label="זַעַף">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עִוְעִים" label="עִוְעִים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שַעַר" label="שַעַר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָצוֹר" label="מָצוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְקֹלֶת" label="מִשְקֹלֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֶבֶן" label="אֶבֶן">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="חֵן" label="חֵן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָגֵן" label="מָגֵן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֶרֶב" label="חֶרֶב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֹכֵב" label="שֹכֵב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹלַעַת" label="תּוֹלַעַת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מֵת" label="מֵת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זֵד" label="זֵד">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="הֱיוֹת" label="הֱיוֹת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִגְדָּל" label="מִגְדָּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נְתִיבָה" label="נְתִיבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שְבִיל" label="שְבִיל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַחֲסֶה" label="מַחֲסֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹפֵת" label="מוֹפֵת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֵיק" label="חֵיק">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="אֹמֵן" label="אֹמֵן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שְאֵרִית" label="שְאֵרִית">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֶבַע" label="שֶבַע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נַעֲוֶה" label="נַעֲוֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תֹּהוּ" label="תֹּהוּ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נֶעֱלָם" label="נֶעֱלָם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַבּוּע" label="מַבּוּע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="צִיָּה" label="צִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גַּן" label="גַּן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַטָּע" label="מַטָּע">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בְּרוֹש" label="בְּרוֹש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֵץ" label="עֵץ">
+        <attvalues>
+          <attvalue for="0" value="0.8333333333333334" />
+        </attvalues>
+      </node>
+      <node id="נֶצֶר" label="נֶצֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָלֶה" label="עָלֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חַיָּה" label="חַיָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יַעַר" label="יַעַר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עוֹף" label="עוֹף">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לַהַט" label="לַהַט">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בּוּז" label="בּוּז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יוֹרֶה" label="יוֹרֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="גֶּשֶם" label="גֶּשֶם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַבּוּעַ" label="מַבּוּעַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַבּוּל" label="מַבּוּל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נָכוֹן" label="נָכוֹן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֶמֶש" label="שֶמֶש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פְּאֵרָה" label="פְּאֵרָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="צוּר" label="צוּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חַלָּמִיש" label="חַלָּמִיש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חֹם" label="חֹם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בָּאֻש" label="בָּאֻש">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָעוֹז" label="מָעוֹז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מָתְנִַים" label="מָתְנִַים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="זֵק" label="זֵק">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מְבַלֵּעַ" label="מְבַלֵּעַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בֹּשֶת" label="בֹּשֶת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פֹּנֶה" label="פֹּנֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַרְפֵּא" label="מַרְפֵּא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בּוֹז" label="בּוֹז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="צַר" label="צַר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כְּלִיל" label="כְּלִיל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַכָּה" label="מַכָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="גְבוּרָה" label="גְבוּרָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֵד" label="שֵד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הֹרֵה" label="הֹרֵה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תּוֹכַחַת" label="תּוֹכַחַת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מִשְמָר" label="מִשְמָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּלֶט" label="פֶּלֶט">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מֶלֶךְ" label="מֶלֶךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִכְבָּד" label="נִכְבָּד">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דָּגָן" label="דָּגָן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="יִצְהָר" label="יִצְהָר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פֶּלֶג" label="פֶּלֶג">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חֶדֶר" label="חֶדֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שְּאוֹל" label="שְּאוֹל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כֹּחַ" label="כֹּחַ">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="הֲגִי" label="הֲגִי">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הוֹדָה" label="הוֹדָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַזָּל" label="מַזָּל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תְּשוּבָה" label="תְּשוּבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֹגוֹן" label="יֹגוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קִינָה" label="קִינָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מִסְּפֵּד" label="מִסְּפֵּד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נֶבֶל" label="נֶבֶל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֹהֵל" label="אֹהֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תְּקוּפָה" label="תְּקוּפָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הֵאָסֵף" label="הֵאָסֵף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מוֹלָד" label="מוֹלָד">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שְמָמָה" label="שְמָמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָדוֹר" label="מָדוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָרֵל" label="עָרֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אורתום" label="אורתום">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מטון" label="מטון">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֶפֶר" label="אֶפֶר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="סַעַר" label="סַעַר">
+        <attvalues>
+          <attvalue for="0" value="0.5" />
+        </attvalues>
+      </node>
+      <node id="חֶפֶץ" label="חֶפֶץ">
+        <attvalues>
+          <attvalue for="0" value="0.2" />
+        </attvalues>
+      </node>
+      <node id="צַמִּים" label="צַמִּים">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רְמִיָּה" label="רְמִיָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שְמוּעָה" label="שְמוּעָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֹמֵעַ" label="שֹמֵעַ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תְּשוּבָה" label="תְּשוּבָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="נִתְעָב" label="נִתְעָב">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="עֲבֹת" label="עֲבֹת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רָמָה" label="רָמָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תְּעוּדָה" label="תְּעוּדָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֲדָמָה" label="אֲדָמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מכורה" label="מכורה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="תכין" label="תכין">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רָֹז" label="רָֹז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַחְסוֹר" label="מַחְסוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רוּחֲ" label="רוּחֲ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אוֹטוֹ" label="אוֹטוֹ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בְּכוֹר" label="בְּכוֹר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֹרֶש" label="שֹרֶש">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="הוֹרֶה" label="הוֹרֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="רֳז" label="רֳז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עֵזֶר" label="עֵזֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אִשָּׁה" label="אִשָּׁה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שְאָר" label="שְאָר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אִסָּר" label="אִסָּר">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="פְּקֻדָּה" label="פְּקֻדָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כֹּשֶר" label="כֹּשֶר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מְבִינָה" label="מְבִינָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נִסְתָּר" label="נִסְתָּר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֵת" label="שֵת">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נָבוֹן" label="נָבוֹן">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יֶשַע" label="יֶשַע">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מָחוֹז" label="מָחוֹז">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אוטו" label="אוטו">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נִפְלָאָה" label="נִפְלָאָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עָקֹב" label="עָקֹב">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אוט" label="אוט">
+        <attvalues>
+          <attvalue for="0" value="0.3333333333333333" />
+        </attvalues>
+      </node>
+      <node id="מַשְכִּיל" label="מַשְכִּיל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="דֵּעָׁה" label="דֵּעָׁה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נֹחֵל" label="נֹחֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַחְזִיק" label="מַחְזִיק">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="פְּעֻלָּה" label="פְּעֻלָּה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="אֵיפָה" label="אֵיפָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שִיר" label="שִיר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="עוֹֹלָם" label="עוֹֹלָם">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="הֹלֵךְ" label="הֹלֵךְ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="חָכָם" label="חָכָם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="כֹחַ" label="כֹחַ">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="לֵץ" label="לֵץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="צֶמַח" label="צֶמַח">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַעֲמַקִּים" label="מַעֲמַקִּים">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שָנִים" label="שָנִים">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="חַוָּה" label="חַוָּה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מַאֲכָל" label="מַאֲכָל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="שֵן" label="שֵן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="לָחוּם" label="לָחוּם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="רֶשֶף" label="רֶשֶף">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="מֹאזְנַיִם" label="מֹאזְנַיִם">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="סְפֹרוֹת" label="סְפֹרוֹת">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="יָפֶה" label="יָפֶה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="מַרְאֶה" label="מַרְאֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נֶגֶף" label="נֶגֶף">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="תְּשוּקָה" label="תְּשוּקָה">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="צֹאן" label="צֹאן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אָבֵל" label="אָבֵל">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="ְ" label="ְ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שָדֶה" label="שָדֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="כַּרְמֵל" label="כַּרְמֵל">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="הֹרֶה" label="הֹרֶה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בֶּטֶן" label="בֶּטֶן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בְּכוֹר" label="בְּכוֹר">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="בְּהֵמָה" label="בְּהֵמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="בֶּּטֶן" label="בֶּּטֶן">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="קֹרַח" label="קֹרַח">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="נָשִיא" label="נָשִיא">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+      <node id="קַיִץ" label="קַיִץ">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="אֲדָׁמָה" label="אֲדָׁמָה">
+        <attvalues>
+          <attvalue for="0" value="0.0" />
+        </attvalues>
+      </node>
+      <node id="שֹפֵט" label="שֹפֵט">
+        <attvalues>
+          <attvalue for="0" value="1.0" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="סֵפֶר" target="סֶרֶךְ" id="0" weight="1" />
+      <edge source="סֵפֶר" target="יַחַד" id="1" weight="1" />
+      <edge source="סֵפֶר" target="הָגוּי" id="2" weight="1" />
+      <edge source="סֵפֶר" target="זִכָּרוֹן" id="3" weight="2" />
+      <edge source="סֶרֶךְ" target="יַחַד" id="4" weight="1" />
+      <edge source="סֶרֶךְ" target="תִּכּוּן" id="5" weight="1" />
+      <edge source="סֶרֶךְ" target="צָבָא" id="6" weight="1" />
+      <edge source="יַחַד" target="אֵל" id="7" weight="1" />
+      <edge source="יַחַד" target="אֱמֶת" id="8" weight="2" />
+      <edge source="יַחַד" target="עֵצָה" id="9" weight="1" />
+      <edge source="יַחַד" target="בְּרִית" id="10" weight="1" />
+      <edge source="יַחַד" target="קֹדֶש" id="11" weight="1" />
+      <edge source="יָד" target="מֹשֶה" id="12" weight="5" />
+      <edge source="יָד" target="שַר" id="13" weight="1" />
+      <edge source="יָד" target="אוֹר" id="14" weight="1" />
+      <edge source="יָד" target="מַלְאָךְ" id="15" weight="2" />
+      <edge source="יָד" target="חֹשֶךְ" id="16" weight="1" />
+      <edge source="יָד" target="חֶבֶל" id="17" weight="1" />
+      <edge source="יָד" target="אִיש" id="18" weight="1" />
+      <edge source="יָד" target="בָּשָר" id="19" weight="1" />
+      <edge source="יָד" target="חָזָק" id="20" weight="1" />
+      <edge source="יָד" target="חֵלְכָה" id="21" weight="1" />
+      <edge source="יָד" target="נֶעֱלָם" id="22" weight="1" />
+      <edge source="יָד" target="אָדָם" id="23" weight="1" />
+      <edge source="מַעֲשֶה" target="טוֹב" id="24" weight="1" />
+      <edge source="מַעֲשֶה" target="אֱמֶת" id="25" weight="2" />
+      <edge source="מַעֲשֶה" target="גְּבוּרָה" id="26" weight="1" />
+      <edge source="מַעֲשֶה" target="רֶשַע" id="27" weight="1" />
+      <edge source="מַעֲשֶה" target="אֵל" id="28" weight="2" />
+      <edge source="מַעֲשֶה" target="תּוֹעֵבָה" id="29" weight="1" />
+      <edge source="מַעֲשֶה" target="גֶּבֶר" id="30" weight="1" />
+      <edge source="מַעֲשֶה" target="רְמִיָּה" id="31" weight="2" />
+      <edge source="מַעֲשֶה" target="הֶבֶל" id="32" weight="1" />
+      <edge source="מַעֲשֶה" target="פֶּלֶא" id="33" weight="4" />
+      <edge source="מַעֲשֶה" target="יָמִין" id="34" weight="1" />
+      <edge source="מַעֲשֶה" target="רַע" id="35" weight="1" />
+      <edge source="מַעֲשֶה" target="עַוְלָה" id="36" weight="3" />
+      <edge source="מַעֲשֶה" target="צְדָקָה" id="37" weight="2" />
+      <edge source="מַעֲשֶה" target="פַּלָּצוּת" id="38" weight="1" />
+      <edge source="מַעֲשֶה" target="אֶפְעָה" id="39" weight="1" />
+      <edge source="מַעֲשֶה" target="אֵש" id="40" weight="1" />
+      <edge source="מַעֲשֶה" target="רְמִיָּה" id="41" weight="1" />
+      <edge source="מַעֲשֶה" target="נִדָּה" id="42" weight="1" />
+      <edge source="מַעֲשֶה" target="צֶדֶק" id="43" weight="1" />
+      <edge source="מַעֲשֶה" target="בְּרִית" id="44" weight="1" />
+      <edge source="טוֹב" target="עוֹלָם" id="45" weight="1" />
+      <edge source="שְרִירוּת" target="לֵב" id="46" weight="3" />
+      <edge source="שְרִירוּת" target="אַשְמָה" id="47" weight="1" />
+      <edge source="לֵב" target="אִיש" id="48" weight="1" />
+      <edge source="לֵב" target="עֶבֶד" id="49" weight="2" />
+      <edge source="לֵב" target="עָפָר" id="50" weight="1" />
+      <edge source="לֵב" target="אֶבֶן" id="51" weight="1" />
+      <edge source="אַשְמָה" target="פֶּשַע" id="52" weight="1" />
+      <edge source="אַשְמָה" target="מַעַל" id="53" weight="2" />
+      <edge source="אַשְמָה" target="רִשְעָה" id="54" weight="1" />
+      <edge source="אַשְמָה" target="יָלוּד" id="55" weight="1" />
+      <edge source="אַשְמָה" target="אִשָּה" id="56" weight="1" />
+      <edge source="עַיִן" target="זְנוּת" id="57" weight="1" />
+      <edge source="עַיִן" target="תָּמִים" id="58" weight="1" />
+      <edge source="עַיִן" target="מִתְנַדֵּב" id="59" weight="1" />
+      <edge source="עַיִן" target="מַעֲשֶה" id="60" weight="2" />
+      <edge source="עַיִן" target="שֹמֵעַ" id="61" weight="1" />
+      <edge source="חֹק" target="אֵל" id="62" weight="3" />
+      <edge source="חֹק" target="אֱמֶת" id="63" weight="1" />
+      <edge source="חֹק" target="עֵת" id="64" weight="1" />
+      <edge source="חֹק" target="תִּכּוּן" id="65" weight="1" />
+      <edge source="חֹק" target="בְּרִית" id="66" weight="3" />
+      <edge source="חֹק" target="נָכוֹן" id="67" weight="1" />
+      <edge source="אֵל" target="יְשוּעָה" id="68" weight="1" />
+      <edge source="אֵל" target="דֵּעָה" id="69" weight="5" />
+      <edge source="אֵל" target="יִשְרָאֵל" id="70" weight="1" />
+      <edge source="אֵל" target="עוֹלָם" id="71" weight="1" />
+      <edge source="אֵל" target="רַחֲמִים" id="72" weight="2" />
+      <edge source="אֵל" target="צֶדֶק" id="73" weight="1" />
+      <edge source="אֵל" target="אֱמֶת" id="74" weight="2" />
+      <edge source="אֵל" target="דֵּעָׁה" id="75" weight="1" />
+      <edge source="בְּרִית" target="חֶסֶד" id="76" weight="2" />
+      <edge source="בְּרִית" target="יַחַד" id="77" weight="2" />
+      <edge source="בְּרִית" target="עוֹלָם" id="78" weight="1" />
+      <edge source="בְּרִית" target="אֵל" id="79" weight="2" />
+      <edge source="בְּרִית" target="מִשְפָּט" id="80" weight="1" />
+      <edge source="בְּרִית" target="אָדָם" id="81" weight="1" />
+      <edge source="חֶסֶד" target="רַחֲמִים" id="82" weight="1" />
+      <edge source="חֶסֶד" target="אֵל" id="83" weight="1" />
+      <edge source="חֶסֶד" target="עוֹלָם" id="84" weight="2" />
+      <edge source="עֵצָה" target="אֵל" id="85" weight="2" />
+      <edge source="עֵצָה" target="צֶדֶק" id="86" weight="1" />
+      <edge source="עֵצָה" target="עוֹלָם" id="87" weight="1" />
+      <edge source="עֵצָה" target="קֹדֶש" id="88" weight="3" />
+      <edge source="עֵצָה" target="יַחַד" id="89" weight="19" />
+      <edge source="עֵצָה" target="רַב" id="90" weight="1" />
+      <edge source="עֵצָה" target="אִיש" id="91" weight="1" />
+      <edge source="עֵצָה" target="תּוֹרָה" id="92" weight="2" />
+      <edge source="עֵצָה" target="תּוּשִיָּה" id="93" weight="1" />
+      <edge source="עֵצָה" target="קֹדֵש" id="94" weight="1" />
+      <edge source="מוֹעֵד" target="תְּעוּדָה" id="95" weight="2" />
+      <edge source="מוֹעֵד" target="פְּקֻּדָּה" id="96" weight="1" />
+      <edge source="מוֹעֵד" target="צָרָה" id="97" weight="1" />
+      <edge source="מוֹעֵד" target="פְּקֻדָּה" id="98" weight="1" />
+      <edge source="מוֹעֵד" target="מִשְפָּט" id="99" weight="1" />
+      <edge source="מוֹעֵד" target="קָצִיר" id="100" weight="1" />
+      <edge source="מוֹעֵד" target="זֶרַע" id="101" weight="1" />
+      <edge source="מוֹעֵד" target="דֶּשֶא" id="102" weight="1" />
+      <edge source="מוֹעֵד" target="שָנָה" id="103" weight="1" />
+      <edge source="מוֹעֵד" target="דְּרוֹר" id="104" weight="1" />
+      <edge source="מוֹעֵד" target="רָצוֹן" id="105" weight="1" />
+      <edge source="מוֹעֵד" target="לַיְלָה" id="106" weight="1" />
+      <edge source="מוֹעֵד" target="שְמָמָה" id="107" weight="1" />
+      <edge source="מוֹעֵד" target="קַיִץ" id="108" weight="1" />
+      <edge source="תְּעוּדָה" target="מִלְחָמָה" id="109" weight="1" />
+      <edge source="תְּעוּדָה" target="הֲוָיָה" id="110" weight="1" />
+      <edge source="בֵּן" target="אוֹר" id="111" weight="5" />
+      <edge source="בֵּן" target="חֹשֶךְ" id="112" weight="1" />
+      <edge source="בֵּן" target="סוֹד" id="113" weight="1" />
+      <edge source="בֵּן" target="עוֹלָם" id="114" weight="1" />
+      <edge source="בֵּן" target="אֱמֶת" id="115" weight="10" />
+      <edge source="בֵּן" target="אִיש" id="116" weight="3" />
+      <edge source="בֵּן" target="צָדוֹק" id="117" weight="5" />
+      <edge source="בֵּן" target="אַהֲרֹן" id="118" weight="4" />
+      <edge source="בֵּן" target="אָדָם" id="119" weight="10" />
+      <edge source="בֵּן" target="שָמַיִם" id="120" weight="4" />
+      <edge source="בֵּן" target="עֶשְרִים" id="121" weight="2" />
+      <edge source="בֵּן" target="שָנָה" id="122" weight="2" />
+      <edge source="בֵּן" target="חָמֵש" id="123" weight="1" />
+      <edge source="בֵּן" target="שְלוֹשִים" id="124" weight="1" />
+      <edge source="בֵּן" target="אֱנוֹש" id="125" weight="1" />
+      <edge source="בֵּן" target="רָצוֹן" id="126" weight="2" />
+      <edge source="בֵּן" target="אַשְמָה" id="127" weight="3" />
+      <edge source="בֵּן" target="עַוְלָה" id="128" weight="3" />
+      <edge source="בֵּן" target="הֹוָה" id="129" weight="1" />
+      <edge source="בֵּן" target="חֶסֶד" id="130" weight="1" />
+      <edge source="בֵּן" target="אֵל" id="131" weight="2" />
+      <edge source="בֵּן" target="בְּכוֹר" id="132" weight="1" />
+      <edge source="בֵּן" target="שֵת" id="133" weight="1" />
+      <edge source="בֵּן" target="חַוָּה" id="134" weight="1" />
+      <edge source="אוֹר" target="חַיִּים" id="135" weight="1" />
+      <edge source="אוֹר" target="עוֹלָם" id="136" weight="3" />
+      <edge source="אוֹר" target="שֶבַע" id="137" weight="1" />
+      <edge source="אוֹר" target="אורתום" id="138" weight="1" />
+      <edge source="נְקָמָה" target="אֵל" id="139" weight="1" />
+      <edge source="תֹּם" target="דֶּרֶךְ" id="140" weight="7" />
+      <edge source="דֶּרֶךְ" target="אוֹר" id="141" weight="2" />
+      <edge source="דֶּרֶךְ" target="אִיש" id="142" weight="1" />
+      <edge source="דֶּרֶךְ" target="אֵל" id="143" weight="1" />
+      <edge source="דֶּרֶךְ" target="חֹשֶךְ" id="144" weight="2" />
+      <edge source="דֶּרֶךְ" target="צֶדֶק" id="145" weight="1" />
+      <edge source="דֶּרֶךְ" target="אֱמֶת" id="146" weight="4" />
+      <edge source="דֶּרֶךְ" target="נִדָּה" id="147" weight="1" />
+      <edge source="דֶּרֶךְ" target="רֶשַע" id="148" weight="1" />
+      <edge source="דֶּרֶךְ" target="רִשְעָה" id="149" weight="1" />
+      <edge source="דֶּרֶךְ" target="פַּעַם" id="150" weight="1" />
+      <edge source="דֶּרֶךְ" target="עַם" id="151" weight="1" />
+      <edge source="דֶּרֶךְ" target="עַוְלָה" id="152" weight="1" />
+      <edge source="דֶּרֶךְ" target="חַי" id="153" weight="1" />
+      <edge source="דֶּרֶךְ" target="עוֹלָם" id="154" weight="1" />
+      <edge source="דֶּרֶךְ" target="לֵב" id="155" weight="5" />
+      <edge source="דֶּרֶךְ" target="אֱנוֹש" id="156" weight="1" />
+      <edge source="דֶּרֶךְ" target="קֹדֶש" id="157" weight="2" />
+      <edge source="דָּבָר" target="אֵל" id="158" weight="1" />
+      <edge source="דָּבָר" target="בְּרִית" id="159" weight="1" />
+      <edge source="דָּבָר" target="שֶקֶר" id="160" weight="1" />
+      <edge source="דָּבָר" target="רֵעַ" id="161" weight="2" />
+      <edge source="דָּבָר" target="רָצוֹן" id="162" weight="2" />
+      <edge source="אֱמֶת" target="עוֹלָם" id="163" weight="1" />
+      <edge source="אֱמֶת" target="אֵל" id="164" weight="1" />
+      <edge source="אֱמֶת" target="כָּבוֹד" id="165" weight="1" />
+      <edge source="מַצְרֵף" target="נִסּוּי" id="166" weight="1" />
+      <edge source="מֶמְשָלָה" target="בְּלִיָעָל" id="167" weight="2" />
+      <edge source="מֶמְשָלָה" target="תֵּבֵל" id="168" weight="1" />
+      <edge source="מֶמְשָלָה" target="בֵּן" id="169" weight="2" />
+      <edge source="מֶמְשָלָה" target="צֶדֶק" id="170" weight="1" />
+      <edge source="מֶמְשָלָה" target="עָוֶל" id="171" weight="1" />
+      <edge source="מֶמְשָלָה" target="מַשְטֵמָה" id="172" weight="1" />
+      <edge source="מֶמְשָלָה" target="עַוְלָה" id="173" weight="1" />
+      <edge source="מֶמְשָלָה" target="מַעֲשֶה" id="174" weight="1" />
+      <edge source="יְשוּעָה" target="עוֹלָם" id="175" weight="1" />
+      <edge source="צְדָקָה" target="אֵל" id="176" weight="4" />
+      <edge source="צְדָקָה" target="אֱמֶת" id="177" weight="1" />
+      <edge source="גְּבוּרָה" target="כֹּל" id="178" weight="1" />
+      <edge source="גְּבוּרָה" target="עוֹלָם" id="179" weight="1" />
+      <edge source="גְּבוּרָה" target="מַעֲשֶה" id="180" weight="1" />
+      <edge source="רַחֲמִים" target="חֶסֶד" id="181" weight="1" />
+      <edge source="רַחֲמִים" target="אֵל" id="182" weight="2" />
+      <edge source="רַחֲמִים" target="הֹרֶה" id="183" weight="1" />
+      <edge source="עָוֹן" target="בֵּן" id="184" weight="1" />
+      <edge source="עָוֹן" target="יִשְרָאֵל" id="185" weight="1" />
+      <edge source="עָוֹן" target="אַשְמָה" id="186" weight="1" />
+      <edge source="עָוֹן" target="בָּשָר" id="187" weight="1" />
+      <edge source="עָוֹן" target="רֶשַע" id="188" weight="1" />
+      <edge source="עָוֹן" target="רָשָע" id="189" weight="1" />
+      <edge source="עָוֹן" target="תּוֹעֵבָה" id="190" weight="1" />
+      <edge source="פֶּשָע" target="אַשְמָה" id="191" weight="1" />
+      <edge source="פֶּשָע" target="חַטַּאת" id="192" weight="1" />
+      <edge source="חַטַּאת" target="בֵּן" id="193" weight="1" />
+      <edge source="חַטַּאת" target="אָדָם" id="194" weight="1" />
+      <edge source="אִיש" target="גּוֹרָל" id="195" weight="1" />
+      <edge source="אִיש" target="גּוֹרָׁל" id="196" weight="1" />
+      <edge source="אִיש" target="בְּלִיָעָל" id="197" weight="1" />
+      <edge source="אִיש" target="יַחַד" id="198" weight="9" />
+      <edge source="אִיש" target="עָוֶל" id="199" weight="3" />
+      <edge source="אִיש" target="קֹדֶש" id="200" weight="4" />
+      <edge source="אִיש" target="כֹּהֵן" id="201" weight="1" />
+      <edge source="אִיש" target="בְּרִית" id="202" weight="1" />
+      <edge source="אִיש" target="תָּמִים" id="203" weight="1" />
+      <edge source="אִיש" target="רְמִיָּה" id="204" weight="3" />
+      <edge source="אִיש" target="שָחָת" id="205" weight="1" />
+      <edge source="אִיש" target="שַחַת" id="206" weight="1" />
+      <edge source="אִיש" target="עַוְלָה" id="207" weight="1" />
+      <edge source="אִיש" target="מַטֶּה" id="208" weight="1" />
+      <edge source="אִיש" target="פֶּתִי" id="209" weight="1" />
+      <edge source="אִיש" target="אֱמֶת" id="210" weight="1" />
+      <edge source="אִיש" target="חָזוֹן" id="211" weight="1" />
+      <edge source="אִיש" target="סוֹדֹ" id="212" weight="1" />
+      <edge source="אִיש" target="רִיב" id="213" weight="1" />
+      <edge source="אִיש" target="מִרְמָה" id="214" weight="1" />
+      <edge source="אִיש" target="עֵצָה" id="215" weight="3" />
+      <edge source="אִיש" target="אַשְמָה" id="216" weight="1" />
+      <edge source="אִיש" target="מוֹפֵת" id="217" weight="1" />
+      <edge source="אִיש" target="תֹּהוּ" id="218" weight="1" />
+      <edge source="אִיש" target="מִלְחָמָה" id="219" weight="1" />
+      <edge source="אִיש" target="פֶּשַע" id="220" weight="1" />
+      <edge source="אִיש" target="זָדוֹן" id="221" weight="1" />
+      <edge source="אִיש" target="רָצוֹן" id="222" weight="1" />
+      <edge source="אִיש" target="אֲדָמָה" id="223" weight="1" />
+      <edge source="אִיש" target="שֶכֶל" id="224" weight="1" />
+      <edge source="אִיש" target="אֲדָׁמָה" id="225" weight="1" />
+      <edge source="גּוֹרָל" target="עָוֶל" id="226" weight="1" />
+      <edge source="גּוֹרָל" target="עוֹלָם" id="227" weight="1" />
+      <edge source="גּוֹרָל" target="אַף" id="228" weight="1" />
+      <edge source="שֶכֶל" target="חַיִּים" id="229" weight="1" />
+      <edge source="שֶכֶל" target="מִשְפָּט" id="230" weight="1" />
+      <edge source="שֶכֶל" target="דֵּעָה" id="231" weight="1" />
+      <edge source="חַיִּים" target="נֶַצח" id="232" weight="1" />
+      <edge source="חַיִּים" target="גֶּבֶר" id="233" weight="1" />
+      <edge source="דַּעַת" target="עוֹלָם" id="234" weight="1" />
+      <edge source="דַּעַת" target="עֶלְיוֹן" id="235" weight="1" />
+      <edge source="דַּעַת" target="אֱמֶת" id="236" weight="2" />
+      <edge source="דַּעַת" target="לֵב" id="237" weight="1" />
+      <edge source="דַּעַת" target="עֲבוֹדָה" id="238" weight="1" />
+      <edge source="עוֹלָם" target="עֵד" id="239" weight="2" />
+      <edge source="עוֹלָם" target="עַד" id="240" weight="4" />
+      <edge source="פָּנֶה" target="חֶסֶד" id="241" weight="1" />
+      <edge source="פָּנֶה" target="אַף" id="242" weight="1" />
+      <edge source="פָּנֶה" target="רַב" id="243" weight="1" />
+      <edge source="פָּנֶה" target="אוֹר" id="244" weight="1" />
+      <edge source="שָלוֹם" target="עוֹלָם" id="245" weight="3" />
+      <edge source="שָלוֹם" target="עַד" id="246" weight="2" />
+      <edge source="נֹקֵם" target="נָקָם" id="247" weight="1" />
+      <edge source="מְשַלֵּם" target="גְּמוּל" id="248" weight="1" />
+      <edge source="אֲפֵלָה" target="אֵש" id="249" weight="1" />
+      <edge source="אֲפֵלָה" target="עוֹלָם" id="250" weight="1" />
+      <edge source="אֵש" target="מַחְשָךְ" id="251" weight="1" />
+      <edge source="אַף" target="אֵל" id="252" weight="2" />
+      <edge source="אַף" target="עֶבְרָה" id="253" weight="2" />
+      <edge source="פֶּה" target="אֹחֶז" id="254" weight="1" />
+      <edge source="פֶּה" target="אָב" id="255" weight="1" />
+      <edge source="פֶּה" target="רֵעַ" id="256" weight="1" />
+      <edge source="פֶּה" target="כֹּל" id="257" weight="2" />
+      <edge source="פֶּה" target="כְּפִיר" id="258" weight="1" />
+      <edge source="פֶּה" target="כָּבוֹד" id="259" weight="1" />
+      <edge source="פֶּה" target="עֶבֶד" id="260" weight="2" />
+      <edge source="פֶּה" target="הוֹדָה" id="261" weight="1" />
+      <edge source="פֶּה" target="אֵל" id="262" weight="1" />
+      <edge source="פֶּה" target="רוּחַ" id="263" weight="1" />
+      <edge source="גִּלּוּל" target="לֵב" id="264" weight="1" />
+      <edge source="מִכְשוֹל" target="עָוֶן" id="265" weight="1" />
+      <edge source="מִכְשוֹל" target="עָוֹן" id="266" weight="2" />
+      <edge source="קִנְאָה" target="מִשְפָּט" id="267" weight="3" />
+      <edge source="קִנְאָה" target="צֶדֶק" id="268" weight="1" />
+      <edge source="קִנְאָה" target="זָדוֹן" id="269" weight="1" />
+      <edge source="קִנְאָה" target="רִיב" id="270" weight="1" />
+      <edge source="קִנְאָה" target="מֵלִיץ" id="271" weight="1" />
+      <edge source="קִנְאָה" target="כָּזָב" id="272" weight="1" />
+      <edge source="קִנְאָה" target="כָּלָה" id="273" weight="1" />
+      <edge source="קִנְאָה" target="אֱנוֹש" id="274" weight="1" />
+      <edge source="מִשְפָּט" target="צֶדֶק" id="275" weight="8" />
+      <edge source="מִשְפָּט" target="אֵל" id="276" weight="3" />
+      <edge source="מִשְפָּט" target="כֹּל" id="277" weight="3" />
+      <edge source="מִשְפָּט" target="יַחַד" id="278" weight="1" />
+      <edge source="מִשְפָּט" target="חַי" id="279" weight="1" />
+      <edge source="מִשְפָּט" target="אוֹר" id="280" weight="1" />
+      <edge source="מִשְפָּט" target="בֵּן" id="281" weight="1" />
+      <edge source="מִשְפָּט" target="צָדוֹק" id="282" weight="1" />
+      <edge source="מִשְפָּט" target="תּוֹרָה" id="283" weight="1" />
+      <edge source="מִשְפָּט" target="קֵץ" id="284" weight="1" />
+      <edge source="מִשְפָּט" target="נֶגַע" id="285" weight="3" />
+      <edge source="מִשְפָּט" target="רָשָע" id="286" weight="1" />
+      <edge source="מִשְפָּט" target="אֱמֶת" id="287" weight="1" />
+      <edge source="מִשְפָּט" target="רוּחַ" id="288" weight="1" />
+      <edge source="מִשְפָּט" target="אֱנוֹש" id="289" weight="1" />
+      <edge source="מִשְפָּט" target="צֹאן" id="290" weight="2" />
+      <edge source="מִשְפָּט" target="קֹדֶש" id="291" weight="1" />
+      <edge source="מִשְפָּט" target="ְ" id="292" weight="1" />
+      <edge source="מִשְפָּט" target="קֹרַח" id="293" weight="1" />
+      <edge source="כָּלָה" target="עוֹלָם" id="294" weight="2" />
+      <edge source="אָלָה" target="בְּרִית" id="295" weight="2" />
+      <edge source="אָרוּר" target="עוֹלָם" id="296" weight="1" />
+      <edge source="בָּא" target="בְּרִית" id="297" weight="2" />
+      <edge source="יוֹם" target="מֶמְשָלָה" id="298" weight="1" />
+      <edge source="יוֹם" target="בְּלִיָעָל" id="299" weight="1" />
+      <edge source="יוֹם" target="מְאֹס" id="300" weight="1" />
+      <edge source="יוֹם" target="נָקָם" id="301" weight="2" />
+      <edge source="יוֹם" target="חֹדֶש" id="302" weight="1" />
+      <edge source="יוֹם" target="קֹדֶש" id="303" weight="1" />
+      <edge source="יוֹם" target="מִשְפָּט" id="304" weight="2" />
+      <edge source="יוֹם" target="קֶדֶם" id="305" weight="1" />
+      <edge source="יוֹם" target="הֲרֵגָה" id="306" weight="1" />
+      <edge source="יוֹם" target="עוֹלָם" id="307" weight="1" />
+      <edge source="יוֹם" target="גּוֹרָל" id="308" weight="1" />
+      <edge source="יוֹם" target="נֶצַח" id="309" weight="1" />
+      <edge source="דֵּעָה" target="אִיש" id="310" weight="1" />
+      <edge source="בַּיִת" target="מַעֲמָד" id="311" weight="2" />
+      <edge source="בַּיִת" target="אֱמֶת" id="312" weight="1" />
+      <edge source="בַּיִת" target="קֹדֶש" id="313" weight="2" />
+      <edge source="בַּיִת" target="תָּמִים" id="314" weight="1" />
+      <edge source="בַּיִת" target="יַחַד" id="315" weight="1" />
+      <edge source="בַּיִת" target="מכורה" id="316" weight="1" />
+      <edge source="בַּיִת" target="מָכוֹן" id="317" weight="1" />
+      <edge source="מַעֲמָד" target="אִיש" id="318" weight="1" />
+      <edge source="מַעֲמָד" target="צֶדֶק" id="319" weight="1" />
+      <edge source="מַעֲמָד" target="רָצוֹן" id="320" weight="1" />
+      <edge source="מָקוֹם" target="גּוֹרָל" id="321" weight="1" />
+      <edge source="עֲנָוָה" target="טוֹב" id="322" weight="1" />
+      <edge source="עֲנָוָה" target="נֶפֶש" id="323" weight="1" />
+      <edge source="אַהֲבָה" target="חֶסֶד" id="324" weight="5" />
+      <edge source="מַחֲשָבָה" target="צֶדֶק" id="325" weight="1" />
+      <edge source="מַחֲשָבָה" target="כָּבוֹד" id="326" weight="1" />
+      <edge source="מַחֲשָבָה" target="מַעֲשֶה" id="327" weight="1" />
+      <edge source="מַחֲשָבָה" target="קֹדֶש" id="328" weight="2" />
+      <edge source="מַחֲשָבָה" target="יֶצֶר" id="329" weight="1" />
+      <edge source="מַחֲשָבָה" target="רִשְעָה" id="330" weight="2" />
+      <edge source="מַחֲשָבָה" target="בְּלִיָעָל" id="331" weight="1" />
+      <edge source="מַחֲשָבָה" target="לֵב" id="332" weight="1" />
+      <edge source="מַחֲשָבָה" target="רֹעַ" id="333" weight="1" />
+      <edge source="מַחֲשָבָה" target="יֵצֶר" id="334" weight="1" />
+      <edge source="קֹדֶש" target="קֹדֶש" id="335" weight="2" />
+      <edge source="סוֹד" target="רוּחַ" id="336" weight="2" />
+      <edge source="סוֹד" target="יַחַד" id="337" weight="1" />
+      <edge source="סוֹד" target="קֹדֶש" id="338" weight="2" />
+      <edge source="סוֹד" target="בָּשָר" id="339" weight="2" />
+      <edge source="סוֹד" target="מַבְנִית" id="340" weight="1" />
+      <edge source="סוֹד" target="עָוֶל" id="341" weight="1" />
+      <edge source="סוֹד" target="רִמָּה" id="342" weight="1" />
+      <edge source="סוֹד" target="אֱמֶת" id="343" weight="13" />
+      <edge source="סוֹד" target="עֶרְוָה" id="344" weight="1" />
+      <edge source="סוֹד" target="בִּינָה" id="345" weight="1" />
+      <edge source="סוֹד" target="שַוְא" id="346" weight="1" />
+      <edge source="סוֹד" target="עוֹלָם" id="347" weight="2" />
+      <edge source="סוֹד" target="קָדוֹש" id="348" weight="1" />
+      <edge source="סוֹד" target="פֶּלֶא" id="349" weight="2" />
+      <edge source="סוֹד" target="חָמָס" id="350" weight="1" />
+      <edge source="סוֹד" target="נֶעֱלָם" id="351" weight="1" />
+      <edge source="סוֹד" target="אִיש" id="352" weight="2" />
+      <edge source="סוֹד" target="אֵל" id="353" weight="1" />
+      <edge source="יִסּוֹר" target="דַּעַת" id="354" weight="1" />
+      <edge source="סָאוֹן" target="רֶשַע" id="355" weight="1" />
+      <edge source="מָתוֹר" target="שְרִירוּת" id="356" weight="1" />
+      <edge source="מָתוֹר" target="לֵב" id="357" weight="1" />
+      <edge source="תָּמִים" target="דֶּרֶךְ" id="358" weight="5" />
+      <edge source="תָּמִים" target="עֵצָה" id="359" weight="1" />
+      <edge source="מַיִם" target="נִדָּה" id="360" weight="3" />
+      <edge source="מַיִם" target="רַחַץ" id="361" weight="1" />
+      <edge source="מַיִם" target="דּוֹכִי" id="362" weight="1" />
+      <edge source="מַיִם" target="בְּרִית" id="363" weight="1" />
+      <edge source="מַיִם" target="קֹדֶש" id="364" weight="1" />
+      <edge source="מַיִם" target="מַבּוּל" id="365" weight="1" />
+      <edge source="נִדָּה" target="אֱנוֹש" id="366" weight="1" />
+      <edge source="רוּחַ" target="עצה" id="367" weight="1" />
+      <edge source="רוּחַ" target="אֱמֶת" id="368" weight="4" />
+      <edge source="רוּחַ" target="אֵל" id="369" weight="1" />
+      <edge source="רוּחַ" target="עָוֶל" id="370" weight="2" />
+      <edge source="רוּחַ" target="גּוֹרָל" id="371" weight="1" />
+      <edge source="רוּחַ" target="אוֹר" id="372" weight="1" />
+      <edge source="רוּחַ" target="חֹשֶךְ" id="373" weight="1" />
+      <edge source="רוּחַ" target="עֲנָוָה" id="374" weight="1" />
+      <edge source="רוּחַ" target="דַּעַת" id="375" weight="1" />
+      <edge source="רוּחַ" target="זְנוּת" id="376" weight="1" />
+      <edge source="רוּחַ" target="עַוְלָה" id="377" weight="2" />
+      <edge source="רוּחַ" target="קֹדֶש" id="378" weight="12" />
+      <edge source="רוּחַ" target="נִדָּה" id="379" weight="1" />
+      <edge source="רוּחַ" target="סֵתֶר" id="380" weight="1" />
+      <edge source="רוּחַ" target="רִשְעָה" id="381" weight="2" />
+      <edge source="רוּחַ" target="בָּשָר" id="382" weight="5" />
+      <edge source="רוּחַ" target="דֵּעָה" id="383" weight="1" />
+      <edge source="רוּחַ" target="עֹרֶף" id="384" weight="1" />
+      <edge source="רוּחַ" target="רַחֲמִים" id="385" weight="1" />
+      <edge source="רוּחַ" target="צָדִיק" id="386" weight="1" />
+      <edge source="רוּחַ" target="עֶבֶד" id="387" weight="1" />
+      <edge source="רוּחַ" target="עֹז" id="388" weight="1" />
+      <edge source="רוּחַ" target="עוֹלָם" id="389" weight="1" />
+      <edge source="רוּחַ" target="אָדָם" id="390" weight="1" />
+      <edge source="רוּחַ" target="תּוֹעָה" id="391" weight="1" />
+      <edge source="רוּחַ" target="אֱנוֹש" id="392" weight="1" />
+      <edge source="רוּחַ" target="קִנְאָה" id="393" weight="1" />
+      <edge source="רוּחַ" target="אֶפְעָה" id="394" weight="1" />
+      <edge source="רוּחַ" target="דַעַת" id="395" weight="1" />
+      <edge source="רוּחַ" target="עִוְעִים" id="396" weight="2" />
+      <edge source="רוּחַ" target="הֹוָה" id="397" weight="1" />
+      <edge source="רוּחַ" target="קֹדֵש" id="398" weight="1" />
+      <edge source="רוּחַ" target="סַעַר" id="399" weight="1" />
+      <edge source="רוּחַ" target="בִּינָה" id="400" weight="2" />
+      <edge source="רוּח" target="יֹשֶר" id="401" weight="1" />
+      <edge source="רוּח" target="עֲנָוָה" id="402" weight="1" />
+      <edge source="יֹשֶר" target="אֱמֶת" id="403" weight="1" />
+      <edge source="נֶפֶש" target="עֶבֶד" id="404" weight="4" />
+      <edge source="נֶפֶש" target="עָנִי" id="405" weight="3" />
+      <edge source="נֶפֶש" target="רָש" id="406" weight="2" />
+      <edge source="נֶפֶש" target="אֶבְיוֹן" id="407" weight="2" />
+      <edge source="כִּפּוּר" target="ניחוֹח" id="408" weight="1" />
+      <edge source="תּוֹלְדוֹת" target="בֵּן" id="409" weight="2" />
+      <edge source="תּוֹלְדוֹת" target="אִיש" id="410" weight="2" />
+      <edge source="תּוֹלְדוֹת" target="אֱמֶת" id="411" weight="1" />
+      <edge source="תּוֹלְדוֹת" target="עָוֶל" id="412" weight="1" />
+      <edge source="מִין" target="רוּחַ" id="413" weight="1" />
+      <edge source="פְּקֻדָּה" target="נֶגַע" id="414" weight="1" />
+      <edge source="פְּקֻדָּה" target="עַד" id="415" weight="1" />
+      <edge source="פְּקֻדָּה" target="שָלוֹם" id="416" weight="1" />
+      <edge source="פְּקֻדָּה" target="מַעֲשֶה" id="417" weight="1" />
+      <edge source="נֶגַע" target="בֵּן" id="418" weight="1" />
+      <edge source="נֶגַע" target="אָדָם" id="419" weight="1" />
+      <edge source="נֶגַע" target="מִכְשוֹל" id="420" weight="1" />
+      <edge source="קֵץ" target="שָלוֹם" id="421" weight="3" />
+      <edge source="קֵץ" target="עוֹלָם" id="422" weight="3" />
+      <edge source="קֵץ" target="מוֹעֵד" id="423" weight="1" />
+      <edge source="קֵץ" target="נִהְיֶה" id="424" weight="1" />
+      <edge source="קֵץ" target="נֶצַח" id="425" weight="1" />
+      <edge source="קֵץ" target="חָרוֹן" id="426" weight="2" />
+      <edge source="קֵץ" target="מִשְפָּט" id="427" weight="1" />
+      <edge source="קֵץ" target="הֵאָסֵף" id="428" weight="1" />
+      <edge source="קֵץ" target="כָּבוֹד" id="429" weight="1" />
+      <edge source="קֵץ" target="רָצוֹן" id="430" weight="1" />
+      <edge source="קֵץ" target="תְּעוּדָה" id="431" weight="1" />
+      <edge source="קֵץ" target="אֱמֶת" id="432" weight="1" />
+      <edge source="קֵץ" target="עַד" id="433" weight="2" />
+      <edge source="קֵץ" target="שָדֶה" id="434" weight="1" />
+      <edge source="כָּבוֹד" target="אֹזֶן" id="435" weight="1" />
+      <edge source="כָּבוֹד" target="אָדָם" id="436" weight="2" />
+      <edge source="כָּבוֹד" target="אֵל" id="437" weight="1" />
+      <edge source="כָּבוֹד" target="עוֹלָם" id="438" weight="2" />
+      <edge source="כָּבוֹד" target="עַד" id="439" weight="1" />
+      <edge source="כָּבוֹד" target="עֹז" id="440" weight="1" />
+      <edge source="כָּבוֹד" target="כֹּל" id="441" weight="1" />
+      <edge source="עָוֶל" target="יֵצֶר" id="442" weight="1" />
+      <edge source="מָעוֹן" target="אוֹר" id="443" weight="1" />
+      <edge source="מָעוֹן" target="קֹדֶש" id="444" weight="4" />
+      <edge source="מָעוֹן" target="חֹק" id="445" weight="1" />
+      <edge source="מָעוֹן" target="כָּבוֹד" id="446" weight="2" />
+      <edge source="מָעוֹן" target="אַרְיֵה" id="447" weight="1" />
+      <edge source="מָקוֹר" target="חֹשֶךְ" id="448" weight="1" />
+      <edge source="מָקוֹר" target="דַּעַת" id="449" weight="3" />
+      <edge source="מָקוֹר" target="צְדָקָה" id="450" weight="2" />
+      <edge source="מָקוֹר" target="אָוֶן" id="451" weight="1" />
+      <edge source="מָקוֹר" target="נִדָּה" id="452" weight="2" />
+      <edge source="מָקוֹר" target="עוֹלָם" id="453" weight="4" />
+      <edge source="מָקוֹר" target="חַיִּים" id="454" weight="1" />
+      <edge source="מָקוֹר" target="גְּבוּרָה" id="455" weight="1" />
+      <edge source="מָקוֹר" target="אֱמֶת" id="456" weight="1" />
+      <edge source="מָקוֹר" target="מַיִם" id="457" weight="1" />
+      <edge source="שַר" target="מֵאָה" id="458" weight="1" />
+      <edge source="שַר" target="חֲמִשִּים" id="459" weight="1" />
+      <edge source="שַר" target="אֶלֶף" id="460" weight="1" />
+      <edge source="שַר" target="אֵל" id="461" weight="1" />
+      <edge source="מַלְאָךְ" target="חֹשֶךְ" id="462" weight="1" />
+      <edge source="מַלְאָךְ" target="אֱמֶת" id="463" weight="1" />
+      <edge source="מַלְאָךְ" target="קֹדֶש" id="464" weight="3" />
+      <edge source="מַלְאָךְ" target="פָּנֶה" id="465" weight="1" />
+      <edge source="מַלְאָךְ" target="שָלוֹם" id="466" weight="1" />
+      <edge source="תָּעוּת" target="בֵּן" id="467" weight="1" />
+      <edge source="תָּעוּת" target="צֶדֶק" id="468" weight="1" />
+      <edge source="בֵּן" target="צֶדֶק" id="469" weight="1" />
+      <edge source="בֵּן" target="לֵוִי" id="470" weight="1" />
+      <edge source="בֵּן" target="אָדָם" id="471" weight="1" />
+      <edge source="פֶּשַע" target="מַעֲשֶה" id="472" weight="1" />
+      <edge source="רָז" target="אֵל" id="473" weight="1" />
+      <edge source="רָז" target="דַּעַת" id="474" weight="1" />
+      <edge source="רָז" target="שֶכֶל" id="475" weight="3" />
+      <edge source="רָז" target="פֶּלֶא" id="476" weight="11" />
+      <edge source="רָז" target="נִהְיֶה" id="477" weight="3" />
+      <edge source="רָז" target="מַחֲשָבָה" id="478" weight="1" />
+      <edge source="רָז" target="פֶּשַע" id="479" weight="2" />
+      <edge source="רָז" target="גִּבּוֹר" id="480" weight="1" />
+      <edge source="רָז" target="כֹּחַ" id="481" weight="1" />
+      <edge source="רָז" target="חָכְמָה" id="482" weight="1" />
+      <edge source="רָז" target="חֶפֶץ" id="483" weight="1" />
+      <edge source="רָז" target="נהיה" id="484" weight="18" />
+      <edge source="צָרָה" target="מַצְרֵף" id="485" weight="1" />
+      <edge source="צָרָה" target="נֶפֶש" id="486" weight="3" />
+      <edge source="עֵד" target="עוֹלָם" id="487" weight="1" />
+      <edge source="עֵד" target="אֱמֶת" id="488" weight="1" />
+      <edge source="אֹרֶךְ" target="אַף" id="489" weight="1" />
+      <edge source="אֹרֶךְ" target="יוֹם" id="490" weight="4" />
+      <edge source="רֹב" target="רַחֲמִים" id="491" weight="4" />
+      <edge source="רֹב" target="חֶסֶד" id="492" weight="5" />
+      <edge source="רֹב" target="שָלוֹם" id="493" weight="1" />
+      <edge source="רֹב" target="חֹנֶף" id="494" weight="1" />
+      <edge source="רֹב" target="אִוֶּלֶת" id="495" weight="1" />
+      <edge source="רֹב" target="נֶגַע" id="496" weight="1" />
+      <edge source="רֹב" target="אִיש" id="497" weight="3" />
+      <edge source="רֹב" target="יַחַד" id="498" weight="1" />
+      <edge source="רֹב" target="בְּרִית" id="499" weight="1" />
+      <edge source="רֹב" target="טוּב" id="500" weight="4" />
+      <edge source="רֹב" target="עָוֶן" id="501" weight="1" />
+      <edge source="רֹב" target="סְלִיחָה" id="502" weight="3" />
+      <edge source="רֹב" target="כֹּחַ" id="503" weight="1" />
+      <edge source="רֹב" target="דָּגָן" id="504" weight="1" />
+      <edge source="רֹב" target="תִּירוֹש" id="505" weight="1" />
+      <edge source="רֹב" target="יִצְהָר" id="506" weight="1" />
+      <edge source="רֹב" target="אֱמֶת" id="507" weight="1" />
+      <edge source="רֹב" target="בָּשָר" id="508" weight="1" />
+      <edge source="רֹב" target="בִּינָה" id="509" weight="2" />
+      <edge source="רֹב" target="הָדָר" id="510" weight="1" />
+      <edge source="רֹב" target="שָנָה" id="511" weight="1" />
+      <edge source="רֹב" target="כָּבוֹד" id="512" weight="1" />
+      <edge source="רֹב" target="נַחֲלָה" id="513" weight="1" />
+      <edge source="רֹב" target="שֶכֶל" id="514" weight="1" />
+      <edge source="חָכְמָה" target="גְּבוּרָה" id="515" weight="1" />
+      <edge source="חָכְמָה" target="כָּבוֹד" id="516" weight="1" />
+      <edge source="חָכְמָה" target="בֵּן" id="517" weight="1" />
+      <edge source="חָכְמָה" target="שָמַיִם" id="518" weight="1" />
+      <edge source="חָכְמָה" target="דַעַת" id="519" weight="1" />
+      <edge source="חָכְמָה" target="אוֹטוֹ" id="520" weight="1" />
+      <edge source="חָכְמָה" target="אוט" id="521" weight="1" />
+      <edge source="חָכְמָה" target="יָד" id="522" weight="5" />
+      <edge source="טָהֳרָה" target="כָּבוֹד" id="523" weight="1" />
+      <edge source="טָהֳרָה" target="אִיש" id="524" weight="2" />
+      <edge source="טָהֳרָה" target="קֹדֶש" id="525" weight="2" />
+      <edge source="טָהֳרָה" target="רַב" id="526" weight="5" />
+      <edge source="גִּלוּל" target="נִדָּה" id="527" weight="1" />
+      <edge source="עָרְמָה" target="כֹּל" id="528" weight="1" />
+      <edge source="עָרְמָה" target="רֹעַ" id="529" weight="1" />
+      <edge source="עָרְמָה" target="דַּעַת" id="530" weight="1" />
+      <edge source="בְּרָכָה" target="עַד" id="531" weight="1" />
+      <edge source="שִמְחָה" target="עוֹלָם" id="532" weight="4" />
+      <edge source="שִמְחָה" target="עֵד" id="533" weight="1" />
+      <edge source="שִמְחָה" target="לֵץ" id="534" weight="1" />
+      <edge source="שִמְחָה" target="אֱמֶת" id="535" weight="1" />
+      <edge source="כָּלִיל" target="כָּבוֹד" id="536" weight="1" />
+      <edge source="מִדָּה" target="הָדָר" id="537" weight="1" />
+      <edge source="מִדָּה" target="אֱמֶת" id="538" weight="1" />
+      <edge source="מִדָּה" target="מַעֲשֶה" id="539" weight="1" />
+      <edge source="מִדָּה" target="כָּבוֹד" id="540" weight="1" />
+      <edge source="הָדָר" target="כָּבוֹד" id="541" weight="1" />
+      <edge source="הָדָר" target="פָּנֶה" id="542" weight="1" />
+      <edge source="רְחוֹב" target="נֶפֶש" id="543" weight="1" />
+      <edge source="רְחוֹב" target="עוֹלָם" id="544" weight="1" />
+      <edge source="עֲבוֹדָה" target="צֶדֶק" id="545" weight="2" />
+      <edge source="עֲבוֹדָה" target="טֻמְאָה" id="546" weight="1" />
+      <edge source="עֲבוֹדָה" target="עֵדָה" id="547" weight="2" />
+      <edge source="עֲבוֹדָה" target="מַעֲשֶה" id="548" weight="1" />
+      <edge source="עֲבוֹדָה" target="מַס" id="549" weight="1" />
+      <edge source="עֲבוֹדָה" target="עָוֹן" id="550" weight="1" />
+      <edge source="עֲבוֹדָה" target="רִשְעָה" id="551" weight="2" />
+      <edge source="רוּם" target="לֵבָב" id="552" weight="1" />
+      <edge source="רוּם" target="כָּבוֹד" id="553" weight="1" />
+      <edge source="רוּם" target="עוֹלָם" id="554" weight="1" />
+      <edge source="רוּם" target="עֶדֶן" id="555" weight="1" />
+      <edge source="לֵבָב" target="גֶּבֶר" id="556" weight="1" />
+      <edge source="קָצוּר" target="אַף" id="557" weight="1" />
+      <edge source="תּוֹעֵבָה" target="אֱמֶת" id="558" weight="1" />
+      <edge source="תּוֹעֵבָה" target="עַוְלָה" id="559" weight="1" />
+      <edge source="תּוֹעֵבָה" target="שֶקֶר" id="560" weight="1" />
+      <edge source="תּוֹעֵבָה" target="נִדָּה" id="561" weight="1" />
+      <edge source="תּוֹעֵבָה" target="נֶפֶש" id="562" weight="1" />
+      <edge source="לָשוֹן" target="גִּדּוּף" id="563" weight="1" />
+      <edge source="לָשוֹן" target="שֶקֶר" id="564" weight="1" />
+      <edge source="עִוָּרוֹן" target="עַיִן" id="565" weight="1" />
+      <edge source="אֹזֶן" target="עָפָר" id="566" weight="2" />
+      <edge source="אֹזֶן" target="בָּשָר" id="567" weight="1" />
+      <edge source="קֹשִי" target="עֹרֶף" id="568" weight="2" />
+      <edge source="כִּיבּוּד" target="לֵב" id="569" weight="1" />
+      <edge source="חֶבֶל" target="נִמְרָץ" id="570" weight="1" />
+      <edge source="חֶבֶל" target="שְאוֹל" id="571" weight="1" />
+      <edge source="חֶבֶל" target="מֶרֶץ" id="572" weight="1" />
+      <edge source="חֶבֶל" target="מָוֶת" id="573" weight="1" />
+      <edge source="חֶבֶל" target="יָם" id="574" weight="1" />
+      <edge source="שַחַת" target="עוֹלָם" id="575" weight="3" />
+      <edge source="זַעֲוָה" target="נֶצַח" id="576" weight="1" />
+      <edge source="נֶצַח" target="אֱמֶת" id="577" weight="1" />
+      <edge source="נֶצַח" target="תֵּבֶל" id="578" weight="1" />
+      <edge source="נֶצַח" target="נֶצַח" id="579" weight="1" />
+      <edge source="חֶרְפָּה" target="עַד" id="580" weight="1" />
+      <edge source="כְּלִמָּה" target="כָּלָה" id="581" weight="1" />
+      <edge source="אֵבֶל" target="יָגוֹן" id="582" weight="2" />
+      <edge source="אֵבֶל" target="מָרוֹר" id="583" weight="1" />
+      <edge source="רָעָה" target="מָרוֹר" id="584" weight="1" />
+      <edge source="מָרוֹר" target="נֶפֶש" id="585" weight="1" />
+      <edge source="מָרוֹר" target="יוֹם" id="586" weight="1" />
+      <edge source="הֲוָיָה" target="חֹשֶךְ" id="587" weight="1" />
+      <edge source="פְּעֻלָּה" target="מַעֲשֶה" id="588" weight="2" />
+      <edge source="אֵיבָה" target="עוֹלָם" id="589" weight="1" />
+      <edge source="עַוְלָה" target="עַם" id="590" weight="1" />
+      <edge source="רִיב" target="אִיש" id="591" weight="1" />
+      <edge source="רִיב" target="שַחַת" id="592" weight="1" />
+      <edge source="רִיב" target="מִשְפָּט" id="593" weight="1" />
+      <edge source="תְּכָמִים" target="בָּשָר" id="594" weight="1" />
+      <edge source="תְּכָמִים" target="עֶבֶד" id="595" weight="1" />
+      <edge source="בָּשָר" target="עֹלָה" id="596" weight="1" />
+      <edge source="בָּשָר" target="כָּבוֹד" id="597" weight="1" />
+      <edge source="עֲלִילָה" target="רִשְעָה" id="598" weight="2" />
+      <edge source="עֲלִילָה" target="רֶשַע" id="599" weight="1" />
+      <edge source="אָדָם" target="רִשְעָה" id="600" weight="1" />
+      <edge source="נַחֲלָה" target="אִיש" id="601" weight="1" />
+      <edge source="נַחֲלָה" target="כָּבוֹד" id="602" weight="2" />
+      <edge source="נַחֲלָה" target="חַיִּים" id="603" weight="1" />
+      <edge source="נַחֲלָה" target="אֱמֶת" id="604" weight="1" />
+      <edge source="נַחֲלָה" target="אָב" id="605" weight="1" />
+      <edge source="נַחֲלָה" target="קֹדֶש" id="606" weight="1" />
+      <edge source="נַחֲלָה" target="אָדָם" id="607" weight="1" />
+      <edge source="עֵדָה" target="אִיש" id="608" weight="1" />
+      <edge source="עֵדָה" target="עָוֶל" id="609" weight="1" />
+      <edge source="עֵדָה" target="קֹדֶש" id="610" weight="4" />
+      <edge source="עֵדָה" target="יִשְרָאֵל" id="611" weight="2" />
+      <edge source="עֵדָה" target="אֱנוֹש" id="612" weight="1" />
+      <edge source="עֵדָה" target="שֵם" id="613" weight="1" />
+      <edge source="עֵדָה" target="יַחַד" id="614" weight="1" />
+      <edge source="עֵדָה" target="בְּלִיָעָל" id="615" weight="1" />
+      <edge source="עֵדָה" target="דֹּרֵש" id="616" weight="1" />
+      <edge source="עֵדָה" target="חֶלְקָה" id="617" weight="1" />
+      <edge source="עֵדָה" target="בֵּן" id="618" weight="1" />
+      <edge source="עֵדָה" target="שָמַיִם" id="619" weight="1" />
+      <edge source="עֵדָה" target="שָוְא" id="620" weight="1" />
+      <edge source="עֵדָה" target="שַוְא" id="621" weight="1" />
+      <edge source="עֵדָה" target="קָדוֹש" id="622" weight="1" />
+      <edge source="שֹמֵר" target="בְּרִית" id="623" weight="1" />
+      <edge source="שֹמֵר" target="מִצְוָה" id="624" weight="2" />
+      <edge source="שֹמֵר" target="דָּבָר" id="625" weight="2" />
+      <edge source="תִּכּוּן" target="גּוֹרָל" id="626" weight="1" />
+      <edge source="תִּכּוּן" target="דֶּרֶךְ" id="627" weight="1" />
+      <edge source="תִּכּוּן" target="עֵת" id="628" weight="4" />
+      <edge source="תִּכּוּן" target="אִיש" id="629" weight="1" />
+      <edge source="תִּכּוּן" target="יַחַד" id="630" weight="1" />
+      <edge source="תִּכּוּן" target="קֹדֶש" id="631" weight="1" />
+      <edge source="שְרִרוּת" target="לֵב" id="632" weight="5" />
+      <edge source="יֶצֶר" target="סָמוּךְ" id="633" weight="1" />
+      <edge source="עָרְלָה" target="יֶצֶר" id="634" weight="2" />
+      <edge source="מוֹסָד" target="אֱמֶת" id="635" weight="2" />
+      <edge source="מוֹסָד" target="הַר" id="636" weight="1" />
+      <edge source="מוֹסָד" target="רָקִיעַ" id="637" weight="1" />
+      <edge source="עֹבֵר" target="חֹק" id="638" weight="1" />
+      <edge source="עֹבֵר" target="דָּבָר" id="639" weight="1" />
+      <edge source="עֹבֵר" target="פֶּה" id="640" weight="1" />
+      <edge source="עֹבֵר" target="דֶּרֶךְ" id="641" weight="1" />
+      <edge source="שְבוּעָה" target="אִסָּר" id="642" weight="1" />
+      <edge source="שְבוּעָה" target="אִסָּר" id="643" weight="1" />
+      <edge source="תּוֹרָה" target="מֹשֶה" id="644" weight="2" />
+      <edge source="שֹמֶר" target="בְּרִית" id="645" weight="1" />
+      <edge source="שֹמֶר" target="דָּבָר" id="646" weight="1" />
+      <edge source="דֹּרֵש" target="רָצוֹן" id="647" weight="1" />
+      <edge source="דֹּרֵש" target="חֶלְקָה" id="648" weight="1" />
+      <edge source="דֹּרֵש" target="רְמִיָּה" id="649" weight="1" />
+      <edge source="דֹּרֵש" target="אֱמֶת" id="650" weight="1" />
+      <edge source="דֹּרֵש" target="חֶפֶץ" id="651" weight="1" />
+      <edge source="רָצוֹן" target="אֵל" id="652" weight="2" />
+      <edge source="מְנַאֵץ" target="דָּבָר" id="653" weight="1" />
+      <edge source="רֵאשִית" target="לֶחֶם" id="654" weight="4" />
+      <edge source="רֵאשִית" target="תִּירוֹש" id="655" weight="2" />
+      <edge source="רֵאשִית" target="אַשְמוּר" id="656" weight="1" />
+      <edge source="רֵאשִית" target="חֹשֶךְ" id="657" weight="2" />
+      <edge source="רֵאשִית" target="יָרֵחַ" id="658" weight="1" />
+      <edge source="רֵאשִית" target="מִשְלוֹחַ" id="659" weight="1" />
+      <edge source="רֵאשִית" target="יָד" id="660" weight="1" />
+      <edge source="רֵאשִית" target="פַּחַד" id="661" weight="1" />
+      <edge source="רֵאשִית" target="אֵימָה" id="662" weight="1" />
+      <edge source="רֵאשִית" target="מֶמְשָלָה" id="663" weight="1" />
+      <edge source="רֵאשִית" target="פְּרִי" id="664" weight="1" />
+      <edge source="רֵאשִית" target="בֶּטֶן" id="665" weight="1" />
+      <edge source="לֶחֶם" target="רִמָּה" id="666" weight="1" />
+      <edge source="לֶחֶם" target="אֲנָחָה" id="667" weight="1" />
+      <edge source="לַיְלָה" target="שָנָה" id="668" weight="1" />
+      <edge source="שָנָה" target="עוֹלָם" id="669" weight="2" />
+      <edge source="מוֹשָב" target="רַב" id="670" weight="5" />
+      <edge source="מוֹשָב" target="אִיש" id="671" weight="2" />
+      <edge source="מוֹשָב" target="עָוֶל" id="672" weight="1" />
+      <edge source="מוֹשָב" target="שֵם" id="673" weight="1" />
+      <edge source="רַב" target="עֲלִילִיָּה" id="674" weight="1" />
+      <edge source="חֵפֶץ" target="רַב" id="675" weight="1" />
+      <edge source="רֹאש" target="רַב" id="676" weight="1" />
+      <edge source="רֹאש" target="מֶמְשָלָה" id="677" weight="1" />
+      <edge source="רֹאש" target="אוֹר" id="678" weight="1" />
+      <edge source="רֹאש" target="מוֹעֵד" id="679" weight="1" />
+      <edge source="רֹאש" target="שָנָה" id="680" weight="1" />
+      <edge source="רֹאש" target="שָבוּעַ" id="681" weight="1" />
+      <edge source="רֹאש" target="יִשְרָאֵל" id="682" weight="2" />
+      <edge source="רֹאש" target="אָב" id="683" weight="5" />
+      <edge source="רֹאש" target="עֵדָה" id="684" weight="5" />
+      <edge source="רֹאש" target="חֶפֶץ" id="685" weight="1" />
+      <edge source="רֹאש" target="כַּרְמֵל" id="686" weight="1" />
+      <edge source="הוֹן" target="רַב" id="687" weight="1" />
+      <edge source="הוֹן" target="יַחַד" id="688" weight="1" />
+      <edge source="הוֹן" target="אִיש" id="689" weight="1" />
+      <edge source="הוֹן" target="קֹדֶש" id="690" weight="1" />
+      <edge source="הוֹן" target="חָָמָס" id="691" weight="1" />
+      <edge source="מְלָאכָה" target="רַב" id="692" weight="1" />
+      <edge source="מַשְקֶה" target="רַב" id="693" weight="1" />
+      <edge source="מַשְקֶה" target="דַּעַת" id="694" weight="1" />
+      <edge source="מַשְקֶה" target="גַּן" id="695" weight="1" />
+      <edge source="מִדְרָש" target="יַחַד" id="696" weight="1" />
+      <edge source="מִדְרָש" target="תּוֹרָה" id="697" weight="1" />
+      <edge source="קֹצֶר" target="אַף" id="698" weight="1" />
+      <edge source="יֶסוֹד" target="עָמִית" id="699" weight="1" />
+      <edge source="יְסוֹד" target="יַחַד" id="700" weight="2" />
+      <edge source="יְסוֹד" target="רוּחַ" id="701" weight="1" />
+      <edge source="יְסוֹד" target="קֹדֶש" id="702" weight="2" />
+      <edge source="יְסוֹד" target="עֵדָה" id="703" weight="1" />
+      <edge source="יְסוֹד" target="הַר" id="704" weight="1" />
+      <edge source="עֹשֶה" target="מִשְפָּט" id="705" weight="1" />
+      <edge source="עֵת" target="חֹם" id="706" weight="1" />
+      <edge source="עֵת" target="עָוֹן" id="707" weight="1" />
+      <edge source="מַטַּעַת" target="עוֹלָם" id="708" weight="2" />
+      <edge source="מַטַּעַת" target="אֱמֶת" id="709" weight="1" />
+      <edge source="מַטַּעַת" target="עוֹֹלָם" id="710" weight="1" />
+      <edge source="בָּחִיר" target="רָצוֹן" id="711" weight="1" />
+      <edge source="בָּחִיר" target="עֵת" id="712" weight="1" />
+      <edge source="בָּחִיר" target="דֶּרֶךְ" id="713" weight="1" />
+      <edge source="בָּחִיר" target="אָדָם" id="714" weight="1" />
+      <edge source="בָּחִיר" target="צֶדֶק" id="715" weight="1" />
+      <edge source="בָּחִיר" target="אֱמֶת" id="716" weight="1" />
+      <edge source="חוֹמָה" target="בֹּחַן" id="717" weight="2" />
+      <edge source="חוֹמָה" target="עֹז" id="718" weight="1" />
+      <edge source="פִּנָה" target="יָקָר" id="719" weight="1" />
+      <edge source="דַעַת" target="כֹּל" id="720" weight="1" />
+      <edge source="רֵיחַ" target="נִיחוֹחַ" id="721" weight="1" />
+      <edge source="נִיחוֹחַ" target="צֶדֶק" id="722" weight="1" />
+      <edge source="חֻקָּה" target="עוֹלָם" id="723" weight="1" />
+      <edge source="חֻקָּה" target="מָאוֹר" id="724" weight="1" />
+      <edge source="יִרְאָה" target="רוּחַ" id="725" weight="1" />
+      <edge source="מַעַל" target="חַטַּאת" id="726" weight="1" />
+      <edge source="מַעַל" target="אָב" id="727" weight="1" />
+      <edge source="חֵלֶב" target="זֶבַח" id="728" weight="1" />
+      <edge source="תְּרוּמָה" target="שָפָה" id="729" weight="3" />
+      <edge source="תְּרוּמָה" target="מוֹצָא" id="730" weight="1" />
+      <edge source="שָפָה" target="עָרִיץ" id="731" weight="1" />
+      <edge source="שָפָה" target="עָוֶל" id="732" weight="1" />
+      <edge source="שָפָה" target="שֶקֶר" id="733" weight="1" />
+      <edge source="נְדָבָה" target="מִנְחָה" id="734" weight="1" />
+      <edge source="נְדָבָה" target="רָצוֹן" id="735" weight="1" />
+      <edge source="מָשִיחַ" target="אַהֲרֹן" id="736" weight="1" />
+      <edge source="מָשִיחַ" target="יִשְרָאֵל" id="737" weight="3" />
+      <edge source="מִשְקָל" target="אִיש" id="738" weight="2" />
+      <edge source="מִשְקָל" target="תכין" id="739" weight="1" />
+      <edge source="מִשְקָל" target="קֵץ" id="740" weight="1" />
+      <edge source="מִשְקָל" target="צֶדֶק" id="741" weight="1" />
+      <edge source="בּוֹר" target="כַּף" id="742" weight="1" />
+      <edge source="כַּף" target="רֶגֶל" id="743" weight="1" />
+      <edge source="פֶּלֶא" target="רָז" id="744" weight="1" />
+      <edge source="תִּכּוּן" target="דֶּרֶךְ" id="745" weight="1" />
+      <edge source="שִנְאָה" target="עוֹלָם" id="746" weight="1" />
+      <edge source="עָמָל" target="כַּף" id="747" weight="1" />
+      <edge source="מִשְלוֹחַ" target="כַּף" id="748" weight="1" />
+      <edge source="מִשְלוֹחַ" target="יָד" id="749" weight="1" />
+      <edge source="אֵמֶר" target="פֶּה" id="750" weight="1" />
+      <edge source="זְבֻל" target="קֹדֶש" id="751" weight="2" />
+      <edge source="מָבוֹא" target="מוֹעֵד" id="752" weight="1" />
+      <edge source="מָבוֹא" target="יוֹם" id="753" weight="1" />
+      <edge source="מָבוֹא" target="לַיְלָה" id="754" weight="1" />
+      <edge source="מָבוֹא" target="אוֹר" id="755" weight="1" />
+      <edge source="מָבוֹא" target="שָנִים" id="756" weight="1" />
+      <edge source="מִפְתָּח" target="חֶסֶד" id="757" weight="1" />
+      <edge source="תְּקוּפָה" target="מוֹעֵד" id="758" weight="2" />
+      <edge source="תְּקוּפָה" target="מִסְפָּר" id="759" weight="1" />
+      <edge source="תְּקוּפָה" target="שָנָה" id="760" weight="1" />
+      <edge source="תְּקוּפָה" target="עוָֹלם" id="761" weight="1" />
+      <edge source="פְּרִי" target="תְּהִלָּה" id="762" weight="1" />
+      <edge source="פְּרִי" target="קֹדֶש" id="763" weight="1" />
+      <edge source="פְּרִי" target="שָפָה" id="764" weight="1" />
+      <edge source="פְּרִי" target="לָשוֹן" id="765" weight="1" />
+      <edge source="פְּרִי" target="תְּנוּבָה" id="766" weight="1" />
+      <edge source="פְּרִי" target="בֶּּטֶן" id="767" weight="1" />
+      <edge source="מָנָה" target="שָפָה" id="768" weight="1" />
+      <edge source="כִּנּוֹר" target="נֵבֶל" id="769" weight="1" />
+      <edge source="כִּנּוֹר" target="רִיב" id="770" weight="1" />
+      <edge source="כִּנּוֹר" target="קִינָה" id="771" weight="1" />
+      <edge source="כִּנּוֹר" target="יְשוּעָה" id="772" weight="1" />
+      <edge source="חָלִיל" target="שָפָה" id="773" weight="1" />
+      <edge source="חָלִיל" target="תְּהִלָּה" id="774" weight="1" />
+      <edge source="קַו" target="מִשְפָּט" id="775" weight="2" />
+      <edge source="קַו" target="עֵת" id="776" weight="1" />
+      <edge source="קַו" target="נָכוֹן" id="777" weight="1" />
+      <edge source="מוֹצָא" target="עֶרֶב" id="778" weight="1" />
+      <edge source="מוֹצָא" target="בֹּקֶר" id="779" weight="1" />
+      <edge source="מוֹצָא" target="אוֹר" id="780" weight="1" />
+      <edge source="מוֹצָא" target="לַיְלָה" id="781" weight="1" />
+      <edge source="מוֹצָא" target="פֶּה" id="782" weight="1" />
+      <edge source="מוֹצָא" target="קֵץ" id="783" weight="1" />
+      <edge source="טוּב" target="מָקוֹר" id="784" weight="1" />
+      <edge source="טוּב" target="דַּעַת" id="785" weight="1" />
+      <edge source="תִּפְאֶרֶת" target="עוֹלָם" id="786" weight="1" />
+      <edge source="רֶגֶל" target="אַבְרֵךְ" id="787" weight="1" />
+      <edge source="מִשְכָּב" target="יְצוּעַ" id="788" weight="1" />
+      <edge source="מִשְכָּב" target="זָכָר" id="789" weight="1" />
+      <edge source="מַעֲרֶכֶת" target="אִיש" id="790" weight="1" />
+      <edge source="עֶדֶן" target="תְּנוּבָה" id="791" weight="1" />
+      <edge source="עֶדֶן" target="תֵּבֶל" id="792" weight="1" />
+      <edge source="פַּחַד" target="הֹוָה" id="793" weight="1" />
+      <edge source="פַּחַד" target="רָשָע" id="794" weight="1" />
+      <edge source="פַּחַד" target="רִשְעָה" id="795" weight="1" />
+      <edge source="מָכוֹן" target="צָרָה" id="796" weight="1" />
+      <edge source="מָכוֹן" target="רִנָּה" id="797" weight="1" />
+      <edge source="מָכוֹן" target="עוֹלָם" id="798" weight="1" />
+      <edge source="שָב" target="פֶּשַע" id="799" weight="4" />
+      <edge source="סֹרֵר" target="דֶּרֶךְ" id="800" weight="1" />
+      <edge source="כַּחַש" target="עָוֶן" id="801" weight="1" />
+      <edge source="מִשְפָּט" target="עֹז" id="802" weight="1" />
+      <edge source="תֹּעֶה" target="רוּחַ" id="803" weight="1" />
+      <edge source="תֹּעֶה" target="בִּינָה" id="804" weight="1" />
+      <edge source="רָם" target="רוּחַ" id="805" weight="1" />
+      <edge source="שֹלֵח" target="אֶצְבַּע" id="806" weight="1" />
+      <edge source="מְדַבֵּר" target="אָוֶן" id="807" weight="1" />
+      <edge source="מַקְנֶה" target="הוֹן" id="808" weight="1" />
+      <edge source="ישור" target="לֵבָב" id="809" weight="1" />
+      <edge source="אוֹרָה" target="לֵבָב" id="810" weight="1" />
+      <edge source="מִשְעָן" target="יָמִין" id="811" weight="1" />
+      <edge source="יָמִין" target="עֹז" id="812" weight="1" />
+      <edge source="סֶלַע" target="עֹז" id="813" weight="2" />
+      <edge source="סֶלַע" target="פַּעַם" id="814" weight="1" />
+      <edge source="סֶלַע" target="רֶגֶל" id="815" weight="1" />
+      <edge source="מִשְעֶנֶת" target="יָמִין" id="816" weight="1" />
+      <edge source="מְזִמָּה" target="עָרְמָה" id="817" weight="1" />
+      <edge source="מְזִמָּה" target="בְּלִיָעָל" id="818" weight="1" />
+      <edge source="מְזִמָּה" target="לֵב" id="819" weight="2" />
+      <edge source="מִקְוֶה" target="גְּבוּרָה" id="820" weight="1" />
+      <edge source="מִקְוֶה" target="עָפָר" id="821" weight="1" />
+      <edge source="מִקְוֶה" target="כָּבוֹד" id="822" weight="1" />
+      <edge source="מִקְוֶה" target="אֶפֶר" id="823" weight="1" />
+      <edge source="מַעְיָן" target="כָּבוֹד" id="824" weight="1" />
+      <edge source="מַעְיָן" target="גְּבוּרָה" id="825" weight="1" />
+      <edge source="מַעְיָן" target="בִּינָה" id="826" weight="1" />
+      <edge source="מַעְיָן" target="אוֹר" id="827" weight="1" />
+      <edge source="מַעְיָן" target="חַיִּים" id="828" weight="1" />
+      <edge source="מַעְיָן" target="גִּבּוֹר" id="829" weight="1" />
+      <edge source="מַעְיָן" target="חַיִּים" id="830" weight="1" />
+      <edge source="אֲחֻזָּה" target="עוֹלָם" id="831" weight="2" />
+      <edge source="אֲחֻזָּה" target="אֶרֶץ" id="832" weight="1" />
+      <edge source="גוֹרָל" target="קֹדֶש" id="833" weight="1" />
+      <edge source="נעויה" target="לֵבָב" id="834" weight="2" />
+      <edge source="אֱנוֹש" target="בְּרִית" id="835" weight="2" />
+      <edge source="אֱנוֹש" target="עֵצָה" id="836" weight="1" />
+      <edge source="אֱנוֹש" target="חַיִל" id="837" weight="1" />
+      <edge source="אֱנוֹש" target="שֵם" id="838" weight="2" />
+      <edge source="עֶבֶד" target="מַשְכִּיל" id="839" weight="2" />
+      <edge source="עֶמֶק" target="רָז" id="840" weight="1" />
+      <edge source="כֹּח" target="גְּבוּרָה" id="841" weight="2" />
+      <edge source="אַחֲרִית" target="יוֹם" id="842" weight="1" />
+      <edge source="עַם" target="אֶרֶץ" id="843" weight="1" />
+      <edge source="עַם" target="עָנָו" id="844" weight="1" />
+      <edge source="עַם" target="רוּחַ" id="845" weight="1" />
+      <edge source="צָבָא" target="עֵדָה" id="846" weight="1" />
+      <edge source="צָבָא" target="רוּחַ" id="847" weight="2" />
+      <edge source="צָבָא" target="קָדוֹש" id="848" weight="2" />
+      <edge source="צָבָא" target="שָמַיִם" id="849" weight="2" />
+      <edge source="צָבָא" target="עַד" id="850" weight="1" />
+      <edge source="צָבָא" target="דַּעַת" id="851" weight="1" />
+      <edge source="משמע" target="מִשְפָּט" id="852" weight="1" />
+      <edge source="מִסְפָּר" target="צָבָא" id="853" weight="1" />
+      <edge source="מִסְפָּר" target="דוֹר" id="854" weight="1" />
+      <edge source="מִסְפָּר" target="עוֹלָם" id="855" weight="1" />
+      <edge source="מִלְחָמָה" target="גִּבּוֹר" id="856" weight="1" />
+      <edge source="מִלְחָמָה" target="שָמַיִם" id="857" weight="1" />
+      <edge source="מִלְחָמָה" target="רִשְעָה" id="858" weight="2" />
+      <edge source="מִלְחָמָה" target="זֵד" id="859" weight="1" />
+      <edge source="חַיִל" target="גִּבּוֹר" id="860" weight="1" />
+      <edge source="מַחְלֹקֶת" target="עֲבוֹדָה" id="861" weight="1" />
+      <edge source="שֵם" target="קֹדֶש" id="862" weight="1" />
+      <edge source="קָרִיא" target="מוֹעֵד" id="863" weight="1" />
+      <edge source="שֻלְחָן" target="יַחַד" id="864" weight="1" />
+      <edge source="שִפְלָה" target="מִדָּה" id="865" weight="1" />
+      <edge source="מַעֲנֶה" target="לָשוֹן" id="866" weight="6" />
+      <edge source="אָרֹךְ" target="אַף" id="867" weight="3" />
+      <edge source="כֹּחַ" target="גְּבוּרָה" id="868" weight="2" />
+      <edge source="כֹּחַ" target="יָד" id="869" weight="1" />
+      <edge source="כֹּחַ" target="אֵל" id="870" weight="1" />
+      <edge source="חֵקֶר" target="כֹּל" id="871" weight="1" />
+      <edge source="קֶדֶם" target="עוֹלָם" id="872" weight="2" />
+      <edge source="רָקִיעַ" target="קֹדֶש" id="873" weight="1" />
+      <edge source="נהיה" target="עוֹלָם" id="874" weight="1" />
+      <edge source="יָלוּד" target="אִשָּה" id="875" weight="1" />
+      <edge source="אִשָּה" target="לֵדָה" id="876" weight="1" />
+      <edge source="אִשָּה" target="חֵיק" id="877" weight="1" />
+      <edge source="מִבְנֶה" target="עָפָר" id="878" weight="1" />
+      <edge source="מִבְנֶה" target="חַטָּאָה" id="879" weight="1" />
+      <edge source="מִבְנֶה" target="אֵל" id="880" weight="1" />
+      <edge source="מִגְבָּל" target="מַיִם" id="881" weight="3" />
+      <edge source="עֶרְוָה" target="קָלוֹן" id="882" weight="2" />
+      <edge source="מְבַקֵּש" target="בִּינָה" id="883" weight="1" />
+      <edge source="אֹהֵב" target="רַחֲמִים" id="884" weight="1" />
+      <edge source="אֹהֵב" target="מוּסָר" id="885" weight="1" />
+      <edge source="עָנָו" target="רוּחַ" id="886" weight="1" />
+      <edge source="מְזֻקָּק" target="עָנִי" id="887" weight="1" />
+      <edge source="בָּרוּר" target="מַצְרֵף" id="888" weight="1" />
+      <edge source="דּוֹר" target="עוֹלָם" id="889" weight="2" />
+      <edge source="דּוֹר" target="נֶצַח" id="890" weight="2" />
+      <edge source="חָזוֹן" target="דַּעַת" id="891" weight="1" />
+      <edge source="חָזוֹן" target="הָגוּי" id="892" weight="1" />
+      <edge source="פֹּעֵל" target="רֶשַע" id="893" weight="1" />
+      <edge source="גָּדוֹל" target="כֹּח" id="894" weight="1" />
+      <edge source="גָּדוֹל" target="חֶסֶד" id="895" weight="2" />
+      <edge source="גָּדוֹל" target="עֵצָה" id="896" weight="1" />
+      <edge source="גָּדוֹל" target="טוּב" id="897" weight="1" />
+      <edge source="כָּנָף" target="רוּחַ" id="898" weight="1" />
+      <edge source="הָמוֹן" target="רַחֲמִים" id="899" weight="7" />
+      <edge source="הָמוֹן" target="מַיִּם" id="900" weight="1" />
+      <edge source="הָמוֹן" target="מַיִם" id="901" weight="1" />
+      <edge source="הָמוֹן" target="קוֹל" id="902" weight="2" />
+      <edge source="הָמוֹן" target="כֹּחַ" id="903" weight="1" />
+      <edge source="הָמוֹן" target="עַם" id="904" weight="1" />
+      <edge source="הָמוֹן" target="חֶסֶד" id="905" weight="1" />
+      <edge source="מְלֹא" target="שָמַיִם" id="906" weight="1" />
+      <edge source="מְלֹא" target="אֶרֶץ" id="907" weight="1" />
+      <edge source="אֶרֶץ" target="צִיָּה" id="908" weight="1" />
+      <edge source="אוֹצָר" target="מַחֲשָבָה" id="909" weight="1" />
+      <edge source="יֵצֶר" target="חֵמָר" id="910" weight="11" />
+      <edge source="יֵצֶר" target="סָמוּךְ" id="911" weight="2" />
+      <edge source="יֵצֶר" target="אַשְמָה" id="912" weight="1" />
+      <edge source="יֵצֶר" target="הֱיוֹת" id="913" weight="1" />
+      <edge source="יֵצֶר" target="מַעֲשֶה" id="914" weight="1" />
+      <edge source="יֵצֶר" target="עֶבֶד" id="915" weight="1" />
+      <edge source="יֵצֶר" target="בָּשָר" id="916" weight="4" />
+      <edge source="יֵצֶר" target="גֶּבֶר" id="917" weight="1" />
+      <edge source="יֵצֶר" target="עָפָר" id="918" weight="3" />
+      <edge source="יֵצֶר" target="רְמִיָּה" id="919" weight="1" />
+      <edge source="יֵצֶר" target="עַוְלָה" id="920" weight="1" />
+      <edge source="יֵצֶר" target="נִתְעָב" id="921" weight="1" />
+      <edge source="כּוּר" target="עָוֶן" id="922" weight="1" />
+      <edge source="כּוּר" target="הָרִיָּה" id="923" weight="3" />
+      <edge source="כּוּר" target="הוֹרֶה" id="924" weight="2" />
+      <edge source="חֶרֶת" target="זִכָּרוֹן" id="925" weight="1" />
+      <edge source="זִכָּרוֹן" target="שָלוֹם" id="926" weight="1" />
+      <edge source="מַבָּע" target="רוּחַ" id="927" weight="2" />
+      <edge source="מַבָּע" target="שָפָה" id="928" weight="1" />
+      <edge source="שִיחַ" target="דַעַת" id="929" weight="1" />
+      <edge source="אֱוִיל" target="לֵב" id="930" weight="5" />
+      <edge source="מוֹכִיחַ" target="אֱמֶת" id="931" weight="2" />
+      <edge source="מוֹכִיחַ" target="צֶדֶק" id="932" weight="1" />
+      <edge source="מַחַץ" target="מַכָּה" id="933" weight="1" />
+      <edge source="מַחַץ" target="מַכָּה" id="934" weight="1" />
+      <edge source="מַשְמִיעַ" target="שִמְחָה" id="935" weight="1" />
+      <edge source="עָרוֹל" target="שָפָה" id="936" weight="2" />
+      <edge source="אֹמֶץ" target="כֹּח" id="937" weight="1" />
+      <edge source="גְּבוּל" target="רִשְעָה" id="938" weight="2" />
+      <edge source="גְּבוּל" target="חַיִּים" id="939" weight="1" />
+      <edge source="נִמְהָר" target="לֵב" id="940" weight="1" />
+      <edge source="יָשָר" target="דֶּרֶךְ" id="941" weight="1" />
+      <edge source="רָשָע" target="ַעַם" id="942" weight="1" />
+      <edge source="קְהִלָּה" target="רֶשַע" id="943" weight="1" />
+      <edge source="נַחְשוֹל" target="יָם" id="944" weight="1" />
+      <edge source="מֵלִיץ" target="דַּעַת" id="945" weight="1" />
+      <edge source="מֵלִיץ" target="תָּעוּת" id="946" weight="1" />
+      <edge source="מֵלִיץ" target="רְמִיָּה" id="947" weight="1" />
+      <edge source="מֵלִיץ" target="כָּזָב" id="948" weight="1" />
+      <edge source="חוֹזֵה" target="נְכֹחָה" id="949" weight="1" />
+      <edge source="קוֹל" target="הָמוֹן" id="950" weight="2" />
+      <edge source="קוֹל" target="מַיִם" id="951" weight="1" />
+      <edge source="קוֹל" target="לָשוֹן" id="952" weight="1" />
+      <edge source="קוֹל" target="אֲנָחָה" id="953" weight="1" />
+      <edge source="קוֹל" target="רִנָּה" id="954" weight="1" />
+      <edge source="צְרוֹר" target="חַיִּים" id="955" weight="1" />
+      <edge source="מוֹקְש" target="שַחַת" id="956" weight="1" />
+      <edge source="כְּלִי" target="מִלְחָמָה" id="957" weight="3" />
+      <edge source="לְהוֹב" target="חֲנִית" id="958" weight="1" />
+      <edge source="שָאוֹן" target="קוֹל" id="959" weight="1" />
+      <edge source="שָאוֹן" target="מַמְלָכָה" id="960" weight="1" />
+      <edge source="הֹוָה" target="מַדְהֵבָה" id="961" weight="1" />
+      <edge source="הֹוָה" target="מְהוּמָה" id="962" weight="1" />
+      <edge source="הֹוָה" target="לֵב" id="963" weight="1" />
+      <edge source="הֹוָה" target="פֶּשַע" id="964" weight="1" />
+      <edge source="מְצוֹלָה" target="יָם" id="965" weight="1" />
+      <edge source="עִיר" target="מִבְצָר" id="966" weight="1" />
+      <edge source="עִיר" target="מָצוֹר" id="967" weight="1" />
+      <edge source="הָרִיָּה" target="גֶּבֶר" id="968" weight="1" />
+      <edge source="הָרִיָּה" target="אֶפְעָה" id="969" weight="1" />
+      <edge source="הָרִיָּה" target="עָוֶל" id="970" weight="1" />
+      <edge source="מַשְבֵּר" target="מָוֶת" id="971" weight="3" />
+      <edge source="מַשְבֵּר" target="שַחַת" id="972" weight="1" />
+      <edge source="מַשְבֵּר" target="מַיִם" id="973" weight="1" />
+      <edge source="אוֹש" target="קִיר" id="974" weight="1" />
+      <edge source="אוֹש" target="חֵמָר" id="975" weight="1" />
+      <edge source="אוֹש" target="עוֹלָם" id="976" weight="2" />
+      <edge source="אוֹש" target="מַבְנִית" id="977" weight="1" />
+      <edge source="אוֹש" target="עֶצֶם" id="978" weight="1" />
+      <edge source="יֹשֵב" target="עָפָר" id="979" weight="1" />
+      <edge source="יֹשֵב" target="אֲדָמָה" id="980" weight="1" />
+      <edge source="יֹרֵד" target="יָם" id="981" weight="1" />
+      <edge source="יֹרֵד" target="שְאוֹל" id="982" weight="1" />
+      <edge source="נָבוֹךְ" target="מַיִם" id="983" weight="1" />
+      <edge source="דֶּלֶת" target="שַחַת" id="984" weight="1" />
+      <edge source="דֶּלֶת" target="מָגֵן" id="985" weight="1" />
+      <edge source="בָּרִיחַ" target="עוֹלָם" id="986" weight="1" />
+      <edge source="בָּרִיחַ" target="בַּרְזֵל" id="987" weight="1" />
+      <edge source="בָּרִיחַ" target="עֹז" id="988" weight="1" />
+      <edge source="קָדוֹש" target="קֹדֶש" id="989" weight="1" />
+      <edge source="אֶבְיוֹן" target="חֶסֶד" id="990" weight="1" />
+      <edge source="מְהוּמָה" target="רַב" id="991" weight="1" />
+      <edge source="פַּח" target="שַחַת" id="992" weight="1" />
+      <edge source="פַּח" target="מִשְפָּט" id="993" weight="1" />
+      <edge source="מְצוּדָה" target="רִשְעָה" id="994" weight="1" />
+      <edge source="מִכְמֹרֶת" target="חֵלְכָה" id="995" weight="1" />
+      <edge source="מַתָּךְ" target="חֵמָה" id="996" weight="1" />
+      <edge source="חֵמָה" target="תַּנִּין" id="997" weight="1" />
+      <edge source="חֵמָה" target="תַּנּין" id="998" weight="1" />
+      <edge source="נַחַל" target="בְּלִיָעָל" id="999" weight="2" />
+      <edge source="נַחַל" target="זֶפֶת" id="1000" weight="1" />
+      <edge source="נַחַל" target="מַיִּם" id="1001" weight="1" />
+      <edge source="נַחַל" target="אֶרֶץ" id="1002" weight="1" />
+      <edge source="אֲגַף" target="רוּם" id="1003" weight="1" />
+      <edge source="שָבִיב" target="לָהוֹב" id="1004" weight="1" />
+      <edge source="שָבִיב" target="נֹגַהּ" id="1005" weight="1" />
+      <edge source="רִקֻּעַ" target="יַבָּשָה" id="1006" weight="1" />
+      <edge source="מְחַשֵּךְ" target="תְּהוֹם" id="1007" weight="1" />
+      <edge source="גֹּרֵש" target="רֶפֶש" id="1008" weight="1" />
+      <edge source="גֹּרֵש" target="אֶרֶץ" id="1009" weight="1" />
+      <edge source="גִּבּוֹר" target="פֶּלֶא" id="1010" weight="1" />
+      <edge source="גִּבּוֹר" target="מִלְחָמָה" id="1011" weight="1" />
+      <edge source="גִּבּוֹר" target="כֹּחַ" id="1012" weight="1" />
+      <edge source="חוֹזֶה" target="רְמִיָּה" id="1013" weight="1" />
+      <edge source="חוֹזֶה" target="תָּעוּת" id="1014" weight="1" />
+      <edge source="זִמָּה" target="בְּלִיָעָל" id="1015" weight="1" />
+      <edge source="זִמָּה" target="יֵצֶר" id="1016" weight="1" />
+      <edge source="נָבִיא" target="כָּזָב" id="1017" weight="1" />
+      <edge source="פֹּתֶה" target="תָּעוּת" id="1018" weight="1" />
+      <edge source="לֹעֵג" target="שָפָה" id="1019" weight="1" />
+      <edge source="כּוֹחַ" target="גְּבוּרָה" id="1020" weight="1" />
+      <edge source="שֹבֵר" target="עֶצֶם" id="1021" weight="1" />
+      <edge source="שֹבֵר" target="אַדִּיר" id="1022" weight="1" />
+      <edge source="שֹתֶה" target="דַּם" id="1023" weight="1" />
+      <edge source="שֹתֶה" target="גִּבוֹר" id="1024" weight="1" />
+      <edge source="פֹּרֵש" target="מִכְמֹרֶת" id="1025" weight="1" />
+      <edge source="רִנָּה" target="יָגוֹן" id="1026" weight="1" />
+      <edge source="טאטאי" target="רֶגֶל" id="1027" weight="1" />
+      <edge source="נִמְהַר" target="צֶדֶק" id="1028" weight="1" />
+      <edge source="נִצְמָד" target="סוֹד" id="1029" weight="1" />
+      <edge source="זֹחֵל" target="עָפָר" id="1030" weight="1" />
+      <edge source="צִיר" target="יֹלֵד" id="1031" weight="1" />
+      <edge source="מָאוֹר" target="פָּנֶה" id="1032" weight="1" />
+      <edge source="מָאוֹר" target="עוֹלָם" id="1033" weight="1" />
+      <edge source="בַּעַל" target="מְדָן" id="1034" weight="1" />
+      <edge source="בַּעַל" target="רִיב" id="1035" weight="2" />
+      <edge source="בַּעַל" target="הֶבֶל" id="1036" weight="1" />
+      <edge source="בַּעַל" target="אָוֶן" id="1037" weight="1" />
+      <edge source="בַּעַל" target="מָכוֹן" id="1038" weight="1" />
+      <edge source="בַּעַל" target="אִוֶּלֶת" id="1039" weight="1" />
+      <edge source="חוֹמה" target="עֹז" id="1040" weight="1" />
+      <edge source="עֹזֵב" target="חַטַּאה" id="1041" weight="1" />
+      <edge source="מִצְעָר" target="מִחְיָה" id="1042" weight="1" />
+      <edge source="עֱפִי" target="מַטַּעַת" id="1043" weight="1" />
+      <edge source="עֱפִי" target="עוֹלָם" id="1044" weight="1" />
+      <edge source="נָהָר" target="עֶדֶן" id="1045" weight="1" />
+      <edge source="זַעַף" target="יָם" id="1046" weight="1" />
+      <edge source="שַעַר" target="מָוֶת" id="1047" weight="1" />
+      <edge source="שַעַר" target="עוֹלָם" id="1048" weight="1" />
+      <edge source="מִשְקֹלֶת" target="אֱמֶת" id="1049" weight="1" />
+      <edge source="מִשְקֹלֶת" target="שֶמֶש" id="1050" weight="1" />
+      <edge source="אֶבֶן" target="חֵן" id="1051" weight="1" />
+      <edge source="חֶרֶב" target="אֵל" id="1052" weight="1" />
+      <edge source="שֹכֵב" target="עָפָר" id="1053" weight="1" />
+      <edge source="תּוֹלַעַת" target="מֵת" id="1054" weight="2" />
+      <edge source="מִגְדָּל" target="עֹז" id="1055" weight="1" />
+      <edge source="נְתִיבָה" target="צְדָקָה" id="1056" weight="1" />
+      <edge source="נְתִיבָה" target="שָלוֹם" id="1057" weight="1" />
+      <edge source="שְבִיל" target="כָּבוֹד" id="1058" weight="1" />
+      <edge source="שְבִיל" target="חַיִּים" id="1059" weight="1" />
+      <edge source="שְבִיל" target="שָלוֹם" id="1060" weight="1" />
+      <edge source="מַחֲסֶה" target="בָּשָר" id="1061" weight="1" />
+      <edge source="חֵיק" target="אֹמֵן" id="1062" weight="2" />
+      <edge source="שְאֵרִית" target="אִיש" id="1063" weight="1" />
+      <edge source="שְאֵרִית" target="מִלְחָמָה" id="1064" weight="1" />
+      <edge source="נַעֲוֶה" target="לֵב" id="1065" weight="1" />
+      <edge source="מַבּוּע" target="מַיִם" id="1066" weight="1" />
+      <edge source="מַטָּע" target="בְּרוֹש" id="1067" weight="1" />
+      <edge source="מַטָּע" target="פְּרִי" id="1068" weight="1" />
+      <edge source="מַטָּע" target="עֵץ" id="1069" weight="1" />
+      <edge source="עֵץ" target="חַיִּים" id="1070" weight="1" />
+      <edge source="עֵץ" target="מַיִם" id="1071" weight="1" />
+      <edge source="עֵץ" target="עוֹלָם" id="1072" weight="2" />
+      <edge source="עֵץ" target="בָּאֻש" id="1073" weight="1" />
+      <edge source="נֶצֶר" target="עָלֶה" id="1074" weight="1" />
+      <edge source="נֶצֶר" target="קֹדֶש" id="1075" weight="1" />
+      <edge source="חַיָּה" target="יַעַר" id="1076" weight="1" />
+      <edge source="עוֹף" target="כָּנָף" id="1077" weight="1" />
+      <edge source="לַהַט" target="אֵש" id="1078" weight="1" />
+      <edge source="בּוּז" target="נָהָר" id="1079" weight="1" />
+      <edge source="יוֹרֶה" target="גֶּשֶם" id="1080" weight="1" />
+      <edge source="מַבּוּעַ" target="מַיִם" id="1081" weight="1" />
+      <edge source="פְּאֵרָה" target="כָּבוֹד" id="1082" weight="1" />
+      <edge source="צוּר" target="חַלָּמִיש" id="1083" weight="1" />
+      <edge source="מָעוֹז" target="מָתְנִַים" id="1084" weight="1" />
+      <edge source="זֵק" target="מִכְשוֹל" id="1085" weight="1" />
+      <edge source="זֵק" target="מִשְפָּט" id="1086" weight="1" />
+      <edge source="מְבַלֵּעַ" target="דָּבָר" id="1087" weight="1" />
+      <edge source="בֹּשֶת" target="פָּנֶה" id="1088" weight="1" />
+      <edge source="בֹּשֶת" target="פֹּנֶה" id="1089" weight="1" />
+      <edge source="מַרְפֵּא" target="עוֹלָם" id="1090" weight="1" />
+      <edge source="בּוֹז" target="צַר" id="1091" weight="1" />
+      <edge source="כְּלִיל" target="כָּבוֹד" id="1092" weight="1" />
+      <edge source="גְבוּרָה" target="פֶּלֶא" id="1093" weight="1" />
+      <edge source="שֵד" target="הֹרֵה" id="1094" weight="1" />
+      <edge source="תּוֹכַחַת" target="צֶדֶק" id="1095" weight="1" />
+      <edge source="מִשְמָר" target="שָלוֹם" id="1096" weight="1" />
+      <edge source="מִשְמָר" target="צֶדֶק" id="1097" weight="1" />
+      <edge source="פֶּלֶט" target="נֶפֶש" id="1098" weight="1" />
+      <edge source="מֶלֶךְ" target="נִכְבָּד" id="1099" weight="1" />
+      <edge source="פֶּלֶג" target="מַיִם" id="1100" weight="1" />
+      <edge source="חֶדֶר" target="שְּאוֹל" id="1101" weight="1" />
+      <edge source="כֹּחַ" target="גְּבוּרָה" id="1102" weight="1" />
+      <edge source="הֲגִי" target="לֵב" id="1103" weight="1" />
+      <edge source="מַזָּל" target="שָפָה" id="1104" weight="3" />
+      <edge source="תְּשוּבָה" target="אֱנוֹש" id="1105" weight="1" />
+      <edge source="תְּשוּבָה" target="עָפָר" id="1106" weight="1" />
+      <edge source="יֹגוֹן" target="אַשְמָה" id="1107" weight="1" />
+      <edge source="מִסְּפֵּד" target="מָרוֹר" id="1108" weight="1" />
+      <edge source="נֶבֶל" target="שִמְחָה" id="1109" weight="1" />
+      <edge source="אֹהֵל" target="כָּבוֹד" id="1110" weight="1" />
+      <edge source="תְּקוּפָה" target="יוֹם" id="1111" weight="1" />
+      <edge source="מוֹלָד" target="עֵת" id="1112" weight="1" />
+      <edge source="מוֹלָד" target="יְסוֹד" id="1113" weight="1" />
+      <edge source="מוֹלָד" target="קֵץ" id="1114" weight="1" />
+      <edge source="מוֹלָד" target="יֶשַע" id="1115" weight="1" />
+      <edge source="מָדוֹר" target="חֹשֶךְ" id="1116" weight="1" />
+      <edge source="עָרֵל" target="אֹזֶן" id="1117" weight="1" />
+      <edge source="מטון" target="פַּח" id="1118" weight="1" />
+      <edge source="סַעַר" target="רוּחַ" id="1119" weight="1" />
+      <edge source="חֶפֶץ" target="אוט" id="1120" weight="1" />
+      <edge source="צַמִּים" target="רִשְעָה" id="1121" weight="1" />
+      <edge source="שְמוּעָה" target="פֶּלֶא" id="1122" weight="1" />
+      <edge source="תְּשוּבָה" target="חֹשֶךְ" id="1123" weight="1" />
+      <edge source="עֲבֹת" target="רוּחַ" id="1124" weight="1" />
+      <edge source="רָמָה" target="כֹּחַ" id="1125" weight="1" />
+      <edge source="רָֹז" target="נהיה" id="1126" weight="1" />
+      <edge source="מַחְסוֹר" target="צָבָא" id="1127" weight="1" />
+      <edge source="מַחְסוֹר" target="אוטו" id="1128" weight="1" />
+      <edge source="רוּחֲ" target="קֹדֶש" id="1129" weight="1" />
+      <edge source="שֹרֶש" target="עַוְלָה" id="1130" weight="2" />
+      <edge source="שֹרֶש" target="בִּינָה" id="1131" weight="1" />
+      <edge source="רֳז" target="נהיה" id="1132" weight="1" />
+      <edge source="עֵזֶר" target="בָּשָר" id="1133" weight="1" />
+      <edge source="אִשָּׁה" target="חֵיק" id="1134" weight="1" />
+      <edge source="שְאָר" target="עֶרְוָה" id="1135" weight="1" />
+      <edge source="פְּקֻדָּה" target="עַד" id="1136" weight="1" />
+      <edge source="כֹּשֶר" target="מְבִינָה" id="1137" weight="1" />
+      <edge source="נִסְתָּר" target="מַחֲשָבָה" id="1138" weight="1" />
+      <edge source="נָבוֹן" target="בָּשָר" id="1139" weight="1" />
+      <edge source="מָחוֹז" target="חֶפֶץ" id="1140" weight="1" />
+      <edge source="נִפְלָאָה" target="אֵל" id="1141" weight="1" />
+      <edge source="עָקֹב" target="לֵב" id="1142" weight="1" />
+      <edge source="אוט" target="אִיש" id="1143" weight="1" />
+      <edge source="נֹחֵל" target="אֱמֶת" id="1144" weight="1" />
+      <edge source="מַחְזִיק" target="רִשְעָה" id="1145" weight="1" />
+      <edge source="פְּעֻלָּה" target="אֱמֶת" id="1146" weight="1" />
+      <edge source="אֵיפָה" target="אֱמֶת" id="1147" weight="2" />
+      <edge source="שִיר" target="קָדוֹש" id="1148" weight="1" />
+      <edge source="הֹלֵךְ" target="אָדָם" id="1149" weight="1" />
+      <edge source="חָכָם" target="לֵב" id="1150" weight="1" />
+      <edge source="כֹחַ" target="יָד" id="1151" weight="1" />
+      <edge source="צֶמַח" target="אֲדָמָה" id="1152" weight="1" />
+      <edge source="מַעֲמַקִּים" target="מַיִם" id="1153" weight="1" />
+      <edge source="מַאֲכָל" target="שֵן" id="1154" weight="1" />
+      <edge source="לָחוּם" target="רֶשֶף" id="1155" weight="1" />
+      <edge source="מֹאזְנַיִם" target="צֶדֶק" id="1156" weight="2" />
+      <edge source="סְפֹרוֹת" target="אִיש" id="1157" weight="1" />
+      <edge source="יָפֶה" target="מַרְאֶה" id="1158" weight="1" />
+      <edge source="נֶגֶף" target="מִכְשוֹל" id="1159" weight="1" />
+      <edge source="תְּשוּקָה" target="אָב" id="1160" weight="1" />
+      <edge source="אָבֵל" target="צֶדֶק" id="1161" weight="1" />
+      <edge source="בְּכוֹר" target="בְּהֵמָה" id="1162" weight="1" />
+      <edge source="נָשִיא" target="עַם" id="1163" weight="1" />
+      <edge source="שֹפֵט" target="צֶדֶק" id="1164" weight="1" />
+    </edges>
+  </graph>
+</gexf>

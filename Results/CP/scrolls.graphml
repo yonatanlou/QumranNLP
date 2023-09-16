@@ -1,0 +1,1856 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph edgedefault="directed">
+    <node id="רֶפֵס" />
+    <node id="ְךֶרֶס" />
+    <node id="דַחַי" />
+    <node id="דָי" />
+    <node id="הֶשֹמ" />
+    <node id="הֶשֲעַמ" />
+    <node id="בֹוט" />
+    <node id="תּוריִרְש" />
+    <node id="בֵל" />
+    <node id="הָמְשַא" />
+    <node id="ןִיַע" />
+    <node id="תּונְז" />
+    <node id="קֹח" />
+    <node id="לֵא" />
+    <node id="תיִרְּב" />
+    <node id="דֶסֶח" />
+    <node id="הָצֵע" />
+    <node id="דֵעֹומ" />
+    <node id="הָדּועְּת" />
+    <node id="ןֵּב" />
+    <node id="רֹוא" />
+    <node id="ְךֶשֹח" />
+    <node id="הָמָקְנ" />
+    <node id="םֹּת" />
+    <node id="ְךֶרֶּד" />
+    <node id="קֶדֶצ" />
+    <node id="רָבָּד" />
+    <node id="תֶמֱא" />
+    <node id="ףֵרְצַמ" />
+    <node id="יּוּסִנ" />
+    <node id="הָלָשְמֶמ" />
+    <node id="לָעָיִלְּב" />
+    <node id="הָעּושְי" />
+    <node id="הָקָדְצ" />
+    <node id="הָרּובְּג" />
+    <node id="םיִמֲחַר" />
+    <node id="ןֹוָע" />
+    <node id="לֵאָרְשִי" />
+    <node id="עָשֶּפ" />
+    <node id="תאַּטַח" />
+    <node id="שיִא" />
+    <node id="לָרֹוּג" />
+    <node id="לֶכֶש" />
+    <node id="םיִּיַח" />
+    <node id="תַעַּד" />
+    <node id="םָלֹוע" />
+    <node id="הֶנָּפ" />
+    <node id="םֹולָש" />
+    <node id="לָׁרֹוּג" />
+    <node id="עַשֶר" />
+    <node id="םֵקֹנ" />
+    <node id="םָקָנ" />
+    <node id="םֵּלַשְמ" />
+    <node id="לּומְּג" />
+    <node id="הָלֵפֲא" />
+    <node id="שֵא" />
+    <node id="ףַא" />
+    <node id="הֶּפ" />
+    <node id="זֶחֹא" />
+    <node id="בָא" />
+    <node id="לּוּלִּג" />
+    <node id="לֹושְכִמ" />
+    <node id="ןֶוָע" />
+    <node id="הָאְנִק" />
+    <node id="טָּפְשִמ" />
+    <node id="הָלָּכ" />
+    <node id="הָלָא" />
+    <node id="רּורָא" />
+    <node id="אָּב" />
+    <node id="םֹוי" />
+    <node id="הָעֵּד" />
+    <node id="תִיַּב" />
+    <node id="דָמֲעַמ" />
+    <node id="םֹוקָמ" />
+    <node id="הָוָנֲע" />
+    <node id="הָבֲהַא" />
+    <node id="הָבָשֲחַמ" />
+    <node id="שֶדֹק" />
+    <node id="דֹוס" />
+    <node id="רֹוּסִי" />
+    <node id="ןֹואָס" />
+    <node id="רֹותָמ" />
+    <node id="םיִמָּת" />
+    <node id="םִיַמ" />
+    <node id="הָּדִנ" />
+    <node id="ץַחַר" />
+    <node id="סֹאְמ" />
+    <node id="ַחּור" />
+    <node id="הצע" />
+    <node id="םיִּיַח" />
+    <node id="חּור" />
+    <node id="רֶשֹי" />
+    <node id="שֶפֶנ" />
+    <node id="יִכֹוּד" />
+    <node id="רּוּפִּכ" />
+    <node id="חֹוחינ" />
+    <node id="תֹודְלֹוּת" />
+    <node id="ןיִמ" />
+    <node id="הָּדֻקְּפ" />
+    <node id="עַגֶנ" />
+    <node id="ץֵק" />
+    <node id="דֹובָּכ" />
+    <node id="לֹּכ" />
+    <node id="לֵבֵּת" />
+    <node id="הָּדֻּקְּפ" />
+    <node id="לֶוָע" />
+    <node id="ןֹועָמ" />
+    <node id="רֹוקָמ" />
+    <node id="רַש" />
+    <node id="ְךָאְלַמ" />
+    <node id="תּועָּת" />
+    <node id="ןֵּב" />
+    <node id="עַשֶּפ" />
+    <node id="זָר" />
+    <node id="הָרָצ" />
+    <node id="הָמֵטְשַמ" />
+    <node id="דֵע" />
+    <node id="ְךֶרֹא" />
+    <node id="בֹר" />
+    <node id="הָמְכָח" />
+    <node id="הָרֳהָט" />
+    <node id="לּולִּג" />
+    <node id="הָמְרָע" />
+    <node id="תַעַּד" />
+    <node id="הָכָרְּב" />
+    <node id="דַע" />
+    <node id="הָחְמִש" />
+    <node id="חצֶַנ" />
+    <node id="ליִלָּכ" />
+    <node id="הָּדִמ" />
+    <node id="רָדָה" />
+    <node id="בֹוחְר" />
+    <node id="הָדֹובֲע" />
+    <node id="םּור" />
+    <node id="בָבֵל" />
+    <node id="ףֶנֹח" />
+    <node id="רּוצָק" />
+    <node id="תֶלֶּוִא" />
+    <node id="ןֹודָז" />
+    <node id="הָבֵעֹוּת" />
+    <node id="הָאְמֻט" />
+    <node id="ןֹושָל" />
+    <node id="ףּוּדִּג" />
+    <node id="ןֹורָּוִע" />
+    <node id="ןֶזֹא" />
+    <node id="יִשֹק" />
+    <node id="ףֶרֹע" />
+    <node id="דּוּביִּכ" />
+    <node id="ַעֹר" />
+    <node id="לֶבֶח" />
+    <node id="תַחַש" />
+    <node id="הָרְבֶע" />
+    <node id="הָוֲעַז" />
+    <node id="חַצֶנ" />
+    <node id="הָּפְרֶח" />
+    <node id="הָּמִלְּכ" />
+    <node id="הָלָּכ" />
+    <node id="ְךָשְחַמ" />
+    <node id="לֶבֵא" />
+    <node id="ןֹוגָי" />
+    <node id="הָעָר" />
+    <node id="רֹורָמ" />
+    <node id="הָיָוֲה" />
+    <node id="הָּלֻעְּפ" />
+    <node id="הָביֵא" />
+    <node id="הָלְוַע" />
+    <node id="ביִר" />
+    <node id="לֶבֵּת" />
+    <node id="רֶבֶּג" />
+    <node id="םיִמָכְּת" />
+    <node id="רָשָּב" />
+    <node id="הָליִלֲע" />
+    <node id="הָעְשִר" />
+    <node id="רֶקֶש" />
+    <node id="ןֹויְלֶע" />
+    <node id="םִיַמָש" />
+    <node id="םָדָא" />
+    <node id="הָּיִמְר" />
+    <node id="הָלֲחַנ" />
+    <node id="הָדֵע" />
+    <node id="קֹודָצ" />
+    <node id="רֵמֹש" />
+    <node id="ןּוּכִּת" />
+    <node id="תּורִרְש" />
+    <node id="רֶצֶי" />
+    <node id="הָלְרָע" />
+    <node id="דָסֹומ" />
+    <node id="רֵבֹע" />
+    <node id="בֵּדַנְתִמ" />
+    <node id="הָעּובְש" />
+    <node id="רָּסִא" />
+    <node id="הָרֹוּת" />
+    <node id="רֶמֹש" />
+    <node id="שֵרֹּד" />
+    <node id="ןֹוצָר" />
+    <node id="לֶבֶה" />
+    <node id="ץֵאַנְמ" />
+    <node id="ןֹרֲהַא" />
+    <node id="ןֵהֹּכ" />
+    <node id="תיִשאֵר" />
+    <node id="םֶחֶל" />
+    <node id="שֹוריִּת" />
+    <node id="הָלְיַל" />
+    <node id="הָנָש" />
+    <node id="בָשֹומ" />
+    <node id="בַר" />
+    <node id="ַעֵר" />
+    <node id="ץֶפֵח" />
+    <node id="שאֹר" />
+    <node id="ןֹוה" />
+    <node id="הָכאָלְמ" />
+    <node id="הֶקְשַמ" />
+    <node id="שָרְדִמ" />
+    <node id="רֶצֹק" />
+    <node id="דֹוסֶי" />
+    <node id="תיִמָע" />
+    <node id="דֹוסְי" />
+    <node id="הֶשֹע" />
+    <node id="תֵע" />
+    <node id="תַעַּטַמ" />
+    <node id="ריִחָּב" />
+    <node id="הָמֹוח" />
+    <node id="ןַחֹּב" />
+    <node id="הָנִּפ" />
+    <node id="רָקָי" />
+    <node id="תַעַד" />
+    <node id="ַחיֵר" />
+    <node id="ַחֹוחיִנ" />
+    <node id="הָּקֻח" />
+    <node id="הָאְרִי" />
+    <node id="לַעַמ" />
+    <node id="הָלֹע" />
+    <node id="בֶלֵח" />
+    <node id="חַבֶז" />
+    <node id="הָמּורְּת" />
+    <node id="הָפָש" />
+    <node id="הָבָדְנ" />
+    <node id="הָחְנִמ" />
+    <node id="ַחיִשָמ" />
+    <node id="לָקְשִמ" />
+    <node id="רֹוּב" />
+    <node id="ףַּכ" />
+    <node id="תָחָש" />
+    <node id="אֶלֶּפ" />
+    <node id="ןּוּכִּת" />
+    <node id="הָאְנִש" />
+    <node id="רֶתֵס" />
+    <node id="לָמָע" />
+    <node id="ַחֹולְשִמ" />
+    <node id="רֶמֵא" />
+    <node id="רּומְשַא" />
+    <node id="לֻבְז" />
+    <node id="אֹובָמ" />
+    <node id="שֶדֹח" />
+    <node id="חָּתְפִמ" />
+    <node id="ַחֵרָי" />
+    <node id="הָפּוקְּת" />
+    <node id="ריִצָק" />
+    <node id="עַרֶז" />
+    <node id="אֶשֶּד" />
+    <node id="ַעּובָש" />
+    <node id="רֹורְּד" />
+    <node id="יִרְּפ" />
+    <node id="הָּלִהְּת" />
+    <node id="הָנָמ" />
+    <node id="רֹוּנִּכ" />
+    <node id="לֶבֵנ" />
+    <node id="ליִלָח" />
+    <node id="וַק" />
+    <node id="אָצֹומ" />
+    <node id="בֶרֶע" />
+    <node id="רֶקֹּב" />
+    <node id="בּוט" />
+    <node id="תֶרֶאְפִּת" />
+    <node id="לֶגֶר" />
+    <node id="ְךֵרְבַא" />
+    <node id="בָּכְשִמ" />
+    <node id="ַעּוצְי" />
+    <node id="תֶכֶרֲעַמ" />
+    <node id="ןֶדֶע" />
+    <node id="הָבּונְּת" />
+    <node id="דַחַּפ" />
+    <node id="הָמיֵא" />
+    <node id="ןֹוכָמ" />
+    <node id="יַח" />
+    <node id="סָמָָח" />
+    <node id="בָש" />
+    <node id="רֵרֹס" />
+    <node id="שַחַּכ" />
+    <node id="הָּיִשּוּת" />
+    <node id="טָּפְשִמ" />
+    <node id="זֹע" />
+    <node id="הֶעֹּת" />
+    <node id="הָניִּב" />
+    <node id="םָר" />
+    <node id="הֶּטַמ" />
+    <node id="חֵלֹש" />
+    <node id="עַּבְצֶא" />
+    <node id="רֵּבַדְמ" />
+    <node id="ןֶוָא" />
+    <node id="הֶנְקַמ" />
+    <node id="רושי" />
+    <node id="הָרֹוא" />
+    <node id="הֶיְהִנ" />
+    <node id="ןָעְשִמ" />
+    <node id="ןיִמָי" />
+    <node id="עַלֶס" />
+    <node id="םַעַּפ" />
+    <node id="תֶנֶעְשִמ" />
+    <node id="הָּמִזְמ" />
+    <node id="הֶוְקִמ" />
+    <node id="ןָיְעַמ" />
+    <node id="הָּזֻחֲא" />
+    <node id="לָרֹוג" />
+    <node id="תיִנְבַמ" />
+    <node id="היוענ" />
+    <node id="הָּמִר" />
+    <node id="שֹונֱא" />
+    <node id="דֶבֶע" />
+    <node id="קֶמֶע" />
+    <node id="חֹּכ" />
+    <node id="הָּמִר" />
+    <node id="תיִרֲחַא" />
+    <node id="םַע" />
+    <node id="אָבָצ" />
+    <node id="יּוגָה" />
+    <node id="םיִרְשֶע" />
+    <node id="רָכָז" />
+    <node id="עמשמ" />
+    <node id="שֵמָח" />
+    <node id="םיִשֹולְש" />
+    <node id="הָאֵמ" />
+    <node id="םיִּשִמֲח" />
+    <node id="יִתֶּפ" />
+    <node id="סַמ" />
+    <node id="יִוֵל" />
+    <node id="רָּפְסִמ" />
+    <node id="הָמָחְלִמ" />
+    <node id="לִיַח" />
+    <node id="ףֶלֶא" />
+    <node id="תֶקֹלְחַמ" />
+    <node id="םֵש" />
+    <node id="איִרָק" />
+    <node id="שֵדֹק" />
+    <node id="ןָחְלֻש" />
+    <node id="הָלְפִש" />
+    <node id="רַה" />
+    <node id="הֶנֲעַמ" />
+    <node id="ְךֹרָא" />
+    <node id="ַחֹּכ" />
+    <node id="רֶקֵח" />
+    <node id="םֶדֶק" />
+    <node id="עַר" />
+    <node id="ַעיִקָר" />
+    <node id="היהנ" />
+    <node id="דּולָי" />
+    <node id="הָּשִא" />
+    <node id="הֶנְבִמ" />
+    <node id="רָפָע" />
+    <node id="לָּבְגִמ" />
+    <node id="הָוְרֶע" />
+    <node id="ןֹולָק" />
+    <node id="שֵּקַבְמ" />
+    <node id="בֵהֹא" />
+    <node id="וָנָע" />
+    <node id="קָּקֻזְמ" />
+    <node id="יִנָע" />
+    <node id="רּורָּב" />
+    <node id="רֹוּד" />
+    <node id="ןֹוזָח" />
+    <node id="לֵעֹּפ" />
+    <node id="ֹדֹוס" />
+    <node id="לֹודָּג" />
+    <node id="ףָנָּכ" />
+    <node id="ןֹומָה" />
+    <node id="הָגֵרֲה" />
+    <node id="אֹלְמ" />
+    <node id="ץֶרֶא" />
+    <node id="הָּיִליִלֲע" />
+    <node id="קיִדָצ" />
+    <node id="הָוְצִמ" />
+    <node id="רָצֹוא" />
+    <node id="רֹוד" />
+    <node id="רֶצֵי" />
+    <node id="רָמֵח" />
+    <node id="רּוּכ" />
+    <node id="הָאָּטַח" />
+    <node id="הָעֹוּת" />
+    <node id="תֶרֶח" />
+    <node id="ןֹורָּכִז" />
+    <node id="םלָֹוע" />
+    <node id="עָּבַמ" />
+    <node id="ַחיִש" />
+    <node id="ְךּומָס" />
+    <node id="ליִוֱא" />
+    <node id="ַחיִכֹומ" />
+    <node id="ץַחַמ" />
+    <node id="הָּכַמ" />
+    <node id="ַעיִמְשַמ" />
+    <node id="לֹורָע" />
+    <node id="ץֶמֹא" />
+    <node id="לּובְּג" />
+    <node id="רָהְמִנ" />
+    <node id="רָשָי" />
+    <node id="עָשָר" />
+    <node id="ץיִרָע" />
+    <node id="הָּלִהְק" />
+    <node id="לֹושְחַנ" />
+    <node id="םָי" />
+    <node id="ץיִלֵמ" />
+    <node id="רָסּומ" />
+    <node id="הֵזֹוח" />
+    <node id="הָחֹכְנ" />
+    <node id="הָקְלֶח" />
+    <node id="לֹוק" />
+    <node id="רֹורְצ" />
+    <node id="שְקֹומ" />
+    <node id="אְוַש" />
+    <node id="יִלְּכ" />
+    <node id="בֹוהְל" />
+    <node id="תיִנֲח" />
+    <node id="םִּיַמ" />
+    <node id="ןֹואָש" />
+    <node id="בָזָּכ" />
+    <node id="שָר" />
+    <node id="קָזָח" />
+    <node id="הָוֹה" />
+    <node id="הָלֹוצְמ" />
+    <node id="ריִע" />
+    <node id="רָצְבִמ" />
+    <node id="הָדֵל" />
+    <node id="ץָרְמִנ" />
+    <node id="הָּיִרָה" />
+    <node id="רֵּבְשַמ" />
+    <node id="תֶוָמ" />
+    <node id="לֹואְש" />
+    <node id="ץֶרֶמ" />
+    <node id="הָעְפֶא" />
+    <node id="תּוצָּלַּפ" />
+    <node id="שֹוא" />
+    <node id="ריִק" />
+    <node id="בֵשֹי" />
+    <node id="דֵרֹי" />
+    <node id="ְךֹובָנ" />
+    <node id="תֶלֶּד" />
+    <node id="ַחיִרָּב" />
+    <node id="שֹודָק" />
+    <node id="ןֹויְבֶא" />
+    <node id="הָמּוהְמ" />
+    <node id="הָבֵהְדַמ" />
+    <node id="חַּפ" />
+    <node id="הָדּוצְמ" />
+    <node id="תֶרֹמְכִמ" />
+    <node id="הָכְלֵח" />
+    <node id="ְךָּתַמ" />
+    <node id="הָמֵח" />
+    <node id="ןֹורָח" />
+    <node id="לַחַנ" />
+    <node id="ףַגֲא" />
+    <node id="ביִבָש" />
+    <node id="בֹוהָל" />
+    <node id="ַעֻּקִר" />
+    <node id="הָשָּבַי" />
+    <node id="תֶפֶז" />
+    <node id="ְךֵּשַחְמ" />
+    <node id="םֹוהְּת" />
+    <node id="שֵרֹּג" />
+    <node id="שֶפֶר" />
+    <node id="רֹוּבִּג" />
+    <node id="הֶזֹוח" />
+    <node id="הָּמִז" />
+    <node id="איִבָנ" />
+    <node id="הֶתֹּפ" />
+    <node id="גֵעֹל" />
+    <node id="הָמְרִמ" />
+    <node id="ַחֹוּכ" />
+    <node id="רֵבֹש" />
+    <node id="םֶצֶע" />
+    <node id="ריִּדַא" />
+    <node id="הֶתֹש" />
+    <node id="םַּד" />
+    <node id="רֹובִּג" />
+    <node id="שֵרֹּפ" />
+    <node id="ריִפְּכ" />
+    <node id="ןיִּנַּת" />
+    <node id="הָּנִר" />
+    <node id="הֵיְרַא" />
+    <node id="םַעַ" />
+    <node id="יאטאט" />
+    <node id="רַהְמִנ" />
+    <node id="דָמְצִנ" />
+    <node id="ןיּנַּת" />
+    <node id="לֵחֹז" />
+    <node id="ריִצ" />
+    <node id="דֵלֹי" />
+    <node id="רֹואָמ" />
+    <node id="הָחָנֲא" />
+    <node id="לַעַּב" />
+    <node id="ןָדְמ" />
+    <node id="המֹוח" />
+    <node id="לֵזְרַּב" />
+    <node id="אְוָש" />
+    <node id="סָמָח" />
+    <node id="בֵזֹע" />
+    <node id="האַּטַח" />
+    <node id="הָכָלְמַמ" />
+    <node id="רָעְצִמ" />
+    <node id="הָיְחִמ" />
+    <node id="הָחיִלְס" />
+    <node id="יִפֱע" />
+    <node id="רַהַנ" />
+    <node id="ּהַגֹנ" />
+    <node id="ףַעַז" />
+    <node id="םיִעְוִע" />
+    <node id="רַעַש" />
+    <node id="רֹוצָמ" />
+    <node id="תֶלֹקְשִמ" />
+    <node id="ןֶבֶא" />
+    <node id="ןֵח" />
+    <node id="ןֵגָמ" />
+    <node id="בֶרֶח" />
+    <node id="בֵכֹש" />
+    <node id="תַעַלֹוּת" />
+    <node id="תֵמ" />
+    <node id="דֵז" />
+    <node id="תֹויֱה" />
+    <node id="לָּדְגִמ" />
+    <node id="הָביִתְנ" />
+    <node id="ליִבְש" />
+    <node id="הֶסֲחַמ" />
+    <node id="תֵפֹומ" />
+    <node id="קיֵח" />
+    <node id="ןֵמֹא" />
+    <node id="תיִרֵאְש" />
+    <node id="עַבֶש" />
+    <node id="הֶוֲעַנ" />
+    <node id="ּוהֹּת" />
+    <node id="םָלֱעֶנ" />
+    <node id="עּוּבַמ" />
+    <node id="הָּיִצ" />
+    <node id="ןַּג" />
+    <node id="עָּטַמ" />
+    <node id="שֹורְּב" />
+    <node id="ץֵע" />
+    <node id="רֶצֶנ" />
+    <node id="הֶלָע" />
+    <node id="הָּיַח" />
+    <node id="רַעַי" />
+    <node id="ףֹוע" />
+    <node id="טַהַל" />
+    <node id="זּוּב" />
+    <node id="רָהָנ" />
+    <node id="הֶרֹוי" />
+    <node id="םֶשֶּג" />
+    <node id="ַעּוּבַמ" />
+    <node id="לּוּבַמ" />
+    <node id="ןֹוכָנ" />
+    <node id="שֶמֶש" />
+    <node id="הָרֵאְּפ" />
+    <node id="רּוצ" />
+    <node id="שיִמָּלַח" />
+    <node id="םֹח" />
+    <node id="שֻאָּב" />
+    <node id="זֹועָמ" />
+    <node id="םיִַנְתָמ" />
+    <node id="קֵז" />
+    <node id="ַעֵּלַבְמ" />
+    <node id="תֶשֹּב" />
+    <node id="הֶנֹּפ" />
+    <node id="אֵּפְרַמ" />
+    <node id="זֹוּב" />
+    <node id="רַצ" />
+    <node id="ליִלְּכ" />
+    <node id="הָּכַמ" />
+    <node id="הָרּובְג" />
+    <node id="דֵש" />
+    <node id="הֵרֹה" />
+    <node id="תַחַכֹוּת" />
+    <node id="רָמְשִמ" />
+    <node id="טֶלֶּפ" />
+    <node id="ְךֶלֶמ" />
+    <node id="דָּבְכִנ" />
+    <node id="ןָגָּד" />
+    <node id="רָהְצִי" />
+    <node id="גֶלֶּפ" />
+    <node id="רֶדֶח" />
+    <node id="לֹואְּש" />
+    <node id="ַחֹּכ" />
+    <node id="יִגֲה" />
+    <node id="הָדֹוה" />
+    <node id="לָּזַמ" />
+    <node id="הָבּושְּת" />
+    <node id="ןֹוגֹי" />
+    <node id="הָניִק" />
+    <node id="דֵּפְּסִמ" />
+    <node id="לֶבֶנ" />
+    <node id="לֵהֹא" />
+    <node id="הָפּוקְּת" />
+    <node id="ףֵסָאֵה" />
+    <node id="דָלֹומ" />
+    <node id="הָמָמְש" />
+    <node id="רֹודָמ" />
+    <node id="לֵרָע" />
+    <node id="םותרוא" />
+    <node id="ןוטמ" />
+    <node id="רֶפֶא" />
+    <node id="רַעַס" />
+    <node id="ץֶפֶח" />
+    <node id="םיִּמַצ" />
+    <node id="הָּיִמְר" />
+    <node id="הָעּומְש" />
+    <node id="ַעֵמֹש" />
+    <node id="הָבּושְּת" />
+    <node id="בָעְתִנ" />
+    <node id="תֹבֲע" />
+    <node id="הָמָר" />
+    <node id="הָדּועְּת" />
+    <node id="הָמָדֲא" />
+    <node id="הרוכמ" />
+    <node id="ןיכת" />
+    <node id="זָֹר" />
+    <node id="רֹוסְחַמ" />
+    <node id="ֲחּור" />
+    <node id="ֹוטֹוא" />
+    <node id="רֹוכְּב" />
+    <node id="שֶרֹש" />
+    <node id="הֶרֹוה" />
+    <node id="זֳר" />
+    <node id="רֶזֵע" />
+    <node id="הָּׁשִא" />
+    <node id="רָאְש" />
+    <node id="רָּסִא" />
+    <node id="הָּדֻקְּפ" />
+    <node id="רֶשֹּכ" />
+    <node id="הָניִבְמ" />
+    <node id="רָּתְסִנ" />
+    <node id="תש" />
+    <node id="יוגה" />
+    <node id="ןֹובָנ" />
+    <node id="עַשֶי" />
+    <node id="זֹוחָמ" />
+    <node id="וטוא" />
+    <node id="הָאָלְפִנ" />
+    <node id="בֹקָע" />
+    <node id="טוא" />
+    <node id="ליִּכְשַמ" />
+    <node id="הָׁעֵּד" />
+    <node id="לֵחֹנ" />
+    <node id="קיִזְחַמ" />
+    <node id="הָּלֻעְּפ" />
+    <node id="הָפיֵא" />
+    <node id="ריִש" />
+    <node id="םָלֹֹוע" />
+    <node id="ְךֵלֹה" />
+    <node id="םָכָח" />
+    <node id="ַחֹכ" />
+    <node id="ץֵל" />
+    <node id="חַמֶצ" />
+    <node id="םיִּקַמֲעַמ" />
+    <node id="םיִנָש" />
+    <node id="הָּוַח" />
+    <node id="לָכֲאַמ" />
+    <node id="ןֵש" />
+    <node id="םּוחָל" />
+    <node id="ףֶשֶר" />
+    <node id="םִיַנְזאֹמ" />
+    <node id="תֹורֹפְס" />
+    <node id="הֶפָי" />
+    <node id="הֶאְרַמ" />
+    <node id="ףֶגֶנ" />
+    <node id="הָקּושְּת" />
+    <node id="ןאֹצ" />
+    <node id="לֵבָא" />
+    <node id="ְ" />
+    <node id="הֶדָש" />
+    <node id="לֵמְרַּכ" />
+    <node id="הֶרֹה" />
+    <node id="ןֶטֶּב" />
+    <node id="רֹוכְּב" />
+    <node id="הָמֵהְּב" />
+    <node id="ןֶטֶּּב" />
+    <node id="חַרֹק" />
+    <node id="איִשָנ" />
+    <node id="ץִיַק" />
+    <node id="הָמָׁדֲא" />
+    <node id="טֵפֹש" />
+    <edge source="רֶפֵס" target="ְךֶרֶס" />
+    <edge source="רֶפֵס" target="דַחַי" />
+    <edge source="רֶפֵס" target="יּוגָה" />
+    <edge source="רֶפֵס" target="ןֹורָּכִז" />
+    <edge source="ְךֶרֶס" target="דַחַי" />
+    <edge source="ְךֶרֶס" target="ןּוּכִּת" />
+    <edge source="ְךֶרֶס" target="אָבָצ" />
+    <edge source="דַחַי" target="לֵא" />
+    <edge source="דַחַי" target="תֶמֱא" />
+    <edge source="דַחַי" target="הָצֵע" />
+    <edge source="דַחַי" target="תיִרְּב" />
+    <edge source="דַחַי" target="שֶדֹק" />
+    <edge source="דָי" target="הֶשֹמ" />
+    <edge source="דָי" target="רַש" />
+    <edge source="דָי" target="רֹוא" />
+    <edge source="דָי" target="ְךָאְלַמ" />
+    <edge source="דָי" target="ְךֶשֹח" />
+    <edge source="דָי" target="לֶבֶח" />
+    <edge source="דָי" target="שיִא" />
+    <edge source="דָי" target="רָשָּב" />
+    <edge source="דָי" target="קָזָח" />
+    <edge source="דָי" target="הָכְלֵח" />
+    <edge source="דָי" target="םָלֱעֶנ" />
+    <edge source="דָי" target="םָדָא" />
+    <edge source="הֶשֲעַמ" target="בֹוט" />
+    <edge source="הֶשֲעַמ" target="תֶמֱא" />
+    <edge source="הֶשֲעַמ" target="הָרּובְּג" />
+    <edge source="הֶשֲעַמ" target="עַשֶר" />
+    <edge source="הֶשֲעַמ" target="לֵא" />
+    <edge source="הֶשֲעַמ" target="הָבֵעֹוּת" />
+    <edge source="הֶשֲעַמ" target="רֶבֶּג" />
+    <edge source="הֶשֲעַמ" target="הָּיִמְר" />
+    <edge source="הֶשֲעַמ" target="לֶבֶה" />
+    <edge source="הֶשֲעַמ" target="אֶלֶּפ" />
+    <edge source="הֶשֲעַמ" target="ןיִמָי" />
+    <edge source="הֶשֲעַמ" target="עַר" />
+    <edge source="הֶשֲעַמ" target="הָלְוַע" />
+    <edge source="הֶשֲעַמ" target="הָקָדְצ" />
+    <edge source="הֶשֲעַמ" target="תּוצָּלַּפ" />
+    <edge source="הֶשֲעַמ" target="הָעְפֶא" />
+    <edge source="הֶשֲעַמ" target="שֵא" />
+    <edge source="הֶשֲעַמ" target="הָּיִמְר" />
+    <edge source="הֶשֲעַמ" target="הָּדִנ" />
+    <edge source="הֶשֲעַמ" target="קֶדֶצ" />
+    <edge source="הֶשֲעַמ" target="תיִרְּב" />
+    <edge source="בֹוט" target="םָלֹוע" />
+    <edge source="תּוריִרְש" target="בֵל" />
+    <edge source="תּוריִרְש" target="הָמְשַא" />
+    <edge source="בֵל" target="שיִא" />
+    <edge source="בֵל" target="דֶבֶע" />
+    <edge source="בֵל" target="רָפָע" />
+    <edge source="בֵל" target="ןֶבֶא" />
+    <edge source="הָמְשַא" target="עַשֶּפ" />
+    <edge source="הָמְשַא" target="לַעַמ" />
+    <edge source="הָמְשַא" target="הָעְשִר" />
+    <edge source="הָמְשַא" target="דּולָי" />
+    <edge source="הָמְשַא" target="הָּשִא" />
+    <edge source="ןִיַע" target="תּונְז" />
+    <edge source="ןִיַע" target="םיִמָּת" />
+    <edge source="ןִיַע" target="בֵּדַנְתִמ" />
+    <edge source="ןִיַע" target="הֶשֲעַמ" />
+    <edge source="ןִיַע" target="ַעֵמֹש" />
+    <edge source="קֹח" target="לֵא" />
+    <edge source="קֹח" target="תֶמֱא" />
+    <edge source="קֹח" target="תֵע" />
+    <edge source="קֹח" target="ןּוּכִּת" />
+    <edge source="קֹח" target="תיִרְּב" />
+    <edge source="קֹח" target="ןֹוכָנ" />
+    <edge source="לֵא" target="הָעּושְי" />
+    <edge source="לֵא" target="הָעֵּד" />
+    <edge source="לֵא" target="לֵאָרְשִי" />
+    <edge source="לֵא" target="םָלֹוע" />
+    <edge source="לֵא" target="םיִמֲחַר" />
+    <edge source="לֵא" target="קֶדֶצ" />
+    <edge source="לֵא" target="תֶמֱא" />
+    <edge source="לֵא" target="הָׁעֵּד" />
+    <edge source="תיִרְּב" target="דֶסֶח" />
+    <edge source="תיִרְּב" target="דַחַי" />
+    <edge source="תיִרְּב" target="םָלֹוע" />
+    <edge source="תיִרְּב" target="לֵא" />
+    <edge source="תיִרְּב" target="טָּפְשִמ" />
+    <edge source="תיִרְּב" target="םָדָא" />
+    <edge source="דֶסֶח" target="םיִמֲחַר" />
+    <edge source="דֶסֶח" target="לֵא" />
+    <edge source="דֶסֶח" target="םָלֹוע" />
+    <edge source="הָצֵע" target="לֵא" />
+    <edge source="הָצֵע" target="קֶדֶצ" />
+    <edge source="הָצֵע" target="םָלֹוע" />
+    <edge source="הָצֵע" target="שֶדֹק" />
+    <edge source="הָצֵע" target="דַחַי" />
+    <edge source="הָצֵע" target="בַר" />
+    <edge source="הָצֵע" target="שיִא" />
+    <edge source="הָצֵע" target="הָרֹוּת" />
+    <edge source="הָצֵע" target="הָּיִשּוּת" />
+    <edge source="הָצֵע" target="שֵדֹק" />
+    <edge source="דֵעֹומ" target="הָדּועְּת" />
+    <edge source="דֵעֹומ" target="הָּדֻּקְּפ" />
+    <edge source="דֵעֹומ" target="הָרָצ" />
+    <edge source="דֵעֹומ" target="הָּדֻקְּפ" />
+    <edge source="דֵעֹומ" target="טָּפְשִמ" />
+    <edge source="דֵעֹומ" target="ריִצָק" />
+    <edge source="דֵעֹומ" target="עַרֶז" />
+    <edge source="דֵעֹומ" target="אֶשֶּד" />
+    <edge source="דֵעֹומ" target="הָנָש" />
+    <edge source="דֵעֹומ" target="רֹורְּד" />
+    <edge source="דֵעֹומ" target="ןֹוצָר" />
+    <edge source="דֵעֹומ" target="הָלְיַל" />
+    <edge source="דֵעֹומ" target="הָמָמְש" />
+    <edge source="דֵעֹומ" target="ץִיַק" />
+    <edge source="הָדּועְּת" target="הָמָחְלִמ" />
+    <edge source="הָדּועְּת" target="הָיָוֲה" />
+    <edge source="ןֵּב" target="רֹוא" />
+    <edge source="ןֵּב" target="ְךֶשֹח" />
+    <edge source="ןֵּב" target="דֹוס" />
+    <edge source="ןֵּב" target="םָלֹוע" />
+    <edge source="ןֵּב" target="תֶמֱא" />
+    <edge source="ןֵּב" target="שיִא" />
+    <edge source="ןֵּב" target="קֹודָצ" />
+    <edge source="ןֵּב" target="ןֹרֲהַא" />
+    <edge source="ןֵּב" target="םָדָא" />
+    <edge source="ןֵּב" target="םִיַמָש" />
+    <edge source="ןֵּב" target="םיִרְשֶע" />
+    <edge source="ןֵּב" target="הָנָש" />
+    <edge source="ןֵּב" target="שֵמָח" />
+    <edge source="ןֵּב" target="םיִשֹולְש" />
+    <edge source="ןֵּב" target="שֹונֱא" />
+    <edge source="ןֵּב" target="ןֹוצָר" />
+    <edge source="ןֵּב" target="הָמְשַא" />
+    <edge source="ןֵּב" target="הָלְוַע" />
+    <edge source="ןֵּב" target="הָוֹה" />
+    <edge source="ןֵּב" target="דֶסֶח" />
+    <edge source="ןֵּב" target="לֵא" />
+    <edge source="ןֵּב" target="רֹוכְּב" />
+    <edge source="ןֵּב" target="תש" />
+    <edge source="ןֵּב" target="הָּוַח" />
+    <edge source="רֹוא" target="םיִּיַח" />
+    <edge source="רֹוא" target="םָלֹוע" />
+    <edge source="רֹוא" target="עַבֶש" />
+    <edge source="רֹוא" target="םותרוא" />
+    <edge source="הָמָקְנ" target="לֵא" />
+    <edge source="םֹּת" target="ְךֶרֶּד" />
+    <edge source="ְךֶרֶּד" target="רֹוא" />
+    <edge source="ְךֶרֶּד" target="שיִא" />
+    <edge source="ְךֶרֶּד" target="לֵא" />
+    <edge source="ְךֶרֶּד" target="ְךֶשֹח" />
+    <edge source="ְךֶרֶּד" target="קֶדֶצ" />
+    <edge source="ְךֶרֶּד" target="תֶמֱא" />
+    <edge source="ְךֶרֶּד" target="הָּדִנ" />
+    <edge source="ְךֶרֶּד" target="עַשֶר" />
+    <edge source="ְךֶרֶּד" target="הָעְשִר" />
+    <edge source="ְךֶרֶּד" target="םַעַּפ" />
+    <edge source="ְךֶרֶּד" target="םַע" />
+    <edge source="ְךֶרֶּד" target="הָלְוַע" />
+    <edge source="ְךֶרֶּד" target="יַח" />
+    <edge source="ְךֶרֶּד" target="םָלֹוע" />
+    <edge source="ְךֶרֶּד" target="בֵל" />
+    <edge source="ְךֶרֶּד" target="שֹונֱא" />
+    <edge source="ְךֶרֶּד" target="שֶדֹק" />
+    <edge source="רָבָּד" target="לֵא" />
+    <edge source="רָבָּד" target="תיִרְּב" />
+    <edge source="רָבָּד" target="רֶקֶש" />
+    <edge source="רָבָּד" target="ַעֵר" />
+    <edge source="רָבָּד" target="ןֹוצָר" />
+    <edge source="תֶמֱא" target="םָלֹוע" />
+    <edge source="תֶמֱא" target="לֵא" />
+    <edge source="תֶמֱא" target="דֹובָּכ" />
+    <edge source="ףֵרְצַמ" target="יּוּסִנ" />
+    <edge source="הָלָשְמֶמ" target="לָעָיִלְּב" />
+    <edge source="הָלָשְמֶמ" target="לֵבֵּת" />
+    <edge source="הָלָשְמֶמ" target="ןֵּב" />
+    <edge source="הָלָשְמֶמ" target="קֶדֶצ" />
+    <edge source="הָלָשְמֶמ" target="לֶוָע" />
+    <edge source="הָלָשְמֶמ" target="הָמֵטְשַמ" />
+    <edge source="הָלָשְמֶמ" target="הָלְוַע" />
+    <edge source="הָלָשְמֶמ" target="הֶשֲעַמ" />
+    <edge source="הָעּושְי" target="םָלֹוע" />
+    <edge source="הָקָדְצ" target="לֵא" />
+    <edge source="הָקָדְצ" target="תֶמֱא" />
+    <edge source="הָרּובְּג" target="לֹּכ" />
+    <edge source="הָרּובְּג" target="םָלֹוע" />
+    <edge source="הָרּובְּג" target="הֶשֲעַמ" />
+    <edge source="םיִמֲחַר" target="דֶסֶח" />
+    <edge source="םיִמֲחַר" target="לֵא" />
+    <edge source="םיִמֲחַר" target="הֶרֹה" />
+    <edge source="ןֹוָע" target="ןֵּב" />
+    <edge source="ןֹוָע" target="לֵאָרְשִי" />
+    <edge source="ןֹוָע" target="הָמְשַא" />
+    <edge source="ןֹוָע" target="רָשָּב" />
+    <edge source="ןֹוָע" target="עַשֶר" />
+    <edge source="ןֹוָע" target="עָשָר" />
+    <edge source="ןֹוָע" target="הָבֵעֹוּת" />
+    <edge source="עָשֶּפ" target="הָמְשַא" />
+    <edge source="עָשֶּפ" target="תאַּטַח" />
+    <edge source="תאַּטַח" target="ןֵּב" />
+    <edge source="תאַּטַח" target="םָדָא" />
+    <edge source="שיִא" target="לָרֹוּג" />
+    <edge source="שיִא" target="לָׁרֹוּג" />
+    <edge source="שיִא" target="לָעָיִלְּב" />
+    <edge source="שיִא" target="דַחַי" />
+    <edge source="שיִא" target="לֶוָע" />
+    <edge source="שיִא" target="שֶדֹק" />
+    <edge source="שיִא" target="ןֵהֹּכ" />
+    <edge source="שיִא" target="תיִרְּב" />
+    <edge source="שיִא" target="םיִמָּת" />
+    <edge source="שיִא" target="הָּיִמְר" />
+    <edge source="שיִא" target="תָחָש" />
+    <edge source="שיִא" target="תַחַש" />
+    <edge source="שיִא" target="הָלְוַע" />
+    <edge source="שיִא" target="הֶּטַמ" />
+    <edge source="שיִא" target="יִתֶּפ" />
+    <edge source="שיִא" target="תֶמֱא" />
+    <edge source="שיִא" target="ןֹוזָח" />
+    <edge source="שיִא" target="ֹדֹוס" />
+    <edge source="שיִא" target="ביִר" />
+    <edge source="שיִא" target="הָמְרִמ" />
+    <edge source="שיִא" target="הָצֵע" />
+    <edge source="שיִא" target="הָמְשַא" />
+    <edge source="שיִא" target="תֵפֹומ" />
+    <edge source="שיִא" target="ּוהֹּת" />
+    <edge source="שיִא" target="הָמָחְלִמ" />
+    <edge source="שיִא" target="עַשֶּפ" />
+    <edge source="שיִא" target="ןֹודָז" />
+    <edge source="שיִא" target="ןֹוצָר" />
+    <edge source="שיִא" target="הָמָדֲא" />
+    <edge source="שיִא" target="לֶכֶש" />
+    <edge source="שיִא" target="הָמָׁדֲא" />
+    <edge source="לָרֹוּג" target="לֶוָע" />
+    <edge source="לָרֹוּג" target="םָלֹוע" />
+    <edge source="לָרֹוּג" target="ףַא" />
+    <edge source="לֶכֶש" target="םיִּיַח" />
+    <edge source="לֶכֶש" target="טָּפְשִמ" />
+    <edge source="לֶכֶש" target="הָעֵּד" />
+    <edge source="םיִּיַח" target="חצֶַנ" />
+    <edge source="םיִּיַח" target="רֶבֶּג" />
+    <edge source="תַעַּד" target="םָלֹוע" />
+    <edge source="תַעַּד" target="ןֹויְלֶע" />
+    <edge source="תַעַּד" target="תֶמֱא" />
+    <edge source="תַעַּד" target="בֵל" />
+    <edge source="תַעַּד" target="הָדֹובֲע" />
+    <edge source="םָלֹוע" target="דֵע" />
+    <edge source="םָלֹוע" target="דַע" />
+    <edge source="הֶנָּפ" target="דֶסֶח" />
+    <edge source="הֶנָּפ" target="ףַא" />
+    <edge source="הֶנָּפ" target="בַר" />
+    <edge source="הֶנָּפ" target="רֹוא" />
+    <edge source="םֹולָש" target="םָלֹוע" />
+    <edge source="םֹולָש" target="דַע" />
+    <edge source="םֵקֹנ" target="םָקָנ" />
+    <edge source="םֵּלַשְמ" target="לּומְּג" />
+    <edge source="הָלֵפֲא" target="שֵא" />
+    <edge source="הָלֵפֲא" target="םָלֹוע" />
+    <edge source="שֵא" target="ְךָשְחַמ" />
+    <edge source="ףַא" target="לֵא" />
+    <edge source="ףַא" target="הָרְבֶע" />
+    <edge source="הֶּפ" target="זֶחֹא" />
+    <edge source="הֶּפ" target="בָא" />
+    <edge source="הֶּפ" target="ַעֵר" />
+    <edge source="הֶּפ" target="לֹּכ" />
+    <edge source="הֶּפ" target="ריִפְּכ" />
+    <edge source="הֶּפ" target="דֹובָּכ" />
+    <edge source="הֶּפ" target="דֶבֶע" />
+    <edge source="הֶּפ" target="הָדֹוה" />
+    <edge source="הֶּפ" target="לֵא" />
+    <edge source="הֶּפ" target="ַחּור" />
+    <edge source="לּוּלִּג" target="בֵל" />
+    <edge source="לֹושְכִמ" target="ןֶוָע" />
+    <edge source="לֹושְכִמ" target="ןֹוָע" />
+    <edge source="הָאְנִק" target="טָּפְשִמ" />
+    <edge source="הָאְנִק" target="קֶדֶצ" />
+    <edge source="הָאְנִק" target="ןֹודָז" />
+    <edge source="הָאְנִק" target="ביִר" />
+    <edge source="הָאְנִק" target="ץיִלֵמ" />
+    <edge source="הָאְנִק" target="בָזָּכ" />
+    <edge source="הָאְנִק" target="הָלָּכ" />
+    <edge source="הָאְנִק" target="שֹונֱא" />
+    <edge source="טָּפְשִמ" target="קֶדֶצ" />
+    <edge source="טָּפְשִמ" target="לֵא" />
+    <edge source="טָּפְשִמ" target="לֹּכ" />
+    <edge source="טָּפְשִמ" target="דַחַי" />
+    <edge source="טָּפְשִמ" target="יַח" />
+    <edge source="טָּפְשִמ" target="רֹוא" />
+    <edge source="טָּפְשִמ" target="ןֵּב" />
+    <edge source="טָּפְשִמ" target="קֹודָצ" />
+    <edge source="טָּפְשִמ" target="הָרֹוּת" />
+    <edge source="טָּפְשִמ" target="ץֵק" />
+    <edge source="טָּפְשִמ" target="עַגֶנ" />
+    <edge source="טָּפְשִמ" target="עָשָר" />
+    <edge source="טָּפְשִמ" target="תֶמֱא" />
+    <edge source="טָּפְשִמ" target="ַחּור" />
+    <edge source="טָּפְשִמ" target="שֹונֱא" />
+    <edge source="טָּפְשִמ" target="ןאֹצ" />
+    <edge source="טָּפְשִמ" target="שֶדֹק" />
+    <edge source="טָּפְשִמ" target="ְ" />
+    <edge source="טָּפְשִמ" target="חַרֹק" />
+    <edge source="הָלָּכ" target="םָלֹוע" />
+    <edge source="הָלָא" target="תיִרְּב" />
+    <edge source="רּורָא" target="םָלֹוע" />
+    <edge source="אָּב" target="תיִרְּב" />
+    <edge source="םֹוי" target="הָלָשְמֶמ" />
+    <edge source="םֹוי" target="לָעָיִלְּב" />
+    <edge source="םֹוי" target="סֹאְמ" />
+    <edge source="םֹוי" target="םָקָנ" />
+    <edge source="םֹוי" target="שֶדֹח" />
+    <edge source="םֹוי" target="שֶדֹק" />
+    <edge source="םֹוי" target="טָּפְשִמ" />
+    <edge source="םֹוי" target="םֶדֶק" />
+    <edge source="םֹוי" target="הָגֵרֲה" />
+    <edge source="םֹוי" target="םָלֹוע" />
+    <edge source="םֹוי" target="לָרֹוּג" />
+    <edge source="םֹוי" target="חַצֶנ" />
+    <edge source="הָעֵּד" target="שיִא" />
+    <edge source="תִיַּב" target="דָמֲעַמ" />
+    <edge source="תִיַּב" target="תֶמֱא" />
+    <edge source="תִיַּב" target="שֶדֹק" />
+    <edge source="תִיַּב" target="םיִמָּת" />
+    <edge source="תִיַּב" target="דַחַי" />
+    <edge source="תִיַּב" target="הרוכמ" />
+    <edge source="תִיַּב" target="ןֹוכָמ" />
+    <edge source="דָמֲעַמ" target="שיִא" />
+    <edge source="דָמֲעַמ" target="קֶדֶצ" />
+    <edge source="דָמֲעַמ" target="ןֹוצָר" />
+    <edge source="םֹוקָמ" target="לָרֹוּג" />
+    <edge source="הָוָנֲע" target="בֹוט" />
+    <edge source="הָוָנֲע" target="שֶפֶנ" />
+    <edge source="הָבֲהַא" target="דֶסֶח" />
+    <edge source="הָבָשֲחַמ" target="קֶדֶצ" />
+    <edge source="הָבָשֲחַמ" target="דֹובָּכ" />
+    <edge source="הָבָשֲחַמ" target="הֶשֲעַמ" />
+    <edge source="הָבָשֲחַמ" target="שֶדֹק" />
+    <edge source="הָבָשֲחַמ" target="רֶצֶי" />
+    <edge source="הָבָשֲחַמ" target="הָעְשִר" />
+    <edge source="הָבָשֲחַמ" target="לָעָיִלְּב" />
+    <edge source="הָבָשֲחַמ" target="בֵל" />
+    <edge source="הָבָשֲחַמ" target="ַעֹר" />
+    <edge source="הָבָשֲחַמ" target="רֶצֵי" />
+    <edge source="שֶדֹק" target="שֶדֹק" />
+    <edge source="דֹוס" target="ַחּור" />
+    <edge source="דֹוס" target="דַחַי" />
+    <edge source="דֹוס" target="שֶדֹק" />
+    <edge source="דֹוס" target="רָשָּב" />
+    <edge source="דֹוס" target="תיִנְבַמ" />
+    <edge source="דֹוס" target="לֶוָע" />
+    <edge source="דֹוס" target="הָּמִר" />
+    <edge source="דֹוס" target="תֶמֱא" />
+    <edge source="דֹוס" target="הָוְרֶע" />
+    <edge source="דֹוס" target="הָניִּב" />
+    <edge source="דֹוס" target="אְוַש" />
+    <edge source="דֹוס" target="םָלֹוע" />
+    <edge source="דֹוס" target="שֹודָק" />
+    <edge source="דֹוס" target="אֶלֶּפ" />
+    <edge source="דֹוס" target="סָמָח" />
+    <edge source="דֹוס" target="םָלֱעֶנ" />
+    <edge source="דֹוס" target="שיִא" />
+    <edge source="דֹוס" target="לֵא" />
+    <edge source="רֹוּסִי" target="תַעַּד" />
+    <edge source="ןֹואָס" target="עַשֶר" />
+    <edge source="רֹותָמ" target="תּוריִרְש" />
+    <edge source="רֹותָמ" target="בֵל" />
+    <edge source="םיִמָּת" target="ְךֶרֶּד" />
+    <edge source="םיִמָּת" target="הָצֵע" />
+    <edge source="םִיַמ" target="הָּדִנ" />
+    <edge source="םִיַמ" target="ץַחַר" />
+    <edge source="םִיַמ" target="יִכֹוּד" />
+    <edge source="םִיַמ" target="תיִרְּב" />
+    <edge source="םִיַמ" target="שֶדֹק" />
+    <edge source="םִיַמ" target="לּוּבַמ" />
+    <edge source="הָּדִנ" target="שֹונֱא" />
+    <edge source="ַחּור" target="הצע" />
+    <edge source="ַחּור" target="תֶמֱא" />
+    <edge source="ַחּור" target="לֵא" />
+    <edge source="ַחּור" target="לֶוָע" />
+    <edge source="ַחּור" target="לָרֹוּג" />
+    <edge source="ַחּור" target="רֹוא" />
+    <edge source="ַחּור" target="ְךֶשֹח" />
+    <edge source="ַחּור" target="הָוָנֲע" />
+    <edge source="ַחּור" target="תַעַּד" />
+    <edge source="ַחּור" target="תּונְז" />
+    <edge source="ַחּור" target="הָלְוַע" />
+    <edge source="ַחּור" target="שֶדֹק" />
+    <edge source="ַחּור" target="הָּדִנ" />
+    <edge source="ַחּור" target="רֶתֵס" />
+    <edge source="ַחּור" target="הָעְשִר" />
+    <edge source="ַחּור" target="רָשָּב" />
+    <edge source="ַחּור" target="הָעֵּד" />
+    <edge source="ַחּור" target="ףֶרֹע" />
+    <edge source="ַחּור" target="םיִמֲחַר" />
+    <edge source="ַחּור" target="קיִדָצ" />
+    <edge source="ַחּור" target="דֶבֶע" />
+    <edge source="ַחּור" target="זֹע" />
+    <edge source="ַחּור" target="םָלֹוע" />
+    <edge source="ַחּור" target="םָדָא" />
+    <edge source="ַחּור" target="הָעֹוּת" />
+    <edge source="ַחּור" target="שֹונֱא" />
+    <edge source="ַחּור" target="הָאְנִק" />
+    <edge source="ַחּור" target="הָעְפֶא" />
+    <edge source="ַחּור" target="תַעַד" />
+    <edge source="ַחּור" target="םיִעְוִע" />
+    <edge source="ַחּור" target="הָוֹה" />
+    <edge source="ַחּור" target="שֵדֹק" />
+    <edge source="ַחּור" target="רַעַס" />
+    <edge source="ַחּור" target="הָניִּב" />
+    <edge source="חּור" target="רֶשֹי" />
+    <edge source="חּור" target="הָוָנֲע" />
+    <edge source="רֶשֹי" target="תֶמֱא" />
+    <edge source="שֶפֶנ" target="דֶבֶע" />
+    <edge source="שֶפֶנ" target="יִנָע" />
+    <edge source="שֶפֶנ" target="שָר" />
+    <edge source="שֶפֶנ" target="ןֹויְבֶא" />
+    <edge source="רּוּפִּכ" target="חֹוחינ" />
+    <edge source="תֹודְלֹוּת" target="ןֵּב" />
+    <edge source="תֹודְלֹוּת" target="שיִא" />
+    <edge source="תֹודְלֹוּת" target="תֶמֱא" />
+    <edge source="תֹודְלֹוּת" target="לֶוָע" />
+    <edge source="ןיִמ" target="ַחּור" />
+    <edge source="הָּדֻקְּפ" target="עַגֶנ" />
+    <edge source="הָּדֻקְּפ" target="דַע" />
+    <edge source="הָּדֻקְּפ" target="םֹולָש" />
+    <edge source="הָּדֻקְּפ" target="הֶשֲעַמ" />
+    <edge source="עַגֶנ" target="ןֵּב" />
+    <edge source="עַגֶנ" target="םָדָא" />
+    <edge source="עַגֶנ" target="לֹושְכִמ" />
+    <edge source="ץֵק" target="םֹולָש" />
+    <edge source="ץֵק" target="םָלֹוע" />
+    <edge source="ץֵק" target="דֵעֹומ" />
+    <edge source="ץֵק" target="הֶיְהִנ" />
+    <edge source="ץֵק" target="חַצֶנ" />
+    <edge source="ץֵק" target="ןֹורָח" />
+    <edge source="ץֵק" target="טָּפְשִמ" />
+    <edge source="ץֵק" target="ףֵסָאֵה" />
+    <edge source="ץֵק" target="דֹובָּכ" />
+    <edge source="ץֵק" target="ןֹוצָר" />
+    <edge source="ץֵק" target="הָדּועְּת" />
+    <edge source="ץֵק" target="תֶמֱא" />
+    <edge source="ץֵק" target="דַע" />
+    <edge source="ץֵק" target="הֶדָש" />
+    <edge source="דֹובָּכ" target="ןֶזֹא" />
+    <edge source="דֹובָּכ" target="םָדָא" />
+    <edge source="דֹובָּכ" target="לֵא" />
+    <edge source="דֹובָּכ" target="םָלֹוע" />
+    <edge source="דֹובָּכ" target="דַע" />
+    <edge source="דֹובָּכ" target="זֹע" />
+    <edge source="לֶוָע" target="רֶצֵי" />
+    <edge source="ןֹועָמ" target="רֹוא" />
+    <edge source="ןֹועָמ" target="שֶדֹק" />
+    <edge source="ןֹועָמ" target="קֹח" />
+    <edge source="ןֹועָמ" target="דֹובָּכ" />
+    <edge source="ןֹועָמ" target="הֵיְרַא" />
+    <edge source="רֹוקָמ" target="ְךֶשֹח" />
+    <edge source="רֹוקָמ" target="תַעַּד" />
+    <edge source="רֹוקָמ" target="הָקָדְצ" />
+    <edge source="רֹוקָמ" target="ןֶוָא" />
+    <edge source="רֹוקָמ" target="הָּדִנ" />
+    <edge source="רֹוקָמ" target="םָלֹוע" />
+    <edge source="רֹוקָמ" target="םיִּיַח" />
+    <edge source="רֹוקָמ" target="הָרּובְּג" />
+    <edge source="רֹוקָמ" target="תֶמֱא" />
+    <edge source="רֹוקָמ" target="םִיַמ" />
+    <edge source="רַש" target="הָאֵמ" />
+    <edge source="רַש" target="םיִּשִמֲח" />
+    <edge source="רַש" target="ףֶלֶא" />
+    <edge source="רַש" target="לֵא" />
+    <edge source="ְךָאְלַמ" target="ְךֶשֹח" />
+    <edge source="ְךָאְלַמ" target="תֶמֱא" />
+    <edge source="ְךָאְלַמ" target="שֶדֹק" />
+    <edge source="ְךָאְלַמ" target="הֶנָּפ" />
+    <edge source="ְךָאְלַמ" target="םֹולָש" />
+    <edge source="תּועָּת" target="ןֵּב" />
+    <edge source="תּועָּת" target="קֶדֶצ" />
+    <edge source="ןֵּב" target="קֶדֶצ" />
+    <edge source="ןֵּב" target="יִוֵל" />
+    <edge source="ןֵּב" target="םָדָא" />
+    <edge source="עַשֶּפ" target="הֶשֲעַמ" />
+    <edge source="זָר" target="לֵא" />
+    <edge source="זָר" target="תַעַּד" />
+    <edge source="זָר" target="לֶכֶש" />
+    <edge source="זָר" target="אֶלֶּפ" />
+    <edge source="זָר" target="הֶיְהִנ" />
+    <edge source="זָר" target="הָבָשֲחַמ" />
+    <edge source="זָר" target="עַשֶּפ" />
+    <edge source="זָר" target="רֹוּבִּג" />
+    <edge source="זָר" target="ַחֹּכ" />
+    <edge source="זָר" target="הָמְכָח" />
+    <edge source="זָר" target="ץֶפֶח" />
+    <edge source="זָר" target="היהנ" />
+    <edge source="הָרָצ" target="ףֵרְצַמ" />
+    <edge source="הָרָצ" target="שֶפֶנ" />
+    <edge source="דֵע" target="םָלֹוע" />
+    <edge source="דֵע" target="תֶמֱא" />
+    <edge source="ְךֶרֹא" target="ףַא" />
+    <edge source="ְךֶרֹא" target="םֹוי" />
+    <edge source="בֹר" target="םיִמֲחַר" />
+    <edge source="בֹר" target="דֶסֶח" />
+    <edge source="בֹר" target="םֹולָש" />
+    <edge source="בֹר" target="ףֶנֹח" />
+    <edge source="בֹר" target="תֶלֶּוִא" />
+    <edge source="בֹר" target="עַגֶנ" />
+    <edge source="בֹר" target="שיִא" />
+    <edge source="בֹר" target="דַחַי" />
+    <edge source="בֹר" target="תיִרְּב" />
+    <edge source="בֹר" target="בּוט" />
+    <edge source="בֹר" target="ןֶוָע" />
+    <edge source="בֹר" target="הָחיִלְס" />
+    <edge source="בֹר" target="ַחֹּכ" />
+    <edge source="בֹר" target="ןָגָּד" />
+    <edge source="בֹר" target="שֹוריִּת" />
+    <edge source="בֹר" target="רָהְצִי" />
+    <edge source="בֹר" target="תֶמֱא" />
+    <edge source="בֹר" target="רָשָּב" />
+    <edge source="בֹר" target="הָניִּב" />
+    <edge source="בֹר" target="רָדָה" />
+    <edge source="בֹר" target="הָנָש" />
+    <edge source="בֹר" target="דֹובָּכ" />
+    <edge source="בֹר" target="הָלֲחַנ" />
+    <edge source="בֹר" target="לֶכֶש" />
+    <edge source="הָמְכָח" target="הָרּובְּג" />
+    <edge source="הָמְכָח" target="דֹובָּכ" />
+    <edge source="הָמְכָח" target="ןֵּב" />
+    <edge source="הָמְכָח" target="םִיַמָש" />
+    <edge source="הָמְכָח" target="תַעַד" />
+    <edge source="הָמְכָח" target="ֹוטֹוא" />
+    <edge source="הָמְכָח" target="טוא" />
+    <edge source="הָמְכָח" target="דָי" />
+    <edge source="הָרֳהָט" target="דֹובָּכ" />
+    <edge source="הָרֳהָט" target="שיִא" />
+    <edge source="הָרֳהָט" target="שֶדֹק" />
+    <edge source="הָרֳהָט" target="בַר" />
+    <edge source="לּולִּג" target="הָּדִנ" />
+    <edge source="הָמְרָע" target="לֹּכ" />
+    <edge source="הָמְרָע" target="ַעֹר" />
+    <edge source="הָמְרָע" target="תַעַּד" />
+    <edge source="הָכָרְּב" target="דַע" />
+    <edge source="הָחְמִש" target="םָלֹוע" />
+    <edge source="הָחְמִש" target="דֵע" />
+    <edge source="הָחְמִש" target="ץֵל" />
+    <edge source="הָחְמִש" target="תֶמֱא" />
+    <edge source="ליִלָּכ" target="דֹובָּכ" />
+    <edge source="הָּדִמ" target="רָדָה" />
+    <edge source="הָּדִמ" target="תֶמֱא" />
+    <edge source="הָּדִמ" target="הֶשֲעַמ" />
+    <edge source="הָּדִמ" target="דֹובָּכ" />
+    <edge source="רָדָה" target="דֹובָּכ" />
+    <edge source="רָדָה" target="הֶנָּפ" />
+    <edge source="בֹוחְר" target="שֶפֶנ" />
+    <edge source="בֹוחְר" target="םָלֹוע" />
+    <edge source="הָדֹובֲע" target="קֶדֶצ" />
+    <edge source="הָדֹובֲע" target="הָאְמֻט" />
+    <edge source="הָדֹובֲע" target="הָדֵע" />
+    <edge source="הָדֹובֲע" target="הֶשֲעַמ" />
+    <edge source="הָדֹובֲע" target="סַמ" />
+    <edge source="הָדֹובֲע" target="ןֹוָע" />
+    <edge source="הָדֹובֲע" target="הָעְשִר" />
+    <edge source="םּור" target="בָבֵל" />
+    <edge source="םּור" target="דֹובָּכ" />
+    <edge source="םּור" target="םָלֹוע" />
+    <edge source="םּור" target="ןֶדֶע" />
+    <edge source="בָבֵל" target="רֶבֶּג" />
+    <edge source="רּוצָק" target="ףַא" />
+    <edge source="הָבֵעֹוּת" target="תֶמֱא" />
+    <edge source="הָבֵעֹוּת" target="הָלְוַע" />
+    <edge source="הָבֵעֹוּת" target="רֶקֶש" />
+    <edge source="הָבֵעֹוּת" target="הָּדִנ" />
+    <edge source="הָבֵעֹוּת" target="שֶפֶנ" />
+    <edge source="ןֹושָל" target="ףּוּדִּג" />
+    <edge source="ןֹושָל" target="רֶקֶש" />
+    <edge source="ןֹורָּוִע" target="ןִיַע" />
+    <edge source="ןֶזֹא" target="רָפָע" />
+    <edge source="ןֶזֹא" target="רָשָּב" />
+    <edge source="יִשֹק" target="ףֶרֹע" />
+    <edge source="דּוּביִּכ" target="בֵל" />
+    <edge source="לֶבֶח" target="ץָרְמִנ" />
+    <edge source="לֶבֶח" target="לֹואְש" />
+    <edge source="לֶבֶח" target="ץֶרֶמ" />
+    <edge source="לֶבֶח" target="תֶוָמ" />
+    <edge source="לֶבֶח" target="םָי" />
+    <edge source="תַחַש" target="םָלֹוע" />
+    <edge source="הָוֲעַז" target="חַצֶנ" />
+    <edge source="חַצֶנ" target="תֶמֱא" />
+    <edge source="חַצֶנ" target="לֶבֵּת" />
+    <edge source="חַצֶנ" target="חַצֶנ" />
+    <edge source="הָּפְרֶח" target="דַע" />
+    <edge source="הָּמִלְּכ" target="הָלָּכ" />
+    <edge source="לֶבֵא" target="ןֹוגָי" />
+    <edge source="לֶבֵא" target="רֹורָמ" />
+    <edge source="הָעָר" target="רֹורָמ" />
+    <edge source="רֹורָמ" target="שֶפֶנ" />
+    <edge source="רֹורָמ" target="םֹוי" />
+    <edge source="הָיָוֲה" target="ְךֶשֹח" />
+    <edge source="הָּלֻעְּפ" target="הֶשֲעַמ" />
+    <edge source="הָביֵא" target="םָלֹוע" />
+    <edge source="הָלְוַע" target="םַע" />
+    <edge source="ביִר" target="שיִא" />
+    <edge source="ביִר" target="תַחַש" />
+    <edge source="ביִר" target="טָּפְשִמ" />
+    <edge source="םיִמָכְּת" target="רָשָּב" />
+    <edge source="םיִמָכְּת" target="דֶבֶע" />
+    <edge source="רָשָּב" target="הָלֹע" />
+    <edge source="רָשָּב" target="דֹובָּכ" />
+    <edge source="הָליִלֲע" target="הָעְשִר" />
+    <edge source="הָליִלֲע" target="עַשֶר" />
+    <edge source="םָדָא" target="הָעְשִר" />
+    <edge source="הָלֲחַנ" target="שיִא" />
+    <edge source="הָלֲחַנ" target="דֹובָּכ" />
+    <edge source="הָלֲחַנ" target="םיִּיַח" />
+    <edge source="הָלֲחַנ" target="תֶמֱא" />
+    <edge source="הָלֲחַנ" target="בָא" />
+    <edge source="הָלֲחַנ" target="שֶדֹק" />
+    <edge source="הָלֲחַנ" target="םָדָא" />
+    <edge source="הָדֵע" target="שיִא" />
+    <edge source="הָדֵע" target="לֶוָע" />
+    <edge source="הָדֵע" target="שֶדֹק" />
+    <edge source="הָדֵע" target="לֵאָרְשִי" />
+    <edge source="הָדֵע" target="שֹונֱא" />
+    <edge source="הָדֵע" target="םֵש" />
+    <edge source="הָדֵע" target="דַחַי" />
+    <edge source="הָדֵע" target="לָעָיִלְּב" />
+    <edge source="הָדֵע" target="שֵרֹּד" />
+    <edge source="הָדֵע" target="הָקְלֶח" />
+    <edge source="הָדֵע" target="ןֵּב" />
+    <edge source="הָדֵע" target="םִיַמָש" />
+    <edge source="הָדֵע" target="אְוָש" />
+    <edge source="הָדֵע" target="אְוַש" />
+    <edge source="הָדֵע" target="שֹודָק" />
+    <edge source="רֵמֹש" target="תיִרְּב" />
+    <edge source="רֵמֹש" target="הָוְצִמ" />
+    <edge source="רֵמֹש" target="רָבָּד" />
+    <edge source="ןּוּכִּת" target="לָרֹוּג" />
+    <edge source="ןּוּכִּת" target="ְךֶרֶּד" />
+    <edge source="ןּוּכִּת" target="תֵע" />
+    <edge source="ןּוּכִּת" target="שיִא" />
+    <edge source="ןּוּכִּת" target="דַחַי" />
+    <edge source="ןּוּכִּת" target="שֶדֹק" />
+    <edge source="תּורִרְש" target="בֵל" />
+    <edge source="רֶצֶי" target="ְךּומָס" />
+    <edge source="הָלְרָע" target="רֶצֶי" />
+    <edge source="דָסֹומ" target="תֶמֱא" />
+    <edge source="דָסֹומ" target="רַה" />
+    <edge source="דָסֹומ" target="ַעיִקָר" />
+    <edge source="רֵבֹע" target="קֹח" />
+    <edge source="רֵבֹע" target="רָבָּד" />
+    <edge source="רֵבֹע" target="הֶּפ" />
+    <edge source="רֵבֹע" target="ְךֶרֶּד" />
+    <edge source="הָעּובְש" target="רָּסִא" />
+    <edge source="הָעּובְש" target="רָּסִא" />
+    <edge source="הָרֹוּת" target="הֶשֹמ" />
+    <edge source="רֶמֹש" target="תיִרְּב" />
+    <edge source="רֶמֹש" target="רָבָּד" />
+    <edge source="שֵרֹּד" target="ןֹוצָר" />
+    <edge source="שֵרֹּד" target="הָקְלֶח" />
+    <edge source="שֵרֹּד" target="הָּיִמְר" />
+    <edge source="שֵרֹּד" target="תֶמֱא" />
+    <edge source="שֵרֹּד" target="ץֶפֶח" />
+    <edge source="ןֹוצָר" target="לֵא" />
+    <edge source="ץֵאַנְמ" target="רָבָּד" />
+    <edge source="תיִשאֵר" target="םֶחֶל" />
+    <edge source="תיִשאֵר" target="שֹוריִּת" />
+    <edge source="תיִשאֵר" target="רּומְשַא" />
+    <edge source="תיִשאֵר" target="ְךֶשֹח" />
+    <edge source="תיִשאֵר" target="ַחֵרָי" />
+    <edge source="תיִשאֵר" target="ַחֹולְשִמ" />
+    <edge source="תיִשאֵר" target="דָי" />
+    <edge source="תיִשאֵר" target="דַחַּפ" />
+    <edge source="תיִשאֵר" target="הָמיֵא" />
+    <edge source="תיִשאֵר" target="הָלָשְמֶמ" />
+    <edge source="תיִשאֵר" target="יִרְּפ" />
+    <edge source="תיִשאֵר" target="ןֶטֶּב" />
+    <edge source="םֶחֶל" target="הָּמִר" />
+    <edge source="םֶחֶל" target="הָחָנֲא" />
+    <edge source="הָלְיַל" target="הָנָש" />
+    <edge source="הָנָש" target="םָלֹוע" />
+    <edge source="בָשֹומ" target="בַר" />
+    <edge source="בָשֹומ" target="שיִא" />
+    <edge source="בָשֹומ" target="לֶוָע" />
+    <edge source="בָשֹומ" target="םֵש" />
+    <edge source="בַר" target="הָּיִליִלֲע" />
+    <edge source="ץֶפֵח" target="בַר" />
+    <edge source="שאֹר" target="בַר" />
+    <edge source="שאֹר" target="הָלָשְמֶמ" />
+    <edge source="שאֹר" target="רֹוא" />
+    <edge source="שאֹר" target="דֵעֹומ" />
+    <edge source="שאֹר" target="הָנָש" />
+    <edge source="שאֹר" target="ַעּובָש" />
+    <edge source="שאֹר" target="לֵאָרְשִי" />
+    <edge source="שאֹר" target="בָא" />
+    <edge source="שאֹר" target="הָדֵע" />
+    <edge source="שאֹר" target="ץֶפֶח" />
+    <edge source="שאֹר" target="לֵמְרַּכ" />
+    <edge source="ןֹוה" target="בַר" />
+    <edge source="ןֹוה" target="דַחַי" />
+    <edge source="ןֹוה" target="שיִא" />
+    <edge source="ןֹוה" target="שֶדֹק" />
+    <edge source="ןֹוה" target="סָמָָח" />
+    <edge source="הָכאָלְמ" target="בַר" />
+    <edge source="הֶקְשַמ" target="בַר" />
+    <edge source="הֶקְשַמ" target="תַעַּד" />
+    <edge source="הֶקְשַמ" target="ןַּג" />
+    <edge source="שָרְדִמ" target="דַחַי" />
+    <edge source="שָרְדִמ" target="הָרֹוּת" />
+    <edge source="רֶצֹק" target="ףַא" />
+    <edge source="דֹוסֶי" target="תיִמָע" />
+    <edge source="דֹוסְי" target="דַחַי" />
+    <edge source="דֹוסְי" target="ַחּור" />
+    <edge source="דֹוסְי" target="שֶדֹק" />
+    <edge source="דֹוסְי" target="הָדֵע" />
+    <edge source="דֹוסְי" target="רַה" />
+    <edge source="הֶשֹע" target="טָּפְשִמ" />
+    <edge source="תֵע" target="םֹח" />
+    <edge source="תֵע" target="ןֹוָע" />
+    <edge source="תַעַּטַמ" target="םָלֹוע" />
+    <edge source="תַעַּטַמ" target="תֶמֱא" />
+    <edge source="תַעַּטַמ" target="םָלֹֹוע" />
+    <edge source="ריִחָּב" target="ןֹוצָר" />
+    <edge source="ריִחָּב" target="תֵע" />
+    <edge source="ריִחָּב" target="ְךֶרֶּד" />
+    <edge source="ריִחָּב" target="םָדָא" />
+    <edge source="ריִחָּב" target="קֶדֶצ" />
+    <edge source="ריִחָּב" target="תֶמֱא" />
+    <edge source="הָמֹוח" target="ןַחֹּב" />
+    <edge source="הָמֹוח" target="זֹע" />
+    <edge source="הָנִּפ" target="רָקָי" />
+    <edge source="תַעַד" target="לֹּכ" />
+    <edge source="ַחיֵר" target="ַחֹוחיִנ" />
+    <edge source="ַחֹוחיִנ" target="קֶדֶצ" />
+    <edge source="הָּקֻח" target="םָלֹוע" />
+    <edge source="הָּקֻח" target="רֹואָמ" />
+    <edge source="הָאְרִי" target="ַחּור" />
+    <edge source="לַעַמ" target="תאַּטַח" />
+    <edge source="לַעַמ" target="בָא" />
+    <edge source="בֶלֵח" target="חַבֶז" />
+    <edge source="הָמּורְּת" target="הָפָש" />
+    <edge source="הָמּורְּת" target="אָצֹומ" />
+    <edge source="הָפָש" target="ץיִרָע" />
+    <edge source="הָפָש" target="לֶוָע" />
+    <edge source="הָפָש" target="רֶקֶש" />
+    <edge source="הָבָדְנ" target="הָחְנִמ" />
+    <edge source="הָבָדְנ" target="ןֹוצָר" />
+    <edge source="ַחיִשָמ" target="ןֹרֲהַא" />
+    <edge source="ַחיִשָמ" target="לֵאָרְשִי" />
+    <edge source="לָקְשִמ" target="שיִא" />
+    <edge source="לָקְשִמ" target="ןיכת" />
+    <edge source="לָקְשִמ" target="ץֵק" />
+    <edge source="לָקְשִמ" target="קֶדֶצ" />
+    <edge source="רֹוּב" target="ףַּכ" />
+    <edge source="ףַּכ" target="לֶגֶר" />
+    <edge source="אֶלֶּפ" target="זָר" />
+    <edge source="ןּוּכִּת" target="ְךֶרֶּד" />
+    <edge source="הָאְנִש" target="םָלֹוע" />
+    <edge source="לָמָע" target="ףַּכ" />
+    <edge source="ַחֹולְשִמ" target="ףַּכ" />
+    <edge source="ַחֹולְשִמ" target="דָי" />
+    <edge source="רֶמֵא" target="הֶּפ" />
+    <edge source="לֻבְז" target="שֶדֹק" />
+    <edge source="אֹובָמ" target="דֵעֹומ" />
+    <edge source="אֹובָמ" target="םֹוי" />
+    <edge source="אֹובָמ" target="הָלְיַל" />
+    <edge source="אֹובָמ" target="רֹוא" />
+    <edge source="אֹובָמ" target="םיִנָש" />
+    <edge source="חָּתְפִמ" target="דֶסֶח" />
+    <edge source="הָפּוקְּת" target="דֵעֹומ" />
+    <edge source="הָפּוקְּת" target="רָּפְסִמ" />
+    <edge source="הָפּוקְּת" target="הָנָש" />
+    <edge source="הָפּוקְּת" target="םלָֹוע" />
+    <edge source="יִרְּפ" target="הָּלִהְּת" />
+    <edge source="יִרְּפ" target="שֶדֹק" />
+    <edge source="יִרְּפ" target="הָפָש" />
+    <edge source="יִרְּפ" target="ןֹושָל" />
+    <edge source="יִרְּפ" target="הָבּונְּת" />
+    <edge source="יִרְּפ" target="ןֶטֶּּב" />
+    <edge source="הָנָמ" target="הָפָש" />
+    <edge source="רֹוּנִּכ" target="לֶבֵנ" />
+    <edge source="רֹוּנִּכ" target="ביִר" />
+    <edge source="רֹוּנִּכ" target="הָניִק" />
+    <edge source="רֹוּנִּכ" target="הָעּושְי" />
+    <edge source="ליִלָח" target="הָפָש" />
+    <edge source="ליִלָח" target="הָּלִהְּת" />
+    <edge source="וַק" target="טָּפְשִמ" />
+    <edge source="וַק" target="תֵע" />
+    <edge source="וַק" target="ןֹוכָנ" />
+    <edge source="אָצֹומ" target="בֶרֶע" />
+    <edge source="אָצֹומ" target="רֶקֹּב" />
+    <edge source="אָצֹומ" target="רֹוא" />
+    <edge source="אָצֹומ" target="הָלְיַל" />
+    <edge source="אָצֹומ" target="הֶּפ" />
+    <edge source="אָצֹומ" target="ץֵק" />
+    <edge source="בּוט" target="רֹוקָמ" />
+    <edge source="בּוט" target="תַעַּד" />
+    <edge source="תֶרֶאְפִּת" target="םָלֹוע" />
+    <edge source="לֶגֶר" target="ְךֵרְבַא" />
+    <edge source="בָּכְשִמ" target="ַעּוצְי" />
+    <edge source="בָּכְשִמ" target="רָכָז" />
+    <edge source="תֶכֶרֲעַמ" target="שיִא" />
+    <edge source="ןֶדֶע" target="הָבּונְּת" />
+    <edge source="ןֶדֶע" target="לֶבֵּת" />
+    <edge source="דַחַּפ" target="הָוֹה" />
+    <edge source="דַחַּפ" target="עָשָר" />
+    <edge source="דַחַּפ" target="הָעְשִר" />
+    <edge source="ןֹוכָמ" target="הָרָצ" />
+    <edge source="ןֹוכָמ" target="הָּנִר" />
+    <edge source="ןֹוכָמ" target="םָלֹוע" />
+    <edge source="בָש" target="עַשֶּפ" />
+    <edge source="רֵרֹס" target="ְךֶרֶּד" />
+    <edge source="שַחַּכ" target="ןֶוָע" />
+    <edge source="טָּפְשִמ" target="זֹע" />
+    <edge source="הֶעֹּת" target="ַחּור" />
+    <edge source="הֶעֹּת" target="הָניִּב" />
+    <edge source="םָר" target="ַחּור" />
+    <edge source="חֵלֹש" target="עַּבְצֶא" />
+    <edge source="רֵּבַדְמ" target="ןֶוָא" />
+    <edge source="הֶנְקַמ" target="ןֹוה" />
+    <edge source="רושי" target="בָבֵל" />
+    <edge source="הָרֹוא" target="בָבֵל" />
+    <edge source="ןָעְשִמ" target="ןיִמָי" />
+    <edge source="ןיִמָי" target="זֹע" />
+    <edge source="עַלֶס" target="זֹע" />
+    <edge source="עַלֶס" target="םַעַּפ" />
+    <edge source="עַלֶס" target="לֶגֶר" />
+    <edge source="תֶנֶעְשִמ" target="ןיִמָי" />
+    <edge source="הָּמִזְמ" target="הָמְרָע" />
+    <edge source="הָּמִזְמ" target="לָעָיִלְּב" />
+    <edge source="הָּמִזְמ" target="בֵל" />
+    <edge source="הֶוְקִמ" target="הָרּובְּג" />
+    <edge source="הֶוְקִמ" target="רָפָע" />
+    <edge source="הֶוְקִמ" target="דֹובָּכ" />
+    <edge source="הֶוְקִמ" target="רֶפֶא" />
+    <edge source="ןָיְעַמ" target="דֹובָּכ" />
+    <edge source="ןָיְעַמ" target="הָרּובְּג" />
+    <edge source="ןָיְעַמ" target="הָניִּב" />
+    <edge source="ןָיְעַמ" target="רֹוא" />
+    <edge source="ןָיְעַמ" target="םיִּיַח" />
+    <edge source="ןָיְעַמ" target="רֹוּבִּג" />
+    <edge source="ןָיְעַמ" target="םיִּיַח" />
+    <edge source="הָּזֻחֲא" target="םָלֹוע" />
+    <edge source="הָּזֻחֲא" target="ץֶרֶא" />
+    <edge source="לָרֹוג" target="שֶדֹק" />
+    <edge source="היוענ" target="בָבֵל" />
+    <edge source="שֹונֱא" target="תיִרְּב" />
+    <edge source="שֹונֱא" target="הָצֵע" />
+    <edge source="שֹונֱא" target="לִיַח" />
+    <edge source="שֹונֱא" target="םֵש" />
+    <edge source="דֶבֶע" target="ליִּכְשַמ" />
+    <edge source="קֶמֶע" target="זָר" />
+    <edge source="חֹּכ" target="הָרּובְּג" />
+    <edge source="תיִרֲחַא" target="םֹוי" />
+    <edge source="םַע" target="ץֶרֶא" />
+    <edge source="םַע" target="וָנָע" />
+    <edge source="םַע" target="ַחּור" />
+    <edge source="אָבָצ" target="הָדֵע" />
+    <edge source="אָבָצ" target="ַחּור" />
+    <edge source="אָבָצ" target="שֹודָק" />
+    <edge source="אָבָצ" target="םִיַמָש" />
+    <edge source="אָבָצ" target="דַע" />
+    <edge source="אָבָצ" target="תַעַּד" />
+    <edge source="עמשמ" target="טָּפְשִמ" />
+    <edge source="רָּפְסִמ" target="אָבָצ" />
+    <edge source="רָּפְסִמ" target="רֹוד" />
+    <edge source="רָּפְסִמ" target="םָלֹוע" />
+    <edge source="הָמָחְלִמ" target="רֹוּבִּג" />
+    <edge source="הָמָחְלִמ" target="םִיַמָש" />
+    <edge source="הָמָחְלִמ" target="הָעְשִר" />
+    <edge source="הָמָחְלִמ" target="דֵז" />
+    <edge source="לִיַח" target="רֹוּבִּג" />
+    <edge source="תֶקֹלְחַמ" target="הָדֹובֲע" />
+    <edge source="םֵש" target="שֶדֹק" />
+    <edge source="איִרָק" target="דֵעֹומ" />
+    <edge source="ןָחְלֻש" target="דַחַי" />
+    <edge source="הָלְפִש" target="הָּדִמ" />
+    <edge source="הֶנֲעַמ" target="ןֹושָל" />
+    <edge source="ְךֹרָא" target="ףַא" />
+    <edge source="ַחֹּכ" target="הָרּובְּג" />
+    <edge source="ַחֹּכ" target="דָי" />
+    <edge source="ַחֹּכ" target="לֵא" />
+    <edge source="רֶקֵח" target="לֹּכ" />
+    <edge source="םֶדֶק" target="םָלֹוע" />
+    <edge source="ַעיִקָר" target="שֶדֹק" />
+    <edge source="היהנ" target="םָלֹוע" />
+    <edge source="דּולָי" target="הָּשִא" />
+    <edge source="הָּשִא" target="הָדֵל" />
+    <edge source="הָּשִא" target="קיֵח" />
+    <edge source="הֶנְבִמ" target="רָפָע" />
+    <edge source="הֶנְבִמ" target="הָאָּטַח" />
+    <edge source="הֶנְבִמ" target="לֵא" />
+    <edge source="לָּבְגִמ" target="םִיַמ" />
+    <edge source="הָוְרֶע" target="ןֹולָק" />
+    <edge source="שֵּקַבְמ" target="הָניִּב" />
+    <edge source="בֵהֹא" target="םיִמֲחַר" />
+    <edge source="בֵהֹא" target="רָסּומ" />
+    <edge source="וָנָע" target="ַחּור" />
+    <edge source="קָּקֻזְמ" target="יִנָע" />
+    <edge source="רּורָּב" target="ףֵרְצַמ" />
+    <edge source="רֹוּד" target="םָלֹוע" />
+    <edge source="רֹוּד" target="חַצֶנ" />
+    <edge source="ןֹוזָח" target="תַעַּד" />
+    <edge source="ןֹוזָח" target="יוגה" />
+    <edge source="לֵעֹּפ" target="עַשֶר" />
+    <edge source="לֹודָּג" target="חֹּכ" />
+    <edge source="לֹודָּג" target="דֶסֶח" />
+    <edge source="לֹודָּג" target="הָצֵע" />
+    <edge source="לֹודָּג" target="בּוט" />
+    <edge source="ףָנָּכ" target="ַחּור" />
+    <edge source="ןֹומָה" target="םיִמֲחַר" />
+    <edge source="ןֹומָה" target="םִּיַמ" />
+    <edge source="ןֹומָה" target="םִיַמ" />
+    <edge source="ןֹומָה" target="לֹוק" />
+    <edge source="ןֹומָה" target="ַחֹּכ" />
+    <edge source="ןֹומָה" target="םַע" />
+    <edge source="ןֹומָה" target="דֶסֶח" />
+    <edge source="אֹלְמ" target="םִיַמָש" />
+    <edge source="אֹלְמ" target="ץֶרֶא" />
+    <edge source="ץֶרֶא" target="הָּיִצ" />
+    <edge source="רָצֹוא" target="הָבָשֲחַמ" />
+    <edge source="רֶצֵי" target="רָמֵח" />
+    <edge source="רֶצֵי" target="ְךּומָס" />
+    <edge source="רֶצֵי" target="הָמְשַא" />
+    <edge source="רֶצֵי" target="תֹויֱה" />
+    <edge source="רֶצֵי" target="הֶשֲעַמ" />
+    <edge source="רֶצֵי" target="דֶבֶע" />
+    <edge source="רֶצֵי" target="רָשָּב" />
+    <edge source="רֶצֵי" target="רֶבֶּג" />
+    <edge source="רֶצֵי" target="רָפָע" />
+    <edge source="רֶצֵי" target="הָּיִמְר" />
+    <edge source="רֶצֵי" target="הָלְוַע" />
+    <edge source="רֶצֵי" target="בָעְתִנ" />
+    <edge source="רֶצֵי" target="תֶמֱא" />
+    <edge source="רּוּכ" target="ןֶוָע" />
+    <edge source="רּוּכ" target="הָּיִרָה" />
+    <edge source="רּוּכ" target="הֶרֹוה" />
+    <edge source="תֶרֶח" target="ןֹורָּכִז" />
+    <edge source="ןֹורָּכִז" target="םֹולָש" />
+    <edge source="עָּבַמ" target="ַחּור" />
+    <edge source="עָּבַמ" target="הָפָש" />
+    <edge source="ַחיִש" target="תַעַד" />
+    <edge source="ליִוֱא" target="בֵל" />
+    <edge source="ַחיִכֹומ" target="תֶמֱא" />
+    <edge source="ַחיִכֹומ" target="קֶדֶצ" />
+    <edge source="ץַחַמ" target="הָּכַמ" />
+    <edge source="ץַחַמ" target="הָּכַמ" />
+    <edge source="ַעיִמְשַמ" target="הָחְמִש" />
+    <edge source="לֹורָע" target="הָפָש" />
+    <edge source="ץֶמֹא" target="חֹּכ" />
+    <edge source="לּובְּג" target="הָעְשִר" />
+    <edge source="לּובְּג" target="םיִּיַח" />
+    <edge source="רָהְמִנ" target="בֵל" />
+    <edge source="רָשָי" target="ְךֶרֶּד" />
+    <edge source="עָשָר" target="םַעַ" />
+    <edge source="הָּלִהְק" target="עַשֶר" />
+    <edge source="לֹושְחַנ" target="םָי" />
+    <edge source="ץיִלֵמ" target="תַעַּד" />
+    <edge source="ץיִלֵמ" target="תּועָּת" />
+    <edge source="ץיִלֵמ" target="הָּיִמְר" />
+    <edge source="ץיִלֵמ" target="בָזָּכ" />
+    <edge source="הֵזֹוח" target="הָחֹכְנ" />
+    <edge source="לֹוק" target="ןֹומָה" />
+    <edge source="לֹוק" target="םִיַמ" />
+    <edge source="לֹוק" target="ןֹושָל" />
+    <edge source="לֹוק" target="הָחָנֲא" />
+    <edge source="לֹוק" target="הָּנִר" />
+    <edge source="רֹורְצ" target="םיִּיַח" />
+    <edge source="שְקֹומ" target="תַחַש" />
+    <edge source="יִלְּכ" target="הָמָחְלִמ" />
+    <edge source="בֹוהְל" target="תיִנֲח" />
+    <edge source="ןֹואָש" target="לֹוק" />
+    <edge source="ןֹואָש" target="הָכָלְמַמ" />
+    <edge source="הָוֹה" target="הָבֵהְדַמ" />
+    <edge source="הָוֹה" target="הָמּוהְמ" />
+    <edge source="הָוֹה" target="בֵל" />
+    <edge source="הָוֹה" target="עַשֶּפ" />
+    <edge source="הָלֹוצְמ" target="םָי" />
+    <edge source="ריִע" target="רָצְבִמ" />
+    <edge source="ריִע" target="רֹוצָמ" />
+    <edge source="הָּיִרָה" target="רֶבֶּג" />
+    <edge source="הָּיִרָה" target="הָעְפֶא" />
+    <edge source="הָּיִרָה" target="לֶוָע" />
+    <edge source="רֵּבְשַמ" target="תֶוָמ" />
+    <edge source="רֵּבְשַמ" target="תַחַש" />
+    <edge source="רֵּבְשַמ" target="םִיַמ" />
+    <edge source="שֹוא" target="ריִק" />
+    <edge source="שֹוא" target="רָמֵח" />
+    <edge source="שֹוא" target="םָלֹוע" />
+    <edge source="שֹוא" target="תיִנְבַמ" />
+    <edge source="שֹוא" target="םֶצֶע" />
+    <edge source="בֵשֹי" target="רָפָע" />
+    <edge source="בֵשֹי" target="הָמָדֲא" />
+    <edge source="דֵרֹי" target="םָי" />
+    <edge source="דֵרֹי" target="לֹואְש" />
+    <edge source="ְךֹובָנ" target="םִיַמ" />
+    <edge source="תֶלֶּד" target="תַחַש" />
+    <edge source="תֶלֶּד" target="ןֵגָמ" />
+    <edge source="ַחיִרָּב" target="םָלֹוע" />
+    <edge source="ַחיִרָּב" target="לֵזְרַּב" />
+    <edge source="ַחיִרָּב" target="זֹע" />
+    <edge source="שֹודָק" target="שֶדֹק" />
+    <edge source="ןֹויְבֶא" target="דֶסֶח" />
+    <edge source="הָמּוהְמ" target="בַר" />
+    <edge source="חַּפ" target="תַחַש" />
+    <edge source="חַּפ" target="טָּפְשִמ" />
+    <edge source="הָדּוצְמ" target="הָעְשִר" />
+    <edge source="תֶרֹמְכִמ" target="הָכְלֵח" />
+    <edge source="ְךָּתַמ" target="הָמֵח" />
+    <edge source="הָמֵח" target="ןיִּנַּת" />
+    <edge source="הָמֵח" target="ןיּנַּת" />
+    <edge source="לַחַנ" target="לָעָיִלְּב" />
+    <edge source="לַחַנ" target="תֶפֶז" />
+    <edge source="לַחַנ" target="םִּיַמ" />
+    <edge source="לַחַנ" target="ץֶרֶא" />
+    <edge source="ףַגֲא" target="םּור" />
+    <edge source="ביִבָש" target="בֹוהָל" />
+    <edge source="ביִבָש" target="ּהַגֹנ" />
+    <edge source="ַעֻּקִר" target="הָשָּבַי" />
+    <edge source="ְךֵּשַחְמ" target="םֹוהְּת" />
+    <edge source="שֵרֹּג" target="שֶפֶר" />
+    <edge source="שֵרֹּג" target="ץֶרֶא" />
+    <edge source="רֹוּבִּג" target="אֶלֶּפ" />
+    <edge source="רֹוּבִּג" target="הָמָחְלִמ" />
+    <edge source="רֹוּבִּג" target="ַחֹּכ" />
+    <edge source="הֶזֹוח" target="הָּיִמְר" />
+    <edge source="הֶזֹוח" target="תּועָּת" />
+    <edge source="הָּמִז" target="לָעָיִלְּב" />
+    <edge source="הָּמִז" target="רֶצֵי" />
+    <edge source="איִבָנ" target="בָזָּכ" />
+    <edge source="הֶתֹּפ" target="תּועָּת" />
+    <edge source="גֵעֹל" target="הָפָש" />
+    <edge source="ַחֹוּכ" target="הָרּובְּג" />
+    <edge source="רֵבֹש" target="םֶצֶע" />
+    <edge source="רֵבֹש" target="ריִּדַא" />
+    <edge source="הֶתֹש" target="םַּד" />
+    <edge source="הֶתֹש" target="רֹובִּג" />
+    <edge source="שֵרֹּפ" target="תֶרֹמְכִמ" />
+    <edge source="הָּנִר" target="ןֹוגָי" />
+    <edge source="יאטאט" target="לֶגֶר" />
+    <edge source="רַהְמִנ" target="קֶדֶצ" />
+    <edge source="דָמְצִנ" target="דֹוס" />
+    <edge source="לֵחֹז" target="רָפָע" />
+    <edge source="ריִצ" target="דֵלֹי" />
+    <edge source="רֹואָמ" target="הֶנָּפ" />
+    <edge source="רֹואָמ" target="םָלֹוע" />
+    <edge source="לַעַּב" target="ןָדְמ" />
+    <edge source="לַעַּב" target="ביִר" />
+    <edge source="לַעַּב" target="לֶבֶה" />
+    <edge source="לַעַּב" target="ןֶוָא" />
+    <edge source="לַעַּב" target="ןֹוכָמ" />
+    <edge source="לַעַּב" target="תֶלֶּוִא" />
+    <edge source="המֹוח" target="זֹע" />
+    <edge source="בֵזֹע" target="האַּטַח" />
+    <edge source="רָעְצִמ" target="הָיְחִמ" />
+    <edge source="יִפֱע" target="תַעַּטַמ" />
+    <edge source="יִפֱע" target="םָלֹוע" />
+    <edge source="רַהַנ" target="ןֶדֶע" />
+    <edge source="ףַעַז" target="םָי" />
+    <edge source="רַעַש" target="תֶוָמ" />
+    <edge source="רַעַש" target="םָלֹוע" />
+    <edge source="תֶלֹקְשִמ" target="תֶמֱא" />
+    <edge source="תֶלֹקְשִמ" target="שֶמֶש" />
+    <edge source="ןֶבֶא" target="ןֵח" />
+    <edge source="בֶרֶח" target="לֵא" />
+    <edge source="בֵכֹש" target="רָפָע" />
+    <edge source="תַעַלֹוּת" target="תֵמ" />
+    <edge source="לָּדְגִמ" target="זֹע" />
+    <edge source="הָביִתְנ" target="הָקָדְצ" />
+    <edge source="הָביִתְנ" target="םֹולָש" />
+    <edge source="ליִבְש" target="דֹובָּכ" />
+    <edge source="ליִבְש" target="םיִּיַח" />
+    <edge source="ליִבְש" target="םֹולָש" />
+    <edge source="הֶסֲחַמ" target="רָשָּב" />
+    <edge source="קיֵח" target="ןֵמֹא" />
+    <edge source="תיִרֵאְש" target="שיִא" />
+    <edge source="תיִרֵאְש" target="הָמָחְלִמ" />
+    <edge source="הֶוֲעַנ" target="בֵל" />
+    <edge source="עּוּבַמ" target="םִיַמ" />
+    <edge source="עָּטַמ" target="שֹורְּב" />
+    <edge source="עָּטַמ" target="יִרְּפ" />
+    <edge source="עָּטַמ" target="ץֵע" />
+    <edge source="ץֵע" target="םיִּיַח" />
+    <edge source="ץֵע" target="םִיַמ" />
+    <edge source="ץֵע" target="םָלֹוע" />
+    <edge source="ץֵע" target="שֻאָּב" />
+    <edge source="רֶצֶנ" target="הֶלָע" />
+    <edge source="רֶצֶנ" target="שֶדֹק" />
+    <edge source="הָּיַח" target="רַעַי" />
+    <edge source="ףֹוע" target="ףָנָּכ" />
+    <edge source="טַהַל" target="שֵא" />
+    <edge source="זּוּב" target="רָהָנ" />
+    <edge source="הֶרֹוי" target="םֶשֶּג" />
+    <edge source="ַעּוּבַמ" target="םִיַמ" />
+    <edge source="הָרֵאְּפ" target="דֹובָּכ" />
+    <edge source="רּוצ" target="שיִמָּלַח" />
+    <edge source="זֹועָמ" target="םיִַנְתָמ" />
+    <edge source="קֵז" target="לֹושְכִמ" />
+    <edge source="קֵז" target="טָּפְשִמ" />
+    <edge source="ַעֵּלַבְמ" target="רָבָּד" />
+    <edge source="תֶשֹּב" target="הֶנָּפ" />
+    <edge source="תֶשֹּב" target="הֶנֹּפ" />
+    <edge source="אֵּפְרַמ" target="םָלֹוע" />
+    <edge source="זֹוּב" target="רַצ" />
+    <edge source="ליִלְּכ" target="דֹובָּכ" />
+    <edge source="הָרּובְג" target="אֶלֶּפ" />
+    <edge source="דֵש" target="הֵרֹה" />
+    <edge source="תַחַכֹוּת" target="קֶדֶצ" />
+    <edge source="רָמְשִמ" target="םֹולָש" />
+    <edge source="רָמְשִמ" target="קֶדֶצ" />
+    <edge source="טֶלֶּפ" target="שֶפֶנ" />
+    <edge source="ְךֶלֶמ" target="דָּבְכִנ" />
+    <edge source="גֶלֶּפ" target="םִיַמ" />
+    <edge source="רֶדֶח" target="לֹואְּש" />
+    <edge source="ַחֹּכ" target="הָרּובְּג" />
+    <edge source="יִגֲה" target="בֵל" />
+    <edge source="לָּזַמ" target="הָפָש" />
+    <edge source="הָבּושְּת" target="שֹונֱא" />
+    <edge source="הָבּושְּת" target="רָפָע" />
+    <edge source="ןֹוגֹי" target="הָמְשַא" />
+    <edge source="דֵּפְּסִמ" target="רֹורָמ" />
+    <edge source="לֶבֶנ" target="הָחְמִש" />
+    <edge source="לֵהֹא" target="דֹובָּכ" />
+    <edge source="הָפּוקְּת" target="םֹוי" />
+    <edge source="דָלֹומ" target="תֵע" />
+    <edge source="דָלֹומ" target="דֹוסְי" />
+    <edge source="דָלֹומ" target="ץֵק" />
+    <edge source="דָלֹומ" target="עַשֶי" />
+    <edge source="רֹודָמ" target="ְךֶשֹח" />
+    <edge source="לֵרָע" target="ןֶזֹא" />
+    <edge source="ןוטמ" target="חַּפ" />
+    <edge source="רַעַס" target="ַחּור" />
+    <edge source="ץֶפֶח" target="טוא" />
+    <edge source="םיִּמַצ" target="הָעְשִר" />
+    <edge source="הָעּומְש" target="אֶלֶּפ" />
+    <edge source="הָבּושְּת" target="ְךֶשֹח" />
+    <edge source="תֹבֲע" target="ַחּור" />
+    <edge source="הָמָר" target="ַחֹּכ" />
+    <edge source="זָֹר" target="היהנ" />
+    <edge source="רֹוסְחַמ" target="אָבָצ" />
+    <edge source="רֹוסְחַמ" target="וטוא" />
+    <edge source="ֲחּור" target="שֶדֹק" />
+    <edge source="שֶרֹש" target="הָלְוַע" />
+    <edge source="שֶרֹש" target="הָניִּב" />
+    <edge source="זֳר" target="היהנ" />
+    <edge source="רֶזֵע" target="רָשָּב" />
+    <edge source="הָּׁשִא" target="קיֵח" />
+    <edge source="רָאְש" target="הָוְרֶע" />
+    <edge source="הָּדֻקְּפ" target="דַע" />
+    <edge source="רֶשֹּכ" target="הָניִבְמ" />
+    <edge source="רָּתְסִנ" target="הָבָשֲחַמ" />
+    <edge source="ןֹובָנ" target="רָשָּב" />
+    <edge source="זֹוחָמ" target="ץֶפֶח" />
+    <edge source="הָאָלְפִנ" target="לֵא" />
+    <edge source="בֹקָע" target="בֵל" />
+    <edge source="טוא" target="שיִא" />
+    <edge source="לֵחֹנ" target="תֶמֱא" />
+    <edge source="קיִזְחַמ" target="הָעְשִר" />
+    <edge source="הָּלֻעְּפ" target="תֶמֱא" />
+    <edge source="הָפיֵא" target="תֶמֱא" />
+    <edge source="ריִש" target="שֹודָק" />
+    <edge source="ְךֵלֹה" target="םָדָא" />
+    <edge source="םָכָח" target="בֵל" />
+    <edge source="ַחֹכ" target="דָי" />
+    <edge source="חַמֶצ" target="הָמָדֲא" />
+    <edge source="םיִּקַמֲעַמ" target="םִיַמ" />
+    <edge source="לָכֲאַמ" target="ןֵש" />
+    <edge source="םּוחָל" target="ףֶשֶר" />
+    <edge source="םִיַנְזאֹמ" target="קֶדֶצ" />
+    <edge source="תֹורֹפְס" target="שיִא" />
+    <edge source="הֶפָי" target="הֶאְרַמ" />
+    <edge source="ףֶגֶנ" target="לֹושְכִמ" />
+    <edge source="הָקּושְּת" target="בָא" />
+    <edge source="לֵבָא" target="קֶדֶצ" />
+    <edge source="רֹוכְּב" target="הָמֵהְּב" />
+    <edge source="איִשָנ" target="םַע" />
+    <edge source="טֵפֹש" target="קֶדֶצ" />
+  </graph>
+</graphml>
