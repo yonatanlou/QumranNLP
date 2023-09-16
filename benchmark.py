@@ -16,7 +16,7 @@ def get_trigram_feature_vectors():
     all_trigram_samples = []
     labels = []
     for section in section_type:
-        book_to_parser = [] # "Data/yamls/all_sectarian_texts.yaml"
+        book_to_parser = ["1QS"] # "Data/yamls/all_sectarian_texts.yaml"
         data = parser_data.get_dss_data(book_to_parser, type='nonbib')
         for book_name, book_data in data.items():
             if len(book_data) < 300:
