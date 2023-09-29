@@ -10,7 +10,7 @@ from clusters import get_clusters_scores
 from utils import Transcriptor
 import csv
 import matplotlib.pyplot as plt
-
+CLUSTERS_RESULTS_PATH = "Results/Clusters_reconstruction"
 
 section_type = ['sectarian_texts', 'straddling_texts', 'non_sectarian_texts']
 
@@ -32,8 +32,8 @@ def main():
             continue
         if book_name in os.listdir("Results"):
             continue
-        if not os.path.exists(f"Results/Clusters/{book_name}"):
-            os.makedirs(f"Results/Clusters/{book_name}")
+        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}H/{book_name}"):
+            os.makedirs(f"{CLUSTERS_RESULTS_PATH}/{book_name}")
         samples, sample_names = parser_data.get_samples(book_data)
         if len(samples[-1]) < 50:
             samples = samples[:-1]
@@ -41,7 +41,7 @@ def main():
         bert_feature = bert.get_aleph_bert_features(samples, mode_idx=2)
         score, random_scores_mean, random_scores_std = get_clusters_scores(bert_feature, sample_names,
                                                                            linkage_criterion='average',
-                                                                           file_name=f"Results/Clusters/{book_name}/bert_100_samples_average",
+                                                                           file_name=f"{CLUSTERS_RESULTS_PATH}/{book_name}/bert_100_samples_average",
                                                                            title="Aleph Bert, 100 samples, Linkage Criterion: average")
         book_scores.append(score)
         book_scores.append(random_scores_mean)
@@ -50,7 +50,7 @@ def main():
         starr_features = starr.get_starr_features(samples)
         score, random_scores_mean, random_scores_std = get_clusters_scores(starr_features, sample_names,
                                                                            linkage_criterion='average',
-                                                                           file_name=f"Results/Clusters/{book_name}/starr_100_samples_average",
+                                                                           file_name=f"{CLUSTERS_RESULTS_PATH}/{book_name}/starr_100_samples_average",
                                                                            title="Starr, 100 samples, Linkage Criterion: average")
         book_scores.append(score)
         book_scores.append(random_scores_mean)
@@ -59,7 +59,7 @@ def main():
         trigram_feature = np.array([all_trigram_feature_vector[name] for name in sample_names])
         score, random_scores_mean, random_scores_std = get_clusters_scores(trigram_feature, sample_names,
                                                                            linkage_criterion='average',
-                                                                           file_name=f"Results/Clusters/{book_name}/Trigram_100_samples_average",
+                                                                           file_name=f"{CLUSTERS_RESULTS_PATH}/{book_name}/Trigram_100_samples_average",
                                                                            title="Trigram, 100 samples, Linkage Criterion: average")
         book_scores.append(score)
         book_scores.append(random_scores_mean)
@@ -70,7 +70,7 @@ def main():
     # for section in section_type:
     #
 
-    with open('Results/Clusters/scores.csv', 'w', encoding='UTF8', newline='') as f:
+    with open('{CLUSTERS_RESULTS_PATH}/scores.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['text_type', 'book_name', 'bert_feature_clusters_score',
                          'bert_feature_random_score_mean', 'bert_feature_random_score_std',
@@ -129,7 +129,7 @@ def get_bar_graph():
     scrolls_names = []
     significant_dict = {"bert": [], "trigram": [], "starr": []}
 
-    with open('Results/Clusters/scores.csv', newline='') as f:
+    with open(f'{CLUSTERS_RESULTS_PATH}/scores.csv', newline='') as f:
         reader = csv.DictReader(f)
         for raw in reader:
             if raw['book_name'] == "Musar Lamevin":
@@ -165,7 +165,9 @@ def get_bar_graph():
             vals = significant_dict[t][i]
             plt.text(rect.get_x() + rect.get_width() / 2.0, height + 0.003, vals, ha='center', va='bottom', fontsize=6)
 
-    plt.savefig('Results/Clusters/scores_bars')
+    plt.savefig(f'{CLUSTERS_RESULTS_PATH}/scores_bars')
 
 
-get_bar_graph()
+# get_bar_graph()
+
+main()
