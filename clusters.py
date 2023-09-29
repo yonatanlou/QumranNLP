@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.cluster.hierarchy import dendrogram
 import matplotlib.pyplot as plt
-# from sknetwork.hierarchy import dasgupta_score
+from sknetwork.hierarchy import dasgupta_score
 import sklearn.cluster as sk
 
 
