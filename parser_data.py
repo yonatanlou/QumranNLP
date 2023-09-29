@@ -1,8 +1,11 @@
+from collections import Counter
+
 import numpy as np
 from MorphParser import MorphParser
 from text_reader import read_text
 from utils import filter_data_by_field, read_yaml
-
+from logger import get_logger
+logger = get_logger()
 
 def split_data_to_samples(entries, n_words_per_feature):
     words = []
@@ -27,7 +30,7 @@ def split_data_to_samples(entries, n_words_per_feature):
     return [[w for word in sample for w in word] for sample in samples]
 
 
-def gen_samples(entries, n_words_per_feature):
+def gen_samples(entries, n_words_per_feature): #TODO understand what is it
     def count_words(entries):
         word_count = 0
         for entry in entries:
@@ -115,6 +118,9 @@ def get_dss_data(books_list, type='nonbib'):
     morph_parser = MorphParser(yaml_dir=yaml_dir)
 
     data, lines = read_text(text_file, yaml_dir)
+    print("book sizes:")
+    num_of_lines_per_book = "".join([f"{book[0]}: {book[1]}," for book in Counter(line[0] for line in lines).most_common()])
+    logger.info(num_of_lines_per_book)
     filter_field = 'scroll_name' if type == 'nonbib' else 'book_name'
     filtered_data = filter_data_by_field(filter_field, books_list, data)
     for book in books_list:

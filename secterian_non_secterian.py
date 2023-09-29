@@ -30,9 +30,9 @@ def main():
         if len(book_data) < 500:
             print(f"{book_name} with size: {len(book_data)}")
             continue
-        if book_name in os.listdir("Results"):
+        if book_name in os.listdir(f"{CLUSTERS_RESULTS_PATH}"):
             continue
-        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}H/{book_name}"):
+        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}/{book_name}"):
             os.makedirs(f"{CLUSTERS_RESULTS_PATH}/{book_name}")
         samples, sample_names = parser_data.get_samples(book_data)
         if len(samples[-1]) < 50:
@@ -114,7 +114,7 @@ def get_trigram_feature_vectors(data):
     most_frequent_trigram = sorted([(v, k) for k, v in all_trigram_counter.items() if k.strip() != ''], reverse=True)
     most_frequent_trigram = [most_frequent_trigram[i][1] for i in range(500)]
 
-    update_trigram_samples = np.array([[samples.get(t, 0) for t in most_frequent_trigram]
+    update_trigram_samples = np.array([[samples.get(trigram, 0) for trigram in most_frequent_trigram]
                                        for samples in all_trigram_samples])
     means_trigram = np.mean(update_trigram_samples, axis=0)
     std_trigram = np.std(update_trigram_samples, axis=0)
