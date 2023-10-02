@@ -7,6 +7,8 @@ from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 import torch
 
+from constants import TRIGRAM_FEATURE_LENGTH
+
 section_type = ['non_sectarian_texts', 'sectarian_texts']
 
 
@@ -32,7 +34,7 @@ def get_trigram_feature_vectors():
             all_trigram_names.extend([sample_names[i] for i in range(len(sample_names))])
             labels.extend([section for _ in range(len(sample_names))])
     most_frequent_trigram = sorted([(v, k) for k, v in all_trigram_counter.items() if k != ''], reverse=True)
-    most_frequent_trigram = [most_frequent_trigram[i][1] for i in range(500)]
+    most_frequent_trigram = [most_frequent_trigram[i][1] for i in range(TRIGRAM_FEATURE_LENGTH)]
 
     update_trigram_samples = np.array([[samples.get(t, 0) for t in most_frequent_trigram]
                                        for samples in all_trigram_samples])
