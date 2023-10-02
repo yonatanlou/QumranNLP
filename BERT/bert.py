@@ -36,8 +36,8 @@ def get_aleph_bert_features(samples, mode_idx):
     preprocessed_samples = aleph_bert_preprocessing(samples)
     alephbert_tokenizer = BertTokenizer.from_pretrained('onlplab/alephbert-base')
     alephbert = BertModel.from_pretrained('onlplab/alephbert-base', output_hidden_states=True)
-    pretrained_preds = get_preds(preprocessed_samples, alephbert_tokenizer, alephbert)
-    mode = modes[mode_idx]
+    pretrained_preds = get_preds(preprocessed_samples, alephbert_tokenizer, alephbert) #TODO understand
+    mode = modes[mode_idx] #TODO make it configurable (and understand)
     sentence_vectors = get_sentence_vectors(pretrained_preds, preprocessed_samples,
                                             wrd_vec_mode=mode[0],
                                             wrd_vec_top_n_layers=mode[1],
