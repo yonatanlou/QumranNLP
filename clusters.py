@@ -60,7 +60,7 @@ def get_clusters_scores(features, sample_names, linkage_criterion, file_name, ti
         adjacency_matrix[i, i + 1] = 1
         adjacency_matrix[i + 1, i] = 1
 
-    score = plot_dendrogram(model, sample_names, adjacency_matrix, title, file_name)
+    score = plot_dendrogram(model, sample_names, adjacency_matrix, title, file_name) #TODO Proceed from here
     print(f"clusters scores: {score}")
 
     random_scores = []
