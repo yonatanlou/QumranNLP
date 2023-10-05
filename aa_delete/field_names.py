@@ -1,4 +1,4 @@
-class FieldNames:
+class FieldNames: #TODO can i delete?
     def __init__(self):
         self.source_line_num = 'source_line_num'
         self.frag_label = 'frag_label'

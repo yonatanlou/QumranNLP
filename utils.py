@@ -12,8 +12,8 @@ def read_yaml(fileName):
 
 
 def filter_data_by_field(field, books_list, unfiltered_data):
-    # c_to_book = {v: k for k, l in books_list.items() for v in l}
-    c_to_book = {b: b for b in books_list}
+    c_to_book = {v: k for k, l in books_list.items() for v in l}
+    # c_to_book = {b: b for b in books_list}
     filtered_data = defaultdict(list)
     for entry in unfiltered_data:
         if entry[field] in c_to_book.keys():

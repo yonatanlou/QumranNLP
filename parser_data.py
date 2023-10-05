@@ -5,15 +5,17 @@ from MorphParser import MorphParser
 from text_reader import read_text
 from utils import filter_data_by_field, read_yaml
 from logger import get_logger
-logger = get_logger()
+
+logger = get_logger(__name__)
+
 
 def split_data_to_samples(entries, n_words_per_feature):
     words = []
     word = []
     word_num = None
     for entry in entries:
-        if entry['word_line_num'] != word_num or 'sp' not in entry['parsed_morph']:
-            if entry['transcript'] == '.':
+        if entry["word_line_num"] != word_num or "sp" not in entry["parsed_morph"]:
+            if entry["transcript"] == ".":
                 word.append(entry)
                 words.append(word)
                 word = []
@@ -21,46 +23,52 @@ def split_data_to_samples(entries, n_words_per_feature):
             if len(word) != 0:
                 words.append(word)
             word = []
-            word_num = entry['word_line_num']
-            if 'sp' in entry['parsed_morph']:
+            word_num = entry["word_line_num"]
+            if "sp" in entry["parsed_morph"]:
                 word.append(entry)
             continue
         word.append(entry)
-    samples = [words[i:i + n_words_per_feature] for i in range(0, len(words), n_words_per_feature)]
+    samples = [
+        words[i : i + n_words_per_feature]
+        for i in range(0, len(words), n_words_per_feature)
+    ]
     return [[w for word in sample for w in word] for sample in samples]
 
 
-def gen_samples(entries, n_words_per_feature): #TODO understand what is it
+def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
     def count_words(entries):
         word_count = 0
         for entry in entries:
-            if entry['sub_word_num'] == '1' and 'sp' in entry['parsed_morph']:
+            if entry["sub_word_num"] == "1" and "sp" in entry["parsed_morph"]:
                 word_count += 1
         return word_count
 
     def gen_sample(entries):
         curr_word_entries = []
         for e, entry in enumerate(entries):
-            if 'sp' not in entry['parsed_morph']:
+            if "sp" not in entry["parsed_morph"]:
                 curr_word_entries = []
                 continue
             else:
-                if e != len(entries)-1 and entries[e+1]['word_line_num'] == entries[e]['word_line_num']:
+                if (
+                    e != len(entries) - 1
+                    and entries[e + 1]["word_line_num"] == entries[e]["word_line_num"]
+                ):
                     curr_word_entries.append(entry)
-                    if entries[e+1]['transcript'] == '.':
-                        curr_word_entries.append(entries[e+1])
+                    if entries[e + 1]["transcript"] == ".":
+                        curr_word_entries.append(entries[e + 1])
                 else:
                     curr_word_entries.append(entry)
-                    if entries[e+1]['transcript'] == '.':
-                        curr_word_entries.append(entries[e+1])
+                    if entries[e + 1]["transcript"] == ".":
+                        curr_word_entries.append(entries[e + 1])
                     yield curr_word_entries
                     curr_word_entries = []
 
     num_words = count_words(entries)
-    num_samples = np.floor(num_words/n_words_per_feature)
+    num_samples = np.floor(num_words / n_words_per_feature)
     sample_generator = gen_sample(entries)
     finish = False
-    i=0
+    i = 0
     while not finish:
         curr_sample = []
         for j in range(n_words_per_feature):
@@ -112,21 +120,26 @@ def get_samples(book_data, word_per_samples=100):
     return samples, sample_names
 
 
-def get_dss_data(books_list, type='nonbib'):
+def get_dss_data(books_list, type="nonbib"):
     text_file = f"Data/texts/abegg/dss_{type}.txt"
     yaml_dir = "Data/yamls"
     morph_parser = MorphParser(yaml_dir=yaml_dir)
 
     data, lines = read_text(text_file, yaml_dir)
     print("book sizes:")
-    num_of_lines_per_book = "".join([f"{book[0]}: {book[1]}," for book in Counter(line[0] for line in lines).most_common()])
+    num_of_lines_per_book = "".join(
+        [
+            f"{book[0]}: {book[1]},"
+            for book in Counter(line[0] for line in lines).most_common()
+        ]
+    )
     logger.info(num_of_lines_per_book)
-    filter_field = 'scroll_name' if type == 'nonbib' else 'book_name'
+    filter_field = "scroll_name" if type == "nonbib" else "book_name"
     filtered_data = filter_data_by_field(filter_field, books_list, data)
     for book in books_list:
         print(book)
         for entry in filtered_data[book]:
-            entry['parsed_morph'] = morph_parser.parse_morph(entry['morph'])
+            entry["parsed_morph"] = morph_parser.parse_morph(entry["morph"])
     return filtered_data
 
 
