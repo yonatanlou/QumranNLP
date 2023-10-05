@@ -9,7 +9,7 @@ from sklearn import linear_model
 from sklearn.metrics import roc_auc_score
 from matplotlib import pyplot as plt
 
-from constants import TRIGRAM_FEATURE_LENGTH
+from hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
 
 section_type = ['non_sectarian_texts', 'sectarian_texts']
 

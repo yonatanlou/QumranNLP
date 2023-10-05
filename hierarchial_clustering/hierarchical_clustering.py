@@ -11,9 +11,12 @@ from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
+from os.path import dirname, abspath
 
 np.random.seed(42)
-CLUSTERS_RESULTS_PATH = "Results/Clusters_reconstruction"
+
+base_dir = dirname(dirname(abspath(__file__)))
+CLUSTERS_RESULTS_PATH = f"{base_dir}/Results/Clusters_reconstruction"
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
 BOOKS_TO_RUN_ON = [
@@ -41,7 +44,7 @@ BOOKS_TO_RUN_ON = [
 
 def main():
     all_scores = []
-    book_yml = utils.read_yaml("Data/yamls/all_sectarian_texts.yaml")
+    book_yml = utils.read_yaml(f"{base_dir}/Data/yamls/all_sectarian_texts.yaml")
     if any(BOOKS_TO_RUN_ON):
         book_dict = {
             k: v
@@ -55,16 +58,18 @@ def main():
     data = parser_data.get_dss_data(book_dict, type="nonbib")
     all_trigram_feature_vector = get_trigram_feature_vectors(data)
     for book_name, book_data in data.items():
-        print(f"start parser book: {book_name}")
+        if book_name in os.listdir(f"{CLUSTERS_RESULTS_PATH}"):
+            print(f"{book_name} already have results")
+            continue
+        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}/{book_name}"):
+            os.makedirs(f"{CLUSTERS_RESULTS_PATH}/{book_name}")
+        print(f"start parse book: {book_name}")
         section = book_to_section[book_name]
         book_scores = {"text_type": section, "book_name": book_name}
         if len(book_data) < TRIGRAM_FEATURE_LENGTH:
             print(f"{book_name} with size: {len(book_data)}")
             continue
-        if book_name in os.listdir(f"{CLUSTERS_RESULTS_PATH}"):
-            continue
-        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}/{book_name}"):
-            os.makedirs(f"{CLUSTERS_RESULTS_PATH}/{book_name}")
+
         samples, sample_names = parser_data.get_samples(
             book_data, word_per_samples=WORD_PER_SAMPLES
         )
@@ -118,7 +123,7 @@ def main():
             word_per_samples=WORD_PER_SAMPLES,
         )
         bert_concat_trigram = np.hstack([trigram_features, bert_features, starr_features])
-        print(book_scores[""])
+        print(book_scores["book_name"])
         book_scores = get_clusters_scores(
             bert_concat_trigram,
             sample_names,
@@ -157,7 +162,7 @@ def save_results(results, file_name):
 
 
 def aleph_bert_preprocessing(book_words):
-    transcriptor = Transcriptor(f"Data/yamls/heb_transcript.yaml")
+    transcriptor = Transcriptor(f"../Data/yamls/heb_transcript.yaml")
     books_transcript_words = []
     for word in book_words:
         word_list = []
@@ -276,5 +281,5 @@ def get_bar_graph(feature_names):
     plt.savefig(f"{CLUSTERS_RESULTS_PATH}/scores_bars")
 
 
-# main()
+main()
 get_bar_graph(["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"])
