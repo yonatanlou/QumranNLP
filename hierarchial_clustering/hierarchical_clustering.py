@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 np.random.seed(42)
-CLUSTERS_RESULTS_PATH = "Results/Clusters_reconstruction"
+CLUSTERS_RESULTS_PATH = "../Results/Clusters_reconstruction"
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
 BOOKS_TO_RUN_ON = [
@@ -41,7 +41,7 @@ BOOKS_TO_RUN_ON = [
 
 def main():
     all_scores = []
-    book_yml = utils.read_yaml("Data/yamls/all_sectarian_texts.yaml")
+    book_yml = utils.read_yaml("../Data/yamls/all_sectarian_texts.yaml")
     if any(BOOKS_TO_RUN_ON):
         book_dict = {
             k: v
@@ -157,7 +157,7 @@ def save_results(results, file_name):
 
 
 def aleph_bert_preprocessing(book_words):
-    transcriptor = Transcriptor(f"Data/yamls/heb_transcript.yaml")
+    transcriptor = Transcriptor(f"../Data/yamls/heb_transcript.yaml")
     books_transcript_words = []
     for word in book_words:
         word_list = []

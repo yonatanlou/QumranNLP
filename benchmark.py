@@ -5,9 +5,8 @@ from collections import Counter
 from sklearn import svm, linear_model
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
-import torch
 
-from constants import TRIGRAM_FEATURE_LENGTH
+from hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
 
 section_type = ['non_sectarian_texts', 'sectarian_texts']
 
