@@ -1,18 +1,14 @@
-from os import path, makedirs
+from os import path
 import sys
 from pathlib import Path
 
-import parser_data
+from src.parsers import parser_data
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
-from text_reader import read_text
-from MorphParser import MorphParser
-import re
 import numpy as np
 from sknetwork.hierarchy import dasgupta_score
 import sklearn.cluster as sk
-from features_keys import Feature, feature_list, methods_name_dict, sum_entries
-
+from features_keys import feature_list
 
 n_randomizations = 5000
 

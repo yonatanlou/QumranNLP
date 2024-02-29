@@ -1,9 +1,9 @@
 from collections import Counter
 
 import numpy as np
-from MorphParser import MorphParser
+from src.parsers.MorphParser import MorphParser
 from config import BASE_DIR
-from text_reader import read_text
+from src.parsers.text_reader import read_text
 from utils import filter_data_by_field, read_yaml
 from logger import get_logger
 

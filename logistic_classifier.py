@@ -3,14 +3,14 @@ from collections import Counter, defaultdict
 
 from tqdm import tqdm
 from sklearn.decomposition import PCA
-import parser_data
-from BERT import bert
+from src.parsers import parser_data
+from src.features.BERT import bert
 from sklearn import linear_model
 from sklearn.metrics import roc_auc_score
 from matplotlib import pyplot as plt
 
 from config import BASE_DIR
-from hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
+from src.hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
 
 section_type = ['non_sectarian_texts', 'sectarian_texts']
 

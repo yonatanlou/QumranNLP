@@ -1,7 +1,7 @@
 import re
-from Starr.features_keys import Feature, feature_list, methods_name_dict, sum_entries
+from src.features.Starr.features_keys import Feature, feature_list, methods_name_dict, sum_entries
 import numpy as np
-from MorphParser import MorphParser
+from src.parsers.MorphParser import MorphParser
 
 alphabet_chars = re.compile('[^a-zA-Z]')
 modes = presets = ['average', 'ward']

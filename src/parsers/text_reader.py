@@ -1,6 +1,6 @@
 
 import collections
-from MorphParser import FieldNames
+from src.parsers.MorphParser import FieldNames
 from logger import get_logger
 
 logger = get_logger(__name__)

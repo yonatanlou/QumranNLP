@@ -16,7 +16,7 @@ def get_verbs_categories(filtered_data):
     second_type_v = [x for x in tmp if x['morph'][0] == 'V' and len(x['morph'].split('/')[0]) == 3]
     [options[x["morph"][1]].append(x['transcript']) for x in second_type_v]
     for k, x in options.items():
-        with open(f"Results/CP/P_VALUE/bible_verbs/{k}.txt", 'w') as f:
+        with open(f"results/CP/P_VALUE/bible_verbs/{k}.txt", 'w') as f:
             f.write(', '.join(list(set(x))))
 
 

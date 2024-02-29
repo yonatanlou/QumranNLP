@@ -1,11 +1,11 @@
 import os
 from collections import Counter
 import numpy as np
-import parser_data
+from src.parsers import parser_data
 import utils
-from BERT import bert
-from BERT.bert import chars_to_delete
-from Starr import starr
+from src.features.BERT import bert
+from src.features.BERT.bert import chars_to_delete
+from src.features.Starr import starr
 from clusters import get_clusters_scores
 from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
@@ -15,7 +15,7 @@ from config import BASE_DIR
 np.random.seed(42)
 
 
-RESULTS_PATH = f"{BASE_DIR}/Results/Clusters_reconstruction"
+RESULTS_PATH = f"{BASE_DIR}/results/Clusters_reconstruction"
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
 BOOKS_TO_RUN_ON = [

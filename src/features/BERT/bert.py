@@ -1,5 +1,5 @@
 from transformers import BertModel, BertTokenizer
-from BERT.bert_utils import get_preds, get_sentence_vectors
+from src.features.BERT.bert_utils import get_preds, get_sentence_vectors
 import re
 
 from config import BASE_DIR

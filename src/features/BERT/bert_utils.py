@@ -188,7 +188,7 @@ def get_word_vectors(hidden_layers_form_arch, token_index=None, mode='average', 
 def get_sent_vectors(input_states, att_mask):
     '''
     get a sentence vector by averaging over all word vectors -> this could come from any layers or averaged themselves (see get_all_token_vectors function)
-    input_states: [batch_size x seq_len x vector_dims] -> e.g. Results from  hidden stats from a particular layer
+    input_states: [batch_size x seq_len x vector_dims] -> e.g. results from  hidden stats from a particular layer
     att_mask: attention mask passed should have already maseked the special tokens too i.e. CLS/SEP/<s>/special tokens masked out with 0 -> [batch_size x max_seq_length]
     ref: https://stackoverflow.com/questions/61956893/how-to-mask-a-3d-tensor-with-2d-mask-and-keep-the-dimensions-of-original-vector
     '''
@@ -218,7 +218,7 @@ def get_sentence_vectors(model_output, sentences, wrd_vec_mode='concat',
     '''
     Get vectors for all sentences and visualize them based on cosine distance between them
 
-    model_output: model Results extracted as a dictionary from get_preds function
+    model_output: model results extracted as a dictionary from get_preds function
     sentences_and_labels: tuple of sentence and labels_ids
     att_msk: attention mask that also marks the special tokens (CLS/SEP etc.) as 0
     mode=
@@ -240,10 +240,10 @@ def get_sentence_vectors(model_output, sentences, wrd_vec_mode='concat',
         sent_vecs = get_sent_vectors(word_vecs_across_sent, model_output['attention_masks_without_special_tok'])
     else:
         title_sent_emb = "First tok (CLS) vector; Sentence Distance: Cosine"
-        # Get the pooled Results from the first token (e.g. CLS token in case of BERT)
+        # Get the pooled results from the first token (e.g. CLS token in case of BERT)
 
         # Note from https://huggingface.co/transformers/model_doc/bert.html#bertmodel
-        # This Results is usually not a good summary of the semantic content of the
+        # This results is usually not a good summary of the semantic content of the
         # input, you’re often better with averaging or
         # pooling the sequence of hidden-states for the whole input sequence.
         sent_vecs = model_output['pooled_output']  # vector

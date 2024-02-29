@@ -2,12 +2,11 @@ import csv
 
 import cp_statistics
 from config import BASE_DIR
-from parser_data import get_dss_data
-from collections import Counter
+from src.parsers.parser_data import get_dss_data
 from scipy.stats import hypergeom
 from utils import Transcriptor
 
-RESULT_PATH = "Results/CP/P_VALUE"
+RESULT_PATH = "../../results/CP/P_VALUE"
 
 BIBLE_LIST = ['Deut', 'Prov', 'Ps']
 SCROLLS_LIST = ['4Q417', '4Q418', '4Q423', '1Q26', '1QHa', '4Q418a', '4Q416', '4Q418b', '4Q415', '1QS',

@@ -9,7 +9,7 @@ n_randomizations = 1000
 modes = [['average', 4, 'average_word_vectors', 'Average of words embeddings of average 4 last hidden layers', 'average'],
             ['concat', 4, 'average_word_vectors', 'Average of words embeddings of concatenation of 4 last hidden layers', 'average'],
            ['last', 1, 'average_word_vectors', 'Average of words embeddings of last hidden layer', 'average'],
-           ['', '', 'CLS embedding', 'Pooled Results of CLS token', 'average']]
+           ['', '', 'CLS embedding', 'Pooled results of CLS token', 'average']]
 
 
 

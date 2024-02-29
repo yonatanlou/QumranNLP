@@ -1,5 +1,5 @@
-from text_reader import read_text
-from MorphParser import MorphParser
+from src.parsers.text_reader import read_text
+from src.parsers.MorphParser import MorphParser
 from os import path
 from utils import root_path, filter_data_by_field, read_yaml
 from collections import defaultdict, Counter
@@ -7,7 +7,7 @@ import re
 import pandas as pd
 import numpy as np
 alphabet_chars = re.compile('[^a-zA-Z]')
-from Starr.features_keys import sum_entries, Feature, feature_list, methods_name_dict
+from src.features.Starr.features_keys import sum_entries, Feature, feature_list, methods_name_dict
 
 
 def check_pronoun(entry):

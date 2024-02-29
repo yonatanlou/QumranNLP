@@ -1,11 +1,9 @@
 import torch
 from torch import nn
-from BERT.bert import aleph_bert_preprocessing
 from transformers import BertModel, BertTokenizer
 import numpy as np
 from torch.optim import Adam
 from torchvision import transforms
-import parser_data
 from tqdm import tqdm
 
 

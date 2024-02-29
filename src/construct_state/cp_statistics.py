@@ -4,7 +4,7 @@ from collections import Counter, defaultdict
 import numpy as np
 from matplotlib import pyplot as plt
 import networkx as nx
-import parser_data
+from src.parsers import parser_data
 from config import BASE_DIR
 
 
@@ -126,7 +126,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     x_lim = max(len(first_statistic['MultRec']), len(second_statistic['MultRec']))
     axs[0].set_xlim(-0.5, x_lim)
     axs[1].set_xlim(-0.5, x_lim)
-    plt.savefig(f"Results/CP/{date}/Mult_Rec_{first_name}_{second_name}")
+    plt.savefig(f"results/CP/{date}/Mult_Rec_{first_name}_{second_name}")
 
     fig, axs = plt.subplots(ncols=2, sharex='col', sharey='row')
     fig.suptitle(f'Mult-Regs:{first_name} v.s {second_name}')
@@ -135,7 +135,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     x_lim = max(len(first_statistic['Multregs']), len(second_statistic['Multregs']))
     axs[0].set_xlim(-0.5, x_lim)
     axs[1].set_xlim(-0.5, x_lim)
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/Mult_Regs_{first_name}_{second_name}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/Mult_Regs_{first_name}_{second_name}")
 
     plt.figure(figsize=(15, 10))
     plt.title(f"30 most frequent regens {first_name}")
@@ -143,7 +143,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     word_counter = sorted(word_counter, reverse=True, key=lambda x: x[1])
     plt.bar([w[0] for w in word_counter[:30]], [w[1] / first_statistic['construct_count'] for w in word_counter[:30]])
     plt.xticks(rotation=50)
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/regen_{first_name}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/regen_{first_name}")
 
     plt.figure(figsize=(15, 10))
     plt.title(f"30 most frequent regen {second_name}")
@@ -151,7 +151,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     word_counter = sorted(word_counter, reverse=True, key=lambda x: x[1])
     plt.bar([w[0]for w in word_counter[:30]], [w[1] / second_statistic['construct_count'] for w in word_counter[:30]])
     plt.xticks(rotation=50)
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/regen_{second_name}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/regen_{second_name}")
 
     plt.figure(figsize=(15, 10))
     plt.title(f"30 most frequent rectums {first_name}")
@@ -159,7 +159,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     word_counter = sorted(word_counter, reverse=True, key=lambda x: x[1])
     plt.bar([w[0] for w in word_counter[:30]], [w[1] / first_statistic['construct_count'] for w in word_counter[:30]])
     plt.xticks(rotation=50)
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/rectum_{first_name}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/rectum_{first_name}")
 
     plt.figure(figsize=(15, 10))
     plt.title(f"30 most frequent rectums {second_name}")
@@ -167,7 +167,7 @@ def create_graphs(first_statistic, second_statistic, first_name, second_name, da
     word_counter = sorted(word_counter, reverse=True, key=lambda x: x[1])
     plt.bar([w[0] for w in word_counter[:30]], [w[1] / second_statistic['construct_count'] for w in word_counter[:30]])
     plt.xticks(rotation=50)
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/rectum_{second_name}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/rectum_{second_name}")
 
 
 def get_statistics(date):
@@ -192,7 +192,7 @@ def get_statistics(date):
         statistic["book"] = book
         book_statistics.append(statistic)
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/books_statistic.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/books_statistic.csv', 'w') as f:
         fieldnames = ['book'] + properties
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -218,14 +218,14 @@ def get_statistics(date):
     scroll_statistic = get_statistic_for_group(map_list, properties_list, scroll, normalize_scrolls)
     create_graphs(bible_statistic, scroll_statistic, "Bible", "Scrolls", date)
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/prose_poem.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/prose_poem.csv', 'w') as f:
         fieldnames = ['property', 'prose', 'poem']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for p in properties:
             writer.writerow({'property': p, 'prose': prose_statistic[p], 'poem': poem_statistic[p]})
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/bible_scrolls.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/bible_scrolls.csv', 'w') as f:
         fieldnames = ['property', 'bible', 'scrolls']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -272,7 +272,7 @@ def tmp(map_list, properties_list, is_bible, date):
     plt.xticks(rotation=50)
     plt.legend()
     plt.title(f"10 most frequency words from each category: {'bible' if is_bible else 'scrolls'}")
-    plt.savefig(f"{BASE_DIR}/Results/CP/{date}/most_frequency_words_{'bible' if is_bible else 'scrolls'}")
+    plt.savefig(f"{BASE_DIR}/results/CP/{date}/most_frequency_words_{'bible' if is_bible else 'scrolls'}")
 
 
 def build_network(date):
@@ -307,25 +307,25 @@ def build_network(date):
     for edge, weight in edge_to_weight_for_graph.items():
         G.add_edge(edge[0], edge[1], weight=weight)
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/bible_node_list.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/bible_node_list.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["node_name", "degree"])
         for k, v in degrees_dict.items():
             writer.writerow([k, v])
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/bible_words_statistic.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/bible_words_statistic.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["node_name", "regen", "rectum", "regen/total"])
         for v in G.nodes:
             writer.writerow([v, G.out_degree[v], G.in_degree[v], G.out_degree[v] / (G.out_degree[v] + G.in_degree[v])])
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/bible_edge_list.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/bible_edge_list.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["edge_name", "weight"])
         for k, v in edge_weights.items():
             writer.writerow([k, v])
-    nx.write_graphml_lxml(G, f"{BASE_DIR}/Results/CP/{date}/bible.graphml")
-    nx.write_gexf(G, f"{BASE_DIR}/Results/CP/{date}/bible.gexf")
+    nx.write_graphml_lxml(G, f"{BASE_DIR}/results/CP/{date}/bible.graphml")
+    nx.write_gexf(G, f"{BASE_DIR}/results/CP/{date}/bible.gexf")
 
     print(len(degrees_dict), len(edge_weights))
 
@@ -357,26 +357,26 @@ def build_network(date):
     for edge, weight in edge_to_weight_for_graph.items():
         G.add_edge(edge[0], edge[1], weight=weight)
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/scrolls_node_list.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/scrolls_node_list.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["node_name", "degree"])
         for k, v in degrees_dict.items():
             writer.writerow([k, v])
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/scrolls_words_statistic.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/scrolls_words_statistic.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["node_name", "regen", "rectum", "regen/total"])
         for v in G.nodes:
             writer.writerow([v, G.out_degree[v], G.in_degree[v], G.out_degree[v] / (G.out_degree[v] + G.in_degree[v])])
 
-    with open(f'{BASE_DIR}/Results/CP/{date}/scrolls_edge_list.csv', 'w') as f:
+    with open(f'{BASE_DIR}/results/CP/{date}/scrolls_edge_list.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(["edge_name", "weight"])
         for k, v in edge_weights.items():
             writer.writerow([k, v])
 
-    nx.write_graphml_lxml(G, f"{BASE_DIR}/Results/CP/{date}/scrolls.graphml")
-    nx.write_gexf(G, f"{BASE_DIR}/Results/CP/{date}/scrolls.gexf")
+    nx.write_graphml_lxml(G, f"{BASE_DIR}/results/CP/{date}/scrolls.graphml")
+    nx.write_gexf(G, f"{BASE_DIR}/results/CP/{date}/scrolls.gexf")
 
     print(len(degrees_dict), len(edge_weights))
 

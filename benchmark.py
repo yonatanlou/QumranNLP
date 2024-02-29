@@ -1,12 +1,12 @@
 import numpy as np
-import parser_data
-from BERT import bert
+from src.parsers import parser_data
+from src.features.BERT import bert
 from collections import Counter
 from sklearn import svm, linear_model
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 
-from hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
+from src.hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
 
 section_type = ['non_sectarian_texts', 'sectarian_texts']
 
