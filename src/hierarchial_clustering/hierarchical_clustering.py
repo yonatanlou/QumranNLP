@@ -1,8 +1,9 @@
 import os
 from collections import Counter
 import numpy as np
+
+from src.hierarchial_clustering.clustering_utils import generate_books_dict
 from src.parsers import parser_data
-import utils
 from src.features.BERT import bert
 from src.features.BERT.bert import chars_to_delete
 from src.features.Starr import starr
@@ -184,14 +185,7 @@ def get_bar_graph(feature_names, results_path):
 
 def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
     all_scores = []
-    book_yml = utils.read_yaml(f"{BASE_DIR}/data/yamls/{yaml_book_file}")
-    if any(books_to_run):
-        book_dict = {
-            k: v for d in book_yml.values() for k, v in d.items() if k in books_to_run
-        }
-    else:
-        book_dict = {k: v for d in book_yml.values() for k, v in d.items()}
-    book_to_section = {b: s for s, d in book_yml.items() for b in d}
+    book_dict, book_to_section = generate_books_dict(books_to_run, yaml_book_file)
     data = parser_data.get_dss_data(book_dict, type=bib_type)
     all_trigram_feature_vector = get_trigram_feature_vectors(data)
     if not os.path.exists(f"{results_path}"):
