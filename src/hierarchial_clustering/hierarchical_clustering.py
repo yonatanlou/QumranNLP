@@ -6,7 +6,7 @@ import utils
 from src.features.BERT import bert
 from src.features.BERT.bert import chars_to_delete
 from src.features.Starr import starr
-from clusters import get_clusters_scores
+from clustering import get_clusters_scores
 from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
 import matplotlib.pyplot as plt
@@ -75,7 +75,7 @@ def aleph_bert_preprocessing(book_words):
     return books_transcript_words
 
 
-def get_trigram_feature_vectors(data):
+def get_trigram_feature_vectors(data, feature_length):
     all_trigram_counter = Counter()
     all_trigram_names = []
     all_trigram_samples = []
@@ -106,7 +106,7 @@ def get_trigram_feature_vectors(data):
     )
     #TODO not sure about it
     most_frequent_trigram = [
-        most_frequent_trigram[i][1] for i in range(TRIGRAM_FEATURE_LENGTH)
+        most_frequent_trigram[i][1] for i in range(feature_length)
     ]
 
     update_trigram_samples = np.array(
@@ -182,7 +182,7 @@ def get_bar_graph(feature_names, results_path):
     plt.savefig(f"{results_path}/scores_bars")
 
 
-def main(yaml_book_file, books_to_run, bib_type, results_path):
+def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
     all_scores = []
     book_yml = utils.read_yaml(f"{BASE_DIR}/data/yamls/{yaml_book_file}")
     if any(books_to_run):
@@ -205,7 +205,7 @@ def main(yaml_book_file, books_to_run, bib_type, results_path):
         print(f"start parse book: {book_name}")
         section = book_to_section[book_name]
         book_scores = {"text_type": section, "book_name": book_name}
-        if len(book_data) < TRIGRAM_FEATURE_LENGTH:
+        if len(book_data) < feature_length:
             print(f"{book_name} with size: {len(book_data)}")
             continue
 
@@ -281,7 +281,7 @@ def main(yaml_book_file, books_to_run, bib_type, results_path):
     save_results(results, f"{results_path}/scores.csv")
 
 
-main("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib", results_path=RESULTS_PATH)
+main("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib", RESULTS_PATH, TRIGRAM_FEATURE_LENGTH)
 get_bar_graph(
     ["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"]
 )
