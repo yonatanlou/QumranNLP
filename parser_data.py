@@ -125,15 +125,14 @@ def get_dss_data(books_list, type="nonbib"):
     yaml_dir = "Data/yamls"
     morph_parser = MorphParser(yaml_dir=yaml_dir)
 
-    data, lines = read_text(text_file, yaml_dir)
-    print("book sizes:")
+    data, lines = read_text(text_file)
     num_of_lines_per_book = "".join(
         [
             f"{book[0]}: {book[1]},"
             for book in Counter(line[0] for line in lines).most_common()
         ]
     )
-    logger.info(num_of_lines_per_book)
+    logger.info(f"book_sizes: {num_of_lines_per_book}")
     filter_field = "scroll_name" if type == "nonbib" else "book_name"
     filtered_data = filter_data_by_field(filter_field, books_list, data)
     for book in books_list:

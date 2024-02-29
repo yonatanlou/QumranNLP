@@ -1,8 +1,9 @@
-from utils import read_yaml
-from os import path
+
 import collections
 from MorphParser import FieldNames
+from logger import get_logger
 
+logger = get_logger(__name__)
 line_fields_names = FieldNames()
 
 
@@ -12,7 +13,7 @@ def verseNum(text):
     return (text[0:-1], text[-1])
 
 
-def read_text(text_file, yaml_dir):
+def read_text(text_file):
     XC = "\u001b"
     iBIBINFO = "bibinfo"
     iSCROLLINFO = "scrollinfo"
@@ -47,9 +48,12 @@ def read_text(text_file, yaml_dir):
     line_num = 0
     parsed_data = []
     lines = []
-
+    line_counter = 0
     with open(text_file) as f:
         for line in f:
+            line_counter += 1
+            if line_counter % 10_000 == 0:
+                logger.info(f"processed {line_counter} lines")
             line_num += 1
             # "check for another language (like greek or paleo hebrew'
             if XC in line:

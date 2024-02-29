@@ -11,12 +11,11 @@ from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
-from os.path import dirname, abspath
 
 np.random.seed(42)
 
-base_dir = dirname(dirname(abspath(__file__)))
-CLUSTERS_RESULTS_PATH = f"{base_dir}/Results/Clusters_reconstruction"
+base_dir = os.path.abspath("")
+RESULTS_PATH = f"{base_dir}/Results/Clusters_reconstruction"
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
 BOOKS_TO_RUN_ON = [
@@ -40,104 +39,6 @@ BOOKS_TO_RUN_ON = [
     "Collections_of_psalms",
     "Book_of_Jubilees",
 ]
-
-
-def main():
-    all_scores = []
-    book_yml = utils.read_yaml(f"{base_dir}/Data/yamls/all_sectarian_texts.yaml")
-    if any(BOOKS_TO_RUN_ON):
-        book_dict = {
-            k: v
-            for d in book_yml.values()
-            for k, v in d.items()
-            if k in BOOKS_TO_RUN_ON
-        }
-    else:
-        book_dict = {k: v for d in book_yml.values() for k, v in d.items()}
-    book_to_section = {b: s for s, d in book_yml.items() for b in d}
-    data = parser_data.get_dss_data(book_dict, type="nonbib")
-    all_trigram_feature_vector = get_trigram_feature_vectors(data)
-    for book_name, book_data in data.items():
-        if book_name in os.listdir(f"{CLUSTERS_RESULTS_PATH}"):
-            print(f"{book_name} already have results")
-            continue
-        if not os.path.exists(f"{CLUSTERS_RESULTS_PATH}/{book_name}"):
-            os.makedirs(f"{CLUSTERS_RESULTS_PATH}/{book_name}")
-        print(f"start parse book: {book_name}")
-        section = book_to_section[book_name]
-        book_scores = {"text_type": section, "book_name": book_name}
-        if len(book_data) < TRIGRAM_FEATURE_LENGTH:
-            print(f"{book_name} with size: {len(book_data)}")
-            continue
-
-        samples, sample_names = parser_data.get_samples(
-            book_data, word_per_samples=WORD_PER_SAMPLES
-        )
-        if len(samples[-1]) < 50:  # TODO why?
-            samples = samples[:-1]
-            sample_names = sample_names[:-1]
-        print(f'book: {book_scores["book_name"]}')
-        bert_features = bert.get_aleph_bert_features(samples, mode_idx=2)
-        book_scores = get_clusters_scores(
-            bert_features,
-            sample_names,
-            linkage_criterion="average",
-            path=f"{CLUSTERS_RESULTS_PATH}/{book_name}",
-            book_scores=book_scores,
-            method_name="bert",
-            word_per_samples=WORD_PER_SAMPLES,
-        )
-        starr_features = starr.get_starr_features(samples)
-        book_scores = get_clusters_scores(
-            starr_features,
-            sample_names,
-            linkage_criterion="average",
-            path=f"{CLUSTERS_RESULTS_PATH}/{book_name}",
-            book_scores=book_scores,
-            method_name="starr",
-            word_per_samples=WORD_PER_SAMPLES,
-        )
-
-        trigram_features = np.array(
-            [all_trigram_feature_vector[name] for name in sample_names]
-        )
-        book_scores = get_clusters_scores(
-            trigram_features,
-            sample_names,
-            linkage_criterion="average",
-            path=f"{CLUSTERS_RESULTS_PATH}/{book_name}",
-            book_scores=book_scores,
-            method_name="trigram",
-            word_per_samples=WORD_PER_SAMPLES,
-        )
-
-        assert bert_features.shape == trigram_features.shape
-        bert_matmul_trigram = bert_features @ trigram_features.T
-        book_scores = get_clusters_scores(
-            bert_matmul_trigram,
-            sample_names,
-            linkage_criterion="average",
-            path=f"{CLUSTERS_RESULTS_PATH}/{book_name}",
-            book_scores=book_scores,
-            method_name="bert_matmul_trigram",
-            word_per_samples=WORD_PER_SAMPLES,
-        )
-        bert_concat_trigram = np.hstack([trigram_features, bert_features, starr_features])
-        print(book_scores["book_name"])
-        book_scores = get_clusters_scores(
-            bert_concat_trigram,
-            sample_names,
-            linkage_criterion="average",
-            path=f"{CLUSTERS_RESULTS_PATH}/{book_name}",
-            book_scores=book_scores,
-            method_name="bert_concat_trigram",
-            word_per_samples=WORD_PER_SAMPLES,
-        )
-
-        all_scores.append(book_scores)
-
-    results = pd.DataFrame(all_scores)
-    save_results(results, f"{CLUSTERS_RESULTS_PATH}/scores.csv")
 
 
 def save_results(results, file_name):
@@ -186,7 +87,7 @@ def get_trigram_feature_vectors(data):
             continue
         reprocessed_samples = bert.aleph_bert_preprocessing(samples)
         trigram_samples = [
-            Counter([r.replace(".", "")[i : i + 3] for i in range(len(r) - 3)])
+            Counter([r.replace(".", "")[i: i + 3] for i in range(len(r) - 3)])
             for r in reprocessed_samples
         ]
         # if book_name not in test_books:
@@ -203,6 +104,7 @@ def get_trigram_feature_vectors(data):
         [(v, k) for k, v in all_trigram_counter.items() if k.strip() != ""],
         reverse=True,
     )
+    #TODO not sure about it
     most_frequent_trigram = [
         most_frequent_trigram[i][1] for i in range(TRIGRAM_FEATURE_LENGTH)
     ]
@@ -222,13 +124,13 @@ def get_trigram_feature_vectors(data):
     return normalize_trigram_samples
 
 
-def get_bar_graph(feature_names):
-    df = pd.read_csv(f"{CLUSTERS_RESULTS_PATH}/scores.csv")
+def get_bar_graph(feature_names, results_path):
+    df = pd.read_csv(f"{results_path}/scores.csv")
 
     df = df[df["book_name"] != "Musar Lamevin"]
     scrolls_names = df["book_name"].str.replace("_", "\n").tolist()
-    results = {k:[] for k in feature_names}
-    significant_dict = {k:[] for k in feature_names}
+    results = {k: [] for k in feature_names}
+    significant_dict = {k: [] for k in feature_names}
 
     for t in feature_names:
         score_col = f"{t}_feature_clusters_score"
@@ -244,7 +146,6 @@ def get_bar_graph(feature_names):
         results[t] = scores.tolist()
         significant_dict[t] = [round(val, 2) for val in significants]
     results_df = pd.DataFrame(results, index=scrolls_names)
-
 
     barWidth = 0.1
     fig, ax = plt.subplots(figsize=(35, 8))
@@ -278,8 +179,107 @@ def get_bar_graph(feature_names):
                 fontsize=6,
             )
 
-    plt.savefig(f"{CLUSTERS_RESULTS_PATH}/scores_bars")
+    plt.savefig(f"{results_path}/scores_bars")
 
 
-main()
-get_bar_graph(["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"])
+def main(yaml_book_file, books_to_run, bib_type, results_path):
+    all_scores = []
+    book_yml = utils.read_yaml(f"{base_dir}/Data/yamls/{yaml_book_file}")
+    if any(books_to_run):
+        book_dict = {
+            k: v for d in book_yml.values() for k, v in d.items() if k in books_to_run
+        }
+    else:
+        book_dict = {k: v for d in book_yml.values() for k, v in d.items()}
+    book_to_section = {b: s for s, d in book_yml.items() for b in d}
+    data = parser_data.get_dss_data(book_dict, type=bib_type)
+    all_trigram_feature_vector = get_trigram_feature_vectors(data)
+    for book_name, book_data in data.items():
+        if book_name in os.listdir(f"{results_path}"):
+            print(f"{book_name} already have results")
+            continue
+        if not os.path.exists(f"{results_path}/{book_name}"):
+            os.makedirs(f"{results_path}/{book_name}")
+        print(f"start parse book: {book_name}")
+        section = book_to_section[book_name]
+        book_scores = {"text_type": section, "book_name": book_name}
+        if len(book_data) < TRIGRAM_FEATURE_LENGTH:
+            print(f"{book_name} with size: {len(book_data)}")
+            continue
+
+        samples, sample_names = parser_data.get_samples(
+            book_data, word_per_samples=WORD_PER_SAMPLES
+        )
+        if len(samples[-1]) < 50:  # TODO why?
+            samples = samples[:-1]
+            sample_names = sample_names[:-1]
+        print(f'book: {book_scores["book_name"]}')
+        bert_features = bert.get_aleph_bert_features(samples, mode_idx=2)
+        book_scores = get_clusters_scores(
+            bert_features,
+            sample_names,
+            linkage_criterion="average",
+            path=f"{results_path}/{book_name}",
+            book_scores=book_scores,
+            method_name="bert",
+            word_per_samples=WORD_PER_SAMPLES,
+        )
+        starr_features = starr.get_starr_features(samples)
+        book_scores = get_clusters_scores(
+            starr_features,
+            sample_names,
+            linkage_criterion="average",
+            path=f"{results_path}/{book_name}",
+            book_scores=book_scores,
+            method_name="starr",
+            word_per_samples=WORD_PER_SAMPLES,
+        )
+
+        trigram_features = np.array(
+            [all_trigram_feature_vector[name] for name in sample_names]
+        )
+        book_scores = get_clusters_scores(
+            trigram_features,
+            sample_names,
+            linkage_criterion="average",
+            path=f"{results_path}/{book_name}",
+            book_scores=book_scores,
+            method_name="trigram",
+            word_per_samples=WORD_PER_SAMPLES,
+        )
+
+        assert bert_features.shape == trigram_features.shape
+        bert_matmul_trigram = bert_features @ trigram_features.T
+        book_scores = get_clusters_scores(
+            bert_matmul_trigram,
+            sample_names,
+            linkage_criterion="average",
+            path=f"{results_path}/{book_name}",
+            book_scores=book_scores,
+            method_name="bert_matmul_trigram",
+            word_per_samples=WORD_PER_SAMPLES,
+        )
+        bert_concat_trigram = np.hstack(
+            [trigram_features, bert_features, starr_features]
+        )
+        print(book_scores["book_name"])
+        book_scores = get_clusters_scores(
+            bert_concat_trigram,
+            sample_names,
+            linkage_criterion="average",
+            path=f"{results_path}/{book_name}",
+            book_scores=book_scores,
+            method_name="bert_concat_trigram",
+            word_per_samples=WORD_PER_SAMPLES,
+        )
+
+        all_scores.append(book_scores)
+
+    results = pd.DataFrame(all_scores)
+    save_results(results, f"{results_path}/scores.csv")
+
+
+main("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib", results_path=RESULTS_PATH)
+get_bar_graph(
+    ["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"]
+)
