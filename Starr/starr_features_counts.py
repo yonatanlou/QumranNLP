@@ -32,8 +32,8 @@ def check_pronoun(entry):
             return 'interrogative_pronoun'
 
 
-text_file = path.join(root_path, 'Data', 'texts', 'abegg', 'dss_nonbib.txt')
-yaml_dir = path.join(root_path, 'Data', 'yamls')
+text_file = path.join(root_path, 'data', 'texts', 'abegg', 'dss_nonbib.txt')
+yaml_dir = path.join(root_path, 'data', 'yamls')
 book_path = path.join(yaml_dir, 'non_sectarian_texts.yaml')
 morph_parser = MorphParser(yaml_dir=yaml_dir)
 

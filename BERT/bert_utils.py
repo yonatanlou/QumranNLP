@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 def preprocessing_for_bert(data, tokenizer_obj, max_len=300):
     """Perform required preprocessing steps for pretrained BERT.
-    @param    Data (np.array): Array of texts to be processed.
+    @param    data (np.array): Array of texts to be processed.
     @return   input_ids (torch.Tensor): Tensor of token ids to be fed to a model.
     @return   attention_masks (torch.Tensor): Tensor of indices specifying which
                   tokens should be attended to by the model.

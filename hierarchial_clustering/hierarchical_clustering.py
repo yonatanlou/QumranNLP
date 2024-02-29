@@ -11,11 +11,11 @@ from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
-
+from config import BASE_DIR
 np.random.seed(42)
 
-base_dir = os.path.abspath("")
-RESULTS_PATH = f"{base_dir}/Results/Clusters_reconstruction"
+
+RESULTS_PATH = f"{BASE_DIR}/Results/Clusters_reconstruction"
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
 BOOKS_TO_RUN_ON = [
@@ -63,7 +63,7 @@ def save_results(results, file_name):
 
 
 def aleph_bert_preprocessing(book_words):
-    transcriptor = Transcriptor(f"../Data/yamls/heb_transcript.yaml")
+    transcriptor = Transcriptor(f"{BASE_DIR}/data/yamls/heb_transcript.yaml")
     books_transcript_words = []
     for word in book_words:
         word_list = []
@@ -184,7 +184,7 @@ def get_bar_graph(feature_names, results_path):
 
 def main(yaml_book_file, books_to_run, bib_type, results_path):
     all_scores = []
-    book_yml = utils.read_yaml(f"{base_dir}/Data/yamls/{yaml_book_file}")
+    book_yml = utils.read_yaml(f"{BASE_DIR}/data/yamls/{yaml_book_file}")
     if any(books_to_run):
         book_dict = {
             k: v for d in book_yml.values() for k, v in d.items() if k in books_to_run
@@ -194,6 +194,8 @@ def main(yaml_book_file, books_to_run, bib_type, results_path):
     book_to_section = {b: s for s, d in book_yml.items() for b in d}
     data = parser_data.get_dss_data(book_dict, type=bib_type)
     all_trigram_feature_vector = get_trigram_feature_vectors(data)
+    if not os.path.exists(f"{results_path}"):
+        os.makedirs(f"{results_path}")
     for book_name, book_data in data.items():
         if book_name in os.listdir(f"{results_path}"):
             print(f"{book_name} already have results")

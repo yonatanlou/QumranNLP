@@ -17,7 +17,7 @@ def import_data(date):
                  '4Q416': "Musar_Lamevin", '4Q417': "Musar_Lamevin", '4Q418c': 'Musar_Lamevin', '1Q35': "hodayot",
                  '4Q418a': 'Musar_Lamevin',
                  'Deu': 'Deut', '1QH': 'Hodayot', 'Prov': 'Prov'}
-    with open(f'Data/CP/{date}/map.csv', newline='') as f:
+    with open(f'data/CP/{date}/map.csv', newline='') as f:
         data = csv.reader(f)
         for row in data:
             if not row[-1].replace(" ", "").isnumeric():
@@ -32,7 +32,7 @@ def import_data(date):
                         "rectums": [row[i].replace(" ", "") for i in range(10, 5, -1) if row[i].replace(" ", "") != '']}
             map_list[int(row[-1].replace(" ", ""))] = row_dict
 
-    with open(f'Data/CP/{date}/properties.csv', newline='') as f:
+    with open(f'data/CP/{date}/properties.csv', newline='') as f:
         df = pd.read_csv(f)
         df.drop(df.columns[[1, 2, 3, 26, 27]], axis=1, inplace=True)
         for index, row in df.iterrows():

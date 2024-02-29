@@ -1,6 +1,8 @@
 from transformers import BertModel, BertTokenizer
 from BERT.bert_utils import get_preds, get_sentence_vectors
 import re
+
+from config import BASE_DIR
 from utils import Transcriptor
 
 chars_to_delete = re.compile('[\\\\\^><»≥≤/?Ø\\]\\[«|}{]')
@@ -11,7 +13,7 @@ modes = [['average', 4, 'average_word_vectors'],
 
 
 def aleph_bert_preprocessing(samples):
-    transcriptor = Transcriptor(f"Data/yamls/heb_transcript.yaml")
+    transcriptor = Transcriptor(f"{BASE_DIR}/data/yamls/heb_transcript.yaml")
     transcripted_samples = []
     for sample in samples:
         last_entry_word = 'X'

@@ -9,6 +9,7 @@ from sklearn import linear_model
 from sklearn.metrics import roc_auc_score
 from matplotlib import pyplot as plt
 
+from config import BASE_DIR
 from hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH
 
 section_type = ['non_sectarian_texts', 'sectarian_texts']
@@ -29,7 +30,7 @@ def get_trigram_feature_vectors(test_books):
     all_trigram_samples = []
     labels = []
     for section in section_type:
-        data = parser_data.get_dss_data("Data/yamls/all_sectarian_texts.yaml", section=section)
+        data = parser_data.get_dss_data(f"{BASE_DIR}/data/yamls/all_sectarian_texts.yaml", section=section)
         for book_name, book_data in data.items():
             if len(book_data) < 100:
                 continue

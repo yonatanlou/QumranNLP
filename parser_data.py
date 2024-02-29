@@ -2,6 +2,7 @@ from collections import Counter
 
 import numpy as np
 from MorphParser import MorphParser
+from config import BASE_DIR
 from text_reader import read_text
 from utils import filter_data_by_field, read_yaml
 from logger import get_logger
@@ -121,8 +122,8 @@ def get_samples(book_data, word_per_samples=100):
 
 
 def get_dss_data(books_list, type="nonbib"):
-    text_file = f"Data/texts/abegg/dss_{type}.txt"
-    yaml_dir = "Data/yamls"
+    text_file = f"{BASE_DIR}/data/texts/abegg/dss_{type}.txt"
+    yaml_dir = f"{BASE_DIR}/data/yamls"
     morph_parser = MorphParser(yaml_dir=yaml_dir)
 
     data, lines = read_text(text_file)
@@ -143,6 +144,6 @@ def get_dss_data(books_list, type="nonbib"):
 
 
 def get_all_data():
-    text_file = f"Data/texts/abegg/dss_nonbib.txt"
-    yaml_dir = "Data/yamls"
+    text_file = f"{BASE_DIR}/data/texts/abegg/dss_nonbib.txt"
+    yaml_dir = f"{BASE_DIR}/data/yamls"
     return read_text(text_file, yaml_dir)

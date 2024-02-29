@@ -1,10 +1,11 @@
 import collections
 
 from MorphParser import FieldNames, MorphParser
+from config import BASE_DIR
 
-DATA = 'Data/texts/open_scriptures/bible.txt'
+DATA = f"{BASE_DIR}data/texts/open_scriptures/bible.txt"
 line_fields_names = FieldNames()
-yaml_dir = "Data/yamls"
+yaml_dir = f"{BASE_DIR}\data\yamls"
 
 
 def get_verbs_categories(filtered_data):

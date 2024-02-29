@@ -127,7 +127,7 @@ def train(model, train, val, learning_rate, epochs):
 #     all_data = np.array([])
 #     all_labels = np.array([], dtype=int)
 #     section = section_type[i]
-#     data = parser_data.get_dss_data("Data/yamls/all_sectarian_texts.yaml", section=section)
+#     data = parser_data.get_dss_data("data/yamls/all_sectarian_texts.yaml", section=section)
 #     for book_name, book_data in data.items():
 #         if len(book_data) < 100:
 #             print(book_name)

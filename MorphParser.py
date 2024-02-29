@@ -1,3 +1,4 @@
+from config import BASE_DIR
 from utils import read_yaml
 from os import path
 import collections
@@ -31,7 +32,7 @@ class FieldNames:
 class MorphParser:
     names = FieldNames()
 
-    def __init__(self, yaml_dir="Data/yamls"):
+    def __init__(self, yaml_dir=f"{BASE_DIR}/data/yamls"):
         self.raw_morph_yaml, self.morph_dict, self.speech_parts_values = self.read_morph_dict(yaml_dir)
         self.parsed_morphs = collections.defaultdict(set)
         self.names = FieldNames()
