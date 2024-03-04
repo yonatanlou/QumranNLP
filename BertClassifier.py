@@ -6,6 +6,32 @@ from torch.optim import Adam
 from torchvision import transforms
 from tqdm import tqdm
 
+from config import BASE_DIR
+from src.features.BERT.bert import aleph_bert_preprocessing
+from src.hierarchial_clustering.clustering_utils import generate_books_dict
+from src.parsers import parser_data
+BOOKS_TO_RUN_ON = [
+    "Musar Lamevin",
+    "Berakhot",
+    "4QM",
+    "Catena_Florilegium",
+    "4QD",
+    "Hodayot",
+    "Pesharim",
+    "1QH",
+    "1QS",
+    "Songs_of_Maskil",
+    "non_biblical_psalms",
+    "Mysteries",
+    "4QS",
+    "4QH",
+    "1QSa",
+    "CD",
+    "1QM",
+    "Collections_of_psalms",
+    "Book_of_Jubilees",
+]
+
 
 class BertClassifier(nn.Module):
     def __init__(self, dropout=0.5):
@@ -105,49 +131,51 @@ def train(model, train, val, learning_rate, epochs):
                 | Val Loss: {total_loss_val / len(val_data): .3f} \
                 | Val Accuracy: {total_acc_val / len(val_data): .3f}')
 
-#
-# EPOCHS = 5
-# model = BertClassifier()
-# tokenizer = BertTokenizer.from_pretrained('onlplab/alephbert-base')
-# LR = 1e-6
-# section_type = ['sectarian_texts', 'non_sectarian_texts']
-#
-# train_size = 557
-# val_size = 100
-# test_size = 100
-#
-# train_data, train_label = np.array([]), np.array([], dtype=int)
-# val_data, val_label = np.array([]), np.array([], dtype=int)
-# test_data, test_label = np.array([]), np.array([], dtype=int)
-#
-# size = [0 for i in section_type]
-# for i in range(len(section_type)):
-#     all_data = np.array([])
-#     all_labels = np.array([], dtype=int)
-#     section = section_type[i]
-#     data = parser_data.get_dss_data("data/yamls/all_sectarian_texts.yaml", section=section)
-#     for book_name, book_data in data.items():
-#         if len(book_data) < 100:
-#             print(book_name)
-#             continue
-#         book_scores = [section, book_name]
-#         samples, sample_names = parser_data.get_samples(book_data)
-#         preprocessed_samples = aleph_bert_preprocessing(samples)
-#         labels = [i for _ in range(len(samples))]
-#         all_data = np.concatenate((all_data, preprocessed_samples))
-#         all_labels = np.concatenate((all_labels, labels))
-#     size[i] = len(all_data)
-#     idx = np.arange(len(all_data))
-#     np.random.shuffle(idx)
-#     test_size = int(len(all_data) * 0.15)
-#     test_data, test_label = np.concatenate((test_data, all_data[:test_size])), np.concatenate((test_label, all_labels[:test_size]))
-#     val_data, val_label = np.concatenate((val_data, all_data[test_size: 2*test_size])), np.concatenate((val_label, all_labels[test_size: 2*test_size]))
-#     train_data, train_label = np.concatenate((train_data, all_data[2*test_size:])), np.concatenate((train_label, all_labels[2*test_size:]))
 
-# print(size)
-# train_dataset = Dataset(train_data, train_label)
-# val_dataset = Dataset(val_data, val_label)
-# test_dataset = Dataset(test_data, test_label)
-#
-# train(model, train_dataset, val_dataset, LR, EPOCHS)
+EPOCHS = 5
+model = BertClassifier()
+tokenizer = BertTokenizer.from_pretrained('onlplab/alephbert-base')
+LR = 1e-6
+section_type = ['nonbib', 'bib']
+# section_type = ['sectarian_texts', 'non_sectarian_texts']
+
+train_size = 557
+val_size = 100
+test_size = 100
+
+train_data, train_label = np.array([]), np.array([], dtype=int)
+val_data, val_label = np.array([]), np.array([], dtype=int)
+test_data, test_label = np.array([]), np.array([], dtype=int)
+
+size = [0 for i in section_type]
+for i in range(len(section_type)):
+    all_data = np.array([])
+    all_labels = np.array([], dtype=int)
+    section = section_type[i]
+    book_dict, book_to_section = generate_books_dict(BOOKS_TO_RUN_ON, "all_sectarian_texts.yaml")
+    data = parser_data.get_dss_data(book_dict, section)
+    for book_name, book_data in data.items():
+        if len(book_data) < 100:
+            print(book_name)
+            continue
+        book_scores = [section, book_name]
+        samples, sample_names = parser_data.get_samples(book_data)
+        preprocessed_samples = aleph_bert_preprocessing(samples)
+        labels = [i for _ in range(len(samples))]
+        all_data = np.concatenate((all_data, preprocessed_samples))
+        all_labels = np.concatenate((all_labels, labels))
+    size[i] = len(all_data)
+    idx = np.arange(len(all_data))
+    np.random.shuffle(idx)
+    test_size = int(len(all_data) * 0.15)
+    test_data, test_label = np.concatenate((test_data, all_data[:test_size])), np.concatenate((test_label, all_labels[:test_size]))
+    val_data, val_label = np.concatenate((val_data, all_data[test_size: 2*test_size])), np.concatenate((val_label, all_labels[test_size: 2*test_size]))
+    train_data, train_label = np.concatenate((train_data, all_data[2*test_size:])), np.concatenate((train_label, all_labels[2*test_size:]))
+
+print(size)
+train_dataset = Dataset(train_data, train_label)
+val_dataset = Dataset(val_data, val_label)
+test_dataset = Dataset(test_data, test_label)
+
+train(model, train_dataset, val_dataset, LR, EPOCHS)
 
