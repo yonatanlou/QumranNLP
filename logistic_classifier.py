@@ -16,8 +16,8 @@ section_type = ['non_sectarian_texts', 'sectarian_texts']
 
 
 def get_bert_feature_vectors():
-    embedding = np.load("embedding.npy", allow_pickle=True)
-    names, labels = np.load("embedding_labels.npy", allow_pickle=True)
+    embedding = np.load(f"{BASE_DIR}/src/features/BERT/embedding.npy", allow_pickle=True)
+    names, labels = np.load(f"{BASE_DIR}/src/features/BERT/embedding_labels.npy", allow_pickle=True)
     mean = np.mean(embedding, axis=0)
     std = np.std(embedding, axis=0)
     normalized_embedding = (embedding - mean) / std
@@ -29,8 +29,8 @@ def get_trigram_feature_vectors(test_books):
     all_trigram_names = []
     all_trigram_samples = []
     labels = []
-    for section in section_type:
-        data = parser_data.get_dss_data(f"{BASE_DIR}/data/yamls/all_sectarian_texts.yaml", section=section)
+    for section in ["bib","nonbib"]:
+        data = parser_data.get_dss_data(books_list=test_books, type=section)
         for book_name, book_data in data.items():
             if len(book_data) < 100:
                 continue
