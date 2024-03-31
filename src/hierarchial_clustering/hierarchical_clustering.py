@@ -7,8 +7,8 @@ from src.parsers import parser_data
 from src.features.BERT import bert
 from src.features.BERT.bert import chars_to_delete
 from src.features.Starr import starr
-from clustering import get_clusters_scores
-from constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
+from src.hierarchial_clustering.clustering import get_clusters_scores
+from src.hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
 from utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -16,30 +16,10 @@ from config import BASE_DIR
 np.random.seed(42)
 
 
-RESULTS_PATH = f"{BASE_DIR}/results/Clusters_reconstruction"
+
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
 
-BOOKS_TO_RUN_ON = [
-    "Musar Lamevin",
-    "Berakhot",
-    "4QM",
-    "Catena_Florilegium",
-    "4QD",
-    "Hodayot",
-    "Pesharim",
-    "1QH",
-    "1QS",
-    "Songs_of_Maskil",
-    "non_biblical_psalms",
-    "Mysteries",
-    "4QS",
-    "4QH",
-    "1QSa",
-    "CD",
-    "1QM",
-    "Collections_of_psalms",
-    "Book_of_Jubilees",
-]
+
 
 
 def save_results(results, file_name):
@@ -187,7 +167,7 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
     all_scores = []
     book_dict, book_to_section = generate_books_dict(books_to_run, yaml_book_file)
     data = parser_data.get_dss_data(book_dict, type=bib_type)
-    all_trigram_feature_vector = get_trigram_feature_vectors(data)
+    all_trigram_feature_vector = get_trigram_feature_vectors(data, TRIGRAM_FEATURE_LENGTH)
     if not os.path.exists(f"{results_path}"):
         os.makedirs(f"{results_path}")
     for book_name, book_data in data.items():
@@ -275,7 +255,6 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
     save_results(results, f"{results_path}/scores.csv")
 
 
-main("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib", RESULTS_PATH, TRIGRAM_FEATURE_LENGTH)
-get_bar_graph(
-    ["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"]
-)
+
+
+
