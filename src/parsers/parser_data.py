@@ -66,7 +66,10 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
                     curr_word_entries = []
 
     num_words = count_words(entries)
-    num_samples = np.floor(num_words / n_words_per_feature)
+    if n_words_per_feature:
+        num_samples = np.floor(num_words / n_words_per_feature)
+    else:
+        num_samples = num_words-1
     sample_generator = gen_sample(entries)
     finish = False
     i = 0
@@ -136,8 +139,9 @@ def get_dss_data(books_list, type="nonbib"):
     logger.info(f"book_sizes: {num_of_lines_per_book}")
     filter_field = "scroll_name" if type == "nonbib" else "book_name"
     filtered_data = filter_data_by_field(filter_field, books_list, data)
+    logger.info('processed the following books}')
     for book in books_list:
-        print(book)
+        print(book,end=",")
         for entry in filtered_data[book]:
             entry["parsed_morph"] = morph_parser.parse_morph(entry["morph"])
     return filtered_data
