@@ -70,8 +70,8 @@ heb_lat = (
 )
 
 heb_to_lat = dict(heb_lat)
-lat_to_heb = dict((x[1],x[0]) for x in heb_lat)
-to_json_dict = {'heb_to_latin': heb_to_lat, 'latin_to_heb': lat_to_heb}
+lat_to_heb = dict((x[1], x[0]) for x in heb_lat)
+to_json_dict = {"heb_to_latin": heb_to_lat, "latin_to_heb": lat_to_heb}
 
-with open('heb_transcript', 'w') as fp:
-    yaml.dump(to_json_dict, fp,  indent=4)
+with open("heb_transcript", "w") as fp:
+    yaml.dump(to_json_dict, fp, indent=4)

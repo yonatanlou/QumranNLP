@@ -29,14 +29,14 @@ def preprocessing_for_bert(data, tokenizer_obj, max_len=300):
             text=sent,  # Preprocess sentence
             add_special_tokens=True,  # Add `[CLS]` and `[SEP]`
             max_length=max_len,  # Max length to truncate/pad
-            padding='max_length',  # Pad sentence to max length
+            padding="max_length",  # Pad sentence to max length
             truncation=True,  # Truncate longer seq to max_len
-            return_attention_mask=True  # Return attention mask
+            return_attention_mask=True,  # Return attention mask
         )
 
         # Add the outputs to the lists
-        input_ids.append(encoded_sent.get('input_ids'))
-        attention_masks.append(encoded_sent.get('attention_mask'))
+        input_ids.append(encoded_sent.get("input_ids"))
+        attention_masks.append(encoded_sent.get("attention_mask"))
 
     # Convert lists to tensors
     input_ids = torch.tensor(input_ids)
@@ -66,87 +66,129 @@ def preprocessing_for_bert(data, tokenizer_obj, max_len=300):
 
 
 def get_preds(sentences, tokenizer_obj, model_obj):
-  '''
-  Quick function to extract hidden states and masks from the sentences and model passed
-  '''
-  #Run the sentences through tokenizer
-  input_ids, att_msks, attention_masks_wo_special_tok = preprocessing_for_bert(sentences, tokenizer_obj)
-  #Run the sentences through the model
-  outputs = model_obj(input_ids, att_msks,)
+    """
+    Quick function to extract hidden states and masks from the sentences and model passed
+    """
+    # Run the sentences through tokenizer
+    input_ids, att_msks, attention_masks_wo_special_tok = preprocessing_for_bert(
+        sentences, tokenizer_obj
+    )
+    # Run the sentences through the model
+    outputs = model_obj(
+        input_ids,
+        att_msks,
+    )
 
-  #Lengths of each sentence
-  sent_lens = att_msks.sum(1).tolist()
+    # Lengths of each sentence
+    sent_lens = att_msks.sum(1).tolist()
 
-  #calculate unique vocab
-  # #get the tokenized version of each sentence (text form, to label things in the plot)
-  tokenized_sents = [tokenizer_obj.convert_ids_to_tokens(i) for i in input_ids]
-  return {
-      'hidden_states':outputs.hidden_states,
-      'pooled_output': outputs.pooler_output,
-      'attention_masks': att_msks,
-      'attention_masks_without_special_tok': attention_masks_wo_special_tok,
-      'tokenized_sents': tokenized_sents,
-      'sentences': sentences,
-      'sent_lengths': sent_lens
-  }
+    # calculate unique vocab
+    # #get the tokenized version of each sentence (text form, to label things in the plot)
+    tokenized_sents = [tokenizer_obj.convert_ids_to_tokens(i) for i in input_ids]
+    return {
+        "hidden_states": outputs.hidden_states,
+        "pooled_output": outputs.pooler_output,
+        "attention_masks": att_msks,
+        "attention_masks_without_special_tok": attention_masks_wo_special_tok,
+        "tokenized_sents": tokenized_sents,
+        "sentences": sentences,
+        "sent_lengths": sent_lens,
+    }
 
 
-def plt_dists(dists, sentences_and_labels, dims=2,  title="", xrange=[-.5,.5], yrange=[-.5,.5], zrange=[-0.5, 0.5]):
-  '''
-  Plot distances using MDS in 2D/3D
-  dists: precomputed distance matrix
-  sentences_and_labels: tuples of sentence and label_ids
-  dims: 2/3 for 2 or 3 dimensional plot, defaults to 2 for any other value passed
-  words_of_interest: list of words to highlight with a different color
-  title: title for the plot
-  '''
-  #get the sentence text and labels to pass to the plot
-  sents, color = zip(*sentences_and_labels)
+def plt_dists(
+    dists,
+    sentences_and_labels,
+    dims=2,
+    title="",
+    xrange=[-0.5, 0.5],
+    yrange=[-0.5, 0.5],
+    zrange=[-0.5, 0.5],
+):
+    """
+    Plot distances using MDS in 2D/3D
+    dists: precomputed distance matrix
+    sentences_and_labels: tuples of sentence and label_ids
+    dims: 2/3 for 2 or 3 dimensional plot, defaults to 2 for any other value passed
+    words_of_interest: list of words to highlight with a different color
+    title: title for the plot
+    """
+    # get the sentence text and labels to pass to the plot
+    sents, color = zip(*sentences_and_labels)
 
-  #https://community.plotly.com/t/plotly-colours-list/11730/6
-  colorscale = [[0, 'deeppink'], [1, 'yellow']] #, [2, 'greens'], [3, 'reds'], [4, 'blues']]
+    # https://community.plotly.com/t/plotly-colours-list/11730/6
+    colorscale = [
+        [0, "deeppink"],
+        [1, "yellow"],
+    ]  # , [2, 'greens'], [3, 'reds'], [4, 'blues']]
 
-  #dists is precomputed using cosine similarity/other other metric and passed
-  #calculate MDS with number of dims passed
-  mds = manifold.MDS(n_components=dims, dissimilarity="precomputed", random_state=60, max_iter=90000)
-  results = mds.fit(dists)
+    # dists is precomputed using cosine similarity/other other metric and passed
+    # calculate MDS with number of dims passed
+    mds = manifold.MDS(
+        n_components=dims, dissimilarity="precomputed", random_state=60, max_iter=90000
+    )
+    results = mds.fit(dists)
 
-  #get coodinates for each point
-  coords = results.embedding_
+    # get coodinates for each point
+    coords = results.embedding_
 
-  #plot 3d/2d
-  if dims == 3:
-    fig = go.Figure(data=[go.Scatter3d(
-        x=coords[:, 0], y=coords[:, 1], z=coords[:, 2],
-        mode='markers+text', textposition="top center", text=sents,
-        marker=dict(size=12, color=color, colorscale=colorscale, opacity=0.8)
-    )])
-  else:
-    fig = go.Figure(data=[go.Scatter(
-        x=coords[:, 0], y=coords[:, 1],
-        text=sents, textposition="top center", mode='markers+text',
-        marker=dict(size=12,color=color,colorscale=colorscale, opacity=0.8)
-    )])
+    # plot 3d/2d
+    if dims == 3:
+        fig = go.Figure(
+            data=[
+                go.Scatter3d(
+                    x=coords[:, 0],
+                    y=coords[:, 1],
+                    z=coords[:, 2],
+                    mode="markers+text",
+                    textposition="top center",
+                    text=sents,
+                    marker=dict(
+                        size=12, color=color, colorscale=colorscale, opacity=0.8
+                    ),
+                )
+            ]
+        )
+    else:
+        fig = go.Figure(
+            data=[
+                go.Scatter(
+                    x=coords[:, 0],
+                    y=coords[:, 1],
+                    text=sents,
+                    textposition="top center",
+                    mode="markers+text",
+                    marker=dict(
+                        size=12, color=color, colorscale=colorscale, opacity=0.8
+                    ),
+                )
+            ]
+        )
 
-  fig.update_layout(template="plotly_dark")
-  if title!="":
-    fig.update_layout(title_text=title)
-    fig.update_layout(titlefont=dict(family='Courier New, monospace',
-                    size=14, color='cornflowerblue'))
+    fig.update_layout(template="plotly_dark")
+    if title != "":
+        fig.update_layout(title_text=title)
+        fig.update_layout(
+            titlefont=dict(
+                family="Courier New, monospace", size=14, color="cornflowerblue"
+            )
+        )
 
-  #update the axes ranges
-  fig.update_layout(yaxis=dict(range=yrange))
-  fig.update_layout(xaxis=dict(range=xrange))
-  fig.update_traces(textfont_size=10)
+    # update the axes ranges
+    fig.update_layout(yaxis=dict(range=yrange))
+    fig.update_layout(xaxis=dict(range=xrange))
+    fig.update_traces(textfont_size=10)
 
-  #TO DO: fix this. I could not get this to work. somehow the library does not like the zaxis.
-  # if dims==3:
+    # TO DO: fix this. I could not get this to work. somehow the library does not like the zaxis.
+    # if dims==3:
     # fig.update_layout(zaxis=dict(range=zrange))
-  fig.show()
+    fig.show()
 
 
-def get_word_vectors(hidden_layers_form_arch, token_index=None, mode='average', top_n_layers=4):
-    '''
+def get_word_vectors(
+    hidden_layers_form_arch, token_index=None, mode="average", top_n_layers=4
+):
+    """
     retrieve vectors for all tokens from the top n layers and return a concatenated, averaged or summed vector
     hidden_layers_form_arch: tuple returned by the transformer library
     token_index: None/Index:
@@ -161,22 +203,22 @@ def get_word_vectors(hidden_layers_form_arch, token_index=None, mode='average', 
           'second_last': return embeddings only from second last layer
 
     top_n_layers: number of top layers to concatenate/ average / sum
-    '''
+    """
 
     vecs = None
-    if mode == 'concat':
+    if mode == "concat":
         vecs = torch.cat(hidden_layers_form_arch[-top_n_layers:], dim=2)
 
-    if mode == 'average':
+    if mode == "average":
         vecs = torch.stack(hidden_layers_form_arch[-top_n_layers:]).mean(0)
 
-    if mode == 'sum':
+    if mode == "sum":
         vecs = torch.stack(hidden_layers_form_arch[-top_n_layers:]).sum(0)
 
-    if mode == 'last':
+    if mode == "last":
         vecs = hidden_layers_form_arch[-1:][0]
 
-    if mode == 'second_last':
+    if mode == "second_last":
         vecs = hidden_layers_form_arch[-2:-1][0]
 
     if vecs is not None and token_index:
@@ -186,17 +228,19 @@ def get_word_vectors(hidden_layers_form_arch, token_index=None, mode='average', 
 
 
 def get_sent_vectors(input_states, att_mask):
-    '''
+    """
     get a sentence vector by averaging over all word vectors -> this could come from any layers or averaged themselves (see get_all_token_vectors function)
     input_states: [batch_size x seq_len x vector_dims] -> e.g. results from  hidden stats from a particular layer
     att_mask: attention mask passed should have already maseked the special tokens too i.e. CLS/SEP/<s>/special tokens masked out with 0 -> [batch_size x max_seq_length]
     ref: https://stackoverflow.com/questions/61956893/how-to-mask-a-3d-tensor-with-2d-mask-and-keep-the-dimensions-of-original-vector
-    '''
+    """
 
     # print(input_states.shape) #-> [batch_size x seq_len x vector_dim]
 
     # Let's get sentence lengths for each sentence
-    sent_lengths = att_mask.sum(1)  # att_mask has a 1 against each valid token and 0 otherwise
+    sent_lengths = att_mask.sum(
+        1
+    )  # att_mask has a 1 against each valid token and 0 otherwise
 
     # create a new 3rd dim and broadcast the attention mask across it -> this will allow us to use this mask with the 3d tensor input_hidden_states
     att_mask_ = att_mask.unsqueeze(-1).expand(input_states.size())
@@ -210,12 +254,19 @@ def get_sent_vectors(input_states, att_mask):
     return avg
 
 
-def get_sentence_vectors(model_output, sentences, wrd_vec_mode='concat',
-                 wrd_vec_top_n_layers=4, viz_dims=2,
-                 sentence_emb_mode='average_word_vectors',
-                 title_prefix=None,
-                 plt_xrange=[-0.05, 0.05], plt_yrange=[-0.05, 0.05], plt_zrange=[-0.05, 0.05]):
-    '''
+def get_sentence_vectors(
+    model_output,
+    sentences,
+    wrd_vec_mode="concat",
+    wrd_vec_top_n_layers=4,
+    viz_dims=2,
+    sentence_emb_mode="average_word_vectors",
+    title_prefix=None,
+    plt_xrange=[-0.05, 0.05],
+    plt_yrange=[-0.05, 0.05],
+    plt_zrange=[-0.05, 0.05],
+):
+    """
     Get vectors for all sentences and visualize them based on cosine distance between them
 
     model_output: model results extracted as a dictionary from get_preds function
@@ -229,15 +280,23 @@ def get_sentence_vectors(model_output, sentences, wrd_vec_mode='concat',
           'second_last': return embeddings only from second last layer
     viz_dims:2/3 for 2D/3D plot
     title_prefix: String to add before the descriptive title. Can be used to add model name etc.
-    '''
+    """
     title_wrd_emv = "{} across {} layers".format(wrd_vec_mode, wrd_vec_top_n_layers)
 
     # get word vectors for all words in the sentence
-    if sentence_emb_mode == 'average_word_vectors':
-        title_sent_emb = "average(word vectors in the sentence); Sentence Distance: Cosine"
-        word_vecs_across_sent = get_word_vectors(model_output['hidden_states'], mode=wrd_vec_mode, token_index=None,
-                                                 top_n_layers=wrd_vec_top_n_layers)  # returns [batch_size x seq_len x vector_dim]
-        sent_vecs = get_sent_vectors(word_vecs_across_sent, model_output['attention_masks_without_special_tok'])
+    if sentence_emb_mode == "average_word_vectors":
+        title_sent_emb = (
+            "average(word vectors in the sentence); Sentence Distance: Cosine"
+        )
+        word_vecs_across_sent = get_word_vectors(
+            model_output["hidden_states"],
+            mode=wrd_vec_mode,
+            token_index=None,
+            top_n_layers=wrd_vec_top_n_layers,
+        )  # returns [batch_size x seq_len x vector_dim]
+        sent_vecs = get_sent_vectors(
+            word_vecs_across_sent, model_output["attention_masks_without_special_tok"]
+        )
     else:
         title_sent_emb = "First tok (CLS) vector; Sentence Distance: Cosine"
         # Get the pooled results from the first token (e.g. CLS token in case of BERT)
@@ -246,11 +305,15 @@ def get_sentence_vectors(model_output, sentences, wrd_vec_mode='concat',
         # This results is usually not a good summary of the semantic content of the
         # input, you’re often better with averaging or
         # pooling the sequence of hidden-states for the whole input sequence.
-        sent_vecs = model_output['pooled_output']  # vector
+        sent_vecs = model_output["pooled_output"]  # vector
 
     if title_prefix:
-        final_title = '{} Word Vec: {}; Sentence Vector: {}'.format(title_prefix, title_wrd_emv, title_sent_emb)
+        final_title = "{} Word Vec: {}; Sentence Vector: {}".format(
+            title_prefix, title_wrd_emv, title_sent_emb
+        )
     else:
-        final_title = 'Word Vec: {}; Sentence Vector: {}'.format(title_wrd_emv, title_sent_emb)
+        final_title = "Word Vec: {}; Sentence Vector: {}".format(
+            title_wrd_emv, title_sent_emb
+        )
     mat = sent_vecs.detach().numpy()
     return mat

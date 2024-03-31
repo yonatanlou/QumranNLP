@@ -12,6 +12,7 @@ from src.features.BERT import bert
 from src.hierarchial_clustering.clustering_utils import generate_books_dict
 
 from src.parsers import parser_data
+
 HEBREW_PROCESS_PATH = f"{BASE_DIR}/data/hebrew_processed_files"
 BOOKS_TO_RUN_ON = [
     "Musar Lamevin",
@@ -56,7 +57,9 @@ def add_train_label(all_labels, all_psukim, train_size=0.8):
     return all_labels_with_train_test_label
 
 
-def write_data_into_text_files(data,book_dict, book_to_section, bib_type, minimum_book_length,train_size):
+def write_data_into_text_files(
+    data, book_dict, book_to_section, bib_type, minimum_book_length, train_size
+):
     all_psukim = []
     all_labels = []
     for book_name, book_data in data.items():
@@ -74,24 +77,27 @@ def write_data_into_text_files(data,book_dict, book_to_section, bib_type, minimu
 
     df = pd.DataFrame(all_labels)
     df["label"] = df[0].str.split(":").apply(lambda x: x[0])
-    book_label_by_count = df['label'].value_counts()
+    book_label_by_count = df["label"].value_counts()
     relevant_books = book_label_by_count[book_label_by_count > 1].index.to_list()
     all_labels_with_train_test_label_book_level_label = []
     relevant_sentences_idx = []
     idx = 0
     for line in all_labels_with_train_test_label:
-        book = line.split(':')[0]
+        book = line.split(":")[0]
         if book in relevant_books:
-            all_labels_with_train_test_label_book_level_label.append(f"{line}\t{line.split(':')[0]}")
+            all_labels_with_train_test_label_book_level_label.append(
+                f"{line}\t{line.split(':')[0]}"
+            )
             relevant_sentences_idx.append(idx)
-        idx +=1
+        idx += 1
 
-    all_labels_with_train_test_label = add_train_label(all_labels, all_psukim, train_size=train_size)
-    #TODO rewrite
+    all_labels_with_train_test_label = add_train_label(
+        all_labels, all_psukim, train_size=train_size
+    )
+    # TODO rewrite
     all_psukim_filtered = []
     for idx in relevant_sentences_idx:
         all_psukim_filtered.append(all_psukim[idx])
-
 
     with open(f"{HEBREW_PROCESS_PATH}/DSS_{bib_type}_labels.txt", "w") as file:
         file.write("\n".join(all_labels_with_train_test_label_book_level_label))
@@ -100,20 +106,25 @@ def write_data_into_text_files(data,book_dict, book_to_section, bib_type, minimu
         file.write("\n".join(all_psukim))
     logger.info(f"{HEBREW_PROCESS_PATH}/DSS_{bib_type}_text.txt was saved")
     with open(f"{HEBREW_PROCESS_PATH}/DSS_{bib_type}_details.txt", "w") as file:
-        for k,v in book_dict.items():
+        for k, v in book_dict.items():
             file.write(f"{k}: {v}\n")
-        for k,v in book_to_section.items():
+        for k, v in book_to_section.items():
             file.write(f"{k}: {v}\n")
     logger.info(f"{HEBREW_PROCESS_PATH}/DSS_{bib_type}_details.txt was saved")
-
-
-
-
 
 
 MINIMUM_BOOK_LENGTH = 100
 TRAIN_SIZE = 0.8
 
 if __name__ == "__main__":
-    (data, book_dict, book_to_section, bib_type) = parse_text("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib")
-    write_data_into_text_files(data, book_dict, book_to_section, bib_type, MINIMUM_BOOK_LENGTH, train_size=TRAIN_SIZE)
+    (data, book_dict, book_to_section, bib_type) = parse_text(
+        "all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib"
+    )
+    write_data_into_text_files(
+        data,
+        book_dict,
+        book_to_section,
+        bib_type,
+        MINIMUM_BOOK_LENGTH,
+        train_size=TRAIN_SIZE,
+    )

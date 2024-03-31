@@ -8,18 +8,19 @@ from src.features.BERT import bert
 from src.features.BERT.bert import chars_to_delete
 from src.features.Starr import starr
 from src.hierarchial_clustering.clustering import get_clusters_scores
-from src.hierarchial_clustering.constants import TRIGRAM_FEATURE_LENGTH, WORD_PER_SAMPLES
+from src.hierarchial_clustering.constants import (
+    TRIGRAM_FEATURE_LENGTH,
+    WORD_PER_SAMPLES,
+)
 from utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
 from config import BASE_DIR
+
 np.random.seed(42)
 
 
-
 section_type = ["sectarian_texts", "straddling_texts", "non_sectarian_texts"]
-
-
 
 
 def save_results(results, file_name):
@@ -68,7 +69,7 @@ def get_trigram_feature_vectors(data, feature_length):
             continue
         reprocessed_samples = bert.aleph_bert_preprocessing(samples)
         trigram_samples = [
-            Counter([r.replace(".", "")[i: i + 3] for i in range(len(r) - 3)])
+            Counter([r.replace(".", "")[i : i + 3] for i in range(len(r) - 3)])
             for r in reprocessed_samples
         ]
         # if book_name not in test_books:
@@ -85,10 +86,8 @@ def get_trigram_feature_vectors(data, feature_length):
         [(v, k) for k, v in all_trigram_counter.items() if k.strip() != ""],
         reverse=True,
     )
-    #TODO not sure about it
-    most_frequent_trigram = [
-        most_frequent_trigram[i][1] for i in range(feature_length)
-    ]
+    # TODO not sure about it
+    most_frequent_trigram = [most_frequent_trigram[i][1] for i in range(feature_length)]
 
     update_trigram_samples = np.array(
         [
@@ -167,7 +166,9 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
     all_scores = []
     book_dict, book_to_section = generate_books_dict(books_to_run, yaml_book_file)
     data = parser_data.get_dss_data(book_dict, type=bib_type)
-    all_trigram_feature_vector = get_trigram_feature_vectors(data, TRIGRAM_FEATURE_LENGTH)
+    all_trigram_feature_vector = get_trigram_feature_vectors(
+        data, TRIGRAM_FEATURE_LENGTH
+    )
     if not os.path.exists(f"{results_path}"):
         os.makedirs(f"{results_path}")
     for book_name, book_data in data.items():
@@ -253,8 +254,3 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
 
     results = pd.DataFrame(all_scores)
     save_results(results, f"{results_path}/scores.csv")
-
-
-
-
-

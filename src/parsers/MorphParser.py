@@ -6,34 +6,38 @@ import collections
 
 class FieldNames:
     def __init__(self):
-        self.source_line_num = 'source_line_num'
-        self.frag_label = 'frag_label'
-        self.frag_line_num = 'frag_line_num'
-        self.word_line_num = 'word_line_num'
-        self.sub_word_num = 'sub_word_num'
-        self.sub_num = 'sub_num' # not sure what this is
-        self.word_prefix = 'word_prefix'
-        self.scroll_name = 'scroll_name'
-        self.book_name = 'book_name' # only bib
-        self.chapter_name = 'chapter_name' # only bib
-        self.verse = 'verse'
-        self.hverse = 'half_verse'
-        self.interlinear = 'interlinear'
-        self.script_type = 'script_type'
-        self.transcript = 'transcript'
-        self.lang = 'lang'
-        self.lex = 'lex'
-        self.morph = 'morph'
-        self.unknown = 'unknown'
-        self.null = '0'
-        self.merr = 'merr'
+        self.source_line_num = "source_line_num"
+        self.frag_label = "frag_label"
+        self.frag_line_num = "frag_line_num"
+        self.word_line_num = "word_line_num"
+        self.sub_word_num = "sub_word_num"
+        self.sub_num = "sub_num"  # not sure what this is
+        self.word_prefix = "word_prefix"
+        self.scroll_name = "scroll_name"
+        self.book_name = "book_name"  # only bib
+        self.chapter_name = "chapter_name"  # only bib
+        self.verse = "verse"
+        self.hverse = "half_verse"
+        self.interlinear = "interlinear"
+        self.script_type = "script_type"
+        self.transcript = "transcript"
+        self.lang = "lang"
+        self.lex = "lex"
+        self.morph = "morph"
+        self.unknown = "unknown"
+        self.null = "0"
+        self.merr = "merr"
 
 
 class MorphParser:
     names = FieldNames()
 
     def __init__(self, yaml_dir=f"{BASE_DIR}/data/yamls"):
-        self.raw_morph_yaml, self.morph_dict, self.speech_parts_values = self.read_morph_dict(yaml_dir)
+        (
+            self.raw_morph_yaml,
+            self.morph_dict,
+            self.speech_parts_values,
+        ) = self.read_morph_dict(yaml_dir)
         self.parsed_morphs = collections.defaultdict(set)
         self.names = FieldNames()
 
@@ -72,14 +76,18 @@ class MorphParser:
         tag = tag[1:]
         if not tag:
             return tag, {}
-        pos = self.names.unknown if m == self.names.null else self.speech_parts_values.get(m, None)
+        pos = (
+            self.names.unknown
+            if m == self.names.null
+            else self.speech_parts_values.get(m, None)
+        )
 
         if not pos:
             tag_parse_dict.setdefault(self.names.merr, "")
             tag_parse_dict[self.names.merr] += m
             return tag, {}
 
-        pos_field = 'sp' if not part_n else 'sp' + str(part_n+1)
+        pos_field = "sp" if not part_n else "sp" + str(part_n + 1)
         tag_parse_dict[pos_field] = pos
 
         features = self.morph_dict[pos].keys()
@@ -99,26 +107,28 @@ class MorphParser:
 
     @staticmethod
     def read_morph_dict(yaml_dir):
-        raw_morph_yaml = read_yaml(path.join(yaml_dir, 'morph.yaml'))
+        raw_morph_yaml = read_yaml(path.join(yaml_dir, "morph.yaml"))
         value_dict = {}
-        for (pos, feats) in raw_morph_yaml["tags"].items():
+        for pos, feats in raw_morph_yaml["tags"].items():
             pos_values = {}
             for feature_data in feats:
                 feat_values = {}
-                for (feature, values) in feature_data.items():
+                for feature, values in feature_data.items():
                     for v in values:
                         m = (
                             raw_morph_yaml["values"][feature][v][0]
-                            if feature != 'cl'
+                            if feature != "cl"
                             else raw_morph_yaml["values"][feature][pos][v][0]
                         )
                         feat_values[m] = v
                 pos_values[feature] = feat_values
             value_dict[pos] = pos_values
-        speech_part_dict = {v[0]: k for (k, v) in raw_morph_yaml["values"]['sp'].items()}
+        speech_part_dict = {
+            v[0]: k for (k, v) in raw_morph_yaml["values"]["sp"].items()
+        }
         return raw_morph_yaml, value_dict, speech_part_dict
 
     def replace_esc(self, tag):
-        for x in self.raw_morph_yaml['escapes']:
+        for x in self.raw_morph_yaml["escapes"]:
             tag = tag.replace(*x)
         return tag

@@ -25,9 +25,16 @@ BOOKS_TO_RUN_ON = [
     "Book_of_Jubilees",
 ]
 
-main("all_sectarian_texts.yaml", BOOKS_TO_RUN_ON, "nonbib", RESULTS_PATH, TRIGRAM_FEATURE_LENGTH)
+main(
+    "all_sectarian_texts.yaml",
+    BOOKS_TO_RUN_ON,
+    "nonbib",
+    RESULTS_PATH,
+    TRIGRAM_FEATURE_LENGTH,
+)
 
 
 get_bar_graph(
-    ["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"], RESULTS_PATH
+    ["bert", "trigram", "starr", "bert_matmul_trigram", "bert_concat_trigram"],
+    RESULTS_PATH,
 )

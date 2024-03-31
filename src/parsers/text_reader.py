@@ -1,4 +1,3 @@
-
 import collections
 from src.parsers.MorphParser import FieldNames
 from logger import get_logger
@@ -23,12 +22,17 @@ def read_text(text_file):
     iANALYSIS = "analysis"
     iNUM = "num"
 
-    source_type = text_file.split('_')[-1].split('.')[0]
-    split_char = {'bib': '\t',
-                  'nonbib':' '}[source_type]
+    source_type = text_file.split("_")[-1].split(".")[0]
+    split_char = {"bib": "\t", "nonbib": " "}[source_type]
     cols_names = {
-        'bib': (iBIBINFO, iSCROLLINFO, iTRANS, iANALYSIS, iNUM),
-        'nonbib': (iSCROLLNAME, iSCROLLREF, iTRANS, iANALYSIS,)}[source_type]
+        "bib": (iBIBINFO, iSCROLLINFO, iTRANS, iANALYSIS, iNUM),
+        "nonbib": (
+            iSCROLLNAME,
+            iSCROLLREF,
+            iTRANS,
+            iANALYSIS,
+        ),
+    }[source_type]
     n_cols = len(cols_names)
 
     # scrollDecl = read_yaml(path.join(yaml_dir, 'scroll.yaml'))
@@ -66,18 +70,18 @@ def read_text(text_file):
                     interlinear = ""
 
                 if "(fl)" in xLine:
-                    script = 'paleohebrew'
+                    script = "paleohebrew"
                 elif "(f0)" in xLine:
-                    script = 'greekcapital'
+                    script = "greekcapital"
                 elif "(fy)" in xLine:
                     script = ""
 
                 continue
             line = line.rstrip("\n")
-            if source_type == 'bib':
+            if source_type == "bib":
                 pass
 
-            elif source_type == 'nonbib':
+            elif source_type == "nonbib":
                 if line.startswith(">"):
                     line = line[1:]
                     fields = line.split(split_char)
@@ -88,7 +92,7 @@ def read_text(text_file):
                     prev_frag_line_num = frag_line_num
                     continue
             else:
-                assert 0, '{} is not a valid source type'.format(source_type)
+                assert 0, "{} is not a valid source type".format(source_type)
             fields = line.split(split_char)
             n_fields = len(fields)
             if n_fields > n_cols:
@@ -99,13 +103,14 @@ def read_text(text_file):
                 fields += [""] * (n_cols - n_fields)
 
             line_data = collections.defaultdict(
-                    lambda: "", ((f, c) for (f, c) in zip(cols_names, fields)),
-                )
+                lambda: "",
+                ((f, c) for (f, c) in zip(cols_names, fields)),
+            )
 
             parsed_word = collections.defaultdict(lambda: "")
             parsed_word[line_fields_names.source_line_num] = line_num
             trans = line_data[iTRANS]
-            if source_type == 'bib':
+            if source_type == "bib":
                 (scroll, rest) = line_data[iSCROLLINFO].split(" ")
                 (fragment, fragment_line_num) = rest.split(":")
                 parsed_word[line_fields_names.frag_label] = fragment
@@ -157,7 +162,7 @@ def read_text(text_file):
             analysis = line_data[iANALYSIS] or ""
             (lang, lex, morph) = ("", "", "")
             if "%" in analysis:
-                lang = 'aramiac'
+                lang = "aramiac"
                 (lex, morph) = analysis.split("%", 1)
             elif "@" in analysis:
                 (lex, morph) = analysis.split("@", 1)

@@ -1,11 +1,11 @@
-#Create a txt file in hebrew for dss_bib and dss_nonbib.
-#Create a text file with the following format Scroll \t chapter \t pasuk
+# Create a txt file in hebrew for dss_bib and dss_nonbib.
+# Create a text file with the following format Scroll \t chapter \t pasuk
 import os
 
 from config import BASE_DIR
 
-datasets_path = f'{BASE_DIR}/data/hebrew_processed_files'
-dataset = 'DSS_nonbib'
+datasets_path = f"{BASE_DIR}/data/hebrew_processed_files"
+dataset = "DSS_nonbib"
 simulation_path = f"{BASE_DIR}ֿ/data/simulations/{dataset}"
 
 # f_text = open(f"{datasets_path}/{dataset}_text.txt", 'r')
@@ -27,7 +27,7 @@ import sys
 # Read Word Vectors
 # word_vector_file = 'data/glove.6B/glove.6B.300d.txt'
 # word_vector_file = 'data/corpus/' + dataset + '_word_vectors.txt'
-#_, embd, word_vector_map = loadWord2Vec(word_vector_file)
+# _, embd, word_vector_map = loadWord2Vec(word_vector_file)
 # word_embeddings_dim = len(embd[0])
 
 word_embeddings_dim = 300
@@ -38,21 +38,21 @@ doc_name_list = []
 doc_train_list = []
 doc_test_list = []
 
-f = open(f"{datasets_path}/{dataset}_labels.txt", 'r')
+f = open(f"{datasets_path}/{dataset}_labels.txt", "r")
 lines = f.readlines()
 for line in lines:
     doc_name_list.append(line.strip())
     temp = line.split("\t")
-    if temp[1].find('test') != -1:
+    if temp[1].find("test") != -1:
         doc_test_list.append(line.strip())
-    elif temp[1].find('train') != -1:
+    elif temp[1].find("train") != -1:
         doc_train_list.append(line.strip())
 f.close()
 # print(doc_train_list)
 # print(doc_test_list)
 
 doc_content_list = []
-f = open(f"{datasets_path}/{dataset}_text.txt", 'r')
+f = open(f"{datasets_path}/{dataset}_text.txt", "r")
 lines = f.readlines()
 for line in lines:
     doc_content_list.append(line.strip())
@@ -67,12 +67,12 @@ print(train_ids)
 random.shuffle(train_ids)
 
 # partial labeled data
-#train_ids = train_ids[:int(0.2 * len(train_ids))]
+# train_ids = train_ids[:int(0.2 * len(train_ids))]
 
-train_ids_str = '\n'.join(str(index) for index in train_ids)
+train_ids_str = "\n".join(str(index) for index in train_ids)
 
 
-f = open(f"{simulation_path}/{dataset}.train.index", 'w')
+f = open(f"{simulation_path}/{dataset}.train.index", "w")
 f.write(train_ids_str)
 f.close()
 
@@ -83,8 +83,8 @@ for test_name in doc_test_list:
 print(test_ids)
 random.shuffle(test_ids)
 
-test_ids_str = '\n'.join(str(index) for index in test_ids)
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}.test.index", 'w')
+test_ids_str = "\n".join(str(index) for index in test_ids)
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}.test.index", "w")
 f.write(test_ids_str)
 f.close()
 
@@ -97,14 +97,14 @@ shuffle_doc_words_list = []
 for id in ids:
     shuffle_doc_name_list.append(doc_name_list[int(id)])
     shuffle_doc_words_list.append(doc_content_list[int(id)])
-shuffle_doc_name_str = '\n'.join(shuffle_doc_name_list)
-shuffle_doc_words_str = '\n'.join(shuffle_doc_words_list)
+shuffle_doc_name_str = "\n".join(shuffle_doc_name_list)
+shuffle_doc_words_str = "\n".join(shuffle_doc_words_list)
 
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}_shuffle.txt", 'w')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}_shuffle.txt", "w")
 f.write(shuffle_doc_name_str)
 f.close()
 
-f = open(f"{BASE_DIR}\data\simulations\{dataset}\corpus\{dataset}_shuffle.txt", 'w')
+f = open(f"{BASE_DIR}\data\simulations\{dataset}\corpus\{dataset}_shuffle.txt", "w")
 f.write(shuffle_doc_words_str)
 f.close()
 
@@ -148,17 +148,17 @@ word_id_map = {}
 for i in range(vocab_size):
     word_id_map[vocab[i]] = i
 
-vocab_str = '\n'.join(vocab)
+vocab_str = "\n".join(vocab)
 
-f = open(f"{BASE_DIR}\data\simulations\{dataset}\corpus\{dataset}_vocab.txt", 'w')
+f = open(f"{BASE_DIR}\data\simulations\{dataset}\corpus\{dataset}_vocab.txt", "w")
 
 f.write(vocab_str)
 f.close()
 
-'''
+"""
 Word definitions begin
-'''
-'''
+"""
+"""
 definitions = []
 
 for word in vocab:
@@ -206,21 +206,21 @@ f.close()
 word_vector_file = 'data/corpus/' + dataset + '_word_vectors.txt'
 _, embd, word_vector_map = loadWord2Vec(word_vector_file)
 word_embeddings_dim = len(embd[0])
-'''
+"""
 
-'''
+"""
 Word definitions end
-'''
+"""
 
 # label list
 label_set = set()
 for doc_meta in shuffle_doc_name_list:
-    temp = doc_meta.split('\t')
+    temp = doc_meta.split("\t")
     label_set.add(temp[0])
 label_list = list(label_set)
 
-label_list_str = '\n'.join(label_list)
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/corpus/{dataset}_labels.txt", 'w')
+label_list_str = "\n".join(label_list)
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/corpus/{dataset}_labels.txt", "w")
 f.write(label_list_str)
 f.close()
 
@@ -232,8 +232,8 @@ real_train_size = train_size - val_size  # - int(0.5 * train_size)
 # different training rates
 
 real_train_doc_names = shuffle_doc_name_list[:real_train_size]
-real_train_doc_names_str = '\n'.join(real_train_doc_names)
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}_.real_train.name", 'w')
+real_train_doc_names_str = "\n".join(real_train_doc_names)
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/{dataset}_.real_train.name", "w")
 f.write(real_train_doc_names_str)
 f.close()
 
@@ -259,13 +259,14 @@ for i in range(real_train_size):
         data_x.append(doc_vec[j] / doc_len)  # doc_vec[j]/ doc_len
 
 # x = sp.csr_matrix((real_train_size, word_embeddings_dim), dtype=np.float32)
-x = sp.csr_matrix((data_x, (row_x, col_x)), shape=(
-    real_train_size, word_embeddings_dim))
+x = sp.csr_matrix(
+    (data_x, (row_x, col_x)), shape=(real_train_size, word_embeddings_dim)
+)
 
 y = []
 for i in range(real_train_size):
     doc_meta = shuffle_doc_name_list[i]
-    temp = doc_meta.split('\t')
+    temp = doc_meta.split("\t")
     label = temp[0]
     one_hot = [0 for l in range(len(label_list))]
     label_index = label_list.index(label)
@@ -297,13 +298,12 @@ for i in range(test_size):
         data_tx.append(doc_vec[j] / doc_len)  # doc_vec[j] / doc_len
 
 # tx = sp.csr_matrix((test_size, word_embeddings_dim), dtype=np.float32)
-tx = sp.csr_matrix((data_tx, (row_tx, col_tx)),
-                   shape=(test_size, word_embeddings_dim))
+tx = sp.csr_matrix((data_tx, (row_tx, col_tx)), shape=(test_size, word_embeddings_dim))
 
 ty = []
 for i in range(test_size):
     doc_meta = shuffle_doc_name_list[i + train_size]
-    temp = doc_meta.split('\t')
+    temp = doc_meta.split("\t")
     label = temp[0]
     one_hot = [0 for l in range(len(label_list))]
     label_index = label_list.index(label)
@@ -316,8 +316,7 @@ print(ty)
 # (a superset of x)
 # unlabeled training instances -> words
 
-word_vectors = np.random.uniform(-0.01, 0.01,
-                                 (vocab_size, word_embeddings_dim))
+word_vectors = np.random.uniform(-0.01, 0.01, (vocab_size, word_embeddings_dim))
 
 for i in range(len(vocab)):
     word = vocab[i]
@@ -356,12 +355,14 @@ col_allx = np.array(col_allx)
 data_allx = np.array(data_allx)
 
 allx = sp.csr_matrix(
-    (data_allx, (row_allx, col_allx)), shape=(train_size + vocab_size, word_embeddings_dim))
+    (data_allx, (row_allx, col_allx)),
+    shape=(train_size + vocab_size, word_embeddings_dim),
+)
 
 ally = []
 for i in range(train_size):
     doc_meta = shuffle_doc_name_list[i]
-    temp = doc_meta.split('\t')
+    temp = doc_meta.split("\t")
     label = temp[0]
     one_hot = [0 for l in range(len(label_list))]
     label_index = label_list.index(label)
@@ -376,9 +377,9 @@ ally = np.array(ally)
 
 print(x.shape, y.shape, tx.shape, ty.shape, allx.shape, ally.shape)
 
-'''
+"""
 Doc word heterogeneous graph
-'''
+"""
 
 # word co-occurence with context windows
 window_size = 20
@@ -392,7 +393,7 @@ for doc_words in shuffle_doc_words_list:
     else:
         # print(length, length - window_size + 1)
         for j in range(length - window_size + 1):
-            window = words[j: j + window_size]
+            window = words[j : j + window_size]
             windows.append(window)
             # print(window)
 
@@ -419,13 +420,13 @@ for window in windows:
             word_j_id = word_id_map[word_j]
             if word_i_id == word_j_id:
                 continue
-            word_pair_str = str(word_i_id) + ',' + str(word_j_id)
+            word_pair_str = str(word_i_id) + "," + str(word_j_id)
             if word_pair_str in word_pair_count:
                 word_pair_count[word_pair_str] += 1
             else:
                 word_pair_count[word_pair_str] = 1
             # two orders
-            word_pair_str = str(word_j_id) + ',' + str(word_i_id)
+            word_pair_str = str(word_j_id) + "," + str(word_i_id)
             if word_pair_str in word_pair_count:
                 word_pair_count[word_pair_str] += 1
             else:
@@ -440,14 +441,16 @@ weight = []
 num_window = len(windows)
 
 for key in word_pair_count:
-    temp = key.split(',')
+    temp = key.split(",")
     i = int(temp[0])
     j = int(temp[1])
     count = word_pair_count[key]
     word_freq_i = word_window_freq[vocab[i]]
     word_freq_j = word_window_freq[vocab[j]]
-    pmi = log((1.0 * count / num_window) /
-              (1.0 * word_freq_i * word_freq_j/(num_window * num_window)))
+    pmi = log(
+        (1.0 * count / num_window)
+        / (1.0 * word_freq_i * word_freq_j / (num_window * num_window))
+    )
     if pmi <= 0:
         continue
     row.append(train_size + i)
@@ -456,7 +459,7 @@ for key in word_pair_count:
 
 # word vector cosine similarity as weights
 
-'''
+"""
 for i in range(vocab_size):
     for j in range(vocab_size):
         if vocab[i] in word_vector_map and vocab[j] in word_vector_map:
@@ -468,7 +471,7 @@ for i in range(vocab_size):
                 row.append(train_size + i)
                 col.append(train_size + j)
                 weight.append(similarity)
-'''
+"""
 # doc word frequency
 doc_word_freq = {}
 
@@ -477,7 +480,7 @@ for doc_id in range(len(shuffle_doc_words_list)):
     words = doc_words.split()
     for word in words:
         word_id = word_id_map[word]
-        doc_word_str = str(doc_id) + ',' + str(word_id)
+        doc_word_str = str(doc_id) + "," + str(word_id)
         if doc_word_str in doc_word_freq:
             doc_word_freq[doc_word_str] += 1
         else:
@@ -491,47 +494,45 @@ for i in range(len(shuffle_doc_words_list)):
         if word in doc_word_set:
             continue
         j = word_id_map[word]
-        key = str(i) + ',' + str(j)
+        key = str(i) + "," + str(j)
         freq = doc_word_freq[key]
         if i < train_size:
             row.append(i)
         else:
             row.append(i + vocab_size)
         col.append(train_size + j)
-        idf = log(1.0 * len(shuffle_doc_words_list) /
-                  word_doc_freq[vocab[j]])
+        idf = log(1.0 * len(shuffle_doc_words_list) / word_doc_freq[vocab[j]])
         weight.append(freq * idf)
         doc_word_set.add(word)
 
 node_size = train_size + vocab_size + test_size
-adj = sp.csr_matrix(
-    (weight, (row, col)), shape=(node_size, node_size))
+adj = sp.csr_matrix((weight, (row, col)), shape=(node_size, node_size))
 
 # dump objects
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.x", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.x", "wb")
 
 pkl.dump(x, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.y", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.y", "wb")
 
 pkl.dump(y, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.tx", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.tx", "wb")
 
 pkl.dump(tx, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.ty", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.ty", "wb")
 pkl.dump(ty, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.allx", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.allx", "wb")
 
 pkl.dump(allx, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.ally", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.ally", "wb")
 
 pkl.dump(ally, f)
 f.close()
-f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.adj", 'wb')
+f = open(f"{BASE_DIR}/data/simulations/{dataset}/ind.{dataset}.adj", "wb")
 
 pkl.dump(adj, f)
 f.close()
