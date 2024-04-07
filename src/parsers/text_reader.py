@@ -54,6 +54,7 @@ def read_text(text_file):
     lines = []
     line_counter = 0
     with open(text_file) as f:
+        logger.info(f"reading {text_file}")
         for line in f:
             line_counter += 1
             if line_counter % 10_000 == 0:

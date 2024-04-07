@@ -4,7 +4,9 @@ import re
 
 from config import BASE_DIR
 from utils import Transcriptor
+from logger import get_logger
 
+logger = get_logger(__name__)
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
 modes = [
     ["average", 4, "average_word_vectors"],
@@ -15,6 +17,7 @@ modes = [
 
 
 def aleph_bert_preprocessing(samples):
+    # TODO fix parsing issues with ( and ) or unrecognized characters
     transcriptor = Transcriptor(f"{BASE_DIR}/data/yamls/heb_transcript.yaml")
     transcripted_samples = []
     for sample in samples:
@@ -24,13 +27,21 @@ def aleph_bert_preprocessing(samples):
         for entry in sample:
             filtered_entry_transcript = chars_to_delete.sub("", entry["transcript"])
             filtered_entry_transcript = filtered_entry_transcript.replace("\xa0", "")
+            # if "(" in filtered_entry_transcript or ")" in filtered_entry_transcript:
+            #     old_filtered_entry_transcript = filtered_entry_transcript
+            #     filtered_entry_transcript = filtered_entry_transcript.replace(
+            #         "(", ""
+            #     ).replace(")", "")
+            #     logger.info(
+            #         f"removed ( and ) from transcript: {old_filtered_entry_transcript} -> {filtered_entry_transcript} ({entry['book_name']}, {entry['chapter_name']})"
+            #     )
 
             if last_entry_word == entry["word_line_num"] or entry["transcript"] == ".":
-                word.append(transcriptor.latin_to_heb(filtered_entry_transcript))
+                word.append(transcriptor.latin_to_heb(filtered_entry_transcript, entry))
             else:
                 if len(word):
                     transcripted_sample.append("".join(word))
-                word = [transcriptor.latin_to_heb(filtered_entry_transcript)]
+                word = [transcriptor.latin_to_heb(filtered_entry_transcript, entry)]
             last_entry_word = entry["word_line_num"]
         transcripted_samples.append(transcripted_sample)
     return [" ".join(x) for x in transcripted_samples]

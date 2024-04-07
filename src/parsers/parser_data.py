@@ -108,7 +108,7 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
     #     yield curr_sample, sample_name
 
 
-def get_samples(book_data, word_per_samples=100):
+def get_samples(book_data, word_per_samples=25):
     if len(book_data) == 0:
         print("empty")
         return None, None
@@ -138,7 +138,10 @@ def get_dss_data(books_list, type="nonbib"):
     )
     logger.info(f"book_sizes: {num_of_lines_per_book}")
     filter_field = "scroll_name" if type == "nonbib" else "book_name"
-    filtered_data = filter_data_by_field(filter_field, books_list, data)
+    if books_list:
+        filtered_data = filter_data_by_field(filter_field, books_list, data)
+    else:
+        filtered_data = data
     logger.info("processed the following books}")
     for book in books_list:
         print(book, end=",")

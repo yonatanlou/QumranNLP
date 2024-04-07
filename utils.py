@@ -2,6 +2,9 @@ import yaml
 from os import path
 from collections import defaultdict
 from datetime import datetime
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 root_path = path.dirname(__file__)
 
@@ -27,8 +30,16 @@ class Transcriptor:
         with open(transcription_yaml_path, "r") as f:
             self.trans_dict = yaml.safe_load(f)
 
-    def latin_to_heb(self, latin_text):
-        return "".join([self.trans_dict["latin_to_heb"][x] for x in latin_text])
+    def latin_to_heb(self, latin_text, entry=None):
+        s = ""
+        for x in latin_text:
+            if x in self.trans_dict["latin_to_heb"].keys():
+                s += self.trans_dict["latin_to_heb"][x]
+            else:
+                logger.info(
+                    f"couldnt translate {x} to Hebrew (full word is {latin_text}), current s:{s},  ({entry['book_name']}, {entry['chapter_name']})"
+                )
+        return s
 
 
 def get_time():

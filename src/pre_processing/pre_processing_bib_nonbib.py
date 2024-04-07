@@ -20,27 +20,6 @@ ckpt_dir = f"{HEBREW_PROCESS_PATH}/{run_name}"
 os.makedirs(ckpt_dir, exist_ok=True)
 
 logger = get_logger(__name__, f"{ckpt_dir}/{today}.log")
-BOOKS_TO_RUN_ON = [
-    # "Musar Lamevin",
-    # "Berakhot",
-    # "4QM",
-    # "Catena_Florilegium",
-    # "4QD",
-    # "Hodayot",
-    # "Pesharim",
-    # "1QH",
-    # "1QS",
-    # "Songs_of_Maskil",
-    # "non_biblical_psalms",
-    # "Mysteries",
-    # "4QS",
-    # "4QH",
-    # "1QSa",
-    # "CD",
-    # "1QM",
-    # "Collections_of_psalms",
-    # "Book_of_Jubilees",
-]
 
 
 def parse_text(yaml_book_file, books_to_run, bib_type) -> Tuple[Any, Dict, Dict]:
@@ -82,11 +61,11 @@ def assign_train_test(group, train_ratio):
 
 
 def split_train_test(df, book_stats, train_ratio):
-    books_with_enough_data = book_stats[book_stats["lines_count"] > 1].index.to_list()
+    books_with_enough_data = book_stats[book_stats["word_count"] > 2].index.to_list()
     df_filtered = df[df["book"].isin(books_with_enough_data)]
     logger.info(f"removed {df.shape[0]-df_filtered.shape[0]} books")
     df_filtered_w_label = (
-        df_filtered.groupby("book")
+        df_filtered.groupby("label")
         .apply(assign_train_test, train_ratio)
         .reset_index(drop=True)
     )
@@ -103,8 +82,8 @@ def write_data_into_text_files(
     all_psukim, all_labels = get_labels_and_sentences(data, minimum_book_length)
     df, book_stats = df_conversion(all_psukim, all_labels, book_to_label)
     df_labeled = split_train_test(df, book_stats, train_ratio)
-
-    df_labeled[["labels", "train_test", f"{label}"]].to_csv(
+    df_labeled = df_labeled.drop_duplicates(subset=["text", "labels"])
+    df_labeled[["labels", "train_test", "label"]].to_csv(
         f"{ckpt_dir}/DSS_{label}_{bib_type}_labels.txt",
         sep="\t",
         index=False,
@@ -150,32 +129,25 @@ MINIMUM_BOOK_LENGTH = 25
 TRAIN_SIZE = 0.8
 BIB_TYPE = ["bib", "nonbib"]
 WORDS_PER_SAMPLE = 25  # estimated sentence length
-YAML_BOOK_FILE = "books_to_read.yaml"
+YAML_BOOK_FILE = {"bib": "dss_bib.yaml", "nonbib": "dss_nonbib.yaml"}
 if __name__ == "__main__":
-    if isinstance(BIB_TYPE, list):
-        for bib_type in BIB_TYPE:
-            (data, book_dict, book_to_section) = parse_text(
-                YAML_BOOK_FILE, BOOKS_TO_RUN_ON, bib_type
-            )
-            write_data_into_text_files(
-                data,
-                book_dict,
-                book_to_section,
-                bib_type,
-                MINIMUM_BOOK_LENGTH,
-                train_ratio=TRAIN_SIZE,
-                label="bib_nonbib",
-            )
-    else:
+    data_all = {}
+    book_dict_all = {}
+    book_to_section_all = {}
+    for bib_type in BIB_TYPE:
         (data, book_dict, book_to_section) = parse_text(
-            YAML_BOOK_FILE, BOOKS_TO_RUN_ON, BIB_TYPE
+            YAML_BOOK_FILE.get(bib_type), [], bib_type
         )
-        write_data_into_text_files(
-            data,
-            book_dict,
-            book_to_section,
-            BIB_TYPE,
-            MINIMUM_BOOK_LENGTH,
-            train_ratio=TRAIN_SIZE,
-            label="sectarian",
-        )
+        data_all.update(data)
+        book_dict_all.update(book_dict)
+        book_to_section_all.update(book_to_section)
+
+    write_data_into_text_files(
+        data_all,
+        book_dict_all,
+        book_to_section_all,
+        bib_type,
+        MINIMUM_BOOK_LENGTH,
+        train_ratio=TRAIN_SIZE,
+        label="bib_nonbib",
+    )

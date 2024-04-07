@@ -3,6 +3,12 @@ from config import BASE_DIR
 
 
 def generate_books_dict(books_to_run, yaml_book_file):
+    """
+    Generate a dictionary of books and their sections.
+    Yaml file should have the following structure:
+    bib/nonbib:
+        book_name: [list of book names]
+    """
     book_yml = utils.read_yaml(f"{BASE_DIR}/data/yamls/{yaml_book_file}")
     if any(books_to_run):
         book_dict = {
