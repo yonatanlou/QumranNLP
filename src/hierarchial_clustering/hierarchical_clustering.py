@@ -187,7 +187,7 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
         samples, sample_names = parser_data.get_samples(
             book_data, word_per_samples=WORD_PER_SAMPLES
         )
-        if len(samples[-1]) < 50:  # TODO why?
+        if len(samples[-1]) < 50:
             samples = samples[:-1]
             sample_names = sample_names[:-1]
         print(f'book: {book_scores["book_name"]}')
