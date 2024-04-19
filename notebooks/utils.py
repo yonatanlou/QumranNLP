@@ -1,22 +1,26 @@
 import pandas as pd
 import re
 import yaml
+
 MIN_WORDS_PER_BOOK = 100
 MIN_WORD_PER_LINE = 5
 
 
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
+
+
 def get_biblical_from_line(line):
     """
     Returns the biblical section of a line.
     """
     bib = F.biblical.v(line)
     if bib == None:
-        return 'nonbib'
+        return "nonbib"
     elif bib == 1:
-        return 'bib'
+        return "bib"
     elif bib == 2:
-        return 'biblical_non_biblical'
+        return "biblical_non_biblical"
+
 
 def remove_chars(s):
     chars_to_delete = "#ε^><»≥≤/?Ø«|}{׳"
@@ -90,15 +94,17 @@ def data_cleaning(df, book_stats):
     df_filtered["book_pasuk"] = df_filtered["book"] + " " + df_filtered["pasuk"]
     return df_filtered
 
-def generate_composition_to_book():
-    with open("/Users/yonatanlou/dev/QumranNLP/data/yamls/all_texts_by_composition.yaml") as f:
-        all_texts_by_composition = yaml.safe_load(f)
 
+def generate_composition_to_book():
+    with open(
+        "/Users/yonatanlou/dev/QumranNLP/data/yamls/all_texts_by_composition.yaml"
+    ) as f:
+        all_texts_by_composition = yaml.safe_load(f)
 
     df_list = []
     for key, value in all_texts_by_composition.items():
-        temp_df = pd.DataFrame(value, columns=['book'])
-        temp_df['composition'] = key
+        temp_df = pd.DataFrame(value, columns=["book"])
+        temp_df["composition"] = key
         df_list.append(temp_df)
 
     # Concatenate all DataFrames
