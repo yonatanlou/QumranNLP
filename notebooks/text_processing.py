@@ -56,6 +56,18 @@ def generate_raw_data():
         else:
             data[book].append(text)
     return data
+### Future use: how to get the part-of-speech data
+# data = []
+# for w in tqdm(F.otype.s("word")[:]):
+#     book_and_chapter = A.sectionStrFromNode(w)
+#     book = A.sectionStrFromNode(w).split(" ")[0]
+#     text = ( T.text(w)
+#     )
+#     text = remove_chars(text).replace("\xa0", "").replace("׃", ".")
+#     sp = F.sp.v(w)
+#     res = {"book":book, "text": text, "sp": sp}
+#
+#     data.append(res)
 
 
 def generate_corpus_df() -> pd.DataFrame:
