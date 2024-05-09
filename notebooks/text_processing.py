@@ -1,17 +1,21 @@
+import os
+
 from config import BASE_DIR
 
 import re
 import pandas as pd
 import matplotlib.pyplot as plt
-from notebooks.utils import parse_data, generate_stats, MIN_WORDS_PER_BOOK
+from notebooks.utils import parse_data, generate_stats
+from notebooks.constants import MIN_WORDS_PER_BOOK
 from notebooks.utils import data_cleaning
 
+ALLOWED_CHARS = "אבגדהוזחטיכלמנסעפצקרשתםןףךץ. 1234567890"
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
 from logger import get_logger
 
 logger = get_logger(__name__)
 
-from tqdm import tqdm
+import tqdm
 
 
 def get_biblical_from_line(line):
@@ -39,7 +43,7 @@ def generate_raw_data():
 
     A = use("ETCBC/dss", hoist=globals())
     data = {}
-    for line in tqdm(F.otype.s("line")[:]):
+    for line in tqdm.tqdm(F.otype.s("line")[:]):
         book_and_chapter = A.sectionStrFromNode(line)
         book = A.sectionStrFromNode(line).split(" ")[0]
         text = (
@@ -110,6 +114,61 @@ def convert_df_to_by_book(df):
     ).drop_duplicates()
     return df_by_book
 
+
+def doc_level_pre_process(doc):
+    doc = doc.replace("╱", "")
+    doc = re.sub(r"\s+", " ", doc)
+    return doc
+
+
+def replace_for_ot_sofit(word):
+    OT_SOFIT = {"מ": "ם", "נ": "ן", "פ": "ף", "צ": "ץ", "כ": "ך"}
+    last_char = word[-1]
+    if last_char in OT_SOFIT.keys():
+        word = word[:-1] + OT_SOFIT[last_char]
+    return word
+
+
+def remove_not_heb_chars(word):
+    new_word = []
+    removed_chars = set()
+    for char in word:
+        if char in ALLOWED_CHARS:
+            new_word.append(char)
+        if char not in ALLOWED_CHARS:
+            removed_chars.add(char)
+    return "".join(new_word), removed_chars
+
+
+
+
+
+def pre_process_corpus(df_by_book: pd.DataFrame,stop_words, remove_stop_words=True):
+    all_docs = []
+    tqdm_flex = tqdm.tqdm
+    if os.environ["JPY_SESSION_NAME"].endswith("ipynb"):
+        tqdm_flex = tqdm.tqdm_notebook
+    for i, doc in tqdm_flex(enumerate(df_by_book["text"])):
+        doc = doc_level_pre_process(doc)
+        tmp_words_list = []
+        word_replace_counter = 0
+        chars_removed = set()
+        for word in doc.split():
+            if remove_stop_words:
+                if word in stop_words:
+                    continue
+            word = replace_for_ot_sofit(word)
+            new_word, char_removed = remove_not_heb_chars(word)
+            chars_removed.update(char_removed)
+            if word != new_word:
+                word_replace_counter += 1
+            tmp_words_list.append(new_word)
+        if word_replace_counter:
+            print(
+                f"({i}) replaced {word_replace_counter} words in {df_by_book.iloc[i, :].book} ({word_replace_counter / len(doc.split()):.3f} from all words). chars removed: {chars_removed}")
+        doc = " ".join(tmp_words_list)
+        all_docs.append(doc)
+    return all_docs
 
 if __name__ == "__main__":
     pass
