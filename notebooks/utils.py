@@ -2,9 +2,7 @@ import pandas as pd
 import re
 import yaml
 
-MIN_WORDS_PER_BOOK = 100
-MIN_WORD_PER_LINE = 5
-
+from notebooks.constants import MIN_WORDS_PER_BOOK
 
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
 
