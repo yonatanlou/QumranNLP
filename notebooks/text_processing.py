@@ -60,6 +60,8 @@ def generate_raw_data():
         else:
             data[book].append(text)
     return data
+
+
 ### Future use: how to get the part-of-speech data
 # data = []
 # for w in tqdm(F.otype.s("word")[:]):
@@ -140,10 +142,7 @@ def remove_not_heb_chars(word):
     return "".join(new_word), removed_chars
 
 
-
-
-
-def pre_process_corpus(df_by_book: pd.DataFrame,stop_words, remove_stop_words=True):
+def pre_process_corpus(df_by_book: pd.DataFrame, stop_words, remove_stop_words=True):
     all_docs = []
     tqdm_flex = tqdm.tqdm
     if os.environ["JPY_SESSION_NAME"].endswith("ipynb"):
@@ -165,10 +164,12 @@ def pre_process_corpus(df_by_book: pd.DataFrame,stop_words, remove_stop_words=Tr
             tmp_words_list.append(new_word)
         if word_replace_counter:
             print(
-                f"({i}) replaced {word_replace_counter} words in {df_by_book.iloc[i, :].book} ({word_replace_counter / len(doc.split()):.3f} from all words). chars removed: {chars_removed}")
+                f"({i}) replaced {word_replace_counter} words in {df_by_book.iloc[i, :].book} ({word_replace_counter / len(doc.split()):.3f} from all words). chars removed: {chars_removed}"
+            )
         doc = " ".join(tmp_words_list)
         all_docs.append(doc)
     return all_docs
+
 
 if __name__ == "__main__":
     pass
