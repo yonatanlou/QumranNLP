@@ -1,4 +1,7 @@
 import re
+
+import pandas as pd
+
 from src.features.Starr.features_keys import (
     Feature,
     feature_list,
@@ -190,3 +193,12 @@ def get_starr_features(samples):
         gen_sample_features(sample, morph_dict, feature_list) for sample in samples
     ]
     return np.array(features)
+
+
+def get_starr_features_v2(samples):
+    morph_dict = get_morph_dict()
+    features = [
+        gen_sample_features(sample, morph_dict, feature_list) for sample in samples
+    ]
+    df = pd.DataFrame(features, columns=[f[0] for f in feature_list])
+    return df
