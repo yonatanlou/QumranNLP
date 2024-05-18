@@ -79,11 +79,11 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
             try:
                 curr_sample.extend(next(sample_generator))
             except StopIteration:
-                print("first", i, j, num_samples)
+                # print("first", i, j, num_samples)
                 finish = True
                 break
         if len(curr_sample) == 0:
-            print("second", i, j, num_samples, len(curr_sample))
+            # print("second", i, j, num_samples, len(curr_sample))
             sample_name = ""
         else:
             sample_name = f"{curr_sample[0]['scroll_name']}:{curr_sample[0]['frag_label']}:{curr_sample[0]['frag_line_num']}-{curr_sample[-1]['frag_label']}:{curr_sample[-1]['frag_line_num']}"
