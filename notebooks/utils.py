@@ -7,19 +7,6 @@ from notebooks.constants import MIN_WORDS_PER_BOOK
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
 
 
-def get_biblical_from_line(line):
-    """
-    Returns the biblical section of a line.
-    """
-    bib = F.biblical.v(line)
-    if bib == None:
-        return "nonbib"
-    elif bib == 1:
-        return "bib"
-    elif bib == 2:
-        return "biblical_non_biblical"
-
-
 def remove_chars(s):
     chars_to_delete = "#ε^><»≥≤/?Ø«|}{׳"
     for char in chars_to_delete:
