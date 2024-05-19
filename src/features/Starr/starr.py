@@ -195,7 +195,7 @@ def get_starr_features(samples):
     return np.array(features)
 
 
-def get_starr_features_v2(samples):
+def get_starr_features_v2(samples) -> pd.DataFrame:
     morph_dict = get_morph_dict()
     features = [
         gen_sample_features(sample, morph_dict, feature_list) for sample in samples

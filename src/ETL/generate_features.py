@@ -12,11 +12,14 @@ from src.parsers.MorphParser import MorphParser
 from src.parsers.text_reader import read_text
 
 
-text_file = f"{BASE_DIR}/data/texts/abegg/dss_{bib_nonbib}.txt"
+text_file = "{BASE_DIR}/data/texts/abegg/dss_{bib_nonbib}.txt"
 yaml_dir = f"{BASE_DIR}/data/yamls"
 
 
-def generate_starr_features(bib_nonbib, word_per_sample, text_file_path, yaml_dir):
+def generate_features(bib_nonbib, word_per_sample, text_file_path, yaml_dir) -> pd.DataFrame:
+    """
+    Generate features by starr + hebrew text by sentence.
+    """
     morph_parser = MorphParser(yaml_dir=yaml_dir)
     data, lines = read_text(text_file_path)
     filtered_data = defaultdict(list)
@@ -41,16 +44,16 @@ def generate_starr_features(bib_nonbib, word_per_sample, text_file_path, yaml_di
         starr_features["book"], starr_features["sentence_path"] = [
             s.split(":")[0] for s in sample_names
         ], sample_names
-        starr_features["processed_text"] = heb_trans_samples
+        starr_features["text"] = heb_trans_samples
         starr_features["n_words"] = [len(s.split(" ")) for s in heb_trans_samples]
         features_by_sample_dfs_lst.append(starr_features)
-        df = pd.concat(features_by_sample_dfs_lst)
-        return df
-
+    df = pd.concat(features_by_sample_dfs_lst)
+    df["label"] = bib_nonbib
+    return df
 
 if __name__ == "__main__":
-    df = generate_starr_features(
-        bib_nonbib="nonbib", word_per_sample=100, text_file=text_file, yaml_dir=yaml_dir
+    df = generate_features(
+        bib_nonbib="nonbib", word_per_sample=100, text_file_path=text_file.format(BASE_DIR=BASE_DIR, bib_nonbib="nonbib"), yaml_dir=yaml_dir
     )
     df.to_csv(
         f"{BASE_DIR}/data/starr_features_nonbib_dss_100_words_window.csv", index=False
