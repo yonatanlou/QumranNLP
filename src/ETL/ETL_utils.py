@@ -104,7 +104,7 @@ def process_scrolls_to_features(
         if not samples or not sample_names:
             continue
         raw_txt = get_raw_text_by_sentence(samples, sample_names)
-        starr_features = starr.get_starr_features_v2(samples)
+        starr_features = starr.get_starr_features(samples)
         tmp_df = pd.concat([raw_txt, starr_features], axis=1)
         features_by_sample_dfs.append(tmp_df)
 
