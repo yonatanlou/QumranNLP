@@ -4,10 +4,9 @@ from config import BASE_DIR
 
 import re
 import pandas as pd
-import matplotlib.pyplot as plt
-from notebooks.utils import parse_data, generate_stats
+from notebooks.notebooks_utils import parse_data, generate_stats
 from notebooks.constants import MIN_WORDS_PER_BOOK
-from notebooks.utils import data_cleaning
+from notebooks.notebooks_utils import data_cleaning
 
 ALLOWED_CHARS = "אבגדהוזחטיכלמנסעפצקרשתםןףךץ. 1234567890"
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
