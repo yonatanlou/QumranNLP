@@ -39,6 +39,8 @@ def ratio(x, y):
 
 
 def percentage(x, y):
+    if y == 0:
+        return -1
     return (x / y) * 100
 
 
@@ -147,17 +149,17 @@ feature_list = [
         [["general", "words"]],
         "percentage",
     ],
-    ["ky percentage", [["specific_words", "ky"]], [["general", "words"]], "percentage"],
+    ["ky percentage", [["specific_words", "כי"]], [["general", "words"]], "percentage"],
     [
         "aCr percentage",
-        [["specific_words", "aCr"]],
+        [["specific_words", "אשר"]],
         [["general", "words"]],
         "percentage",
     ],
-    ["oM percentage", [["specific_words", "oM"]], [["general", "words"]], "percentage"],
+    ["oM percentage", [["specific_words", "עם"]], [["general", "words"]], "percentage"],
     [
         "kya percentage",
-        [["specific_words", "kya"]],
+        [["specific_words", "כיא"]],
         [["general", "words"]],
         "percentage",
     ],
