@@ -11,8 +11,15 @@ pip install -r requirements.txt
 I'm using the [ETCBC/dss](https://github.com/ETCBC/dss/tree/master) package (built on [text-fabric](https://github.com/annotation/text-fabric/)).
 This repo contains the original transcriptions by [Matrin Abegg](https://en.wikipedia.org/wiki/Martin_Abegg) as well (data/texts/abegg).
 
+For generating data, you need to run the `src/main_ETL.py` script.
+It will run over all of the scrolls (bib and nonbib), will generate starr features and save two dataframes:
+1. Full data (no filtering).
+2. Filtered data (you can specify which rules do you want to apply using the `filter_df_by_rules` function). The rules for now are:
+   1. Books greater then 300 words.
+   2. Hebrew books.
+   3. Each book divided into 100 words chunks.
 
-
+---
 
 Running Tasks:
 
