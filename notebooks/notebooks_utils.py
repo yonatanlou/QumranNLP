@@ -1,6 +1,5 @@
 import pandas as pd
 import re
-import yaml
 
 from notebooks.constants import MIN_WORDS_PER_BOOK
 
@@ -78,20 +77,3 @@ def data_cleaning(df, book_stats):
     # df_filtered = df_filtered[df_filtered["word_count"] >= MIN_WORD_PER_LINE]
     df_filtered["book_pasuk"] = df_filtered["book"] + " " + df_filtered["pasuk"]
     return df_filtered
-
-
-def generate_composition_to_book():
-    with open(
-        "/Users/yonatanlou/dev/QumranNLP/data/yamls/all_texts_by_composition.yaml"
-    ) as f:
-        all_texts_by_composition = yaml.safe_load(f)
-
-    df_list = []
-    for key, value in all_texts_by_composition.items():
-        temp_df = pd.DataFrame(value, columns=["book"])
-        temp_df["composition"] = key
-        df_list.append(temp_df)
-
-    # Concatenate all DataFrames
-    df = pd.concat(df_list, ignore_index=True)
-    return df

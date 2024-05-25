@@ -1,12 +1,16 @@
 import re
 
 import pandas as pd
+import yaml
 from tqdm import tqdm
 
+from config import BASE_DIR
+from notebooks.constants import NOT_HEB_BOOKS
 from src.features.Starr import starr
 from src.parsers import parser_data
 
 ALLOWED_CHARS = "אבגדהוזחטיכלמנסעפצקרשתםןףךץ. 1234567890"
+MIN_WORDS_PER_SCROLL = 300
 
 
 def remove_not_heb_chars(word):
@@ -90,7 +94,7 @@ def get_raw_text_by_sentence(samples, sample_names, lex=True) -> pd.DataFrame:
 
 
 def process_scrolls_to_features(
-    filtered_data, word_per_samples, sentence_divider
+    filtered_data, word_per_samples, sentence_divider="׃ "
 ) -> pd.DataFrame:
     features_by_sample_dfs = []
 
@@ -109,3 +113,76 @@ def process_scrolls_to_features(
         features_by_sample_dfs.append(tmp_df)
 
     return pd.concat(features_by_sample_dfs, ignore_index=True)
+
+
+def filter_df_by_rules(df):
+    df = add_sectarian_label(df)
+
+    # Merge with the composition-to-book mapping and remove duplicates
+    composition_to_book = generate_composition_to_book().drop_duplicates(
+        subset=["book"]
+    )
+    df = pd.merge(
+        df, composition_to_book, on="book", how="left", validate="many_to_one"
+    )
+
+    # Filter out non-Hebrew books
+    df = df[~df["book"].isin(NOT_HEB_BOOKS)]
+
+    # Aggregate text by book
+    df_grouped = df.groupby("book")["text"].apply(" ".join).reset_index()
+
+    # Merge with additional book info and remove duplicates
+    book_info = df[["book", "composition", "section"]].drop_duplicates()
+    df_by_book = pd.merge(df_grouped, book_info, on="book", how="inner")
+
+    # Compute the number of words in each book
+    df_by_book["number_of_words"] = df_by_book["text"].str.split().apply(len)
+
+    # Filter books with at least 300 words
+    df_by_book = df_by_book[df_by_book["number_of_words"] >= MIN_WORDS_PER_SCROLL]
+
+    # Get the list of books with enough words
+    books_with_enough_words = df_by_book["book"].tolist()
+
+    # Filter the original dataframe to keep only books with enough words
+    df_final = df[df["book"].isin(books_with_enough_words)]
+    return df_final
+
+
+def add_sectarian_label(df):
+    import yaml
+
+    with open(f"{BASE_DIR}/data/yamls/all_sectarian_texts.yaml", "r") as f:
+        all_sectarian_texts = yaml.load(f, Loader=yaml.FullLoader)
+        all_sectarian_texts = {
+            k: v for k, v in all_sectarian_texts.items() if len(v) > 0
+        }
+
+    flatten = []
+    for section in all_sectarian_texts.keys():
+        for scroll in all_sectarian_texts[section].keys():
+            for book in all_sectarian_texts[section][scroll]:
+                flatten.append({"section": section, "scroll": scroll, "book": book})
+
+    books_with_label = pd.DataFrame(flatten)
+
+    df_with_label = pd.merge(df, books_with_label, how="outer", on="book")
+    return df_with_label
+
+
+def generate_composition_to_book():
+    with open(
+        "/Users/yonatanlou/dev/QumranNLP/data/yamls/all_texts_by_composition.yaml"
+    ) as f:
+        all_texts_by_composition = yaml.safe_load(f)
+
+    df_list = []
+    for key, value in all_texts_by_composition.items():
+        temp_df = pd.DataFrame(value, columns=["book"])
+        temp_df["composition"] = key
+        df_list.append(temp_df)
+
+    # Concatenate all DataFrames
+    df = pd.concat(df_list, ignore_index=True)
+    return df
