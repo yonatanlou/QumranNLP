@@ -9,7 +9,7 @@ from src.ETL.generate_raw_data import process_scrolls
 logger = get_logger(__name__)
 WORDS_PER_SAMPLE = 100
 SENTENCE_DIVIDER = "׃ "
-OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_22_05_2024.csv"
+OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{WORDS_PER_SAMPLE}_words_22_05_2024.csv"
 
 
 @click.command()
@@ -17,7 +17,7 @@ OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_22_05_2024.csv
     "--words_per_sample", default=WORDS_PER_SAMPLE, help="Number of words per sample."
 )
 @click.option("--output_file", default=OUTPUT_FILE, help="Output CSV file path.")
-def main(words_per_sample, output_file):
+def main(words_per_sample: int, output_file: str):
     logger.info("Extracting raw data from text-fabric")
     raw_data = process_scrolls()
     logger.info("Processing scrolls to text and starr features")
@@ -27,9 +27,9 @@ def main(words_per_sample, output_file):
     directory, filename = os.path.split(output_file)
     output_file_filtered = os.path.join(directory, "filtered_" + filename)
     df_filtered.to_csv(output_file_filtered, index=False)
-    print("done")
+    print(f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})")
 
 
 if __name__ == "__main__":
     main()
-# python main_ETL.py --words_per_sample 100 --sentence_divider "׃ " --output_file "/path/to/output.csv"
+# python main_ETL.py --words_per_sample 100 --output_file "/path/to/output.csv"
