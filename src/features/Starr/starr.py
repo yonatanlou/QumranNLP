@@ -1,4 +1,7 @@
 import re
+
+import pandas as pd
+
 from src.features.Starr.features_keys import (
     Feature,
     feature_list,
@@ -24,7 +27,7 @@ def get_morph_dict():
         "interrogative_pronoun",
     ]
     general = ["verbs", "nouns", "words", "particles", "pronouns", "adjectives"]
-    specific_word_counts = ["ky", "kya", "hnh", "whnh", "aCr", "oM"]
+    specific_word_counts = ["כי", "כיא", "הנה", "והנה", "אשר", "עם"]
     morph_name_dict = {
         "noun_classes": {
             x: xx[1]
@@ -148,7 +151,7 @@ def gen_sample_features(entries, morph_name_dict, feature_list):
 
             if parsed_morph["sp"] == "adjv":
                 count["general"]["adjectives"] += 1
-                if "st" in parsed_morph:
+                if parsed_morph.get("st"):
                     count["adjective_states"][
                         morph_name_dict["adjective_states"][entry["parsed_morph"]["st"]]
                     ] += 1
@@ -160,21 +163,21 @@ def gen_sample_features(entries, morph_name_dict, feature_list):
                 count["pronoun_classes"][pronoun_type] += 1
 
             if filtered_transcript in morph_name_dict["specific_words"]:
-                if filtered_transcript not in ["om", "oM", "aCr"]:
+                if filtered_transcript not in ["עם", "עמ", "אשר"]:
                     count["specific_words"][filtered_transcript] += 1
                 else:
                     if parsed_morph["sp"] == "ptcl":
                         filtered_transcript = (
-                            "oM" if filtered_transcript == "om" else filtered_transcript
+                            "עם" if filtered_transcript == "עמ" else filtered_transcript
                         )
                         count["specific_words"][filtered_transcript] += 1
 
-                if filtered_transcript == "hnh" and last_filtered_transcript == "w":
-                    count["specific_words"]["whnh"] += 1
-            if "hn/" in entry["transcript"]:  # also הנני counts as 'hnh'
-                count["specific_words"]["hnh"] += 1
-            if "om/" in entry["transcript"] and parsed_morph["sp"] == "ptcl":
-                count["specific_words"]["oM"] += 1
+                if filtered_transcript == "הנה" and last_filtered_transcript == "w":
+                    count["specific_words"]["והנה"] += 1
+            if "הנני" in entry["transcript"]:  # also הנני counts as 'hnh'
+                count["specific_words"]["הנה"] += 1
+            if "עמי" in entry["transcript"] and parsed_morph["sp"] == "ptcl":
+                count["specific_words"]["עם"] += 1
     scores = []
     for feature in feature_list:
         feature_obj = Feature(feature[0], feature[1], feature[2], feature[3])
@@ -184,9 +187,11 @@ def gen_sample_features(entries, morph_name_dict, feature_list):
     return scores
 
 
-def get_starr_features(samples):
+def get_starr_features(samples) -> pd.DataFrame:
     morph_dict = get_morph_dict()
+
     features = [
         gen_sample_features(sample, morph_dict, feature_list) for sample in samples
     ]
-    return np.array(features)
+    df = pd.DataFrame(features, columns=[f[0] for f in feature_list])
+    return df

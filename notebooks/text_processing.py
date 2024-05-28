@@ -1,13 +1,10 @@
 import os
 
-from config import BASE_DIR
-
 import re
 import pandas as pd
-import matplotlib.pyplot as plt
-from notebooks.utils import parse_data, generate_stats
+from notebooks.notebooks_utils import parse_data, generate_stats
 from notebooks.constants import MIN_WORDS_PER_BOOK
-from notebooks.utils import data_cleaning
+from notebooks.notebooks_utils import data_cleaning
 
 ALLOWED_CHARS = "אבגדהוזחטיכלמנסעפצקרשתםןףךץ. 1234567890"
 chars_to_delete = re.compile("[\\\\\^><»≥≤/?Ø\\]\\[«|}{]")
@@ -62,20 +59,6 @@ def generate_raw_data():
     return data
 
 
-### Future use: how to get the part-of-speech data
-# data = []
-# for w in tqdm(F.otype.s("word")[:]):
-#     book_and_chapter = A.sectionStrFromNode(w)
-#     book = A.sectionStrFromNode(w).split(" ")[0]
-#     text = ( T.text(w)
-#     )
-#     text = remove_chars(text).replace("\xa0", "").replace("׃", ".")
-#     sp = F.sp.v(w)
-#     res = {"book":book, "text": text, "sp": sp}
-#
-#     data.append(res)
-
-
 def generate_corpus_df() -> pd.DataFrame:
     data = generate_raw_data()
     df = parse_data(data)
@@ -86,27 +69,6 @@ def generate_corpus_df() -> pd.DataFrame:
         f"Removed {df['book'].nunique()-df_filtered['book'].nunique()} books that are smaller than {MIN_WORDS_PER_BOOK} words per book"
     )
     return df_filtered
-
-
-def add_sectarian_label(df):
-    import yaml
-
-    with open(f"{BASE_DIR}/data/yamls/all_sectarian_texts.yaml", "r") as f:
-        all_sectarian_texts = yaml.load(f, Loader=yaml.FullLoader)
-        all_sectarian_texts = {
-            k: v for k, v in all_sectarian_texts.items() if len(v) > 0
-        }
-
-    flatten = []
-    for section in all_sectarian_texts.keys():
-        for scroll in all_sectarian_texts[section].keys():
-            for book in all_sectarian_texts[section][scroll]:
-                flatten.append({"section": section, "scroll": scroll, "book": book})
-
-    books_with_label = pd.DataFrame(flatten)
-
-    df_with_label = pd.merge(df, books_with_label, how="outer", on="book")
-    return df_with_label
 
 
 def convert_df_to_by_book(df):

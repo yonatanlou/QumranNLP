@@ -36,7 +36,9 @@ def split_data_to_samples(entries, n_words_per_feature):
     return [[w for word in sample for w in word] for sample in samples]
 
 
-def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
+def gen_samples(
+    entries, n_words_per_feature, sentence_divider
+):  # TODO understand what is it
     def count_words(entries):
         word_count = 0
         for entry in entries:
@@ -44,23 +46,28 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
                 word_count += 1
         return word_count
 
-    def gen_sample(entries):
+    def gen_sample(entries, sentence_divider):
         curr_word_entries = []
         for e, entry in enumerate(entries):
-            if "sp" not in entry["parsed_morph"]:
+            if "sp" not in entry.get("parsed_morph", ""):
                 curr_word_entries = []
                 continue
             else:
-                if (
-                    e != len(entries) - 1
-                    and entries[e + 1]["word_line_num"] == entries[e]["word_line_num"]
-                ):
+                if e != len(entries) - 1 and entries[e + 1].get(
+                    "word_line_num"
+                ) == entry.get("word_line_num"):
                     curr_word_entries.append(entry)
-                    if entries[e + 1]["transcript"] == ".":
+                    if (
+                        e + 1 < len(entries)
+                        and entries[e + 1].get("transcript") == sentence_divider
+                    ):
                         curr_word_entries.append(entries[e + 1])
                 else:
                     curr_word_entries.append(entry)
-                    if entries[e + 1]["transcript"] == ".":
+                    if (
+                        e + 1 < len(entries)
+                        and entries[e + 1].get("transcript") == sentence_divider
+                    ):
                         curr_word_entries.append(entries[e + 1])
                     yield curr_word_entries
                     curr_word_entries = []
@@ -70,7 +77,7 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
         num_samples = np.floor(num_words / n_words_per_feature)
     else:
         num_samples = num_words - 1
-    sample_generator = gen_sample(entries)
+    sample_generator = gen_sample(entries, sentence_divider)
     finish = False
     i = 0
     while not finish:
@@ -79,11 +86,11 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
             try:
                 curr_sample.extend(next(sample_generator))
             except StopIteration:
-                print("first", i, j, num_samples)
+                # print("first", i, j, num_samples)
                 finish = True
                 break
         if len(curr_sample) == 0:
-            print("second", i, j, num_samples, len(curr_sample))
+            # print("second", i, j, num_samples, len(curr_sample))
             sample_name = ""
         else:
             sample_name = f"{curr_sample[0]['scroll_name']}:{curr_sample[0]['frag_label']}:{curr_sample[0]['frag_line_num']}-{curr_sample[-1]['frag_label']}:{curr_sample[-1]['frag_line_num']}"
@@ -108,12 +115,12 @@ def gen_samples(entries, n_words_per_feature):  # TODO understand what is it
     #     yield curr_sample, sample_name
 
 
-def get_samples(book_data, word_per_samples=25):
+def get_samples(book_data, word_per_samples=25, sentence_divider="."):
     if len(book_data) == 0:
         print("empty")
         return None, None
 
-    res = zip(*[x for x in gen_samples(book_data, word_per_samples)])
+    res = zip(*[x for x in gen_samples(book_data, word_per_samples, sentence_divider)])
     try:
         samples, sample_names = res
     except Exception as e:

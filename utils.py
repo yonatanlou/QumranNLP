@@ -25,21 +25,44 @@ def filter_data_by_field(field, books_list, unfiltered_data):
     return filtered_data
 
 
+# class Transcriptor:
+#     def __init__(self, transcription_yaml_path):
+#         with open(transcription_yaml_path, "r") as f:
+#             self.trans_dict = yaml.safe_load(f)
+#
+#     def latin_to_heb(self, latin_text, entry=None):
+#         s = ""
+#         for x in latin_text:
+#             if x in self.trans_dict["latin_to_heb"].keys():
+#                 s += self.trans_dict["latin_to_heb"][x]
+#             else:
+#                 logger.info(
+#                     f"couldnt translate {x} to Hebrew (full word is {latin_text}), current s:{s},  ({entry['book_name']}, {entry['chapter_name']})"
+#                 )
+#         return s
 class Transcriptor:
     def __init__(self, transcription_yaml_path):
         with open(transcription_yaml_path, "r") as f:
             self.trans_dict = yaml.safe_load(f)
 
-    def latin_to_heb(self, latin_text, entry=None):
-        s = ""
-        for x in latin_text:
-            if x in self.trans_dict["latin_to_heb"].keys():
-                s += self.trans_dict["latin_to_heb"][x]
-            else:
-                logger.info(
-                    f"couldnt translate {x} to Hebrew (full word is {latin_text}), current s:{s},  ({entry['book_name']}, {entry['chapter_name']})"
-                )
-        return s
+    def latin_to_heb(self, latin_text):
+        # The original transctitor is in tf.writing.transcription.Transcription, but the current dss_nonbib.txt seems to match
+        # only the local transcriptor in our YAML (probably was done by hand when abegg finished his formatting).
+        word = ""
+        for char in latin_text:
+            # Try original character
+            heb_char = self.trans_dict["latin_to_heb"].get(char)
+            if heb_char is None:
+                # Try upper case character
+                heb_char = self.trans_dict["latin_to_heb"].get(char.upper())
+                if heb_char is None:
+                    # Try lower case character
+                    heb_char = self.trans_dict["latin_to_heb"].get(char.lower())
+                    if heb_char is None:
+                        logger.info(f"{char} cannot be translated")
+                        continue
+            word += heb_char
+        return word
 
 
 def get_time():
