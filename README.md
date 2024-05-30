@@ -21,40 +21,16 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
 
 ---
 
-Running Tasks:
 
+**Running Research**:
+Summary of topic modeling:
+After trying multiple methods for getting the optimal number of topics 
+( LDA with coherence and perplexity, NMF optimization by Gal Gilad method, HDP), we decided that the optimal number is somewhere between 10-20.
+For now, we will proceed without it.
 
-Data:
-1. I need to decide in which data to use:
-   1. Origin text (dss_bib/dss_nonbib) from abegg: 
-   This is the original text by abegg, parsed by us.
-      1. Pros: The code is done, can be used to get starr features. High quality.
-      2. Cons: Will be hard to reproduce for other researchers, not updated. Not open source this code means that we could have some errors. Dont have lexemes.
-   2. Text-fabric:
-   They are using also the origin text (dss_bib/dss_nonbib) from abegg, but the parsing is by them [tfFromAbegg.py](https://github.com/ETCBC/dss/blob/master/programs/tfFromAbegg.py):
-      1. Pros: Highly reproducible, Probably can be updated pretty easily. have lexemes.
-      2. Cons: I need to re-code the starr features.
+**Running Tasks**:
 
-2. After deciding which one to use, i need to be able to extract the lexemes from this text.
-3. EDA - duplicates of the scrolls.
-Topic modeling:
-1. Using NMF instead of LDA -  Gal Gilad on my web page.
-
-
-Clustering:
-1. Add the starr features to the unsupervised pipeline.
-2. NMF.
-2. Cluster by daniel method but between books (compositions), define different number of similiarties.
-2. Construct a baseline.
-
-Ask jonathan:
-1. The decision to move forward with the text-fabric data.
-2. What is lexeme.
-3. Re-do topic modeling. for validation - what does he need?
-4. Clusteroing what me and roded spoke yesterdau
 
 Tasks:
-1. Finish the EDA - Make sure the settings of the data are clear.
-2. Re-organize the whole repo
-3. start topic modeling from the begining
-4. 
+1. Check is 'יראל' is a mistake.
+2. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get dasgupta score.
