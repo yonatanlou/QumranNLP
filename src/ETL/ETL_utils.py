@@ -76,7 +76,7 @@ def remove_hebrew_punctuation(text):
     """Remove Hebrew punctuation from the given text."""
     hebrew_punctuation = r"[\u0591-\u05C7]+"
     heb_no_nikud = re.sub(hebrew_punctuation, "", text)
-    heb_no_nikud = heb_no_nikud.replace("\uFB2A", "\u05E9")  # שׁ to ש
+    heb_no_nikud = heb_no_nikud.replace("\uFB2A", "\u05E9").replace("\uFB2B", "\u05E9")  # שׁ to ש
     return heb_no_nikud
 
 
