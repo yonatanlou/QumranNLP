@@ -36,9 +36,7 @@ def split_data_to_samples(entries, n_words_per_feature):
     return [[w for word in sample for w in word] for sample in samples]
 
 
-def gen_samples(
-    entries, n_words_per_feature, sentence_divider
-):  # TODO understand what is it
+def gen_samples(entries, n_words_per_feature, sentence_divider):
     def count_words(entries):
         word_count = 0
         for entry in entries:

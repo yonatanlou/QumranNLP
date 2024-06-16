@@ -9,7 +9,7 @@ from src.ETL.generate_raw_data import process_scrolls
 logger = get_logger(__name__)
 WORDS_PER_SAMPLE = 100
 SENTENCE_DIVIDER = "׃ "
-OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{WORDS_PER_SAMPLE}_words_22_05_2024.csv"
+OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{WORDS_PER_SAMPLE}_words_nonbib_22_05_2024.csv"
 
 
 @click.command()
@@ -27,7 +27,9 @@ def main(words_per_sample: int, output_file: str):
     directory, filename = os.path.split(output_file)
     output_file_filtered = os.path.join(directory, "filtered_" + filename)
     df_filtered.to_csv(output_file_filtered, index=False)
-    print(f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})")
+    print(
+        f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})"
+    )
 
 
 if __name__ == "__main__":
