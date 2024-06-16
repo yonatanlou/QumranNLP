@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 import pandas as pd
 import yaml
@@ -76,7 +77,9 @@ def remove_hebrew_punctuation(text):
     """Remove Hebrew punctuation from the given text."""
     hebrew_punctuation = r"[\u0591-\u05C7]+"
     heb_no_nikud = re.sub(hebrew_punctuation, "", text)
-    heb_no_nikud = heb_no_nikud.replace("\uFB2A", "\u05E9").replace("\uFB2B", "\u05E9")  # שׁ to ש
+    heb_no_nikud = heb_no_nikud.replace("\uFB2A", "\u05E9").replace(
+        "\uFB2B", "\u05E9"
+    )  # שׁ to ש
     return heb_no_nikud
 
 
@@ -91,6 +94,14 @@ def get_raw_text_by_sentence(samples, sample_names, lex=True) -> pd.DataFrame:
     df["n_words_lex"] = [len(s.split(" ")) for s in text_samples_lex]
     df["n_words"] = [len(s.split(" ")) for s in text_samples]
     return df
+
+
+def get_majority_bib(samples):
+    # some scrolls are not determinsitc (really low number)
+    all_dicts = [d for sublist in samples for d in sublist]
+    bib_counter = Counter(d["bib"] for d in all_dicts if "bib" in d)
+    majority_bib = bib_counter.most_common(1)[0][0]
+    return majority_bib
 
 
 def process_scrolls_to_features(
@@ -110,13 +121,14 @@ def process_scrolls_to_features(
         raw_txt = get_raw_text_by_sentence(samples, sample_names)
         starr_features = starr.get_starr_features(samples)
         tmp_df = pd.concat([raw_txt, starr_features], axis=1)
+        tmp_df["bib"] = get_majority_bib(samples)
         features_by_sample_dfs.append(tmp_df)
 
     return pd.concat(features_by_sample_dfs, ignore_index=True)
 
 
-def filter_df_by_rules(df):
-    df = add_sectarian_label(df)
+def filter_df_by_rules(df_origin):
+    df = add_sectarian_label(df_origin)
 
     # Merge with the composition-to-book mapping and remove duplicates
     composition_to_book = generate_composition_to_book().drop_duplicates(
@@ -129,6 +141,7 @@ def filter_df_by_rules(df):
     # Filter out non-Hebrew books
     df = df[~df["book"].isin(NOT_HEB_BOOKS)]
 
+    df = df[df["bib"] == "nonbib"]
     # Aggregate text by book
     df_grouped = df.groupby("book")["text"].apply(" ".join).reset_index()
 
@@ -168,6 +181,7 @@ def add_sectarian_label(df):
     books_with_label = pd.DataFrame(flatten)
 
     df_with_label = pd.merge(df, books_with_label, how="outer", on="book")
+    df_with_label = df_with_label.drop("scroll", axis=1)
     return df_with_label
 
 
