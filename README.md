@@ -7,6 +7,14 @@ pyenv virtualenv 3.10.0 QumranNLP
 pip install -r requirements.txt
 ```
 
+## Reproducibility
+Reproducibility in the academic workd is pretty sucks. Ive tried to make this whole repo reproducible as much as i can.
+If you are reading this, you are probably wish to use the Qumran data, so the data pipelines will be pretty easy to use (`src/ETL/main_ETL.py`).
+In case you are here for the machine learning, algorithms or visualizations, Ive tried to make it robust as i can to the data.
+In any case, i will post a guide so how to use your own data in the future.
+
+
+
 ## Data
 I'm using the [ETCBC/dss](https://github.com/ETCBC/dss/tree/master) package (built on [text-fabric](https://github.com/annotation/text-fabric/)).
 This repo contains the original transcriptions by [Matrin Abegg](https://en.wikipedia.org/wiki/Martin_Abegg) as well (data/texts/abegg).
@@ -32,5 +40,17 @@ For now, we will proceed without it.
 
 
 Tasks:
-1. Check is 'יראל' is a mistake.
-2. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get dasgupta score.
+1. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get Dasgupta score. V
+2. Implementing GNN for getting better scores.
+3. Compare the results from the baseline and the GNN.
+4. Guide on how to use your own data (not Qumran).
+5. Medium posts (unsupervised clustering).
+
+More optional things to consider:
+1. More open questions from Jonathan:
+Clustering of Serech Hayachad (חוקים, שירה וכו)
+Clustering for CD.
+Check if there different מזמורים in Hodayot.
+Is Temple Scroll is sectarian?
+Compare Instruction and Mysteries.
+Compare pesharim and catena florilegium.
