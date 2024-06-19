@@ -127,6 +127,17 @@ def process_scrolls_to_features(
     return pd.concat(features_by_sample_dfs, ignore_index=True)
 
 
+manually_remove_scrolls = [
+    "4Q" + str(i)
+    for i in list(range(196, 200))
+    + list(range(201, 215))
+    + list(range(242, 246))
+    + [318]
+    + list(range(529, 570))
+    + list(range(342, 360))
+]
+
+
 def filter_df_by_rules(df_origin):
     df = add_sectarian_label(df_origin)
 
@@ -160,6 +171,7 @@ def filter_df_by_rules(df_origin):
 
     # Filter the original dataframe to keep only books with enough words
     df_final = df[df["book"].isin(books_with_enough_words)]
+    df_final = df_final[~df_final["book"].isin(manually_remove_scrolls)]
     return df_final
 
 
