@@ -66,3 +66,10 @@ NOT_HEB_BOOKS = [
 ]
 MIN_WORDS_PER_BOOK = 100
 MIN_WORD_PER_LINE = 5
+BERT_MODELS = [
+    "dicta-il/BEREL",
+    "onlplab/alephbert-base",
+    "dicta-il/dictabert-tiny",
+    "dicta-il/dictabert-large",
+    "dicta-il/dictabert",
+]
