@@ -39,14 +39,12 @@ For now, we will proceed without it.
 **Running Tasks**:
 
 Today tasks:
-1. Choose a framework to implement unsupervised GNN (pytorch).
+1. Baseline for sec no sec unsupervised learning.
+2. Choose a framework to implement unsupervised GNN (pytorch).
 2. Read unsupervised learning.
-3. Lab tasks
-4. CI tasks
 
 Tasks:
 1. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get Dasgupta score. V
-2. sennd treemap for all models + tsne.
 2. sectarian and not sectarian unsupervised (k means 2)
 3. Clustering of Serech Hayachad (חוקים, שירה וכו)
 2. Implementing GNN for getting better scores.
