@@ -72,4 +72,7 @@ BERT_MODELS = [
     "dicta-il/dictabert-tiny",
     "dicta-il/dictabert-large",
     "dicta-il/dictabert",
+    "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
+    "yonatanlou/BEREL-finetuned-DSS-composition-classification",
+    "yonatanlou/BEREL-finetuned-DSS-maskedLM",
 ]
