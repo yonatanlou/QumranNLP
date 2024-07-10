@@ -84,17 +84,9 @@ def get_dendrogram_feature_order(linkage_matrix, sample_names):
     return feature_order
 
 
-def get_clusters_scores(
-    df,
-    label_name,
-    vectorizer_matrix,
-    linkage_criterion,
-    adjacency_matrix,
-    metadata=None,
-):
+def get_clusters_scores(vectorizer_matrix, linkage_criterion, adjacency_matrix):
     if sp.issparse(vectorizer_matrix):
         vectorizer_matrix = vectorizer_matrix.toarray()
-    sample_names = df[label_name].to_list()
     model = sk.AgglomerativeClustering(
         distance_threshold=0, n_clusters=None, linkage=linkage_criterion
     )
