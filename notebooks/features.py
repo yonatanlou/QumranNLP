@@ -105,7 +105,6 @@ def create_adjacency_matrix(
     # Initialize the adjacency matrix
     n = len(compressed_df)
     adjacency_matrix = np.zeros((n, n))
-
     # Loop to fill the adjacency matrix
     for i in tqdm(range(n), desc="Building adjacency matrix"):
         for j in range(i + 1, n):  # Only compute half since the matrix is symmetric
