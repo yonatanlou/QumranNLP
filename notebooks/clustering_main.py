@@ -13,12 +13,19 @@ from notebooks.clustering import (
 
 
 def run_clustering_cv(
-    df, frac, num_cvs, context_similiarity_window, vectorizers, linkage_method
+    processed_vectorizers,
+    df,
+    frac,
+    num_cvs,
+    context_similiarity_window,
+    vectorizers,
+    linkage_method,
 ):
     scores = []
     for i in tqdm(range(num_cvs)):
         # Sample 90% of the data
         sampled_df = stratified_sample(df, "book", frac=frac, random_state=42 + i)
+        idxs = sampled_df["original_index"]
         print(f"{datetime.now()} - {sampled_df.shape=}")
         adjacency_matrix = create_adjacency_matrix(
             sampled_df,
@@ -27,16 +34,13 @@ def run_clustering_cv(
         )
 
         for vectorizer_type in tqdm(vectorizers):
-            vectorizer_matrix = vectorize_text(sampled_df, "text", vectorizer_type)
+            # vectorizer_matrix = vectorize_text(sampled_df, "text", vectorizer_type)
+            vectorizer_matrix = processed_vectorizers[vectorizer_type]
+            vectorizer_matrix = vectorizer_matrix[idxs]
             print(f"{datetime.now()} - {vectorizer_type=},{vectorizer_matrix.shape=}")
 
             dasgupta_score, linkage_matrix = get_clusters_scores(
-                sampled_df,
-                "sentence_path",
-                vectorizer_matrix,
-                linkage_method,
-                adjacency_matrix,
-                metadata={"vectorizer_type": vectorizer_type},
+                vectorizer_matrix, linkage_method, adjacency_matrix
             )
             dasgupta_score_rand = get_random_clusters_score(
                 sampled_df, "sentence_path", vectorizer_matrix, "ward", iters=2
