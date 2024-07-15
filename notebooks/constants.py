@@ -75,4 +75,7 @@ BERT_MODELS = [
     "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
     "yonatanlou/BEREL-finetuned-DSS-composition-classification",
     "yonatanlou/BEREL-finetuned-DSS-maskedLM",
+    'yam-peleg/Hebrew-Mistral-7B',
+    'HeNLP/LongHeRo',
+    'tau/tavbert-he'
 ]
