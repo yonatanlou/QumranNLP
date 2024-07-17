@@ -42,6 +42,8 @@ For now, we will proceed without it.
 
 Tasks:
 1. Fine-tuning - finish fine tuning for composition classification, sectarian classification and MaskedLM.
+2. Write the progress report for the ministry of science.
+3. PPT for seminar.
 2. Baselines - make sure i dont have data leakage. prepare a pipeline for all baselines.
 3. GNN - using the same train test data for the GNN and see if im getting better at classification.
 4. GNN - apply topic modeling graph, remove the bert graph.
