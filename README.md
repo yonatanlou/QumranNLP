@@ -39,19 +39,15 @@ For now, we will proceed without it.
 
 **Running Tasks**:
 
-Today tasks:
-1. Baseline for sec no sec unsupervised learning.
-2. Choose a framework to implement unsupervised GNN (pytorch).
-2. Read unsupervised learning.
 
 Tasks:
-1. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get Dasgupta score. V
-2. sectarian and not sectarian unsupervised (k means 2)
-3. Clustering of Serech Hayachad (חוקים, שירה וכו)
-2. Implementing GNN for getting better scores.
-3. Compare the results from the baseline and the GNN.
-4. Guide on how to use your own data (not Qumran).
-5. Medium posts (unsupervised clustering).
+1. Fine-tuning - finish fine tuning for composition classification, sectarian classification and MaskedLM.
+2. Baselines - make sure i dont have data leakage. prepare a pipeline for all baselines.
+3. GNN - using the same train test data for the GNN and see if im getting better at classification.
+4. GNN - apply topic modeling graph, remove the bert graph.
+5. GNN - apply GAT. 
+6. Guide on how to use your own data (not Qumran).
+7. Medium posts (unsupervised clustering).
 
 More optional things to consider:
 1. More open questions from Jonathan:

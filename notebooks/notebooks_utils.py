@@ -20,7 +20,7 @@ def write_data(data, filename):
                 f.write(line)
 
 
-def set_seed_globaly(seed=42):
+def set_seed_globally(seed=42):
     # Set seeds
     np.random.seed(seed)
     random.seed(seed)
@@ -28,5 +28,3 @@ def set_seed_globaly(seed=42):
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
