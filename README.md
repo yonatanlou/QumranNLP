@@ -39,19 +39,19 @@ For now, we will proceed without it.
 
 **Running Tasks**:
 
-Today tasks:
-1. Baseline for sec no sec unsupervised learning.
-2. Choose a framework to implement unsupervised GNN (pytorch).
-2. Read unsupervised learning.
 
 Tasks:
-1. Clustering baseline: Split the corpus into sentences (100 words per sentence), cluster with each one of the proposed methods (trigrams, starr, bert), get Dasgupta score. V
-2. sectarian and not sectarian unsupervised (k means 2)
-3. Clustering of Serech Hayachad (חוקים, שירה וכו)
-2. Implementing GNN for getting better scores.
-3. Compare the results from the baseline and the GNN.
-4. Guide on how to use your own data (not Qumran).
-5. Medium posts (unsupervised clustering).
+* Write the progress report for the ministry of science.
+* PPT for seminar.
+* GNN - make sure the afj_mat is good (1 on the diagonal)
+* Make sure that normalizing is better than not.
+* GNN - apply GAT.
+* GNN - applied to sectarian classification all of the above.
+* After showing what is the best model, can send this model results to Jonathan.
+* Guide on how to use your own data (not Qumran).
+* Medium posts (unsupervised clustering).
+
+* Implementing unsupervised learning with GNN.
 
 More optional things to consider:
 1. More open questions from Jonathan:

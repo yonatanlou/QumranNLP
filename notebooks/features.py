@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModel
 
 from notebooks.constants import BERT_MODELS
@@ -13,28 +13,55 @@ def get_starr_features():
     return [i[0] for i in feature_list]
 
 
-def bert_embed(texts, model, tokenizer):
-    all_embeddings = []
-    for text in tqdm(texts, desc="bert"):
-        # Tokenize the text
+def bert_embed(texts, model, tokenizer, method="mean_last_hidden"):
+    """
+    Extract BERT embeddings using different methods.
 
+    Args:
+        texts (list): List of texts to embed.
+        model (transformers.PreTrainedModel): Pre-trained BERT model.
+        tokenizer (transformers.PreTrainedTokenizer): Corresponding tokenizer.
+        method (str): Method to extract embeddings. Options are:
+                      "mean_last_hidden" (default) - Mean of the last hidden state.
+                      "cls_token" - CLS token embedding.
+                      "pooler_output" - Pooler output (if available).
+                      "mean_all_layers" - Mean of all hidden layers.
+
+    Returns:
+        np.ndarray: Extracted embeddings.
+    """
+    all_embeddings = []
+
+    for text in tqdm(texts, desc="bert"):
         inputs = tokenizer(
             text,
             return_tensors="pt",
-            padding=True,  # Pad sequences to the length of the longest sequence in the batch
-            truncation=True,  # Truncate sequences longer than max_length
-            max_length=tokenizer.model_max_length,  # 512
+            padding=True,
+            truncation=True,
+            max_length=tokenizer.model_max_length,
         )
         with torch.no_grad():
             outputs = model(**inputs)
 
-        # Take the mean of the last hidden state for the embedding
-        embedding = outputs.last_hidden_state.mean(dim=1).cpu().numpy()
-        # print("Shape of last_hidden_state:", outputs.last_hidden_state.shape)
-        # print("Shape of pooler_output:", outputs.pooler_output.shape)
-        # print("Shape of embedding:", embedding.shape)
+        if method == "mean_last_hidden":
+            embedding = outputs.last_hidden_state.mean(dim=1).cpu().numpy()
+
+        elif method == "cls_token":
+            embedding = outputs.last_hidden_state[:, 0, :].cpu().numpy()
+
+        elif method == "pooler_output":
+            embedding = outputs.pooler_output.cpu().numpy()
+
+        elif method == "mean_all_layers":
+            all_layers = outputs.hidden_states
+            mean_all_layers = torch.stack(all_layers).mean(dim=0)
+            embedding = mean_all_layers.mean(dim=1).cpu().numpy()
+
+        else:
+            raise ValueError(f"Unknown method: {method}")
 
         all_embeddings.append(embedding)
+
     return np.vstack(all_embeddings)
 
 
