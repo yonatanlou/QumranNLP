@@ -121,17 +121,25 @@ def compute_classification_metrics(model, dataset: QumranDataset, vectorizer_typ
 
     # Compute evaluation metrics
     accuracy = accuracy_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred, average="weighted")
-    recall = recall_score(y_test, y_pred, average="weighted")
-    f1 = f1_score(y_test, y_pred, average="weighted")
+    metric_type = ["micro", "macro", "weighted"]
+    weighted_metrics = {}
+    for metric in metric_type:
+        precision = precision_score(y_test, y_pred, average=metric)
+        recall = recall_score(y_test, y_pred, average=metric)
+        f1 = f1_score(y_test, y_pred, average=metric)
+        weighted_metrics[f"{metric}_precision"] = precision
+        weighted_metrics[f"{metric}_recall"] = recall
+        weighted_metrics[f"{metric}_f1"] = f1
+
+    # precision = precision_score(y_test, y_pred, average="weighted")
+    # recall = recall_score(y_test, y_pred, average="weighted")
+    # f1 = f1_score(y_test, y_pred, average="weighted")
 
     metrics = {
         "model": type(model).__name__,
         "accuracy": accuracy,
-        "precision": precision,
-        "recall": recall,
-        "f1_score": f1,
     }
+    metrics.update(weighted_metrics)
 
     return metrics
 
@@ -147,7 +155,7 @@ def evaluate_supervised_metrics(models, vectorizers, dataset, path):
             metrics_list.append(metrics)
 
     # Convert metrics list to a DataFrame for easier analysis
-    metrics_df = pd.DataFrame(metrics_list).sort_values(by="f1_score", ascending=False)
+    metrics_df = pd.DataFrame(metrics_list).sort_values(by="accuracy", ascending=False)
     metrics_df.to_csv(f"{path}/{dataset.label}_supervised.csv", index=False)
     print(f"saved metrics to {path}/{dataset.label}_supervised.csv")
     warnings.filterwarnings("default")

@@ -41,15 +41,17 @@ For now, we will proceed without it.
 
 
 Tasks:
-1. Fine-tuning - finish fine tuning for composition classification, sectarian classification and MaskedLM.
-2. Write the progress report for the ministry of science.
-3. PPT for seminar.
-2. Baselines - make sure i dont have data leakage. prepare a pipeline for all baselines.
-3. GNN - using the same train test data for the GNN and see if im getting better at classification.
-4. GNN - apply topic modeling graph, remove the bert graph.
-5. GNN - apply GAT. 
-6. Guide on how to use your own data (not Qumran).
-7. Medium posts (unsupervised clustering).
+* Write the progress report for the ministry of science.
+* PPT for seminar.
+* GNN - make sure the afj_mat is good (1 on the diagonal)
+* Make sure that normalizing is better than not.
+* GNN - apply GAT.
+* GNN - applied to sectarian classification all of the above.
+* After showing what is the best model, can send this model results to Jonathan.
+* Guide on how to use your own data (not Qumran).
+* Medium posts (unsupervised clustering).
+
+* Implementing unsupervised learning with GNN.
 
 More optional things to consider:
 1. More open questions from Jonathan:
