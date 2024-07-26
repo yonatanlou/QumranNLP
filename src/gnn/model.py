@@ -132,7 +132,7 @@ def train(model, data, epochs, patience=20, verbose=True):
 
     model.load_state_dict(best_model)
     print(
-        f'test_acc: {stats_best.get("test_acc")}, weighted_f1: {stats_best.get("weighted_f1")}'
+        f'test_acc: {stats_best[0].get("test_acc")}, weighted_f1: {stats_best[0].get("weighted_f1")}'
     )
     return model, stats_best
 
