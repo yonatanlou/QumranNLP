@@ -37,21 +37,21 @@ After trying multiple methods for getting the optimal number of topics
 ( LDA with coherence and perplexity, NMF optimization by Gal Gilad method, HDP), we decided that the optimal number is somewhere between 10-20.
 For now, we will proceed without it.
 
+Summary of baselines results for supervised classification:
+
+
 **Running Tasks**:
 
 
 Tasks:
 * Write the progress report for the ministry of science.
 * PPT for seminar.
-* GNN - make sure the afj_mat is good (1 on the diagonal)
-* Make sure that normalizing is better than not.
-* GNN - apply GAT.
-* GNN - applied to sectarian classification all of the above.
+* Model - vectorizer analysis.
+* Implement cross validation on each task so we will have some CI's....
 * After showing what is the best model, can send this model results to Jonathan.
+* Unsupervised gnn.
 * Guide on how to use your own data (not Qumran).
 * Medium posts (unsupervised clustering).
-
-* Implementing unsupervised learning with GNN.
 
 More optional things to consider:
 1. More open questions from Jonathan:
