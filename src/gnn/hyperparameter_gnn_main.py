@@ -9,7 +9,7 @@ from itertools import product, combinations
 import os.path
 
 PROCESSED_VECTORIZERS_PATH = f"{BASE_DIR}/src/data/processed_vectorizers.pkl"
-EXP_NAME = "gcn_baseline"
+EXP_NAME = "gcn_bert_ensemble"
 NUM_WORD_PER_CHUNK = 100
 NUM_COMBINED_GRAPHS = 3
 
@@ -21,30 +21,20 @@ params = {
     "hidden_dims": [300],
     "distances": ["cosine"],
     "learning_rates": [0.001],
-    "thresholds": [0.99],
+    "thresholds": [0.98,0.99],
     "bert_models": [
-        "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
         "dicta-il/BEREL",
-        "onlplab/alephbert-base",
+        # "onlplab/alephbert-base",
         "yonatanlou/BEREL-finetuned-DSS-maskedLM",
-        "yonatanlou/BEREL-finetuned-DSS-composition-classification",
-        "starr",
-        "tfidf",
-        "trigram"
+        # "yonatanlou/BEREL-finetuned-DSS-composition-classification",
     ],
     "adj_types": {
         "tfidf": {"max_features": 7500},
         "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
         "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
-        "starr": {},
-        "topic_modeling_nmf": {
-            "n_topics": 15,
-            "type": "NMF",
-            "analyzer": "word",
-            "ngram_range": (1, 1),
-            "max_df": 0.5,
-            "min_df": 3,
-        },
+        "bert-berel": {"type": "dicta-il/BEREL"},
+        "bert-alephbert": {"type": "onlplab/alephbert-base"},
+        "bert-finetune-lm": {"type": "yonatanlou/BEREL-finetuned-DSS-maskedLM"},
     },
 }
 
@@ -75,8 +65,13 @@ for epoch, threshold, distance, hidden_dim, lr, bert_model in meta_param_combina
 
 
 for dataset_name, dataset in datasets.items():
+    if dataset_name == "dataset_scroll":
+        continue
     print(f"starting with {dataset_name}")
-    file_name = f"{BASE_DIR}/reports/gnn/{EXP_NAME}_{dataset.label}_{NUM_WORD_PER_CHUNK}_words_{NUM_COMBINED_GRAPHS}_adj_types.csv"
+    exp_dir_path = f"{BASE_DIR}/reports/gnn/{EXP_NAME}"
+    if not os.path.exists(exp_dir_path):
+        os.makedirs(exp_dir_path)
+    file_name = f"{exp_dir_path}/{EXP_NAME}_{dataset.label}_{NUM_WORD_PER_CHUNK}_words_{NUM_COMBINED_GRAPHS}_adj_types.csv"
     if os.path.isfile(file_name):
         continue
     df = dataset.df
