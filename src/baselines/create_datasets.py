@@ -1,7 +1,7 @@
 import pickle
 
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, StratifiedKFold
 
 
 class QumranDataset:
@@ -41,6 +41,19 @@ class QumranDataset:
         self.train_mask = train_mask
         self.val_mask = val_mask
         self.test_mask = test_mask
+
+    def split_data_for_cross_validation(self, n_splits=5, random_state=42):
+        skf = StratifiedKFold(
+            n_splits=n_splits, shuffle=True, random_state=random_state
+        )
+        X = self.df.index.values
+        y = self.df[self.label].values
+
+        for train_index, val_index in skf.split(X, y):
+            train_mask, val_mask, _ = self.create_masks(
+                len(self.df), train_index.tolist(), val_index.tolist(), []
+            )
+            yield train_mask, val_mask
 
     def create_masks(self, data_length, train_indices, val_indices, test_indices):
         train_mask = np.zeros(data_length, dtype=bool)

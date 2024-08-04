@@ -38,13 +38,17 @@ class AdjacencyMatrixGenerator:
         vectorizer_params=None,
         threshold=0.85,
         distance_metric="cosine",
+        meta_params=None,
         normalize=True,
     ):
+        if meta_params is None:
+            meta_params = {"processed_vectorizers": None, "dataset": None}
         self.vectorizer_type = vectorizer_type
         self.vectorizer_params = (
             vectorizer_params if vectorizer_params is not None else {}
         )
         self.distance_metric = distance_metric
+        self.meta_params = meta_params
         self.threshold = threshold
         self.normalize = normalize
 
@@ -54,7 +58,9 @@ class AdjacencyMatrixGenerator:
         elif self.vectorizer_type == "tfidf":
             return self._vectorize_tfidf(texts)
         elif self.vectorizer_type == "starr":
-            return self._vectorize_starr(texts)
+            return self._vectorize_starr()
+        elif "bert" in self.vectorizer_type:
+            return self._vectorize_bert()
         elif "topic_modeling" in self.vectorizer_type:
             return self._vectorize_topic_modeling(texts)
         else:
@@ -68,8 +74,14 @@ class AdjacencyMatrixGenerator:
         vectorizer = TfidfVectorizer(**self.vectorizer_params)
         return vectorizer.fit_transform(texts)
 
-    def _vectorize_starr(self, texts):
+    def _vectorize_starr(self):
         return self.df[self.STARR_FEAT].to_numpy()
+
+    def _vectorize_bert(self):
+        model_type = self.vectorizer_params.get("type")
+        X = self.meta_params.get("processed_vectorizers")[model_type]
+        X = X[self.meta_params.get("dataset").relevant_idx_to_embeddings]
+        return X
 
     def _vectorize_topic_modeling(self, texts):
         count_vectorizer = CountVectorizer(
