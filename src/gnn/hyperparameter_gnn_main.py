@@ -21,7 +21,7 @@ params = {
     "hidden_dims": [300],
     "distances": ["cosine"],
     "learning_rates": [0.001],
-    "thresholds": [0.98,0.99],
+    "thresholds": [0.98, 0.99],
     "bert_models": [
         "dicta-il/BEREL",
         # "onlplab/alephbert-base",
