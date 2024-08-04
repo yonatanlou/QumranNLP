@@ -44,8 +44,9 @@ Summary of baselines results for supervised classification:
 
 
 Tasks:
-* Write the progress report for the ministry of science.
-* PPT for seminar.
+* new chunking method.
+* better precosessing + different distance metrics
+* Evaluate using global metrics (supervised on scroll and composition)
 * Model - vectorizer analysis.
 * Implement cross validation on each task so we will have some CI's....
 * After showing what is the best model, can send this model results to Jonathan.
