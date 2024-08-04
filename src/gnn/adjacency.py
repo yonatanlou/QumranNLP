@@ -32,8 +32,15 @@ class AdjacencyMatrixGenerator:
         "total word count",
     ]
 
-    def __init__(self, vectorizer_type="trigram", vectorizer_params=None, threshold=0.85, distance_metric="cosine",
-                 meta_params=None, normalize=True):
+    def __init__(
+        self,
+        vectorizer_type="trigram",
+        vectorizer_params=None,
+        threshold=0.85,
+        distance_metric="cosine",
+        meta_params=None,
+        normalize=True,
+    ):
         if meta_params is None:
             meta_params = {"processed_vectorizers": None, "dataset": None}
         self.vectorizer_type = vectorizer_type
@@ -44,7 +51,6 @@ class AdjacencyMatrixGenerator:
         self.meta_params = meta_params
         self.threshold = threshold
         self.normalize = normalize
-
 
     def _vectorize_text(self, texts):
         if "gram" in self.vectorizer_type:
@@ -70,13 +76,12 @@ class AdjacencyMatrixGenerator:
 
     def _vectorize_starr(self):
         return self.df[self.STARR_FEAT].to_numpy()
+
     def _vectorize_bert(self):
         model_type = self.vectorizer_params.get("type")
         X = self.meta_params.get("processed_vectorizers")[model_type]
         X = X[self.meta_params.get("dataset").relevant_idx_to_embeddings]
         return X
-
-
 
     def _vectorize_topic_modeling(self, texts):
         count_vectorizer = CountVectorizer(

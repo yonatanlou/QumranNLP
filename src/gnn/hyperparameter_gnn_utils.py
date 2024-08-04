@@ -7,30 +7,40 @@ from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixG
 from src.gnn.model import GCN, train
 from src.gnn.utils import get_data_object
 
-def run_single_gnn_model(df, processed_vectorizers, dataset,param_dict, verbose=False):
+
+def run_single_gnn_model(df, processed_vectorizers, dataset, param_dict, verbose=False):
     masks = {
         "train_mask": dataset.train_mask,
         "val_mask": dataset.val_mask,
         "test_mask": dataset.test_mask,
     }
-    meta_params = {"processed_vectorizers":processed_vectorizers, "dataset":dataset}
+    meta_params = {"processed_vectorizers": processed_vectorizers, "dataset": dataset}
 
     print(f"{datetime.now()} - started - {param_dict}")
     if param_dict["num_adjs"] == 1:
         adj_info = param_dict["adjacencies"][0]
-        adj_gen = AdjacencyMatrixGenerator(vectorizer_type=adj_info["type"], vectorizer_params=adj_info["params"],
-                                           threshold=param_dict["threshold"],
-                                           distance_metric=param_dict["distance"], meta_params=meta_params, normalize=True)
+        adj_gen = AdjacencyMatrixGenerator(
+            vectorizer_type=adj_info["type"],
+            vectorizer_params=adj_info["params"],
+            threshold=param_dict["threshold"],
+            distance_metric=param_dict["distance"],
+            meta_params=meta_params,
+            normalize=True,
+        )
 
         edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
 
     else:  # combining more than one graphs together
         adj_generators = []
         for adj_info in param_dict["adjacencies"]:
-            adj_gen = AdjacencyMatrixGenerator(vectorizer_type=adj_info["type"],
-                                               vectorizer_params=adj_info["params"],
-                                               threshold=param_dict["threshold"],
-                                               distance_metric=param_dict["distance"], meta_params=meta_params,normalize=False)
+            adj_gen = AdjacencyMatrixGenerator(
+                vectorizer_type=adj_info["type"],
+                vectorizer_params=adj_info["params"],
+                threshold=param_dict["threshold"],
+                distance_metric=param_dict["distance"],
+                meta_params=meta_params,
+                normalize=False,
+            )
             adj_generators.append(adj_gen)
 
         combined_generator = CombinedAdjacencyMatrixGenerator(
@@ -71,13 +81,17 @@ def run_single_gnn_model(df, processed_vectorizers, dataset,param_dict, verbose=
     stats_df["adj_type"] = adj_types_str
     stats_df["num_edges"] = edge_attr.shape[0]
     return gcn, stats_df
+
+
 def run_gnn_exp(
     all_param_dicts, df, processed_vectorizers, file_name, dataset, verbose=False
 ):
     print(f"{datetime.now()} - started")
     final_results = []
     for param_dict in tqdm(all_param_dicts, desc="Parameter Combinations"):
-        gcn, stats_df = run_single_gnn_model(df, processed_vectorizers, dataset, param_dict, verbose=False)
+        gcn, stats_df = run_single_gnn_model(
+            df, processed_vectorizers, dataset, param_dict, verbose=False
+        )
         final_results.append(stats_df)
     final_df = pd.concat(final_results).sort_values(by=["test_acc"], ascending=False)
 
