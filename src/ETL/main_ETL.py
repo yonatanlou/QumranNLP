@@ -7,21 +7,24 @@ from src.ETL.ETL_utils import process_scrolls_to_features, filter_df_by_rules
 from src.ETL.generate_raw_data import process_scrolls
 
 logger = get_logger(__name__)
-WORDS_PER_SAMPLE = 100
-SENTENCE_DIVIDER = "׃ "
-OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{WORDS_PER_SAMPLE}_words_nonbib_17_06_2024.csv"
+CHUNK_SIZE = 100
+MAX_OVERLAP = 10
+OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{CHUNK_SIZE}_words_nonbib_04_08_2024.csv"
 
 
 @click.command()
+@click.option("--chunk_size", default=CHUNK_SIZE, help="Number of words per sample.")
 @click.option(
-    "--words_per_sample", default=WORDS_PER_SAMPLE, help="Number of words per sample."
+    "--max_overlap",
+    default=MAX_OVERLAP,
+    help="Max overlap between chunks (end of i-1 and start of i sample)",
 )
 @click.option("--output_file", default=OUTPUT_FILE, help="Output CSV file path.")
-def main(words_per_sample: int, output_file: str):
+def main(chunk_size: int, output_file: str):
     logger.info("Extracting raw data from text-fabric")
     raw_data = process_scrolls()
     logger.info("Processing scrolls to text and starr features")
-    df = process_scrolls_to_features(raw_data, words_per_sample)
+    df = process_scrolls_to_features(raw_data, chunk_size, max_overlap=MAX_OVERLAP)
     df.to_csv(output_file, index=False)
     df_filtered = filter_df_by_rules(df)
     directory, filename = os.path.split(output_file)
@@ -34,4 +37,4 @@ def main(words_per_sample: int, output_file: str):
 
 if __name__ == "__main__":
     main()
-# python main_ETL.py --words_per_sample 100 --output_file "/path/to/output.csv"
+# python main_ETL.py --chunk_size 100 --max_overlap 10 --output_file "/path/to/output.csv"

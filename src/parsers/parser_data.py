@@ -36,96 +36,79 @@ def split_data_to_samples(entries, n_words_per_feature):
     return [[w for word in sample for w in word] for sample in samples]
 
 
-def gen_samples(entries, n_words_per_feature, sentence_divider):
-    def count_words(entries):
-        word_count = 0
-        for entry in entries:
-            if entry["sub_word_num"] == "1" and "sp" in entry["parsed_morph"]:
-                word_count += 1
-        return word_count
+def chunking(entries, chunk_size, max_overlap=10):
+    samples = []
+    sample_names = []
+    current_sample = []
+    word_count = 0
+    current_frag_line_num = None
+    overlap_entries = []
 
-    def gen_sample(entries, sentence_divider):
-        curr_word_entries = []
-        for e, entry in enumerate(entries):
-            if "sp" not in entry.get("parsed_morph", ""):
-                curr_word_entries = []
-                continue
-            else:
-                if e != len(entries) - 1 and entries[e + 1].get(
-                    "word_line_num"
-                ) == entry.get("word_line_num"):
-                    curr_word_entries.append(entry)
-                    if (
-                        e + 1 < len(entries)
-                        and entries[e + 1].get("transcript") == sentence_divider
-                    ):
-                        curr_word_entries.append(entries[e + 1])
-                else:
-                    curr_word_entries.append(entry)
-                    if (
-                        e + 1 < len(entries)
-                        and entries[e + 1].get("transcript") == sentence_divider
-                    ):
-                        curr_word_entries.append(entries[e + 1])
-                    yield curr_word_entries
-                    curr_word_entries = []
-
-    num_words = count_words(entries)
-    if n_words_per_feature:
-        num_samples = np.floor(num_words / n_words_per_feature)
-    else:
-        num_samples = num_words - 1
-    sample_generator = gen_sample(entries, sentence_divider)
-    finish = False
-    i = 0
-    while not finish:
-        curr_sample = []
-        for j in range(n_words_per_feature):
-            try:
-                curr_sample.extend(next(sample_generator))
-            except StopIteration:
-                # print("first", i, j, num_samples)
-                finish = True
-                break
-        if len(curr_sample) == 0:
-            # print("second", i, j, num_samples, len(curr_sample))
-            sample_name = ""
+    def not_counting_as_word_statment(e):
+        if (e["parsed_morph"]["cl"] == "conj") or (e["parsed_morph"]["cl"] == "prep"):
+            return False
+        if e["transcript"] == ".":
+            return False
         else:
-            sample_name = f"{curr_sample[0]['scroll_name']}:{curr_sample[0]['frag_label']}:{curr_sample[0]['frag_line_num']}-{curr_sample[-1]['frag_label']}:{curr_sample[-1]['frag_line_num']}"
-        i += 1
-        yield curr_sample, sample_name
+            return True
 
-    # for i in np.arange(num_samples):
-    #     curr_sample = []
-    #     for j in range(n_words_per_feature):
-    #         print(j)
-    #         curr_sample.extend(next(sample_generator))
-    #         # try:
-    #         #     curr_sample.extend(next(sample_generator))
-    #         # except StopIteration:
-    #         #     a=1
-    #         #     print("first", i, j, num_samples)
-    #     if len(curr_sample) == 0:
-    #         a=1
-    #         print("second", i, j, num_samples), len(curr_sample)
-    #     else:
-    #         sample_name = f"{curr_sample[0]['scroll_name']}:{curr_sample[0]['frag_label']}:{curr_sample[0]['frag_line_num']}-{curr_sample[-1]['frag_label']}:{curr_sample[-1]['frag_line_num']}"
-    #     yield curr_sample, sample_name
+    for i, entry in enumerate(entries):
+        # Skip entries without 'sp' in parsed_morph
+        if "sp" not in entry.get("parsed_morph", ""):
+            continue
+
+        # Check if we're starting a new fragment line
+        if entry["frag_line_num"] != current_frag_line_num:
+            # If we have a current sample and we've exceeded chunk_size
+            if current_sample and word_count > chunk_size:
+                samples.append(current_sample)
+                sample_name = f"{current_sample[0]['scroll_name']}:{current_sample[0]['frag_label']}:{current_sample[0]['frag_line_num']}-{current_sample[-1]['frag_label']}:{current_sample[-1]['frag_line_num']}"
+                sample_names.append(sample_name)
+
+                # Start a new sample with the overlap
+                if len(overlap_entries) > max_overlap:
+                    overlap_entries = overlap_entries[-max_overlap:]
+                current_sample = overlap_entries + [entry]
+                overlap_word_count = len(
+                    [i for i in overlap_entries if not_counting_as_word_statment(i)]
+                )
+                word_count = overlap_word_count + 1
+                overlap_entries = []
+            else:
+                current_sample.append(entry)
+                if not_counting_as_word_statment(entry):
+                    word_count += 1
+
+            current_frag_line_num = entry["frag_line_num"]
+            overlap_entries = [entry]
+        else:
+            current_sample.append(entry)
+            if not_counting_as_word_statment(entry):
+                word_count += 1
+            overlap_entries.append(entry)
+
+    # Add the last sample if it's not empty
+    if current_sample:
+        samples.append(current_sample)
+        sample_name = f"{current_sample[0]['scroll_name']}:{current_sample[0]['frag_label']}:{current_sample[0]['frag_line_num']}-{current_sample[-1]['frag_label']}:{current_sample[-1]['frag_line_num']}"
+        sample_names.append(sample_name)
+
+    return samples, sample_names
 
 
-def get_samples(book_data, word_per_samples=25, sentence_divider="."):
+def chunk_by_scroll(book_data, word_per_samples=25, max_overlap=10):
     if len(book_data) == 0:
         print("empty")
         return None, None
 
-    res = zip(*[x for x in gen_samples(book_data, word_per_samples, sentence_divider)])
+    res = zip(*[x for x in chunking(book_data, word_per_samples, max_overlap)])
     try:
-        samples, sample_names = res
+        res_not_zipped = [i for i in res]
+        samples = [i[0] for i in res_not_zipped]
+        sample_names = [i[1] for i in res_not_zipped]
     except Exception as e:
         print(f"wrong: {e}")
         return None, None
-    # samples1 = split_data_to_samples(book_data, WORDS_PER_SAMPLE)
-    # [i for i in range(len(samples)) if len(samples[i]) != len(samples1[i])]
     return samples, sample_names
 
 
