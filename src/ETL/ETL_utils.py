@@ -105,18 +105,17 @@ def get_majority_bib(samples):
 
 
 def process_scrolls_to_features(
-    filtered_data, word_per_samples, sentence_divider="׃ "
+    filtered_data, chunk_size, max_overlap=10
 ) -> pd.DataFrame:
     features_by_sample_dfs = []
 
     for scroll_name, book_data in tqdm(filtered_data.items()):
-        samples, sample_names = parser_data.get_samples(
-            book_data,
-            word_per_samples=word_per_samples,
-            sentence_divider=sentence_divider,
+        samples, sample_names = parser_data.chunk_by_scroll(
+            book_data, word_per_samples=chunk_size, max_overlap=max_overlap
         )
 
         if not samples or not sample_names:
+            print(f"empty: {scroll_name}")
             continue
         raw_txt = get_raw_text_by_sentence(samples, sample_names)
         starr_features = starr.get_starr_features(samples)

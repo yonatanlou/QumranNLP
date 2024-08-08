@@ -64,7 +64,9 @@ def get_trigram_feature_vectors(data, feature_length):
     for book_name, book_data in data.items():
         if len(book_data) < 100:
             continue
-        samples, sample_names = parser_data.get_samples(book_data, word_per_samples=100)
+        samples, sample_names = parser_data.chunk_by_scroll(
+            book_data, word_per_samples=100
+        )
         if samples is None:
             continue
         reprocessed_samples = bert.aleph_bert_preprocessing(samples)
@@ -184,7 +186,7 @@ def main(yaml_book_file, books_to_run, bib_type, results_path, feature_length):
             print(f"{book_name} with size: {len(book_data)}")
             continue
 
-        samples, sample_names = parser_data.get_samples(
+        samples, sample_names = parser_data.chunk_by_scroll(
             book_data, word_per_samples=WORD_PER_SAMPLES
         )
         if len(samples[-1]) < 50:

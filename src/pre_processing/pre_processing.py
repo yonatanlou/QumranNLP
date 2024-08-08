@@ -131,7 +131,7 @@ def get_labels_and_sentences(data, minimum_book_length):
     for book_name, book_data in data.items():
         if len(book_data) < minimum_book_length:
             continue
-        parsed_sentences, labels = parser_data.get_samples(
+        parsed_sentences, labels = parser_data.chunk_by_scroll(
             book_data, word_per_samples=WORDS_PER_SAMPLE
         )
         if parsed_sentences is None:

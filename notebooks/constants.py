@@ -69,10 +69,8 @@ MIN_WORD_PER_LINE = 5
 BERT_MODELS = [
     "dicta-il/BEREL",
     "onlplab/alephbert-base",
-    "dicta-il/dictabert-tiny",
-    "dicta-il/dictabert-large",
     "dicta-il/dictabert",
-    "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
-    "yonatanlou/BEREL-finetuned-DSS-composition-classification",
+    # "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
+    # "yonatanlou/BEREL-finetuned-DSS-composition-classification",
     "yonatanlou/BEREL-finetuned-DSS-maskedLM",
 ]

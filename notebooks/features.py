@@ -122,6 +122,7 @@ def create_adjacency_matrix(
     sampled_df, context_similiarity_window, composition_level=True
 ):
     # Compress the DataFrame only to the required columns
+    sampled_df["original_index"] = range(len(sampled_df))
     compressed_df = sampled_df[["original_index", "book", "composition"]]
 
     # Convert DataFrame columns to numpy arrays for faster access
