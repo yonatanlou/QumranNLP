@@ -12,34 +12,6 @@ MAX_OVERLAP = 10
 OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{CHUNK_SIZE}_words_nonbib_04_08_2024.csv"
 
 
-@click.command()
-@click.option("--chunk_size", default=CHUNK_SIZE, help="Number of words per sample.")
-@click.option(
-    "--max_overlap",
-    default=MAX_OVERLAP,
-    help="Max overlap between chunks (end of i-1 and start of i sample)",
-)
-@click.option("--output_file", default=OUTPUT_FILE, help="Output CSV file path.")
-def main(chunk_size: int, max_overlap: int, output_file: [str, None]):
-    logger.info(
-        f"Starting ETL process with {chunk_size=}, {max_overlap=}, {output_file=}"
-    )
-    logger.info("Extracting raw data from text-fabric")
-    raw_data = process_scrolls()
-    logger.info("Processing scrolls to text and starr features")
-    df = process_scrolls_to_features(raw_data, chunk_size, max_overlap=max_overlap)
-    df.to_csv(output_file, index=False)
-    df_filtered = filter_df_by_rules(df)
-    directory, filename = os.path.split(output_file)
-    output_file_filtered = os.path.join(directory, "filtered_" + filename)
-    if output_file:
-        df_filtered.to_csv(output_file_filtered, index=False)
-        print(
-            f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})"
-        )
-    return df_filtered
-
-
 def generate_data(chunk_size: int, max_overlap: int, output_file: [str, None]):
     logger.info(
         f"Starting ETL process with {chunk_size=}, {max_overlap=}, {output_file=}"
@@ -58,6 +30,18 @@ def generate_data(chunk_size: int, max_overlap: int, output_file: [str, None]):
         f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})"
     )
     return df_filtered
+
+
+@click.command()
+@click.option("--chunk_size", default=CHUNK_SIZE, help="Number of words per sample.")
+@click.option(
+    "--max_overlap",
+    default=MAX_OVERLAP,
+    help="Max overlap between chunks (end of i-1 and start of i sample)",
+)
+@click.option("--output_file", default=OUTPUT_FILE, help="Output CSV file path.")
+def main(chunk_size: int, max_overlap: int, output_file: [str, None]):
+    return generate_data(chunk_size, max_overlap, output_file)
 
 
 # if __name__ == "__main__":

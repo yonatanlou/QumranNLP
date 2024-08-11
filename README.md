@@ -44,7 +44,6 @@ Summary of baselines results for supervised classification:
 
 
 Tasks:
-* new chunking method.
 * better precosessing + different distance metrics
 * Evaluate using global metrics (supervised on scroll and composition)
 * Model - vectorizer analysis.
