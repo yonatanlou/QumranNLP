@@ -8,7 +8,7 @@ from src.ETL.generate_raw_data import process_scrolls
 
 logger = get_logger(__name__)
 CHUNK_SIZE = 100
-MAX_OVERLAP = 10
+MAX_OVERLAP = 15
 OUTPUT_FILE = f"{BASE_DIR}/notebooks/data/text_and_starr_features_{CHUNK_SIZE}_words_nonbib_04_08_2024.csv"
 
 
@@ -26,7 +26,7 @@ def generate_data(chunk_size: int, max_overlap: int, output_file: [str, None]):
     output_file_filtered = os.path.join(directory, "filtered_" + filename)
 
     df_filtered.to_csv(output_file_filtered, index=False)
-    print(
+    logger.info(
         f"Saved results to {output_file} (shape:{df.shape}) and {output_file_filtered} (shape:{df_filtered.shape})"
     )
     return df_filtered
@@ -44,6 +44,6 @@ def main(chunk_size: int, max_overlap: int, output_file: [str, None]):
     return generate_data(chunk_size, max_overlap, output_file)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
 # python main_ETL.py --chunk_size 100 --max_overlap 10 --output_file "/path/to/output.csv"
