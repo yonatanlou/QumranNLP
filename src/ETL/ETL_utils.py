@@ -133,7 +133,8 @@ manually_remove_scrolls = [
     + list(range(242, 246))
     + [318]
     + list(range(529, 570))
-    + list(range(342, 360))
+    + list(range(342, 360)) +
+    ["4Q249Z"]
 ]
 
 

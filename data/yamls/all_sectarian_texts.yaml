@@ -1,29 +1,36 @@
 sectarian_texts:
-  1QS: ['1QS']
-  4QS: ['4Q255', '4Q256', '4Q257', '4Q258', '4Q259', '4Q260', '4Q261', '4Q262', '4Q263', '4Q264', '5Q11']
-  1QSa : ['1QSa']
+  community_rule: ['1QS']
+  4QS: ['4Q255', '4Q256', '4Q257', '4Q258', '4Q259', '4Q260', '4Q261', '4Q262', '4Q263', '4Q264', '4Q265', '5Q11']
+  the_rule_of_the_congregation: ['1QSa']
   CD: ['CD']
   4QD: ['4Q266', '4Q267', '4Q268', '4Q269', '4Q270', '4Q271', '4Q272', '4Q273', '6Q15']
   Hodayot: ['1QHa', '1Q35']
   4QH: ['4Q427', '4Q428', '4Q429', '4Q430', '4Q431', '4Q432']
-  1QM: ['1QM']
   4QM: ['4Q491', '4Q492', '4Q493', '4Q494', '4Q495', '4Q496']
   Songs_of_Maskil: ['4Q510', '4Q511']
-  Pesharim: ['1QpHab', '1Q14', '1Q15', '1Q16', '4Q161', '4Q162', '4Q163', '4Q164', '4Q165', '4Q166', '4Q167', '4Q168', '4Q169', '4Q170', '4Q171', '4Q173']
+  Pesharim: ['1QpHab', '1Q14', '1Q15', '1Q16', '4Q161', '4Q162', '4Q163', '4Q164', '4Q165', '4Q166', '4Q167', '4Q168', '4Q169', '4Q170', '4Q171', '4Q173','11Q13']
   Mysteries: ['1Q27', '4Q299', '4Q300', '4Q301']
   Catena_Florilegium: ['4Q174', '4Q177']
   Berakhot: ['4Q286', '4Q287', '4Q288', '4Q289']
   Instruction: ['4Q415', '4Q416', '4Q417', '4Q418', '4Q418a', '4Q418b','4Q418c','4Q423']
+  War Scroll: ['1QM']
+  Dibre Hameorot: ['4Q504']
+  calendircal texts: ['4Q317', '4Q319', '4Q320', '4Q321', '4Q321a']
+  commentaries: ['4Q252']
+  halakhah: ['4Q251', '4Q274', '4Q513']
+  prayer lityurgy: ['4Q502', '4Q503', '4Q509', '4Q512']
 
 non_sectarian_texts:
-  Book_of_Jubilees: ['1Q17', '1Q18', '4Q216', '4Q217', '4Q218', '4Q219', '4Q220', '4Q221', '4Q222', '4Q223_224', '11Q12']
-  Collections_of_psalms: ['4Q380', '4Q381']
-  non_biblical_psalms: ['11Q5']
+  Book of Tobit: ['4Q200']
+  Book_of_Jubilees: ['1Q17', '1Q18', '4Q216', '4Q217', '4Q218', '4Q219', '4Q220', '4Q221', '4Q222', '4Q223','4Q224','4Q225', '11Q12']
+  Collections_of_psalms: ['4Q380','4Q381']
 
 unknown:
-  Shir Shabat: ['4Q400', '4Q401', '4Q402', '4Q403', '4Q404', '4Q405', '4Q406', '4Q407']
-  Temple Scroll: ['11Q19', '11Q20', '11Q21']
-
-
+  Shir Shabat: ['4Q400', '4Q401', '4Q402', '4Q403', '4Q404', '4Q405', '4Q406', '4Q407','11Q17']
+  Temple Scroll: ['11Q19', '11Q20', '11Q21','4Q524']
+  copper scroll: [ '3Q15' ]
+  rewritten prophets: [ '4Q378', '4Q379', '4Q382', '4Q385', '4Q385a', '4Q387', '4Q391' ]
+  rewritten scripture: [ '1Q22', '4Q158', '4Q364', '4Q365', '4Q365a', '4Q366', '4Q367', '4Q368' ]
+  unknown: [ '4Q372' ]
 
 
