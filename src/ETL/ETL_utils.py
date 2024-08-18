@@ -137,7 +137,6 @@ manually_remove_scrolls = [
     + list(range(342, 360))
     + ["4Q249Z"]
     + ["4Q249"+l for l in string.ascii_lowercase]
-
 ]
 
 
