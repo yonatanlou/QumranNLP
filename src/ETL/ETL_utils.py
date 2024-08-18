@@ -1,5 +1,6 @@
 import re
 from collections import Counter
+import string
 
 import pandas as pd
 import yaml
@@ -133,8 +134,10 @@ manually_remove_scrolls = [
     + list(range(242, 246))
     + [318]
     + list(range(529, 570))
-    + list(range(342, 360)) +
-    ["4Q249Z"]
+    + list(range(342, 360))
+    + ["4Q249Z"]
+    + ["4Q249"+l for l in string.ascii_lowercase]
+
 ]
 
 
