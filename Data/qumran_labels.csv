@@ -1,0 +1,1000 @@
+book,bib,section,composition,genre
+10Q1,nonbib,,,
+11Q1,bib,,Lev,
+11Q10,nonbib,,,
+11Q11,nonbib,,apocryphal psalms,
+11Q12,nonbib,non_sectarian_texts,Book_of_Jubilees,
+11Q13,nonbib,sectarian_texts,Melchizedek,Pesharim
+11Q14,nonbib,sectarian_texts,sefer Milhama,War scroll
+11Q15,nonbib,,,
+11Q16,nonbib,,,
+11Q17,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+11Q18,nonbib,,,
+11Q19,nonbib,unknown,Temple Scroll,
+11Q2,bib,,Lev,
+11Q20,nonbib,unknown,Temple Scroll,
+11Q21,nonbib,unknown,Temple Scroll,
+11Q22,nonbib,,,
+11Q23,nonbib,,,
+11Q25,nonbib,,,
+11Q26,nonbib,,,
+11Q27,nonbib,,,
+11Q29,nonbib,,,
+11Q3,bib,,Deut,
+11Q30,nonbib,,,
+11Q4,bib,,Ezek,
+11Q5,bib,,Ps,
+11Q6,bib,,Ps,
+11Q7,bib,,Ps,
+11Q8,bib,,Ps,
+11Q9,bib,,Ps,
+1Q1,bib,,Gen,
+1Q10,bib,,Ps,
+1Q11,bib,,Ps,
+1Q12,bib,,Ps,
+1Q13,bib,,Deut,
+1Q14,nonbib,sectarian_texts,Pesharim,Commentaries
+1Q15,nonbib,sectarian_texts,Pesharim,Commentaries
+1Q16,nonbib,sectarian_texts,Pesharim,Commentaries
+1Q17,nonbib,non_sectarian_texts,Book_of_Jubilees,
+1Q18,nonbib,non_sectarian_texts,Book_of_Jubilees,
+1Q19,nonbib,non_sectarian_texts,Noah,
+1Q19bis,nonbib,non_sectarian_texts,Noah,
+1Q2,bib,,Ex,
+1Q20,nonbib,,,
+1Q21,nonbib,,,
+1Q22,nonbib,unknown,Divrei Moshe,rewritten Pentateuch
+1Q23,nonbib,,,
+1Q24,nonbib,,,
+1Q25,nonbib,unknown,Apoc Prophecy,
+1Q26,nonbib,,Instruction,Wisdom
+1Q27,nonbib,sectarian_texts,Mysteries,Wisdom
+1Q29,nonbib,,Apocr_Moses,rewritten Pentateuch
+1Q3,bib,,Lev,
+1Q30,nonbib,,,
+1Q31,nonbib,sectarian_texts,,
+1Q32,nonbib,,,
+1Q34bis,nonbib,,prayers,Prayer - Liturgy
+1Q35,nonbib,sectarian_texts,Hodayot,Hodayot
+1Q36,nonbib,,Hymnic composition,Prayer - Liturgy
+1Q37,nonbib,,Hymnic composition,Prayer - Liturgy
+1Q38,nonbib,,Hymnic composition,Prayer - Liturgy
+1Q39,nonbib,,Hymnic composition,Prayer - Liturgy
+1Q4,bib,,Deut,
+1Q40,nonbib,,Hymnic composition,Prayer - Liturgy
+1Q41,nonbib,,,
+1Q42,nonbib,,,
+1Q43,nonbib,,,
+1Q44,nonbib,,,
+1Q45,nonbib,,,
+1Q46,nonbib,,,
+1Q47,nonbib,,,
+1Q49,nonbib,,,
+1Q5,bib,,Deut,
+1Q50,nonbib,,,
+1Q51,nonbib,,,
+1Q52,nonbib,,,
+1Q53,nonbib,,,
+1Q54,nonbib,,,
+1Q55,nonbib,,,
+1Q56,nonbib,,,
+1Q57,nonbib,,,
+1Q58,nonbib,,,
+1Q6,bib,,Judg,
+1Q62,nonbib,,,
+1Q63,nonbib,,,
+1Q64,nonbib,,,
+1Q65,nonbib,,,
+1Q66,nonbib,,,
+1Q67,nonbib,,,
+1Q68,nonbib,,,
+1Q69,nonbib,,,
+1Q7,bib,,Samuel,
+1Q70,nonbib,,,
+1Q70bis,nonbib,,,
+1Q71,bib,,Dan,
+1Q72,bib,,Dan,
+1Q8,bib,,Is,
+1Q9,bib,,Ezek,
+1QHa,nonbib,sectarian_texts,Hodayot,Hodayot
+1Qisaa,bib,,,
+1QM,nonbib,sectarian_texts,War Scroll,War Scroll
+1QpHab,nonbib,sectarian_texts,Pesharim,Commentaries
+1QS,nonbib,sectarian_texts,community_rule,community_rule
+1QSa,nonbib,sectarian_texts,the_rule_of_the_congregation,
+1QSb,nonbib,sectarian_texts,the_rule_of_the_blessings,
+2Q1,bib,,Gen,
+2Q10,bib,,Deut,
+2Q11,bib,,Deut,
+2Q12,bib,,Deut,
+2Q13,bib,,Jer,
+2Q14,bib,,Ps,
+2Q15,bib,,Job,
+2Q16,bib,,Ruth,
+2Q17,bib,,Ruth,
+2Q18,nonbib,non_sectarian_texts,ben_sira,
+2Q19,nonbib,non_sectarian_texts,Book_of_Jubilees,
+2Q2,bib,,Ex,
+2Q20,nonbib,non_sectarian_texts,Book_of_Jubilees,
+2Q21,nonbib,,Apocr_Moses,rewritten Pentateuch
+2Q22,nonbib,,,
+2Q23,nonbib,,,
+2Q24,nonbib,,,
+2Q25,nonbib,,,
+2Q26,nonbib,,,
+2Q27,nonbib,,,
+2Q28,nonbib,,,
+2Q29,biblical_non_biblical,,Num,
+2Q3,bib,,Ex,
+2Q30,nonbib,,,
+2Q31,nonbib,,,
+2Q32,nonbib,,,
+2Q33,nonbib,,,
+2Q4,bib,,Ex,
+2Q5,bib,,Lev,
+2Q6,bib,,Num,
+2Q7,bib,,Num,
+2Q8,bib,,Num,
+2Q9,bib,,Num,
+34Se1,bib,,,
+34Se2,bib,,Num,
+3Q1,bib,,Ezek,
+3Q10,nonbib,,,
+3Q11,nonbib,,,
+3Q12,nonbib,,,
+3Q13,nonbib,,,
+3Q14,nonbib,,,
+3Q15,nonbib,unknown,copper scroll,
+3Q2,bib,,Ps,
+3Q3,bib,,Lam,
+3Q4,nonbib,,,
+3Q5,nonbib,,,
+3Q6,nonbib,,,
+3Q7,nonbib,,,
+3Q8,nonbib,,,
+3Q9,nonbib,,,
+4Q1,bib,,Ex,
+4Q10,bib,,Gen,
+4Q100,bib,,Job,
+4Q101,bib,,Job,
+4Q102,bib,,Prov,
+4Q103,bib,,Prov,
+4Q103a,bib,,Prov,
+4Q104,bib,,Ruth,
+4Q105,bib,,Ruth,
+4Q106,bib,,Song,
+4Q107,bib,,Song,
+4Q108,bib,,Song,
+4Q109,bib,,Eccl,
+4Q11,bib,,Ex,
+4Q110,bib,,Eccl,
+4Q111,bib,,Lam,
+4Q112,bib,,Dan,
+4Q113,bib,,Dan,
+4Q114,bib,,Dan,
+4Q115,bib,,Dan,
+4Q116,bib,,Dan,
+4Q117,bib,,Ezra,
+4Q118,bib,,2Chr,
+4Q12,bib,,Gen,
+4Q123,nonbib,,para_Joshua,rewritten prophets
+4Q124,nonbib,,,
+4Q125,nonbib,,,
+4Q128,bib,,Deut,
+4Q129,bib,,Deut,
+4Q12a,bib,,Gen,
+4Q13,bib,,Ex,
+4Q130,bib,,Deut,
+4Q131,bib,,Deut,
+4Q132,bib,,Ex,
+4Q133,bib,,Ex,
+4Q134,bib,,Deut,
+4Q135,bib,,Deut,
+4Q136,bib,,Deut,
+4Q137,bib,,Deut,
+4Q138,bib,,Deut,
+4Q139,bib,,Deut,
+4Q14,bib,,Ex,
+4Q140,bib,,Deut,
+4Q141,bib,,Deut,
+4Q142,bib,,Deut,
+4Q143,bib,,Deut,
+4Q144,bib,,Deut,
+4Q145,bib,,Ex,
+4Q146,bib,,Deut,
+4Q149,bib,,Ex,
+4Q15,bib,,Ex,
+4Q150,bib,,Deut,
+4Q151,bib,,Deut,
+4Q152,bib,,Deut,
+4Q153,bib,,Deut,
+4Q154,bib,,Ex,
+4Q155,bib,,Ex,
+4Q156,nonbib,,,
+4Q157,nonbib,,,
+4Q158,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q159,nonbib,,Ordinances,Halakha
+4Q16,bib,,Ex,
+4Q160,nonbib,,vision Samuel,rewritten prophets
+4Q161,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q162,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q163,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q164,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q165,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q166,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q167,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q168,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q169,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q17,bib,,Ex,
+4Q170,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q171,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q172,nonbib,,,
+4Q173,nonbib,sectarian_texts,Pesharim,Commentaries
+4Q174,nonbib,sectarian_texts,Catena_Florilegium,Commentaries
+4Q175,nonbib,,Testimonia,
+4Q176,nonbib,sectarian_texts,Tanhumim,
+4Q176a,nonbib,,,
+4Q177,nonbib,sectarian_texts,Catena_Florilegium,Commentaries
+4Q178,nonbib,,,
+4Q179,nonbib,,Apocr_Lamentations,rewritten prophets
+4Q18,bib,,Ex,
+4Q180,nonbib,sectarian_texts,Pesher on periods,Pesharim
+4Q181,nonbib,sectarian_texts,Pesher on periods,Pesharim
+4Q182,nonbib,,,
+4Q183,nonbib,,,
+4Q184,nonbib,,Wicked Woman,wisdom
+4Q185,nonbib,,sapiential work,wisdom
+4Q186,nonbib,,Zodiac physiognomy,astrology
+4Q19,bib,,Ex,
+4Q196,nonbib,,,
+4Q197,nonbib,,,
+4Q198,nonbib,,,
+4Q199,nonbib,,,
+4Q2,bib,,Gen,
+4Q20,bib,,Ex,
+4Q200,nonbib,non_sectarian_texts,Book of Tobit,
+4Q201,nonbib,,,
+4Q202,nonbib,,,
+4Q203,nonbib,,,
+4Q204,nonbib,,,
+4Q205,nonbib,,,
+4Q206,nonbib,,,
+4Q207,nonbib,,,
+4Q208,nonbib,,,
+4Q209,nonbib,,,
+4Q21,bib,,Ex,
+4Q210,nonbib,,,
+4Q211,nonbib,,,
+4Q212,nonbib,,,
+4Q213,nonbib,,,
+4Q213a,nonbib,,,
+4Q213b,nonbib,,,
+4Q214,nonbib,,,
+4Q214a,nonbib,,,
+4Q214b,nonbib,,,
+4Q215,nonbib,non_sectarian_texts,Naphtali,
+4Q215a,nonbib,Times Righteousness,,
+4Q216,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q217,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q218,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q219,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q22,bib,,Ex,
+4Q220,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q221,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q222,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q223,,non_sectarian_texts,Book_of_Jubilees,
+4Q223_224,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q224,,non_sectarian_texts,Book_of_Jubilees,
+4Q225,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q226,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q227,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q228,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q23,bib,,Lev,
+4Q230,nonbib,,,
+4Q234,nonbib,,,
+4Q235,nonbib,,,
+4Q238,nonbib,,,
+4Q24,bib,,Lev,
+4Q242,nonbib,,,
+4Q243,nonbib,,,
+4Q244,nonbib,,,
+4Q245,nonbib,,,
+4Q246,nonbib,,,
+4Q247,nonbib,,,Historical texts
+4Q248,nonbib,,,Historical texts
+4Q249,nonbib,,,
+4Q249a,nonbib,,,
+4Q249b,nonbib,,,
+4Q249c,nonbib,,,
+4Q249d,nonbib,,,
+4Q249e,nonbib,,,
+4Q249f,nonbib,,,
+4Q249g,nonbib,,,
+4Q249h,nonbib,,,
+4Q249i,nonbib,,,
+4Q249j,biblical_non_biblical,,Lev,
+4Q249k,nonbib,,,
+4Q249l,nonbib,,,
+4Q249m,nonbib,,,
+4Q249n,nonbib,,,
+4Q249o,nonbib,,,
+4Q249p,nonbib,,,
+4Q249q,nonbib,,,
+4Q249r,nonbib,,,
+4Q249s,nonbib,,,
+4Q249t,nonbib,,,
+4Q249u,nonbib,,,
+4Q249v,nonbib,,,
+4Q249w,nonbib,,,
+4Q249x,nonbib,,,
+4Q249y,nonbib,,,
+4Q249z,nonbib,,,
+4Q25,bib,,Lev,
+4Q250,nonbib,,,
+4Q250a,nonbib,,,
+4Q250b,nonbib,,,
+4Q250c,nonbib,,,
+4Q250d,nonbib,,,
+4Q250e,nonbib,,,
+4Q250f,nonbib,,,
+4Q250g,nonbib,,,
+4Q250h,nonbib,,,
+4Q250i,nonbib,,,
+4Q250j,nonbib,,,
+4Q251,nonbib,sectarian_texts,Mishpatim,Halakha
+4Q252,nonbib,sectarian_texts,,commentaries
+4Q253,nonbib,,,Commentaries
+4Q253a,nonbib,,,Commentaries
+4Q254,nonbib,,,Commentaries
+4Q254a,nonbib,,,Commentaries
+4Q255,nonbib,sectarian_texts,4QS,community_rule
+4Q256,nonbib,sectarian_texts,4QS,community_rule
+4Q257,nonbib,sectarian_texts,4QS,community_rule
+4Q258,nonbib,sectarian_texts,4QS,community_rule
+4Q259,nonbib,sectarian_texts,4QS,community_rule
+4Q26,bib,,Lev,
+4Q260,nonbib,sectarian_texts,4QS,community_rule
+4Q261,nonbib,sectarian_texts,4QS,community_rule
+4Q262,nonbib,sectarian_texts,4QS,community_rule
+4Q263,nonbib,sectarian_texts,4QS,community_rule
+4Q264,nonbib,sectarian_texts,4QS,community_rule
+4Q264a,nonbib,,Halakha,Halakha
+4Q265,nonbib,sectarian_texts,,community_rule
+4Q266,nonbib,sectarian_texts,4QD,CD
+4Q267,nonbib,sectarian_texts,4QD,CD
+4Q268,nonbib,sectarian_texts,,CD
+4Q269,nonbib,sectarian_texts,4QD,CD
+4Q26a,bib,,Lev,
+4Q26b,bib,,Lev,
+4Q26c,bib,,Lev,
+4Q27,bib,,Num,
+4Q270,nonbib,sectarian_texts,4QD,CD
+4Q271,nonbib,sectarian_texts,4QD,CD
+4Q272,nonbib,sectarian_texts,,CD
+4Q273,nonbib,sectarian_texts,,CD
+4Q274,nonbib,sectarian_texts,Tohorot,Halakha
+4Q275,nonbib,sectarian_texts,,
+4Q276,nonbib,,Tohorot,Halakha
+4Q277,nonbib,,Tohorot,Halakha
+4Q278,nonbib,,Tohorot,Halakha
+4Q279,nonbib,sectarian_texts,four lots,
+4Q28,bib,,Deut,
+4Q280,nonbib,sectarian_texts,,community_rule
+4Q281a,nonbib,,,
+4Q281b,nonbib,,,
+4Q281c,nonbib,,,
+4Q281d,nonbib,,,
+4Q281e,nonbib,,,
+4Q281f,nonbib,,,
+4Q282a,nonbib,,,
+4Q282b,nonbib,,,
+4Q282c,nonbib,,,
+4Q282d,nonbib,,,
+4Q282e,nonbib,,,
+4Q282f,nonbib,,,
+4Q282g,nonbib,,,
+4Q282h,nonbib,,,
+4Q282i,nonbib,,,
+4Q282j,nonbib,,,
+4Q282k,nonbib,,,
+4Q282l,nonbib,,,
+4Q282m,nonbib,,,
+4Q282n,nonbib,,,
+4Q282o,nonbib,,,
+4Q282p,nonbib,,,
+4Q282q,nonbib,,,
+4Q282r,nonbib,,,
+4Q282s,nonbib,,,
+4Q282t,nonbib,,,
+4Q284,nonbib,,purification,Prayer - Liturgy
+4Q284a,nonbib,,Harvesting,Halakha
+4Q285,nonbib,sectarian_texts,Sefer Milhama,War Scroll
+4Q286,nonbib,sectarian_texts,Berakhot,Prayer - Liturgy
+4Q287,nonbib,sectarian_texts,Berakhot,Prayer - Liturgy
+4Q288,nonbib,sectarian_texts,Berakhot,Prayer - Liturgy
+4Q289,nonbib,sectarian_texts,Berakhot,Prayer - Liturgy
+4Q29,bib,,Deut,
+4Q290,nonbib,sectarian_texts,Berakhot,Prayer - Liturgy
+4Q291,nonbib,,,
+4Q292,nonbib,,,
+4Q293,nonbib,,,
+4Q294,nonbib,,,
+4Q298,nonbib,sectarian_texts,Words Maskil,Wisdom
+4Q299,nonbib,sectarian_texts,Mysteries,Wisdom
+4Q3,bib,,Gen,
+4Q30,bib,,Deut,
+4Q300,nonbib,sectarian_texts,Mysteries,Wisdom
+4Q301,nonbib,sectarian_texts,Mysteries,Wisdom
+4Q302,nonbib,,,
+4Q303,nonbib,,,
+4Q304,nonbib,,,
+4Q305,nonbib,,,
+4Q306,nonbib,,,
+4Q307,nonbib,,,
+4Q31,bib,,Deut,
+4Q313,nonbib,,,
+4Q313a,nonbib,,,
+4Q313b,nonbib,,,
+4Q317,nonbib,sectarian_texts,calendrical texts,
+4Q318,nonbib,,,
+4Q319,nonbib,sectarian_texts,calendrical texts,
+4Q32,bib,,Deut,
+4Q320,nonbib,sectarian_texts,calendrical texts,
+4Q321,nonbib,sectarian_texts,calendrical texts,
+4Q321a,nonbib,sectarian_texts,calendrical texts,
+4Q322,nonbib,,Calendrical Text,
+4Q322a,nonbib,,,Historical texts
+4Q323,nonbib,,Calendrical text,
+4Q324,nonbib,,Calendrical text,
+4Q324a,nonbib,,Calendrical text,
+4Q324b,nonbib,,Calendrical text,
+4Q324c,nonbib,,Calendrical text,
+4Q324d,nonbib,,Calendrical text,
+4Q324e,nonbib,,Calendrical text,
+4Q324f,nonbib,,Calendrical text,
+4Q324g,nonbib,,Calendrical text,
+4Q324h,nonbib,,Calendrical text,
+4Q324i,nonbib,,Calendrical text,
+4Q325,nonbib,,Calendrical text,
+4Q326,nonbib,,Calendrical text,
+4Q328,nonbib,,Calendrical text,
+4Q329,nonbib,,Calendrical text,
+4Q329a,nonbib,,Calendrical text,
+4Q33,bib,,Deut,
+4Q330,nonbib,,Calendrical text,
+4Q331,nonbib,,,Historical texts
+4Q332,nonbib,,,Historical texts
+4Q332a,nonbib,,,Historical texts
+4Q333,nonbib,,,Historical texts
+4Q334,nonbib,,Ordo,Prayer - Liturgy
+4Q337,nonbib,,Calendrical text,
+4Q338,nonbib,,,
+4Q339,nonbib,,,
+4Q34,bib,,Deut,
+4Q340,nonbib,,,
+4Q341,nonbib,,,
+4Q342,nonbib,,,
+4Q343,nonbib,,,
+4Q344,nonbib,,,
+4Q345,nonbib,,,
+4Q346,nonbib,,,
+4Q346a,nonbib,,,
+4Q347,nonbib,,,
+4Q348,nonbib,,,
+4Q35,bib,,Deut,
+4Q351,nonbib,,,
+4Q352,nonbib,,,
+4Q352a,nonbib,,,
+4Q353,nonbib,,,
+4Q354,nonbib,,,
+4Q356,nonbib,,,
+4Q357,nonbib,,,
+4Q358,nonbib,,,
+4Q359,nonbib,,,
+4Q36,bib,,Deut,
+4Q360,nonbib,,,
+4Q360a,nonbib,,,
+4Q364,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q365,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q365a,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q366,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q367,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q368,nonbib,unknown,rewritten pentateuch,rewritten Pentateuch
+4Q369,nonbib,,Prayer of Enosh,
+4Q37,bib,,Deut,
+4Q370,nonbib,,Admonition flood,
+4Q371,nonbib,,Narrative and poetic,
+4Q372,nonbib,unknown,Narrative and Poetic,
+4Q373,nonbib,,Narrative and poetic,
+4Q373a,nonbib,,Narrative and poetic,
+4Q374,nonbib,,on Exodus,
+4Q375,nonbib,,Apocr_Moses,rewritten Pentateuch
+4Q376,nonbib,,Apocr_Moses,rewritten Pentateuch
+4Q377,nonbib,,Apocr_Pentateuch,rewritten Pentateuch
+4Q378,nonbib,unknown,Apocr_Joshua,rewritten prophets
+4Q379,nonbib,unknown,Apocr_Joshua,rewritten prophets
+4Q38,bib,,Deut,
+4Q380,nonbib,non_sectarian_texts,Collections_of_psalms,Prayer - Liturgy
+4Q381,nonbib,non_sectarian_texts,Collections_of_psalms,Prayer - Liturgy
+4Q382,nonbib,unknown,para.Kings,rewritten prophets
+4Q383,nonbib,,Apocr_Jeremiah,rewritten prophets
+4Q384,nonbib,,Apocr_Jeremiah,rewritten prophets
+4Q385,nonbib,unknown,Apocr_Jeremiah,rewritten prophets
+4Q385a,nonbib,unknown,Apocr_Jeremiah,rewritten prophets
+4Q385b,nonbib,,,
+4Q385c,nonbib,,Pseudo_Ezekiel,rewritten prophets
+4Q386,nonbib,,Pseudo_Ezekiel,rewritten prophets
+4Q387,nonbib,unknown,Apocr_Jeremiah,rewritten prophets
+4Q387a,nonbib,,Pseudo_Ezekiel,rewritten prophets
+4Q388,nonbib,,Pseudo_Ezekiel,rewritten prophets
+4Q388a,nonbib,,Apocr_Jer,rewritten prophets
+4Q389,nonbib,,Apocr_Jeremiah,rewritten prophets
+4Q38a,bib,,Deut,
+4Q38b,bib,,Deut,
+4Q38c,bib,,Deut,
+4Q38d,bib,,Deut,
+4Q39,bib,,Deut,
+4Q390,nonbib,,Apocr_Jeremiah,rewritten prophets
+4Q391,nonbib,unknown,Pseudo_Ezekiel,rewritten prophets
+4Q392,nonbib,,,
+4Q393,nonbib,,,
+4Q394,nonbib,,4QMMT,Halakha
+4Q395,nonbib,,4QMMT,Halakha
+4Q396,nonbib,,4QMMT,Halakha
+4Q397,nonbib,,4QMMT,Halakha
+4Q398,nonbib,,4QMMT,Halakha
+4Q399,nonbib,,4QMMT,Halakha
+4Q4,bib,,Gen,
+4Q40,bib,,Deut,
+4Q400,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q401,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q402,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q403,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q404,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q405,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q406,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q407,nonbib,unknown,Shir Shabat,Prayer - Liturgy
+4Q408,nonbib,,Apocr_Moses,rewritten Pentateuch
+4Q409,nonbib,,Liturgical work,Prayer - Liturgy
+4Q41,bib,,Deut,
+4Q410,nonbib,,,
+4Q411,nonbib,,,
+4Q412,nonbib,,,
+4Q413,nonbib,,,
+4Q414,nonbib,,Ritual purification,Prayer - Liturgy
+4Q415,nonbib,sectarian_texts,Instruction,Wisdom
+4Q416,nonbib,sectarian_texts,Instruction,Wisdom
+4Q417,nonbib,sectarian_texts,Instruction,Wisdom
+4Q418,nonbib,sectarian_texts,Instruction,Wisdom
+4Q418a,nonbib,sectarian_texts,Instruction,Wisdom
+4Q418b,nonbib,sectarian_texts,Instruction,Wisdom
+4Q418c,nonbib,sectarian_texts,Instruction,Wisdom
+4Q419,nonbib,,,
+4Q42,bib,,Deut,
+4Q420,nonbib,,,
+4Q421,nonbib,sectarian_texts,Ways of Righteousness,
+4Q422,nonbib,,Para_Gen-Exod,rewritten Pentateuch
+4Q423,nonbib,sectarian_texts,Instruction,Wisdom
+4Q424,nonbib,,,Wisdom
+4Q425,nonbib,,,Wisdom
+4Q426,nonbib,,,Wisdom
+4Q427,nonbib,sectarian_texts,4QH,Hodayot
+4Q428,nonbib,sectarian_texts,4QH,Hodayot
+4Q429,nonbib,sectarian_texts,4QH,Hodayot
+4Q43,bib,,Deut,
+4Q430,nonbib,sectarian_texts,4QH,Hodayot
+4Q431,nonbib,sectarian_texts,4QH,Hodayot
+4Q432,nonbib,sectarian_texts,4QH,Hodayot
+4Q433,nonbib,,Hodayot-like,Hodayot
+4Q433a,nonbib,,Hodayot-like,Hodayot
+4Q434,nonbib,,Barkhi_Nafshi,Prayer - Liturgy
+4Q435,nonbib,,Barkhi_Nafshi,Prayer - Liturgy
+4Q436,nonbib,,Barkhi_Nafshi,Prayer - Liturgy
+4Q437,nonbib,,Barkhi_Nafshi,Prayer - Liturgy
+4Q438,nonbib,,Barkhi_Nafshi,Prayer - Liturgy
+4Q439,nonbib,,Lament,
+4Q44,bib,,Deut,
+4Q440,nonbib,,Hodayot-like,Hodayot
+4Q440a,nonbib,,Hodayot-like,Hodayot
+4Q440b,nonbib,,Hodayot-like,Hodayot
+4Q441,nonbib,,,
+4Q442,nonbib,,,
+4Q443,nonbib,,,Prayer - Liturgy
+4Q444,nonbib,,,Prayer - Liturgy
+4Q445,nonbib,,,
+4Q446,nonbib,,,
+4Q447,nonbib,,,
+4Q448,nonbib,,Yonatan King,Prayer - Liturgy
+4Q449,nonbib,,,
+4Q45,bib,,Deut,
+4Q450,nonbib,,,
+4Q451,nonbib,,,
+4Q452,nonbib,,,
+4Q453,nonbib,,,
+4Q454,nonbib,,,
+4Q455,nonbib,,,
+4Q456,nonbib,,,
+4Q457a,nonbib,,,
+4Q457b,nonbib,,,
+4Q458,nonbib,,,
+4Q459,nonbib,,,
+4Q46,bib,,Deut,
+4Q460,nonbib,,,
+4Q461,nonbib,,,
+4Q462,nonbib,,,
+4Q463,nonbib,,,
+4Q464,nonbib,,,
+4Q464a,nonbib,,,
+4Q464b,nonbib,,,
+4Q465,nonbib,,,
+4Q466,nonbib,,,
+4Q467,nonbib,,,
+4Q468a,nonbib,,,
+4Q468aa,nonbib,,,
+4Q468b,nonbib,,,
+4Q468bb,nonbib,,,
+4Q468c,nonbib,,,
+4Q468cc,nonbib,,,
+4Q468dd,nonbib,,,
+4Q468e,nonbib,,,
+4Q468f,nonbib,,,
+4Q468g,nonbib,,,
+4Q468i,nonbib,,,
+4Q468j,nonbib,,,
+4Q468k,nonbib,,,
+4Q468l,nonbib,,,
+4Q468m,nonbib,,,
+4Q468n,nonbib,,,
+4Q468o,nonbib,,,
+4Q468p,nonbib,,,
+4Q468q,nonbib,,,
+4Q468r,nonbib,,,
+4Q468s,nonbib,,,
+4Q468t,nonbib,,,
+4Q468u,nonbib,,,
+4Q468v,nonbib,,,
+4Q468w,nonbib,,,
+4Q468x,nonbib,,,
+4Q468y,nonbib,,,
+4Q468z,nonbib,,,
+4Q469,nonbib,,,
+4Q47,bib,,Josh,
+4Q470,nonbib,,Zedekiah,
+4Q471,nonbib,,War Scroll - like,War Scroll
+4Q471a,nonbib,,,
+4Q471b,nonbib,,,
+4Q471c,nonbib,,,
+4Q472,nonbib,,,
+4Q472a,nonbib,,,
+4Q473,nonbib,,,
+4Q474,nonbib,,,
+4Q475,nonbib,,,
+4Q476,nonbib,,,
+4Q476a,nonbib,,,
+4Q477,nonbib,,,
+4Q478,nonbib,,,
+4Q479,nonbib,,,
+4Q48,bib,,Josh,
+4Q480,nonbib,,,
+4Q481,nonbib,,,
+4Q481a,nonbib,,,
+4Q481b,nonbib,,,
+4Q481c,nonbib,,,
+4Q481d,nonbib,,,
+4Q481e,nonbib,,,
+4Q482,nonbib,non_sectarian_texts,Book_of_Jubilees,
+4Q483,bib,,Gen,
+4Q484,nonbib,,,
+4Q485,nonbib,,,
+4Q486,nonbib,,,
+4Q487,nonbib,,,
+4Q488,nonbib,,,
+4Q489,nonbib,,,
+4Q49,bib,,Judg,
+4Q490,nonbib,,,
+4Q491,nonbib,sectarian_texts,4QM,War Scroll
+4Q492,nonbib,sectarian_texts,4QM,War Scroll
+4Q493,nonbib,sectarian_texts,4QM,War Scroll
+4Q494,nonbib,sectarian_texts,4QM,War Scroll
+4Q495,nonbib,sectarian_texts,4QM,War Scroll
+4Q496,nonbib,sectarian_texts,4QM,War Scroll
+4Q497,nonbib,sectarian texts,War Scroll-like,War Scroll
+4Q498,nonbib,,,
+4Q499,nonbib,,,
+4Q5,bib,,Gen,
+4Q50,bib,,Judg,
+4Q500,nonbib,,,
+4Q501,nonbib,,Lamentation,
+4Q502,nonbib,sectarian_texts,Ritual,Prayer - Liturgy
+4Q503,nonbib,sectarian_texts,daily prayers,Prayer - Liturgy
+4Q504,nonbib,sectarian_texts,Dibre Hameorot,Prayer - Liturgy
+4Q505,nonbib,sectarian_texts,Dibre Hameorot,Prayer - Liturgy
+4Q506,nonbib,sectarian_texts,Dibre Hameorot,Prayer - Liturgy
+4Q507,nonbib,,prayers festivals,Prayer - Liturgy
+4Q508,nonbib,,prayers festivals,Prayer - Liturgy
+4Q509,nonbib,sectarian_texts,festival prayers,Prayer - Liturgy
+4Q51,bib,,Samuel,
+4Q510,nonbib,sectarian_texts,Songs_of_Maskil,Prayer - Liturgy
+4Q511,nonbib,sectarian_texts,Songs_of_Maskil,Prayer - Liturgy
+4Q512,nonbib,sectarian_texts,purity ritual,Prayer - Liturgy
+4Q513,nonbib,sectarian_texts,Ordinances,Halakha
+4Q514,nonbib,,Ordinances,Halakha
+4Q515,nonbib,,,
+4Q516,nonbib,,,
+4Q517,nonbib,,,
+4Q518,nonbib,,,
+4Q519,nonbib,,,
+4Q52,bib,,Samuel,
+4Q520,nonbib,,,
+4Q521,nonbib,,,
+4Q522,nonbib,,Prophecy Joshua,rewritten prophets
+4Q523,nonbib,,,
+4Q524,nonbib,unknown,Temple Scroll,
+4Q525,nonbib,,Beatitudes,Wisdom
+4Q526,nonbib,,,
+4Q527,nonbib,,,
+4Q528,nonbib,,,
+4Q529,nonbib,,,
+4Q53,bib,,Samuel,
+4Q530,nonbib,,,
+4Q531,nonbib,,,
+4Q532,nonbib,,,
+4Q533,nonbib,,,
+4Q534,nonbib,,,
+4Q535,nonbib,,,
+4Q536,nonbib,,,
+4Q537,nonbib,,,
+4Q538,nonbib,,,
+4Q539,nonbib,,,
+4Q54,bib,,Kings,
+4Q540,nonbib,,,
+4Q541,nonbib,,,
+4Q542,nonbib,,,
+4Q543,nonbib,,,
+4Q544,nonbib,,,
+4Q545,nonbib,,,
+4Q546,nonbib,,,
+4Q547,nonbib,,,
+4Q548,nonbib,,,
+4Q549,nonbib,,,
+4Q55,bib,,Is,
+4Q550,nonbib,,,
+4Q551,nonbib,,,
+4Q552,nonbib,,,
+4Q553,nonbib,,,
+4Q553a,nonbib,,,
+4Q554,nonbib,,,
+4Q554a,nonbib,,,
+4Q555,nonbib,,,
+4Q556,nonbib,,,
+4Q556a,nonbib,,,
+4Q557,nonbib,,,
+4Q558,nonbib,,,
+4Q558a,nonbib,,,
+4Q559,nonbib,,,
+4Q56,bib,,Is,
+4Q560,nonbib,,,
+4Q561,nonbib,,,
+4Q562,nonbib,,,
+4Q563,nonbib,,,
+4Q564,nonbib,,,
+4Q565,nonbib,,,
+4Q566,nonbib,,,
+4Q567,nonbib,,,
+4Q568,nonbib,,,
+4Q569,nonbib,,,
+4Q57,bib,,Is,
+4Q570,nonbib,,,
+4Q571,nonbib,,,
+4Q572,nonbib,,,
+4Q573,nonbib,,,
+4Q574,nonbib,,,
+4Q575,nonbib,,,
+4Q575a,nonbib,,,
+4Q576,bib,,Gen,
+4Q577,nonbib,,,
+4Q578,nonbib,,,
+4Q579,nonbib,,,
+4Q58,bib,,Is,
+4Q580,nonbib,,,
+4Q581,nonbib,,,
+4Q582,nonbib,,,
+4Q583,nonbib,,,
+4Q584,nonbib,,,
+4Q585,nonbib,,,
+4Q586,nonbib,,,
+4Q587,nonbib,,,
+4Q59,bib,,Is,
+4Q6,bib,,Gen,
+4Q60,bib,,Is,
+4Q61,bib,,Is,
+4Q62,bib,,Is,
+4Q62a,bib,,Is,
+4Q63,bib,,Is,
+4Q64,bib,,Is,
+4Q65,bib,,Is,
+4Q66,bib,,Is,
+4Q67,bib,,Is,
+4Q68,bib,,Is,
+4Q69,bib,,Is,
+4Q69a,bib,,Is,
+4Q69b,bib,,Is,
+4Q7,bib,,Gen,
+4Q70,bib,,Jer,
+4Q71,bib,,Jer,
+4Q72,bib,,Jer,
+4Q72a,bib,,Jer,
+4Q72b,bib,,Jer,
+4Q73,bib,,Ezek,
+4Q74,bib,,Ezek,
+4Q75,bib,,Ezek,
+4Q76,bib,,Book of Twelve,
+4Q77,bib,,Book of Twelve,
+4Q78,bib,,Book of Twelve,
+4Q79,bib,,Book of Twelve,
+4Q80,bib,,Book of Twelve,
+4Q81,bib,,Book of Twelve,
+4Q82,bib,,Book of Twelve,
+4Q83,bib,,Ps,
+4Q84,bib,,Ps,
+4Q85,bib,,Ps,
+4Q86,bib,,Ps,
+4Q87,bib,,Ps,
+4Q88,bib,,Ps,
+4Q89,bib,,Ps,
+4Q8a,bib,,Gen,
+4Q8b,bib,,Gen,
+4Q8c,bib,,Gen,
+4Q8d,bib,,Gen,
+4Q9,bib,,Gen,
+4Q90,bib,,Ps,
+4Q91,bib,,Ps,
+4Q92,bib,,Ps,
+4Q93,bib,,Ps,
+4Q94,bib,,Ps,
+4Q95,bib,,Ps,
+4Q96,bib,,Ps,
+4Q97,bib,,Ps,
+4Q98,bib,,Ps,
+4Q98a,bib,,Ps,
+4Q98b,bib,,Ps,
+4Q98c,bib,,Ps,
+4Q98d,bib,,Ps,
+4Q98e,bib,,Ps,
+4Q98f,bib,,Ps,
+4Q98g,bib,,Ps,
+4Q99,bib,,Job,
+5/6hev1a,bib,,,
+5/6hev1b,bib,,,
+5Q1,bib,,Deut,
+5Q10,nonbib,,,
+5Q11,nonbib,sectarian_texts,4QS,community_rule
+5Q12,nonbib,sectarian_texts,The Damascus document (not Cave 4),CD
+5Q13,nonbib,sectarian texts,,community rule
+5Q14,nonbib,,,
+5Q15,nonbib,,,
+5Q16,nonbib,,,
+5Q17,nonbib,,,
+5Q18,nonbib,,,
+5Q19,nonbib,,,
+5Q2,bib,,Kings,
+5Q20,nonbib,,,
+5Q22,nonbib,,,
+5Q23,nonbib,,,
+5Q24,nonbib,,,
+5Q25,nonbib,,,
+5Q3,bib,,Is,
+5Q4,bib,,Book of Twelve,
+5Q5,bib,,Ps,
+5Q6,bib,,Lam,
+5Q7,bib,,Lam,
+5Q9,nonbib,,,
+6Q1,bib,,Gen,
+6Q10,nonbib,,,
+6Q11,nonbib,,,
+6Q12,nonbib,,,
+6Q13,nonbib,,,
+6Q14,nonbib,,,
+6Q15,nonbib,sectarian_texts,The Damascus document (not Cave 4),CD
+6Q16,nonbib,,,
+6Q17,nonbib,,,
+6Q18,nonbib,,,
+6Q19,nonbib,,,
+6Q2,bib,,Lev,
+6Q20,nonbib,,,
+6Q21,nonbib,,,
+6Q22,nonbib,,,
+6Q23,nonbib,,,
+6Q24,nonbib,,,
+6Q26,nonbib,,,
+6Q27,nonbib,,,
+6Q28,nonbib,,,
+6Q29,nonbib,,,
+6Q3,bib,,Deut,
+6Q30,nonbib,,,
+6Q31,nonbib,,,
+6Q4,bib,,Kings,
+6Q5,bib,,Ps,
+6Q6,bib,,Song,
+6Q7,bib,,Dan,
+6Q8,nonbib,,,
+6Q9,nonbib,,,
+8Q1,bib,,Gen,
+8Q2,bib,,Ps,
+8Q3,bib,,Deut,
+8Q4,bib,,Deut,
+8Q5,nonbib,,,
+9Q1,nonbib,,,
+Arugleviticus,bib,,,
+CD,nonbib,sectarian_texts,CD,CD
+KhQ1,nonbib,,,
+KhQ2,nonbib,,,
+KhQ3,nonbib,,,
+Mas1,bib,,,
+Mas1a,bib,,,
+Mas1b,bib,,,
+Mas1c,bib,,,
+Mas1d,bib,,,
+Mas1e,bib,,,
+Mas1f,bib,,,
+Mur1,bib,,,
+Mur2,bib,,,
+Mur3,bib,,,
+Mur4,bib,,,
+Mur88,bib,,,
+Murx,bib,,,
+Pam43113,bib,,,
+Pam43124,bib,,,
+PAM43660,nonbib,,,
+PAM43661,nonbib,,,
+PAM43663,nonbib,,,
+PAM43664,nonbib,,,
+PAM43665,nonbib,,,
+PAM43666,nonbib,,,
+PAM43667,nonbib,,,
+PAM43668,nonbib,,,
+PAM43669,nonbib,,,
+PAM43670,nonbib,,,
+PAM43671,nonbib,,,
+PAM43672,nonbib,,,
+PAM43673,nonbib,,,
+PAM43674,nonbib,,,
+PAM43675,nonbib,,,
+PAM43676,nonbib,,,
+PAM43677,nonbib,,,
+PAM43678,nonbib,,,
+PAM43679,nonbib,,,
+PAM43680,nonbib,,,
+PAM43682,nonbib,,,
+PAM43683,nonbib,,,
+PAM43684,nonbib,,,
+PAM43685,nonbib,,,
+PAM43686,nonbib,,,
+PAM43688,nonbib,,,
+PAM43689,nonbib,,,
+PAM43690,nonbib,,,
+PAM43691,nonbib,,,
+PAM43692,nonbib,,,
+PAM43693,nonbib,,,
+PAM43694,nonbib,,,
+PAM43695,nonbib,,,
+PAM43696,nonbib,,,
+PAM43697,nonbib,,,
+PAM43698,nonbib,,,
+PAM43699,nonbib,,,
+PAM43700,nonbib,,,
+PAM43701,nonbib,,,
+PAM44102,nonbib,,,
+Sdeir1,bib,,,
+X4,bib,,,
+Xhev/se2,bib,,,
+Xhev/se3,bib,,,
+Xhev/se5,bib,,,
+Xjoshua,bib,,,
+Xjudges,bib,,,
+Xq1,bib,,,
+Xq2,bib,,,
+Xq3,bib,,,
+XQ6,nonbib,,,
+XQ7,nonbib,,,
+XQ8,nonbib,,,

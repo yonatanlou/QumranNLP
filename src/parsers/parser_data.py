@@ -98,7 +98,6 @@ def chunking(entries, chunk_size, max_overlap=10):
 
 def chunk_by_scroll(book_data, word_per_samples=25, max_overlap=10):
     if len(book_data) == 0:
-        print("empty")
         return None, None
 
     res = zip(*[x for x in chunking(book_data, word_per_samples, max_overlap)])

@@ -38,6 +38,7 @@ CLASSES_TO_REMOVE_DUE_TO_COMPARING_CHUNK_SIZE = {
 
 class QumranDataset:
     def __init__(self, df, label, train_frac, val_frac, processed_vectorizers):
+        print(f"Creating dataset - {label}...")
         self.label = label
         df["original_index"] = range(len(df))
         self.df = self.process_df_by_label(df)
@@ -118,6 +119,7 @@ class QumranDataset:
         train = shuffled_samples[:train_samples]
         val = shuffled_samples[train_samples : train_samples + val_samples]
         test = shuffled_samples[train_samples + val_samples :]
+        assert len(train) + len(val) + len(test) == total_samples
 
         return train, val, test
 
@@ -168,7 +170,9 @@ class QumranDataset:
         self.labels = self.df[self.label]
         self.n_labels = self.labels.nunique()
 
-        print(f"Remaining classes: {self.n_labels}")
+        print(
+            f"Remaining classes (after removing nulls by label={self.label}: {self.n_labels}"
+        )
         print(f"Remaining samples: {len(self.df)}")
 
         if len(self.df) == 0:

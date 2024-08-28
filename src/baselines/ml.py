@@ -11,7 +11,7 @@ from sklearn.metrics import (
     f1_score,
 )
 from sklearn.preprocessing import LabelEncoder
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 from notebooks.features import get_linkage_matrix
 from src.baselines.create_datasets import QumranDataset
