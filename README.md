@@ -28,27 +28,55 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
    2. Hebrew books.
    3. Each book divided into 100 words chunks.
 
+
+
+
+
 ---
 
 
-**Running Research**:
-Summary of topic modeling:
+## Running Research
+### Topic modeling
 After trying multiple methods for getting the optimal number of topics 
 ( LDA with coherence and perplexity, NMF optimization by Gal Gilad method, HDP), we decided that the optimal number is somewhere between 10-20.
 For now, we will proceed without it.
 
-Summary of baselines results for supervised classification:
+### Global tuning params
+Two different researches for determine the optimal `chunk_size` and the `pre_processing` scheme.
+For evaluating each parameter, we checked those scheme on supervised and unsupervised classification for the scroll and composition level.
+That means running the `src/ETL/main_ETL.py` for generating data, and then running `make_baselines_results` for each of the tasks (`src/baselines/main.py`).
+* Chunk size research: [1.1-select_best_chunk_size.ipynb](notebooks%2F1.1-select_best_chunk_size.ipynb) (code in branch `new-chunking-scheme` )
+* Pre processing research: [1.1-select_best_pre_processing_scheme.ipynb](notebooks%2F1.1-select_best_pre_processing_scheme.ipynb) (code in branch `create-pre-processing-schemes-19-08` )
 
 
-**Running Tasks**:
 
+
+## Running Tasks:
+ 
 
 Tasks:
-* better precosessing + different distance metrics
-* Evaluate using global metrics (supervised on scroll and composition)
-* Model - vectorizer analysis.
-* Implement cross validation on each task so we will have some CI's....
-* After showing what is the best model, can send this model results to Jonathan.
+* Secterian classification - 
+  * We define a profile of the core sectarian texts: 1QS, 1QH, 1QM - will yield us multiple embeddings, and will be called coreSecterianMatrix. shape=(number_of_chunks_in_core, 768).
+  * I will reduce this matrix to a vector of (1,768) with some aggregation - mean for example: coreSecterianVec.
+  * Then, we can measure the distance of each of the other scroll from this coreSecterianVec.
+  * The most interesting scrolls will be those that are closer than the labeled sectarian scrolls.
+  * Those are of interest: שירות עילת השבת, דברי המאורות, temple scroll, ברכי נפשי,
+
+* Clustering at the scroll level:
+  * In any case, before starting, consult with Roded. 
+  * We have a few scrolls of interest: 1QS, Hodayot and 1QM.
+  * Each scroll can be segmented to different parts (we have labels - mail from Jonathan).
+  * We wish to find the best algorithm for clustering those scroll to the right segments.
+  * First i will show the results with some naive methods (results means: dasgupta score, dendogram):
+    * Using bert embeddings + agglomerate clustering.
+    * Using different embeddings + different clustering.
+  * We want to show that we can improve those results with a GNN. need to think how to do it. what i have in mind:
+    * Check some methods for unsupervisd clustering with GNN.
+    * Graph reconstruction from GNN outputs.
+    * Check the review article for semi-supervised learning with GNN.
+  * 
+----- 
+Could be nice in the future:
 * Unsupervised gnn.
 * Guide on how to use your own data (not Qumran).
 * Medium posts (unsupervised clustering).
