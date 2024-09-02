@@ -273,7 +273,7 @@ book,bib,section,composition,genre
 4Q214a,nonbib,,,
 4Q214b,nonbib,,,
 4Q215,nonbib,non_sectarian_texts,Naphtali,
-4Q215a,nonbib,Times Righteousness,,
+4Q215a,nonbib,,Times Righteousness,
 4Q216,nonbib,non_sectarian_texts,Book_of_Jubilees,
 4Q217,nonbib,non_sectarian_texts,Book_of_Jubilees,
 4Q218,nonbib,non_sectarian_texts,Book_of_Jubilees,
@@ -503,10 +503,10 @@ book,bib,section,composition,genre
 4Q369,nonbib,,Prayer of Enosh,
 4Q37,bib,,Deut,
 4Q370,nonbib,,Admonition flood,
-4Q371,nonbib,,Narrative and poetic,
-4Q372,nonbib,unknown,Narrative and Poetic,
-4Q373,nonbib,,Narrative and poetic,
-4Q373a,nonbib,,Narrative and poetic,
+4Q371,nonbib,,,Narrative and poetic
+4Q372,nonbib,unknown,,Narrative and Poetic
+4Q373,nonbib,,,Narrative and poetic
+4Q373a,nonbib,,,Narrative and poetic
 4Q374,nonbib,,on Exodus,
 4Q375,nonbib,,Apocr_Moses,rewritten Pentateuch
 4Q376,nonbib,,Apocr_Moses,rewritten Pentateuch
@@ -698,7 +698,7 @@ book,bib,section,composition,genre
 4Q494,nonbib,sectarian_texts,4QM,War Scroll
 4Q495,nonbib,sectarian_texts,4QM,War Scroll
 4Q496,nonbib,sectarian_texts,4QM,War Scroll
-4Q497,nonbib,sectarian texts,War Scroll-like,War Scroll
+4Q497,nonbib,sectarian_texts,War Scroll-like,War Scroll
 4Q498,nonbib,,,
 4Q499,nonbib,,,
 4Q5,bib,,Gen,
@@ -870,7 +870,7 @@ book,bib,section,composition,genre
 5Q10,nonbib,,,
 5Q11,nonbib,sectarian_texts,4QS,community_rule
 5Q12,nonbib,sectarian_texts,The Damascus document (not Cave 4),CD
-5Q13,nonbib,sectarian texts,,community rule
+5Q13,nonbib,sectarian_texts,,community rule
 5Q14,nonbib,,,
 5Q15,nonbib,,,
 5Q16,nonbib,,,

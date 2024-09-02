@@ -2,7 +2,6 @@ import pandas as pd
 
 from config import BASE_DIR
 from notebooks.constants import BERT_MODELS
-from notebooks.notebooks_utils import set_seed_globally
 
 # This file will construct 6 baselines:
 # 1. Sectarian - Supervised and unsupervised
@@ -19,8 +18,8 @@ import pickle
 from notebooks.features import (
     vectorize_text,
     get_linkage_matrix,
-    create_adjacency_matrix,
 )
+from src.baselines.utils import create_adjacency_matrix, set_seed_globally
 import os
 
 

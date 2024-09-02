@@ -6,8 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import LinearSVC
 
-from notebooks.features import create_adjacency_matrix
-from notebooks.notebooks_utils import set_seed_globally
+from src.baselines.utils import create_adjacency_matrix, set_seed_globally
 from src.baselines.create_datasets import QumranDataset, save_dataset_for_finetuning
 from src.baselines.embeddings import get_vectorizer_types, VectorizerProcessor
 from src.baselines.ml import evaluate_unsupervised_metrics, evaluate_supervised_metrics

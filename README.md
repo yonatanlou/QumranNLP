@@ -55,12 +55,12 @@ That means running the `src/ETL/main_ETL.py` for generating data, and then runni
  
 
 Tasks:
+* Pre-processing - 
+  * Remove fragments with less than 3 words (too broken)
+
 * Secterian classification - 
-  * We define a profile of the core sectarian texts: 1QS, 1QH, 1QM - will yield us multiple embeddings, and will be called coreSecterianMatrix. shape=(number_of_chunks_in_core, 768).
-  * I will reduce this matrix to a vector of (1,768) with some aggregation - mean for example: coreSecterianVec.
-  * Then, we can measure the distance of each of the other scroll from this coreSecterianVec.
-  * The most interesting scrolls will be those that are closer than the labeled sectarian scrolls.
-  * Those are of interest: שירות עילת השבת, דברי המאורות, temple scroll, ברכי נפשי,
+  * Update results: one row per composition
+  * Interactive plots for UMAP with plotly
 
 * Clustering at the scroll level:
   * In any case, before starting, consult with Roded. 
