@@ -3,7 +3,8 @@ from datetime import datetime
 import pandas as pd
 from tqdm.notebook import tqdm
 
-from notebooks.features import create_adjacency_matrix, vectorize_text
+from notebooks.features import vectorize_text
+from src.baselines.utils import create_adjacency_matrix
 from notebooks.clustering import (
     get_random_clusters_score,
     get_clusters_scores,

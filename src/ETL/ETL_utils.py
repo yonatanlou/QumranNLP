@@ -291,7 +291,6 @@ def process_scrolls_to_features(
     return pd.concat(features_by_sample_dfs, ignore_index=True)
 
 
-
 def filter_df_by_rules(df_origin):
     # Filter out non-Hebrew books
     df = df_origin
@@ -308,7 +307,6 @@ def filter_df_by_rules(df_origin):
 
     # Filter the original dataframe to keep only books with enough words
     df_final = df[df["book"].isin(books_with_enough_words)]
-    df_final = df
     df_final = df_final[~df_final["book"].isin(manually_remove_scrolls)]
     return df_final
 
