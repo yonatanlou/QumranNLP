@@ -55,9 +55,6 @@ That means running the `src/ETL/main_ETL.py` for generating data, and then runni
  
 
 Tasks:
-* Pre-processing - 
-  * Remove fragments with less than 3 words (too broken)
-
 * Secterian classification - 
   * Update results: one row per composition
   * Interactive plots for UMAP with plotly

@@ -17,7 +17,7 @@ MAX_OVERLAP = 15
 # PRE_PROCESSING_TASKS = ["MFW=5", "LEMMATIZATION", "STOPWORDS", "LEX"]
 PRE_PROCESSING_TASKS = []
 DATE = datetime.now().strftime("%Y_%d_%m")
-OUTPUT_FILE = f"{BASE_DIR}/data/df_{CHUNK_SIZE=}_{MAX_OVERLAP=}_{PRE_PROCESSING_TASKS=}_{DATE}.csv"
+OUTPUT_FILE = f"{BASE_DIR}/data/processed_data/df_{CHUNK_SIZE=}_{MAX_OVERLAP=}_{PRE_PROCESSING_TASKS=}_{DATE}.csv"
 
 
 def generate_data(

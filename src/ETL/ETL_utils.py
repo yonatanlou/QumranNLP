@@ -292,11 +292,14 @@ def process_scrolls_to_features(
 
 
 def filter_df_by_rules(df_origin):
-    # Filter out non-Hebrew books
     df = df_origin
+    df["n_words"] = df["text"].str.split().apply(len)
+    # Filter out non-Hebrew books
     df = df[~df["book"].isin(NOT_HEB_BOOKS)]
 
+    # Filter out non-bib books
     df = df[df["bib"] == "nonbib"]
+
     # Aggregate text by book
     df_grouped = df.groupby("book")["text"].apply(" ".join).reset_index()
     df_grouped["number_of_words"] = df_grouped["text"].str.split().apply(len)
@@ -304,10 +307,13 @@ def filter_df_by_rules(df_origin):
     # Filter books with at least MIN_WORDS_PER_SCROLL words
     df_by_book = df_grouped[df_grouped["number_of_words"] >= MIN_WORDS_PER_SCROLL]
     books_with_enough_words = df_by_book["book"].tolist()
-
-    # Filter the original dataframe to keep only books with enough words
     df_final = df[df["book"].isin(books_with_enough_words)]
+
+    # Remove scrolls that were manually removed
     df_final = df_final[~df_final["book"].isin(manually_remove_scrolls)]
+
+    # Filter out chunks with less than 10 words
+    df_final = df_final[df_final["n_words"] > 15]
     return df_final
 
 
