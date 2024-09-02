@@ -10,6 +10,7 @@ from src.features.Starr.features_keys import (
 )
 import numpy as np
 from src.parsers.MorphParser import MorphParser
+from src.parsers.parser_data import counting_as_word_statement, UNCERTAIN_SIGNS
 
 alphabet_chars = re.compile("[^a-zA-Z]")
 modes = presets = ["average", "ward"]
@@ -96,8 +97,11 @@ def gen_sample_features(entries, morph_name_dict, feature_list):
         parsed_morph = entry["parsed_morph"]
         if "sp" in parsed_morph:
             if word_count_flag is False:
-                count["general"]["words"] += 1
-                word_count_flag = True
+                if (entry["transcript"].strip() == "") or (
+                    entry["transcript"].strip() in UNCERTAIN_SIGNS
+                ):
+                    count["general"]["words"] += 1
+                    word_count_flag = True
             if parsed_morph["sp"] == "subs":
                 count["general"]["nouns"] += 1
                 if (
