@@ -1,0 +1,40 @@
+composition,similarity,section,normalized_similarity
+Hodayot,0.9545145,sectarian_texts,1.0
+community_rule,0.9518924,sectarian_texts,0.9778065
+the_rule_of_the_blessings,0.95153946,sectarian_texts,0.9748194
+Mysteries,0.9506324,sectarian_texts,0.9671421
+4QH,0.94839704,sectarian_texts,0.9482222
+Pesharim,0.94708407,sectarian_texts,0.93710935
+Beatitudes,0.9467218,,0.93404305
+Barkhi_Nafshi,0.9459881,,0.92783326
+Book of Tobit,0.9455457,non_sectarian_texts,0.9240885
+Catena_Florilegium,0.94508433,sectarian_texts,0.9201837
+CD,0.94485366,sectarian_texts,0.91823137
+Dibre Hameorot,0.9435369,sectarian_texts,0.90708613
+the_rule_of_the_congregation,0.94259995,sectarian_texts,0.8991561
+Collections_of_psalms,0.94140583,non_sectarian_texts,0.8890492
+War Scroll,0.94116914,sectarian_texts,0.8870458
+Instruction,0.94101703,sectarian_texts,0.88575834
+Apocr_Jeremiah,0.9380109,unknown,0.8603144
+Para_Gen-Exod,0.93511194,,0.8357781
+Melchizedek,0.93278897,sectarian_texts,0.81611663
+apocryphal psalms,0.93189824,,0.80857754
+Apocr_Joshua,0.9314379,unknown,0.80468136
+4QM,0.92805535,sectarian_texts,0.7760516
+4QMMT,0.92776376,,0.7735836
+Divrei Moshe,0.92757875,unknown,0.77201766
+Songs_of_Maskil,0.9251514,sectarian_texts,0.75147283
+Book_of_Jubilees,0.91937304,non_sectarian_texts,0.70256513
+daily prayers,0.9190418,sectarian_texts,0.6997617
+para.Kings,0.91254914,unknown,0.6448082
+Shir Shabat,0.9123756,unknown,0.6433396
+Tanhumim,0.91064197,sectarian_texts,0.628666
+Temple Scroll,0.91015136,unknown,0.62451357
+Pseudo_Ezekiel,0.90642136,unknown,0.5929431
+Prophecy Joshua,0.9026464,,0.56099224
+purity ritual,0.9005333,sectarian_texts,0.5431071
+copper scroll,0.89460385,unknown,0.4929205
+rewritten pentateuch,0.89439,unknown,0.49111038
+festival prayers,0.8916427,sectarian_texts,0.46785745
+Ritual,0.87870705,sectarian_texts,0.35837114
+calendrical texts,0.83636606,sectarian_texts,0.0
