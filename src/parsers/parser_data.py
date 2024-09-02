@@ -8,6 +8,10 @@ from utils import filter_data_by_field, read_yaml
 from logger import get_logger
 
 logger = get_logger(__name__)
+MISSING_SIGN = "ε"
+UNCERTAIN_SIGN_1 = "?"
+UNCERTAIN_SIGN_2 = "#"
+UNCERTAIN_SIGNS = [MISSING_SIGN, UNCERTAIN_SIGN_1, UNCERTAIN_SIGN_2]
 
 
 def split_data_to_samples(entries, n_words_per_feature):
@@ -36,6 +40,17 @@ def split_data_to_samples(entries, n_words_per_feature):
     return [[w for word in sample for w in word] for sample in samples]
 
 
+def counting_as_word_statement(e):
+    if (e["parsed_morph"]["cl"] == "conj") or (e["parsed_morph"]["cl"] == "prep"):
+        return False
+    if e["transcript"] == ".":
+        return False
+    if e["transcript"].strip() in UNCERTAIN_SIGNS:
+        return False
+    else:
+        return True
+
+
 def chunking(entries, chunk_size, max_overlap=10):
     samples = []
     sample_names = []
@@ -43,17 +58,11 @@ def chunking(entries, chunk_size, max_overlap=10):
     word_count = 0
     current_frag_line_num = None
     overlap_entries = []
-
-    def not_counting_as_word_statment(e):
-        if (e["parsed_morph"]["cl"] == "conj") or (e["parsed_morph"]["cl"] == "prep"):
-            return False
-        if e["transcript"] == ".":
-            return False
-        else:
-            return True
+    # uncertain_words_count = 0
+    # tmp_frag_size = 0
 
     for i, entry in enumerate(entries):
-        # Skip entries without 'sp' in parsed_morph
+        # Skip entries without 'part-of-speec' in parsed_morph
         if "sp" not in entry.get("parsed_morph", ""):
             continue
 
@@ -70,20 +79,23 @@ def chunking(entries, chunk_size, max_overlap=10):
                     overlap_entries = overlap_entries[-max_overlap:]
                 current_sample = overlap_entries + [entry]
                 overlap_word_count = len(
-                    [i for i in overlap_entries if not_counting_as_word_statment(i)]
+                    [i for i in overlap_entries if counting_as_word_statement(i)]
                 )
                 word_count = overlap_word_count + 1
                 overlap_entries = []
             else:
                 current_sample.append(entry)
-                if not_counting_as_word_statment(entry):
+                if counting_as_word_statement(entry):
                     word_count += 1
+                # if entry["transcript"].strip() in [MISSING_SIGN, UNCERTAIN_SIGN_1, UNCERTAIN_SIGN_2]:
+                #     uncertain_words_count += 1
+                # tmp_frag_size +=1
 
             current_frag_line_num = entry["frag_line_num"]
             overlap_entries = [entry]
         else:
             current_sample.append(entry)
-            if not_counting_as_word_statment(entry):
+            if counting_as_word_statement(entry):
                 word_count += 1
             overlap_entries.append(entry)
 
