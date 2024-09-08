@@ -8,12 +8,16 @@ from src.gnn.utils import create_param_dict
 from itertools import product, combinations
 import os.path
 
-PROCESSED_VECTORIZERS_PATH = f"{BASE_DIR}/src/data/processed_vectorizers.pkl"
-EXP_NAME = "gcn_bert_ensemble"
+data_path = f"{BASE_DIR}/data/processed_data/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
+results_dir = f"{BASE_DIR}/experiments/baselines"
+PROCESSED_VECTORIZERS_PATH = (
+    f"{results_dir}/processed_vectorizers.pkl"
+)
+EXP_NAME = "gcn_init"
 NUM_WORD_PER_CHUNK = 100
-NUM_COMBINED_GRAPHS = 3
+NUM_COMBINED_GRAPHS = 2
 
-with open(f"{BASE_DIR}/src/data/datasets.pkl", "rb") as f:
+with open(f"{results_dir}/datasets.pkl", "rb") as f:
     datasets = pickle.load(f)
 
 params = {
@@ -23,7 +27,7 @@ params = {
     "learning_rates": [0.001],
     "thresholds": [0.98, 0.99],
     "bert_models": [
-        "dicta-il/BEREL",
+        # "dicta-il/BEREL",
         # "onlplab/alephbert-base",
         "yonatanlou/BEREL-finetuned-DSS-maskedLM",
         # "yonatanlou/BEREL-finetuned-DSS-composition-classification",
@@ -32,9 +36,10 @@ params = {
         "tfidf": {"max_features": 7500},
         "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
         "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
-        "bert-berel": {"type": "dicta-il/BEREL"},
-        "bert-alephbert": {"type": "onlplab/alephbert-base"},
-        "bert-finetune-lm": {"type": "yonatanlou/BEREL-finetuned-DSS-maskedLM"},
+        "starr": {},
+        # "bert-berel": {"type": "dicta-il/BEREL"},
+        # "bert-alephbert": {"type": "onlplab/alephbert-base"},
+        # "bert-finetune-lm": {"type": "yonatanlou/BEREL-finetuned-DSS-maskedLM"},
     },
 }
 
@@ -65,13 +70,15 @@ for epoch, threshold, distance, hidden_dim, lr, bert_model in meta_param_combina
 
 
 for dataset_name, dataset in datasets.items():
-    if dataset_name == "dataset_scroll":
+    if dataset_name == "dataset_composition":
         continue
     print(f"starting with {dataset_name}")
-    exp_dir_path = f"{BASE_DIR}/reports/gnn/{EXP_NAME}"
+    exp_dir_path = f"{BASE_DIR}/experiments/gnn/{EXP_NAME}"
     if not os.path.exists(exp_dir_path):
         os.makedirs(exp_dir_path)
-    file_name = f"{exp_dir_path}/{EXP_NAME}_{dataset.label}_{NUM_WORD_PER_CHUNK}_words_{NUM_COMBINED_GRAPHS}_adj_types.csv"
+    file_name = (
+        f"{exp_dir_path}/{EXP_NAME}_{dataset.label}_{NUM_COMBINED_GRAPHS}_adj_types.csv"
+    )
     if os.path.isfile(file_name):
         continue
     df = dataset.df
@@ -82,5 +89,5 @@ for dataset_name, dataset in datasets.items():
     df = df.reset_index()
 
     run_gnn_exp(
-        all_param_dicts, df, processed_vectorizers, file_name, dataset, verbose=False
+        all_param_dicts, df, processed_vectorizers, file_name, dataset, verbose=True
     )
