@@ -14,17 +14,32 @@ class GCN(torch.nn.Module):
     def __init__(self, dim_in, dim_h, dim_out, lr):
         super().__init__()
         torch.manual_seed(42)
+        self.kwargs = {"dim_in": dim_in, "dim_h": dim_h, "dim_out": dim_out, "lr": lr}
         self.gcn1 = GCNConv(dim_in, dim_h)
-        self.gcn2 = GCNConv(dim_h, dim_out)
+        self.gcn2 = GCNConv(dim_h, dim_h)
+        self.gcn3 = GCNConv(dim_h, dim_out)
         self.optimizer = torch.optim.Adam(self.parameters(), lr=lr, weight_decay=5e-4)
 
-    def forward(self, x, edge_index):
-        h = F.dropout(x, p=0.5, training=self.training)
-        h = self.gcn1(h, edge_index)
+    def forward(self, x, edge_index, edge_attr):
+        h = self.gcn1(x, edge_index, edge_attr)
         h = torch.relu(h)
         h = F.dropout(h, p=0.5, training=self.training)
-        h = self.gcn2(h, edge_index)
+
+        h = self.gcn2(h, edge_index, edge_attr)
+        h = torch.relu(h)
+        h = F.dropout(h, p=0.5, training=self.training)
+
+        h = self.gcn3(h, edge_index, edge_attr)
         return h, F.log_softmax(h, dim=1)
+
+    def get_embeddings(self, x, edge_index, edge_attr):
+        self.eval()  # Set the model to evaluation mode
+        with torch.no_grad():
+            h = F.dropout(x, p=0.5, training=False)
+            h = self.gcn1(h, edge_index, edge_attr)
+            h = torch.relu(h)
+
+            return h
 
 
 class GAT(torch.nn.Module):
@@ -84,7 +99,7 @@ def train(model, data, epochs, patience=20, verbose=True):
     model.train()
     for epoch in range(epochs + 1):
         optimizer.zero_grad()
-        _, out = model(data.x, data.edge_index)
+        h, out = model(data.x, data.edge_index, data.edge_attr)
         loss = criterion(out[data.train_mask], data.y[data.train_mask])
         acc = accuracy(out[data.train_mask].argmax(dim=1), data.y[data.train_mask])
         loss.backward()
