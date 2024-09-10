@@ -10,11 +10,8 @@ import os.path
 
 data_path = f"{BASE_DIR}/data/processed_data/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
 results_dir = f"{BASE_DIR}/experiments/baselines"
-PROCESSED_VECTORIZERS_PATH = (
-    f"{results_dir}/processed_vectorizers.pkl"
-)
+PROCESSED_VECTORIZERS_PATH = f"{results_dir}/processed_vectorizers.pkl"
 EXP_NAME = "gcn_init"
-NUM_WORD_PER_CHUNK = 100
 NUM_COMBINED_GRAPHS = 2
 
 with open(f"{results_dir}/datasets.pkl", "rb") as f:
@@ -25,7 +22,7 @@ params = {
     "hidden_dims": [300],
     "distances": ["cosine"],
     "learning_rates": [0.001],
-    "thresholds": [0.98, 0.99],
+    "thresholds": [0.99],
     "bert_models": [
         # "dicta-il/BEREL",
         # "onlplab/alephbert-base",
@@ -38,7 +35,7 @@ params = {
         "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
         "starr": {},
         # "bert-berel": {"type": "dicta-il/BEREL"},
-        # "bert-alephbert": {"type": "onlplab/alephbert-base"},
+        "bert-alephbert": {"type": "onlplab/alephbert-base"},
         # "bert-finetune-lm": {"type": "yonatanlou/BEREL-finetuned-DSS-maskedLM"},
     },
 }
@@ -70,8 +67,6 @@ for epoch, threshold, distance, hidden_dim, lr, bert_model in meta_param_combina
 
 
 for dataset_name, dataset in datasets.items():
-    if dataset_name == "dataset_composition":
-        continue
     print(f"starting with {dataset_name}")
     exp_dir_path = f"{BASE_DIR}/experiments/gnn/{EXP_NAME}"
     if not os.path.exists(exp_dir_path):
