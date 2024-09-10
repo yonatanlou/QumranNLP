@@ -77,9 +77,7 @@ def make_baselines_results(
 if __name__ == "__main__":
     data_path = f"{BASE_DIR}/data/processed_data/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
     results_dir = f"{BASE_DIR}/experiments/baselines"
-    processed_vectorizers_path = (
-        f"{results_dir}/processed_vectorizers.pkl"
-    )
+    processed_vectorizers_path = f"{results_dir}/processed_vectorizers.pkl"
 
     make_baselines_results(
         data_path,
