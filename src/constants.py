@@ -2,7 +2,7 @@ BERT_MODELS = [
     "dicta-il/BEREL",
     "onlplab/alephbert-base",
     "dicta-il/dictabert",
-    # "yonatanlou/BEREL-finetuned-DSS-sectarian-classification",
-    # "yonatanlou/BEREL-finetuned-DSS-composition-classification",
     "yonatanlou/BEREL-finetuned-DSS-maskedLM",
+    "yonatanlou/alephbert-base-finetuned-DSS-maskedLM",
+    "yonatanlou/dictabert-finetuned-DSS-maskedLM",
 ]

@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModel
 
-from notebooks.constants import BERT_MODELS
+from src.constants import BERT_MODELS
 
 
 def get_starr_features():

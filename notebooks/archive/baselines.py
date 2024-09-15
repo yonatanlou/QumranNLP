@@ -1,7 +1,7 @@
 import pandas as pd
 
 from config import BASE_DIR
-from notebooks.constants import BERT_MODELS
+from src.constants import BERT_MODELS
 
 # This file will construct 6 baselines:
 # 1. Sectarian - Supervised and unsupervised
@@ -184,57 +184,3 @@ PATH = f"{BASE_DIR}/notebooks/reports/baselines_test/unsupervised_clustering_com
 if not os.path.exists(PATH):
     os.makedirs(PATH)
 metrics_df.to_csv(f"{PATH}/unsupervised_clustering_composition_level.csv", index=False)
-
-
-# def generate_plots(
-#         processed_vectorizers,
-#         vectorizer_type,
-#         df,
-#         label_column,
-#         clustering_algo="kmeans",
-#         n_clusters=2,
-# ):
-#     simplefilter(action="ignore", category=FutureWarning)
-#     vectorizer_matrix = processed_vectorizers.get(vectorizer_type)
-#     if sp.issparse(vectorizer_matrix):
-#         vectorizer_matrix = vectorizer_matrix.toarray()
-#
-#     clusterer = get_clusterer(clustering_algo, n_clusters)
-#     df["predicted_cluster"] = clusterer.fit_predict(vectorizer_matrix).astype(
-#         str
-#     )  # Convert labels to strings if needed
-#
-#     # Apply t-SNE for dimensionality reduction
-#     tsne = TSNE(n_components=2, random_state=42)
-#     tsne_results = tsne.fit_transform(vectorizer_matrix)
-#
-#     # Add t-SNE results to the dataframe
-#     df["tsne-2d-one"] = tsne_results[:, 0]
-#     df["tsne-2d-two"] = tsne_results[:, 1]
-#
-#     # Create a facet plot to compare true and predicted labels
-#     df["label_type"] = "Predicted"
-#     true_labels_df = df.copy()
-#     true_labels_df["predicted_cluster"] = true_labels_df[label_column]
-#     true_labels_df["label_type"] = "True"
-#     combined_df = pd.concat([df, true_labels_df])
-#
-#     facet_fig = px.scatter(
-#         combined_df,
-#         x="tsne-2d-one",
-#         y="tsne-2d-two",
-#         color="predicted_cluster",
-#         facet_col="label_type",
-#         hover_data={"book": True, label_column: True, "sentence_path": True},
-#         title=f"t-SNE visualization of clusters: Predicted vs. True ({vectorizer_type}, {clustering_algo})",
-#     )
-#
-#     # Update the figure size
-#     facet_fig.update_layout(
-#         width=1000,  # Adjust the width as needed
-#         height=800,  # Adjust the height as needed
-#     )
-#
-#     facet_fig.update_traces(marker=dict(size=10), selector=dict(mode="markers+text"))
-#     simplefilter(action="default", category=FutureWarning)
-#     return facet_fig
