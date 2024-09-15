@@ -38,7 +38,7 @@ def bert_embed(texts, model, tokenizer, method="mean_last_hidden"):
             return_tensors="pt",
             padding=True,
             truncation=True,
-            max_length=tokenizer.model_max_length,
+            max_length=512,
         )
         with torch.no_grad():
             outputs = model(**inputs)
