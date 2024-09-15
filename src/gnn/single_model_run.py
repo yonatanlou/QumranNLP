@@ -52,34 +52,24 @@ torch.save(
     [gcn.kwargs, gcn.state_dict()],
     f"{BASE_DIR}/models/gcn_model_train_on_scroll.pth",
 )
+print("saved model in {BASE_DIR}/models/gcn_model_train_on_scroll.pth")
 
-
+# from src.gnn.model import GCN
+# import torch
 #
+# param_dict = {
+#     "num_adjs": 1,
+#     "epochs": 500,
+#     "hidden_dim": 300,
+#     "distance": "cosine",
+#     "learning_rate": 0.001,
+#     "threshold": 0.98,
+#     "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
+#     "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
+# }
 #
-# adj_gen = AdjacencyMatrixGenerator(
-#     vectorizer_type="tfidf",
-#     vectorizer_params={"max_features": 7500},
-#     threshold=0.99,
-#     distance_metric="cosine",
-#     meta_params=None,
-#     normalize=True,
-# )
-# df = df[df["book"].isin(["1QM","1QSa"])]
-# edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
-# X = processed_vectorizers[param_dict["bert_model"]]
-# X = X[df.index]
-# X = X.astype("float32")
-# X_tensor = torch.FloatTensor(X)
-# with torch.no_grad():
-#     h, logits = gcn(X_tensor, edge_index, edge_attr)
-# node_embeddings_np = h.numpy()
-#
-# # Create a DataFrame with node embeddings
-# embeddings_df = pd.DataFrame(
-#     node_embeddings_np,
-#     index=df.index,
-#     columns=[f"embedding_{i}" for i in range(node_embeddings_np.shape[1])]
-# )
-#
-# # Merge embeddings with original DataFrame
-# result_df = pd.concat([df, embeddings_df], axis=1)
+# GNN_MODEL_PATH = f"{BASE_DIR}/models/gcn_model_train_on_scroll.pth"
+# kwargs, state = torch.load(GNN_MODEL_PATH)
+# model = GCN(**kwargs)
+# model.load_state_dict(state)
+# print("")

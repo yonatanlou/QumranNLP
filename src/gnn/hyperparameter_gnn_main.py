@@ -13,7 +13,7 @@ results_dir = f"{BASE_DIR}/experiments/baselines"
 PROCESSED_VECTORIZERS_PATH = f"{results_dir}/processed_vectorizers.pkl"
 EXP_NAME = "gcn_init"
 NUM_COMBINED_GRAPHS = 2
-
+OVERWRITE = True
 with open(f"{results_dir}/datasets.pkl", "rb") as f:
     datasets = pickle.load(f)
 
@@ -24,10 +24,12 @@ params = {
     "learning_rates": [0.001],
     "thresholds": [0.99],
     "bert_models": [
-        # "dicta-il/BEREL",
-        # "onlplab/alephbert-base",
+        "dicta-il/BEREL",
+        "dicta-il/dictabert",
+        "onlplab/alephbert-base",
         "yonatanlou/BEREL-finetuned-DSS-maskedLM",
-        # "yonatanlou/BEREL-finetuned-DSS-composition-classification",
+        "yonatanlou/alephbert-base-finetuned-DSS-maskedLM",
+        "yonatanlou/dictabert-finetuned-DSS-maskedLM",
     ],
     "adj_types": {
         "tfidf": {"max_features": 7500},
@@ -35,7 +37,7 @@ params = {
         "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
         "starr": {},
         # "bert-berel": {"type": "dicta-il/BEREL"},
-        "bert-alephbert": {"type": "onlplab/alephbert-base"},
+        # "bert-alephbert": {"type": "onlplab/alephbert-base"},
         # "bert-finetune-lm": {"type": "yonatanlou/BEREL-finetuned-DSS-maskedLM"},
     },
 }
@@ -74,7 +76,7 @@ for dataset_name, dataset in datasets.items():
     file_name = (
         f"{exp_dir_path}/{EXP_NAME}_{dataset.label}_{NUM_COMBINED_GRAPHS}_adj_types.csv"
     )
-    if os.path.isfile(file_name):
+    if os.path.isfile(file_name) and not OVERWRITE:
         continue
     df = dataset.df
     vectorizer_types = get_vectorizer_types()
