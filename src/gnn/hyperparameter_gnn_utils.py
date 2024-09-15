@@ -90,7 +90,7 @@ def run_gnn_exp(
     final_results = []
     for param_dict in tqdm(all_param_dicts, desc="Parameter Combinations"):
         gcn, stats_df = run_single_gnn_model(
-            df, processed_vectorizers, dataset, param_dict, verbose=False
+            df, processed_vectorizers, dataset, param_dict, verbose=verbose
         )
         final_results.append(stats_df)
     final_df = pd.concat(final_results).sort_values(by=["test_acc"], ascending=False)

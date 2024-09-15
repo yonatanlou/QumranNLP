@@ -2,7 +2,7 @@ import os
 import pickle
 import pandas as pd
 
-from notebooks.constants import BERT_MODELS
+from src.constants import BERT_MODELS
 from notebooks.features import vectorize_text
 
 

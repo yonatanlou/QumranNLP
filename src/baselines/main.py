@@ -1,4 +1,5 @@
 import os
+import pickle
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -6,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import LinearSVC
 
+from config import BASE_DIR
 from src.baselines.utils import create_adjacency_matrix, set_seed_globally
 from src.baselines.create_datasets import QumranDataset, save_dataset_for_finetuning
 from src.baselines.embeddings import get_vectorizer_types, VectorizerProcessor
@@ -18,10 +20,6 @@ MODELS = [
     KNeighborsClassifier(),
     MLPClassifier(random_state=42, max_iter=500),
 ]
-# CHUNK_SIZE = 100
-# data_path = f"{BASE_DIR}/notebooks/data/filtered_text_and_starr_features_{CHUNK_SIZE}_words_nonbib_17_06_2024.csv"
-# processed_vectorizers_path = f"{BASE_DIR}/src/data/processed_vectorizers.pkl"
-# results_dir = f"{BASE_DIR}/reports/baselines"
 
 
 def make_baselines_results(
@@ -30,7 +28,7 @@ def make_baselines_results(
     results_dir,
     train_frac,
     val_frac,
-    tasks=["scroll", "composition", "section"],
+    tasks=["scroll", "composition", "sectarian"],
 ):
     if not os.path.exists(results_dir):
         os.makedirs(results_dir)
@@ -61,14 +59,12 @@ def make_baselines_results(
         "dataset_scroll": dataset_scroll,
         "dataset_sectarian": dataset_sectarian,
     }
-    datasets = {k: v for k, v in datasets.items() if k.split("_")[1] in tasks}
-
     # for dataset_name, dataset in datasets.items():
-    #     save_dataset_for_finetuning(f"{BASE_DIR}/src/data/{dataset_name}.pkl", dataset)
-    #     print(f"Saved dataset for finetuning {dataset}")
-    # with open(f"{BASE_DIR}/src/data/datasets.pkl", "wb") as f:
-    #     pickle.dump(datasets, f)
+    #     save_dataset_for_finetuning(f"{results_dir}/{dataset_name}.pkl", dataset)
+    with open(f"{results_dir}/datasets.pkl", "wb") as f:
+        pickle.dump(datasets, f)
 
+    datasets = {k: v for k, v in datasets.items() if k.split("_")[1] in tasks}
     for dataset_name, dataset in datasets.items():
         set_seed_globally()
         print(f"calculating metrics for {dataset_name}")
@@ -76,3 +72,18 @@ def make_baselines_results(
             adjacency_matrix_all, dataset, vectorizers, results_dir
         )
         evaluate_supervised_metrics(MODELS, vectorizers, dataset, results_dir)
+
+
+if __name__ == "__main__":
+    data_path = f"{BASE_DIR}/data/processed_data/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
+    results_dir = f"{BASE_DIR}/experiments/baselines"
+    processed_vectorizers_path = f"{results_dir}/processed_vectorizers.pkl"
+
+    make_baselines_results(
+        data_path,
+        processed_vectorizers_path,
+        results_dir,
+        train_frac=0.7,
+        val_frac=0.1,
+        tasks=["scroll", "composition", "sectarian"],
+    )

@@ -55,12 +55,8 @@ That means running the `src/ETL/main_ETL.py` for generating data, and then runni
  
 
 Tasks:
-* Secterian classification - 
-  * Update results: one row per composition
-  * Interactive plots for UMAP with plotly
 
 * Clustering at the scroll level:
-  * In any case, before starting, consult with Roded. 
   * We have a few scrolls of interest: 1QS, Hodayot and 1QM.
   * Each scroll can be segmented to different parts (we have labels - mail from Jonathan).
   * We wish to find the best algorithm for clustering those scroll to the right segments.
@@ -68,6 +64,16 @@ Tasks:
     * Using bert embeddings + agglomerate clustering.
     * Using different embeddings + different clustering.
   * We want to show that we can improve those results with a GNN. need to think how to do it. what i have in mind:
+    * We want to show that we can improve those results with a GNN.
+    * For now, i show that the best model by all tasks (scroll, composition and sectarian classification) is a gnn with adj of tf-idf.
+    * I will train a model on scroll classification, then use the embeddings of this model for the one scroll clustering, and will see if we get better results.
+    * That means that the training of this GCN should be without the clustered scrolls.
+    * If so:
+      * Procuctize the clustering by scroll notebook so it will be easier to do an analysis. 
+      * Train a GCN model without the 1Qha, 1QM and 1QS scrolls (tfidf or trigram adj).
+      * Save this model.
+      * Use this model when clustering the scrolls.
+    * 
     * Check some methods for unsupervisd clustering with GNN.
     * Graph reconstruction from GNN outputs.
     * Check the review article for semi-supervised learning with GNN.
@@ -76,7 +82,9 @@ Tasks:
 Could be nice in the future:
 * Unsupervised gnn.
 * Guide on how to use your own data (not Qumran).
-* Medium posts (unsupervised clustering).
+* Medium posts:
+  * Unsupervised clustering with dasgupta.
+  * How to use GNN for text classification with different adj matrices.
 
 More optional things to consider:
 1. More open questions from Jonathan:
