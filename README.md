@@ -40,6 +40,8 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
 After trying multiple methods for getting the optimal number of topics 
 ( LDA with coherence and perplexity, NMF optimization by Gal Gilad method, HDP), we decided that the optimal number is somewhere between 10-20.
 For now, we will proceed without it.
+![NMF topic modeling](reports/plots/nmf_topic_modeling.png "NMF topic modeling")
+
 
 ### Global tuning params
 Two different researches for determine the optimal `chunk_size` and the `pre_processing` scheme.
@@ -48,8 +50,22 @@ That means running the `src/ETL/main_ETL.py` for generating data, and then runni
 * Chunk size research: [1.1-select_best_chunk_size.ipynb](notebooks%2F1.1-select_best_chunk_size.ipynb) (code in branch `new-chunking-scheme` )
 * Pre processing research: [1.1-select_best_pre_processing_scheme.ipynb](notebooks%2F1.1-select_best_pre_processing_scheme.ipynb) (code in branch `create-pre-processing-schemes-19-08` )
 
+### Fine-tuning
+I made the fine-tuning via masked LM scheme with 15% random masking. 
+The code was run with colab [fine-tuning-bert-maskedLM.ipynb](https://colab.research.google.com/drive/1N60StbssmT7ssd7ykXP9apKdaVdBa8-7?usp=sharing) for the easy to use GPU 😅. 
 
+### GNN
+For implementing different structures in the GNN, ive created a framework which can combine different edge types together (this was implemented before i knew there is a heterogeneous graph implementation in torch-geom).
+So each node x is a chunk of text represented by a vector of dimension 768 (from different BERT models).
+The edges can constructed via various methods, when the scheme is to define some feature space of the nodes, taking the cosine similiarity between each node, and taking only edges that are most similar (practically zeroing out the <0.99 quantile of the adj matrix)
+We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
 
+![Global tasks comparison](experiments/gnn/comparsion_plot_all_tasks.png "Global tasks comparison")
+
+Interesting to see which types of adjacency matrices perform best:
+![Different adj](experiments/gnn/comparsion_plot_all_tasks_different_adj.png "Different adj")
+
+The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
 
 ## Running Tasks:
  
@@ -57,33 +73,15 @@ That means running the `src/ETL/main_ETL.py` for generating data, and then runni
 Tasks:
 
 * Clustering at the scroll level:
-  * We have a few scrolls of interest: 1QS, Hodayot and 1QM.
-  * Each scroll can be segmented to different parts (we have labels - mail from Jonathan).
-  * We wish to find the best algorithm for clustering those scroll to the right segments.
-  * First i will show the results with some naive methods (results means: dasgupta score, dendogram):
-    * Using bert embeddings + agglomerate clustering.
-    * Using different embeddings + different clustering.
-  * We want to show that we can improve those results with a GNN. need to think how to do it. what i have in mind:
-    * We want to show that we can improve those results with a GNN.
-    * For now, i show that the best model by all tasks (scroll, composition and sectarian classification) is a gnn with adj of tf-idf.
-    * I will train a model on scroll classification, then use the embeddings of this model for the one scroll clustering, and will see if we get better results.
-    * That means that the training of this GCN should be without the clustered scrolls.
-    * If so:
-      * Procuctize the clustering by scroll notebook so it will be easier to do an analysis. 
-      * Train a GCN model without the 1Qha, 1QM and 1QS scrolls (tfidf or trigram adj).
-      * Save this model.
-      * Use this model when clustering the scrolls.
-    * 
-    * Check some methods for unsupervisd clustering with GNN.
-    * Graph reconstruction from GNN outputs.
-    * Check the review article for semi-supervised learning with GNN.
-  * 
+  * Tried GVAE, but the results were not promising.
+  * We can try more unsupervised models and compare them.
+  * Another interesting idea is to implement a semi-supervised learning with GVAE with Dasgupta cost. Its interesting because i don't think the dasupta ever been done in deep learning.
 ----- 
 Could be nice in the future:
-* Unsupervised gnn.
 * Guide on how to use your own data (not Qumran).
 * Medium posts:
   * Unsupervised clustering with dasgupta.
+  * Easy implementation of GNN with supervised and unsupervised context. 
   * How to use GNN for text classification with different adj matrices.
 
 More optional things to consider:
