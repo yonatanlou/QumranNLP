@@ -10,7 +10,7 @@ from sklearn import cluster as sk
 from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 from tqdm.notebook import tqdm
 
-from notebooks.features import get_linkage_matrix
+from src.baselines.features import get_linkage_matrix
 
 
 def get_metrics_from_LCA(feature_order):

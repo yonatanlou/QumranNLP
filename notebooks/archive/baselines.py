@@ -15,7 +15,7 @@ DATA_PATH = f"{BASE_DIR}/notebooks/data/filtered_text_and_starr_features_{CHUNK_
 df = pd.read_csv(DATA_PATH)
 df["original_index"] = range(len(df))
 import pickle
-from notebooks.features import (
+from src.baselines.features import (
     vectorize_text,
     get_linkage_matrix,
 )
@@ -69,12 +69,9 @@ for vec_type, vectorizer_mat in processed_vectorizers.items():
     processed_vectorizers_sec[vec_type] = vectorizer_mat[~idx_to_remove_sectarian]
 
 from sklearn.cluster import AgglomerativeClustering, DBSCAN
-import plotly.express as px
-from warnings import simplefilter
 from scipy import sparse as sp
 import pandas as pd
 from sklearn.cluster import KMeans
-from sklearn.manifold import TSNE
 from sklearn.metrics import (
     adjusted_rand_score,
     normalized_mutual_info_score,
