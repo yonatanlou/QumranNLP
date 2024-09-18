@@ -5,5 +5,5 @@ BERT_MODELS = [
     "yonatanlou/BEREL-finetuned-DSS-maskedLM",
     "yonatanlou/alephbert-base-finetuned-DSS-maskedLM",
     "yonatanlou/dictabert-finetuned-DSS-maskedLM",
-    "imvladikon/alephbertgimmel-base-512"
+    "imvladikon/alephbertgimmel-base-512",
 ]

@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 
 from src.constants import BERT_MODELS
-from notebooks.features import vectorize_text
+from src.baselines.features import vectorize_text
 
 
 class VectorizerProcessor:

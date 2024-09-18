@@ -37,9 +37,18 @@ CLASSES_TO_REMOVE_DUE_TO_COMPARING_CHUNK_SIZE = {
 
 
 class QumranDataset:
-    def __init__(self, df, label, train_frac, val_frac, processed_vectorizers):
+    def __init__(
+        self,
+        df,
+        label,
+        train_frac,
+        val_frac,
+        processed_vectorizers,
+        specific_scrolls=None,
+    ):
         print(f"Creating dataset - {label}...")
         self.label = label
+        self.specific_scrolls = specific_scrolls
         df["original_index"] = range(len(df))
         self.df = self.process_df_by_label(df)
         self.texts = df["text"].tolist()
@@ -268,7 +277,8 @@ class QumranDataset:
         """
         if self.label == "section":
             df = df[df[self.label] != "unknown"]
-
+        if self.specific_scrolls:
+            df = df[df["book"].isin(self.specific_scrolls)]
         df = df.dropna(subset=[self.label])
         self.relevant_idx_to_embeddings = df["original_index"].to_list()
         return df
