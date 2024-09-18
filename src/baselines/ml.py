@@ -13,7 +13,7 @@ from sklearn.metrics import (
 from sklearn.preprocessing import LabelEncoder
 from tqdm.auto import tqdm
 
-from notebooks.features import get_linkage_matrix
+from src.baselines.features import get_linkage_matrix
 from src.baselines.create_datasets import QumranDataset
 import warnings
 

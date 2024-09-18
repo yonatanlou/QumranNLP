@@ -11,6 +11,7 @@ def create_param_dict(n_adjs, adj_combinations, meta_params):
             "num_adjs": n_adjs,
             "epochs": meta_params["epochs"],
             "hidden_dim": meta_params["hidden_dim"],
+            "latent_dim": meta_params["latent_dim"],
             "distance": meta_params["distance"],
             "learning_rate": meta_params["learning_rate"],
             "threshold": meta_params["threshold"],
@@ -49,3 +50,44 @@ def get_data_object(X, df, label_column, edge_index, edge_attr, masks):
     print(data)
 
     return data, label_encoder
+
+
+from itertools import product, combinations
+
+
+def generate_parameter_combinations(params, num_combined_graphs):
+    all_param_dicts = []
+
+    meta_param_combinations = product(
+        params["epochs"],
+        params["thresholds"],
+        params["distances"],
+        params["hidden_dims"],
+        params["latent_dims"],
+        params["learning_rates"],
+        params["bert_models"],
+    )
+
+    for (
+        epoch,
+        threshold,
+        distance,
+        hidden_dim,
+        latent_dim,
+        lr,
+        bert_model,
+    ) in meta_param_combinations:
+        meta_params = {
+            "epochs": epoch,
+            "hidden_dim": hidden_dim,
+            "latent_dim": latent_dim,
+            "distance": distance,
+            "learning_rate": lr,
+            "threshold": threshold,
+            "bert_model": bert_model,
+        }
+        for n in range(1, num_combined_graphs + 1):
+            adj_combinations = combinations(params["adj_types"].items(), n)
+            all_param_dicts.extend(create_param_dict(n, adj_combinations, meta_params))
+
+    return all_param_dicts

@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram
 from scipy.stats import ttest_ind
 
-from notebooks.features import shorten_path
+from src.baselines.features import shorten_path
 
 
 def matplotlib_dendrogram(linkage_matrix, sample_names, metadata):
