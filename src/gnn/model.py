@@ -1,13 +1,25 @@
 import torch
+from sklearn.preprocessing import LabelEncoder
 from torch.nn import functional as F
+
+# from torch_geometric import nn
 from torch_geometric.nn import GCNConv, GATv2Conv
 from sklearn.metrics import (
     precision_score,
     recall_score,
     f1_score,
     classification_report,
+    adjusted_rand_score,
+    jaccard_score,
+    normalized_mutual_info_score,
 )
 import warnings
+
+from src.baselines.create_datasets import QumranDataset
+from src.baselines.features import get_linkage_matrix
+from src.baselines.ml import get_clusterer
+from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
+import scipy.sparse as sp
 
 
 class GCN(torch.nn.Module):
@@ -152,9 +164,123 @@ def train(model, data, epochs, patience=20, verbose=True):
     return model, stats_best
 
 
+def train_gvae(model, data, optimizer, epochs, verbose=True):
+    best_loss = float("inf")
+    best_epoch = 0
+
+    model.train()
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        reconstructed_x, mu, logvar = model(data.x, data.edge_index, data.edge_attr)
+        loss = vae_loss(reconstructed_x, data.x, mu, logvar)
+        loss.backward()
+        optimizer.step()
+
+        if verbose and epoch % 10 == 0:
+            print(f"Epoch {epoch:>3}: Loss = {loss.item():.4f}")
+        if loss.item() < best_loss:
+            best_loss = loss.item()
+            best_epoch = epoch
+
+    return model, [{"best_loss": best_loss, "epoch": best_epoch}]
+
+
+def unsupervised_evaluation(
+    dataset: QumranDataset,
+    vectorizer_matrix,
+    adjacency_matrix,
+    clustering_algo="agglomerative",
+):
+    n_clusters = dataset.n_labels
+    label_column = dataset.label
+    df = dataset.df
+
+    if sp.issparse(vectorizer_matrix):
+        vectorizer_matrix = vectorizer_matrix.toarray()
+    clusterer = get_clusterer(clustering_algo, n_clusters)
+
+    df["predicted_cluster"] = clusterer.fit_predict(vectorizer_matrix).astype(str)
+    le = LabelEncoder()
+    le.fit(df[label_column])
+    true_labels_encode = le.transform(df[label_column])
+    predicted_labels = clusterer.labels_
+
+    ari = adjusted_rand_score(true_labels_encode, predicted_labels)
+    nmi = normalized_mutual_info_score(true_labels_encode, predicted_labels)
+
+    jaccard = jaccard_score(true_labels_encode, predicted_labels, average="weighted")
+
+    linkage_matrix = get_linkage_matrix(clusterer)
+    dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
+
+    metrics = {
+        "ari": ari,
+        "nmi": nmi,
+        "jaccard": jaccard,
+        "dasgupta": dasgupta,
+    }
+
+    return metrics
+
+
 def test(model, data):
     model.eval()
     _, out = model(data.x, data.edge_index)
     acc = accuracy(out.argmax(dim=1)[data.test_mask], data.y[data.test_mask])
     # print(classification_report(data.y[data.test_mask], out.argmax(dim=1)[data.test_mask], target_names=label_encoder.classes_))
     return acc
+
+
+class GVAE(torch.nn.Module):
+    def __init__(self, input_dim, hidden_dim, latent_dim):
+        super(GVAE, self).__init__()
+        torch.manual_seed(42)
+        self.encoder = Encoder(input_dim, hidden_dim, latent_dim)
+        self.decoder = Decoder(latent_dim, hidden_dim, input_dim)
+        self.kwargs = {
+            "input_dim": input_dim,
+            "hidden_dim": hidden_dim,
+            "latent_dim": latent_dim,
+        }
+
+    def reparameterize(self, mu, logvar):
+        std = torch.exp(0.5 * logvar)
+        eps = torch.randn_like(std)
+        return mu + eps * std
+
+    def forward(self, x, edge_index, edge_attr):
+        mu, logvar = self.encoder(x, edge_index, edge_attr)
+        z = self.reparameterize(mu, logvar)
+        reconstructed_x = self.decoder(z, edge_index, edge_attr)
+        return reconstructed_x, mu, logvar
+
+
+class Encoder(torch.nn.Module):
+    def __init__(self, input_dim, hidden_dim, latent_dim):
+        super(Encoder, self).__init__()
+        self.gc1 = GCNConv(input_dim, hidden_dim)
+        self.gc2_mu = GCNConv(hidden_dim, latent_dim)
+        self.gc2_logvar = GCNConv(hidden_dim, latent_dim)
+
+    def forward(self, x, edge_index, edge_attr):
+        hidden = F.relu(self.gc1(x, edge_index, edge_attr))
+        mu = self.gc2_mu(hidden, edge_index, edge_attr)
+        logvar = self.gc2_logvar(hidden, edge_index, edge_attr)
+        return mu, logvar
+
+
+class Decoder(torch.nn.Module):
+    def __init__(self, latent_dim, hidden_dim, output_dim):
+        super(Decoder, self).__init__()
+        self.gc1 = GCNConv(latent_dim, hidden_dim)
+        self.gc2 = GCNConv(hidden_dim, output_dim)
+
+    def forward(self, z, edge_index, edge_attr):
+        hidden = F.relu(self.gc1(z, edge_index, edge_attr))
+        return self.gc2(hidden, edge_index, edge_attr)
+
+
+def vae_loss(reconstructed_x, x, mu, logvar):
+    reconstruction_loss = F.mse_loss(reconstructed_x, x, reduction="sum")
+    kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    return reconstruction_loss + kl_divergence

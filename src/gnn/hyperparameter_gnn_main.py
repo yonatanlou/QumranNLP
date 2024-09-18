@@ -1,25 +1,31 @@
+# For running hyperparameter tuning for GNN (supervised and unsupervised)
+# The BASELINES_DIR will consist the datasets and the embeddings that were created in src.baselines.main
+
 import pickle
 
+import pandas as pd
 
-from config import BASE_DIR
+from config import BASE_DIR, DATA_PATH
 from src.baselines.embeddings import VectorizerProcessor, get_vectorizer_types
 from src.gnn.hyperparameter_gnn_utils import run_gnn_exp
-from src.gnn.utils import create_param_dict
-from itertools import product, combinations
+from src.gnn.utils import generate_parameter_combinations
 import os.path
 
-data_path = f"{BASE_DIR}/data/processed_data/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
-results_dir = f"{BASE_DIR}/experiments/baselines"
-PROCESSED_VECTORIZERS_PATH = f"{results_dir}/processed_vectorizers.pkl"
-EXP_NAME = "gcn_init"
+
+BASELINES_DIR = f"{BASE_DIR}/experiments/baselines"
+PROCESSED_VECTORIZERS_PATH = f"{BASELINES_DIR}/processed_vectorizers.pkl"
+EXP_NAME = "gvae_init"
 NUM_COMBINED_GRAPHS = 2
 OVERWRITE = True
-with open(f"{results_dir}/datasets.pkl", "rb") as f:
+IS_SUPERVISED = False  # regular GCN for supervised, GVAE for unsupervised
+
+with open(f"{BASELINES_DIR}/datasets.pkl", "rb") as f:
     datasets = pickle.load(f)
 
-params = {
+PARAMS = {
     "epochs": [500],
-    "hidden_dims": [300],
+    "hidden_dims": [300, 500],
+    "latent_dims": [100],  # only for GVAE
     "distances": ["cosine"],
     "learning_rates": [0.001],
     "thresholds": [0.99],
@@ -42,30 +48,7 @@ params = {
     },
 }
 
-
-all_param_dicts = []
-
-meta_param_combinations = product(
-    params["epochs"],
-    params["thresholds"],
-    params["distances"],
-    params["hidden_dims"],
-    params["learning_rates"],
-    params["bert_models"],
-)
-
-for epoch, threshold, distance, hidden_dim, lr, bert_model in meta_param_combinations:
-    meta_params = {
-        "epochs": epoch,
-        "hidden_dim": hidden_dim,
-        "distance": distance,
-        "learning_rate": lr,
-        "threshold": threshold,
-        "bert_model": bert_model,
-    }
-    for n in range(1, NUM_COMBINED_GRAPHS + 1):
-        adj_combinations = combinations(params["adj_types"].items(), n)
-        all_param_dicts.extend(create_param_dict(n, adj_combinations, meta_params))
+all_param_dicts = generate_parameter_combinations(PARAMS, NUM_COMBINED_GRAPHS)
 
 
 for dataset_name, dataset in datasets.items():
@@ -78,7 +61,7 @@ for dataset_name, dataset in datasets.items():
     )
     if os.path.isfile(file_name) and not OVERWRITE:
         continue
-    df = dataset.df
+    df = pd.read_csv(DATA_PATH)
     vectorizer_types = get_vectorizer_types()
 
     processor = VectorizerProcessor(df, PROCESSED_VECTORIZERS_PATH, vectorizer_types)
@@ -86,5 +69,11 @@ for dataset_name, dataset in datasets.items():
     df = df.reset_index()
 
     run_gnn_exp(
-        all_param_dicts, df, processed_vectorizers, file_name, dataset, verbose=True
+        all_param_dicts,
+        df,
+        processed_vectorizers,
+        file_name,
+        dataset,
+        IS_SUPERVISED,
+        verbose=True,
     )
