@@ -35,19 +35,18 @@ param_dict = {
     "num_adjs": 1,
     "epochs": 500,
     "hidden_dim": 300,
-    "latent_dim": 100,  # for GVAE
+    "latent_dim": 768,  # for GVAE
     "distance": "cosine",
     "learning_rate": 0.001,
     "threshold": 0.99,
     "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
     # "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
-    "bert_model": "dicta-il/BEREL",
+    # "bert_model": "dicta-il/BEREL",
+    "bert_model": "dicta-il/dictabert",
 }
 
 if IS_SUPERVISED:
-    model, stats_df = run_single_gnn_model(
-        df_origin, processed_vectorizers, dataset, param_dict, verbose=True
-    )
+    model, stats_df = run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=True)
 else:
     model, stats_df = run_single_gvae_model(
         df_origin, processed_vectorizers, dataset, param_dict, verbose=True

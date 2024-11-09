@@ -10,9 +10,7 @@ from src.gnn.model import GCN, train, train_gvae, GVAE, unsupervised_evaluation
 from src.gnn.utils import get_data_object
 
 
-def run_single_gnn_model(
-    origin_df, processed_vectorizers, dataset, param_dict, verbose=False
-):
+def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=False):
     df = dataset.df
     masks = {
         "train_mask": dataset.train_mask,
@@ -173,9 +171,7 @@ def run_gnn_exp(
     metric = ""
     for param_dict in tqdm(all_param_dicts, desc="Parameter Combinations"):
         if is_supervised:
-            model, stats_df = run_single_gnn_model(
-                df, processed_vectorizers, dataset, param_dict, verbose=verbose
-            )
+            model, stats_df = run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=verbose)
             metric = "test_acc"
 
         else:
