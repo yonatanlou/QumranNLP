@@ -33,7 +33,7 @@ processor = VectorizerProcessor(df_origin, PROCESSED_VECTORIZERS_PATH, vectorize
 processed_vectorizers = processor.load_or_generate_embeddings()
 param_dict = {
     "num_adjs": 1,
-    "epochs": 500,
+    "epochs": 100,
     "hidden_dim": 300,
     "latent_dim": 768,  # for GVAE
     "distance": "cosine",
@@ -46,7 +46,9 @@ param_dict = {
 }
 
 if IS_SUPERVISED:
-    model, stats_df = run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=True)
+    model, stats_df = run_single_gnn_model(
+        processed_vectorizers, dataset, param_dict, verbose=True
+    )
 else:
     model, stats_df = run_single_gvae_model(
         df_origin, processed_vectorizers, dataset, param_dict, verbose=True

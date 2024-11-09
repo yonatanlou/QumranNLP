@@ -171,7 +171,9 @@ def run_gnn_exp(
     metric = ""
     for param_dict in tqdm(all_param_dicts, desc="Parameter Combinations"):
         if is_supervised:
-            model, stats_df = run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=verbose)
+            model, stats_df = run_single_gnn_model(
+                processed_vectorizers, dataset, param_dict, verbose=verbose
+            )
             metric = "test_acc"
 
         else:
