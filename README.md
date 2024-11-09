@@ -33,7 +33,21 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
 
 
 ---
+## Repo structure
 
+├── data\
+├── experiments\
+├── models\
+├── notebooks\
+├── reports\
+├── src\
+
+1. Data - contains the most updated processed data (under processed_data), there are also some yamls for the manual tagging of the scrolls (composition and sectarian labels).
+2. Experiments - contains the results of multiple experiments.
+3. Models - contains some trained models (mainly GNN's, the fine-tuned models are stored in HF).
+4. Notebooks - contains alot of research notebooks.
+5. Reports - contains the results of most of the experiments.
+6. Src - contains the code for the main ETL, feature engineering, experiments, model training.
 
 ## Running Research
 ### Topic modeling
