@@ -33,16 +33,16 @@ processor = VectorizerProcessor(df_origin, PROCESSED_VECTORIZERS_PATH, vectorize
 processed_vectorizers = processor.load_or_generate_embeddings()
 param_dict = {
     "num_adjs": 1,
-    "epochs": 100,
+    "epochs": 200,
     "hidden_dim": 300,
     "latent_dim": 768,  # for GVAE
     "distance": "cosine",
     "learning_rate": 0.001,
-    "threshold": 0.99,
+    "threshold": 0.975,
     "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
-    # "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
+    "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
     # "bert_model": "dicta-il/BEREL",
-    "bert_model": "dicta-il/dictabert",
+    # "bert_model": "dicta-il/dictabert",
 }
 
 if IS_SUPERVISED:

@@ -122,14 +122,6 @@ def run_single_gvae_model(
         gvae.parameters(), lr=param_dict["learning_rate"], weight_decay=5e-4
     )
 
-    gvae, stats = train_gvae(
-        gvae,
-        data,
-        optimizer,
-        param_dict["epochs"],
-        verbose=verbose,
-    )
-    ## eval
     adjacency_matrix_all = create_adjacency_matrix(
         origin_df,
         context_similiarity_window=3,
@@ -138,14 +130,19 @@ def run_single_gvae_model(
     adjacency_matrix_tmp = adjacency_matrix_all[dataset.relevant_idx_to_embeddings, :][
         :, dataset.relevant_idx_to_embeddings
     ]
-    gvae.eval()
-    with torch.no_grad():
-        _, mu, _ = gvae(data.x, data.edge_index, data.edge_attr)
-    metrics = unsupervised_evaluation(
-        dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+
+    gvae, stats = train_gvae(
+        gvae,
+        data,
+        optimizer,
+        param_dict["epochs"],
+        dataset,
+        adjacency_matrix_tmp,
+
+        verbose=verbose,
     )
-    print(metrics)
-    stats[0].update(metrics)
+
+
     stats_df = pd.DataFrame(stats)
     for param, value in param_dict.items():
         if param == "adjacencies":

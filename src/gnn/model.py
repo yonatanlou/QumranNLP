@@ -164,10 +164,10 @@ def train(model, data, epochs, patience=20, verbose=True):
     return model, stats_best
 
 
-def train_gvae(model, data, optimizer, epochs, verbose=True):
-    best_loss = float("inf")
+def train_gvae(model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, verbose=True):
     best_epoch = 0
-
+    best_stats = {'ari': 0.0, 'nmi': 0.0, 'jaccard': 0.0, 'dasgupta': 0.0}
+    best_model_state = None
     model.train()
     for epoch in range(epochs):
         optimizer.zero_grad()
@@ -178,12 +178,25 @@ def train_gvae(model, data, optimizer, epochs, verbose=True):
 
         if verbose and epoch % 10 == 0:
             print(f"Epoch {epoch:>3}: Loss = {loss.item():.4f}")
-        if loss.item() < best_loss:
-            best_loss = loss.item()
-            best_epoch = epoch
+            model.eval()
+            with torch.no_grad():
+                _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
+            metrics = unsupervised_evaluation(
+                dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+            )
+            print(metrics)
+            print()
+            if all(metrics[key] >= best_stats[key] for key in best_stats):
+                best_stats = metrics
+                best_epoch = epoch
+                best_model_state = model.state_dict()
+    if best_model_state is not None:
+        model.load_state_dict(best_model_state)
+        print(f"Best model state loaded (epoch {best_epoch})")
 
-    return model, [{"best_loss": best_loss, "epoch": best_epoch}]
 
+    best_stats.update({'epoch': best_epoch})
+    return model, [best_stats]
 
 def unsupervised_evaluation(
     dataset: QumranDataset,
