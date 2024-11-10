@@ -82,14 +82,24 @@ Interesting to see which types of adjacency matrices perform best:
 The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
 
 ## Running Tasks:
+- Bible validation - i will implement the model on the bible to validate our results with well known labels. For now, I will simply implement classification by book (supervised and unsupervised).
+- Fix the Jaccard computation.
+- Unsupervised metric - rerun the whole results with the silhouette (internal) and Jaccard (external) metrics (discuss Roded about Dasgupta).
+- Dendrograms - add significance value on the cut of the dendrograms.
+- Sectarian / non sectarian - 
+  - Use the GNN (unsupervised) embeddings.
+  - Plot the sectarian results in a dendogram (representation by scroll, not by chunk).
+  - Making sure that the core sectarian scrolls are - `["1QS", "1QHa", "1QH", "4QH" "1QM", "CD"]`
+- Clustering within scroll - 
+  - Use the GNN (unsupervised) embeddings.
+  - Fix the labels for the clustering.
+- SBERT - add functionality for sentence-transformers: https://huggingface.co/intfloat/e5-base-v2,https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 
+- BERT + fine-tuning by token for part-of-speech - 
+  - Our original idea is to combine BERT (semantic), trigram/tfidf (lexical) and starr (stylistic). The starr features are not good enough, but I thought of a new method that will create those features in a smarter way. I can fine tune the BEREL model, when my labels are part-of-speech or named-entity (token classification).
+    Those new embeddings will act as the 'stylistic/morphological embeddings'.
+    Then we can combine those embeddings with the raw BERT embeddings for single representation (mean pooling, MLP, or with graph).
  
 
-Tasks:
-
-* Clustering at the scroll level:
-  * Tried GVAE, but the results were not promising.
-  * We can try more unsupervised models and compare them.
-  * Another interesting idea is to implement a semi-supervised learning with GVAE with Dasgupta cost. Its interesting because i don't think the dasupta ever been done in deep learning.
 ----- 
 Could be nice in the future:
 * Guide on how to use your own data (not Qumran).
