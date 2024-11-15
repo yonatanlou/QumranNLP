@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 import torch
 
-from config import BASE_DIR, DATA_PATH
+from config import BASE_DIR, DSS_DATA_CSV
 from src.baselines.embeddings import VectorizerProcessor, get_vectorizer_types
 
 import os.path
@@ -25,7 +25,7 @@ dataset = datasets[DATASET_NAME]
 exp_dir_path = f"{BASE_DIR}/experiments/gnn/{EXP_NAME}"
 if not os.path.exists(exp_dir_path):
     os.makedirs(exp_dir_path)
-df_origin = pd.read_csv(DATA_PATH)
+df_origin = pd.read_csv(DSS_DATA_CSV)
 
 vectorizer_types = get_vectorizer_types()
 

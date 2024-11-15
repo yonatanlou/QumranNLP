@@ -9,13 +9,18 @@ from sklearn.metrics import (
     precision_score,
     recall_score,
     f1_score,
+    silhouette_score,
 )
 from sklearn.preprocessing import LabelEncoder
 from tqdm.auto import tqdm
 
+from base_utils import measure_time
 from src.baselines.features import get_linkage_matrix
 from src.baselines.create_datasets import QumranDataset
 import warnings
+
+from src.baselines.utils import calculate_jaccard_unsupervised
+from src.constants import UNSUPERVISED_METRICS
 
 
 def get_clusterer(clustering_algo, n_clusters):
@@ -38,13 +43,12 @@ def get_clusterer(clustering_algo, n_clusters):
 from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 
 
-def unsupervised_task(
+def unsupervised_evaluation(
     dataset: QumranDataset,
-    vectorizer_type,
+    vectorizer_matrix,
     adjacency_matrix,
     clustering_algo="agglomerative",
 ):
-    vectorizer_matrix = dataset.load_embeddings(vectorizer_type)
     n_clusters = dataset.n_labels
     label_column = dataset.label
     df = dataset.df
@@ -59,26 +63,22 @@ def unsupervised_task(
     true_labels_encode = le.transform(df[label_column])
     predicted_labels = clusterer.labels_
 
-    ari = adjusted_rand_score(true_labels_encode, predicted_labels)
-    # nmi = normalized_mutual_info_score(true_labels_encode, predicted_labels)
-    # fmi = fowlkes_mallows_score(true_labels_encode, predicted_labels)
-    jaccard = jaccard_score(true_labels_encode, predicted_labels, average="weighted")
-
     linkage_matrix = get_linkage_matrix(clusterer)
     dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
+    silhouette = silhouette_score(vectorizer_matrix, predicted_labels)
+    jaccard = calculate_jaccard_unsupervised(true_labels_encode, predicted_labels)
 
     metrics = {
-        "vectorizer_type": vectorizer_type,
-        "ari": ari,
-        # "nmi": nmi,
-        # "fmi": fmi,
+        "silhouette": silhouette,
         "jaccard": jaccard,
         "dasgupta": dasgupta,
     }
+    assert all(k in UNSUPERVISED_METRICS for k in metrics.keys())
 
     return metrics
 
 
+@measure_time
 def evaluate_unsupervised_metrics(
     adjacency_matrix_all, dataset: QumranDataset, vectorizers, path
 ):
@@ -88,9 +88,11 @@ def evaluate_unsupervised_metrics(
     ][:, dataset.relevant_idx_to_embeddings]
 
     for vectorizer in vectorizers:
-        metrics = unsupervised_task(
-            dataset, vectorizer, adjacency_matrix_composition, "agglomerative"
+        vectorizer_matrix = dataset.load_embeddings(vectorizer)
+        metrics = unsupervised_evaluation(
+            dataset, vectorizer_matrix, adjacency_matrix_composition, "agglomerative"
         )
+        metrics["vectorizer_type"] = vectorizer
         metrics_list.append(metrics)
 
     metrics_df = pd.DataFrame(metrics_list).sort_values(
@@ -144,6 +146,7 @@ def compute_classification_metrics(model, dataset: QumranDataset, vectorizer_typ
     return metrics
 
 
+@measure_time
 def evaluate_supervised_metrics(models, vectorizers, dataset, path):
     warnings.filterwarnings("ignore")
     metrics_list = []

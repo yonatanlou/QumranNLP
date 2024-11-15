@@ -6,8 +6,9 @@ import torch
 
 from src.baselines.utils import create_adjacency_matrix
 from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixGenerator
-from src.gnn.model import GCN, train, train_gvae, GVAE, unsupervised_evaluation
+from src.gnn.model import GCN, train, train_gvae, GVAE
 from src.gnn.utils import get_data_object
+from base_utils import measure_time
 
 
 def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=False):
@@ -138,10 +139,8 @@ def run_single_gvae_model(
         param_dict["epochs"],
         dataset,
         adjacency_matrix_tmp,
-
         verbose=verbose,
     )
-
 
     stats_df = pd.DataFrame(stats)
     for param, value in param_dict.items():
@@ -171,18 +170,13 @@ def run_gnn_exp(
             model, stats_df = run_single_gnn_model(
                 processed_vectorizers, dataset, param_dict, verbose=verbose
             )
-            metric = "test_acc"
 
         else:
             model, stats_df = run_single_gvae_model(
                 df, processed_vectorizers, dataset, param_dict, verbose=verbose
             )
-            metric = "dasgupta"
         final_results.append(stats_df)
-    final_df = pd.concat(final_results).sort_values(by=[metric], ascending=False)
+    final_df = pd.concat(final_results)
 
-    final_df.to_csv(
-        file_name,
-        index=False,
-    )
+    final_df.to_csv(file_name, index=False)
     print(f"{datetime.now()} - finished, saved to {file_name}")

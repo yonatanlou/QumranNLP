@@ -23,7 +23,7 @@ OUTPUT_FILE = f"{BASE_DIR}/data/processed_data/df_{CHUNK_SIZE=}_{MAX_OVERLAP=}_{
 def generate_data(
     max_overlap: int,
     chunk_size: int,
-    pre_processing_tasks: list,
+    pre_processing_tasks: list | None,
     output_file: [str, None],
 ):
     logger.info(
@@ -75,4 +75,3 @@ def main(
 
 if __name__ == "__main__":
     main()
-# python main_ETL.py --chunk_size 100 --max_overlap 10 --output_file "/path/to/output.csv"

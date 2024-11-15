@@ -12,7 +12,7 @@ from src.hierarchial_clustering.constants import (
     TRIGRAM_FEATURE_LENGTH,
     WORD_PER_SAMPLES,
 )
-from utils import Transcriptor
+from base_utils import Transcriptor
 import matplotlib.pyplot as plt
 import pandas as pd
 from config import BASE_DIR

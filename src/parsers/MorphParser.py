@@ -1,5 +1,5 @@
 from config import BASE_DIR
-from utils import read_yaml
+from base_utils import read_yaml
 from os import path
 import collections
 

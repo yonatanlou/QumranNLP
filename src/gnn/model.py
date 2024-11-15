@@ -8,18 +8,19 @@ from sklearn.metrics import (
     precision_score,
     recall_score,
     f1_score,
-    classification_report,
-    adjusted_rand_score,
-    jaccard_score,
-    normalized_mutual_info_score,
+    silhouette_score,
 )
 import warnings
 
+from base_utils import measure_time
 from src.baselines.create_datasets import QumranDataset
 from src.baselines.features import get_linkage_matrix
-from src.baselines.ml import get_clusterer
+from src.baselines.ml import get_clusterer, unsupervised_evaluation
 from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 import scipy.sparse as sp
+
+from src.constants import UNSUPERVISED_METRICS
+from src.baselines.utils import calculate_jaccard_unsupervised
 
 
 class GCN(torch.nn.Module):
@@ -99,6 +100,7 @@ def calculate_metrics(y_pred, y_test):
     return weighted_metrics
 
 
+@measure_time
 def train(model, data, epochs, patience=20, verbose=True):
     stats_best = []
     criterion = torch.nn.CrossEntropyLoss()
@@ -164,9 +166,15 @@ def train(model, data, epochs, patience=20, verbose=True):
     return model, stats_best
 
 
-def train_gvae(model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, verbose=True):
+@measure_time
+def train_gvae(
+    model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, verbose=True
+):
     best_epoch = 0
-    best_stats = {'ari': 0.0, 'nmi': 0.0, 'jaccard': 0.0, 'dasgupta': 0.0}
+    unsupervised_metric = "silhouette"
+    best_stats = unsupervised_evaluation(
+        dataset, data.x, adjacency_matrix_tmp, clustering_algo="agglomerative"
+    )
     best_model_state = None
     model.train()
     for epoch in range(epochs):
@@ -176,64 +184,30 @@ def train_gvae(model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, ve
         loss.backward()
         optimizer.step()
 
+        model.eval()
+        with torch.no_grad():
+            _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
+        metrics = unsupervised_evaluation(
+            dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+        )
+
+        if metrics[unsupervised_metric] >= best_stats[unsupervised_metric]:
+            best_stats = metrics
+            best_epoch = epoch
+            best_model_state = model.state_dict()
+
         if verbose and epoch % 10 == 0:
-            print(f"Epoch {epoch:>3}: Loss = {loss.item():.4f}")
-            model.eval()
-            with torch.no_grad():
-                _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
-            metrics = unsupervised_evaluation(
-                dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+            print(
+                f"Epoch {epoch:>3} | Loss: {loss:.3f} "
+                + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
             )
-            print(metrics)
             print()
-            if all(metrics[key] >= best_stats[key] for key in best_stats):
-                best_stats = metrics
-                best_epoch = epoch
-                best_model_state = model.state_dict()
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
         print(f"Best model state loaded (epoch {best_epoch})")
 
-
-    best_stats.update({'epoch': best_epoch})
+    best_stats.update({"epoch": best_epoch})
     return model, [best_stats]
-
-def unsupervised_evaluation(
-    dataset: QumranDataset,
-    vectorizer_matrix,
-    adjacency_matrix,
-    clustering_algo="agglomerative",
-):
-    n_clusters = dataset.n_labels
-    label_column = dataset.label
-    df = dataset.df
-
-    if sp.issparse(vectorizer_matrix):
-        vectorizer_matrix = vectorizer_matrix.toarray()
-    clusterer = get_clusterer(clustering_algo, n_clusters)
-
-    df["predicted_cluster"] = clusterer.fit_predict(vectorizer_matrix).astype(str)
-    le = LabelEncoder()
-    le.fit(df[label_column])
-    true_labels_encode = le.transform(df[label_column])
-    predicted_labels = clusterer.labels_
-
-    ari = adjusted_rand_score(true_labels_encode, predicted_labels)
-    nmi = normalized_mutual_info_score(true_labels_encode, predicted_labels)
-
-    jaccard = jaccard_score(true_labels_encode, predicted_labels, average="weighted")
-
-    linkage_matrix = get_linkage_matrix(clusterer)
-    dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
-
-    metrics = {
-        "ari": ari,
-        "nmi": nmi,
-        "jaccard": jaccard,
-        "dasgupta": dasgupta,
-    }
-
-    return metrics
 
 
 def test(model, data):

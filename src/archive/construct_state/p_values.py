@@ -4,7 +4,7 @@ import cp_statistics
 from config import BASE_DIR
 from src.parsers.parser_data import get_dss_data
 from scipy.stats import hypergeom
-from utils import Transcriptor
+from base_utils import Transcriptor
 
 RESULT_PATH = "../../results/CP/P_VALUE"
 

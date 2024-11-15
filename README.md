@@ -82,9 +82,11 @@ Interesting to see which types of adjacency matrices perform best:
 The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
 
 ## Running Tasks:
-- Intergrate the BERT model MsBERT.
+- Fix the Jaccard computation and add the silhouette metric.
+- Run the baselines+gnn for dss + make it compatible with other data sources.
+- Make sh file for running the baselines.
+- Talk with Roded about the unsupervised accuracy metric (which is like jaccard but with optimization) https://arxiv.org/pdf/1511.06335
 - Bible validation - i will implement the model on the bible to validate our results with well known labels. For now, I will simply implement classification by book (supervised and unsupervised).
-- Fix the Jaccard computation.
 - Unsupervised metric - rerun the whole results with the silhouette (internal) and Jaccard (external) metrics (discuss Roded about Dasgupta).
 - Dendrograms - add significance value on the cut of the dendrograms.
 - Sectarian / non sectarian - 

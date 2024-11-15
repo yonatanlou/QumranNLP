@@ -51,3 +51,29 @@ def set_seed_globally(seed=42):
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
+
+
+def calculate_jaccard_unsupervised(labels_true, labels_pred):
+    """
+    Calculates the Jaccard index between true and predicted labels without sklearn.
+
+    Args:
+        labels_true: True cluster labels.
+        labels_pred: Predicted cluster labels.
+
+    Returns:
+        Jaccard index.
+    """
+
+    labels_true = np.array(labels_true)
+    labels_pred = np.array(labels_pred)
+
+    # Create pairwise comparison matrices
+    same_in_true = labels_true[:, None] == labels_true[None, :]
+    same_in_pred = labels_pred[:, None] == labels_pred[None, :]
+
+    # Calculate intersection and union of the matrices
+    intersection = np.logical_and(same_in_true, same_in_pred).sum() - len(labels_true)
+    union = np.logical_or(same_in_true, same_in_pred).sum() - len(labels_true)
+
+    return intersection / union if union != 0 else 0.0

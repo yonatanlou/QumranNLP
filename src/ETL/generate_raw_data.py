@@ -65,8 +65,8 @@ def process_word(scroll_node, word_line_num, sub_word_num):
         morphological_features = get_morphological_features(word)
         biblical_info = get_biblical_info(word)
         lang = F.lang.v(word)
-        srcLn = F.srcLn.v(word)
-        word_type = F.type.v(word)
+        # srcLn = F.srcLn.v(word)
+        # word_type = F.type.v(word)
         after = F.after.v(word)
 
         word_entry = {
