@@ -87,7 +87,7 @@ def make_baselines_results(
 @click.option(
     "--results-dir",
     type=click.Path(),
-    default=f"{BASE_DIR}/experiments/baselines",
+    default=f"{BASE_DIR}/dss/experiments/baselines",
     help="Directory to store results",
 )
 @click.option(

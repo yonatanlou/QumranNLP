@@ -10,7 +10,7 @@ import os.path
 
 from src.gnn.hyperparameter_gnn_utils import run_single_gnn_model, run_single_gvae_model
 
-BASELINES_DIR = f"{BASE_DIR}/experiments/baselines"
+BASELINES_DIR = f"{BASE_DIR}/dss/experiments/baselines"
 PROCESSED_VECTORIZERS_PATH = f"{BASELINES_DIR}/processed_vectorizers.pkl"
 EXP_NAME = "gvae_model"
 DATASET_NAME = "dataset_scroll"
@@ -22,7 +22,7 @@ with open(f"{BASELINES_DIR}/datasets.pkl", "rb") as f:
     datasets = pickle.load(f)
 
 dataset = datasets[DATASET_NAME]
-exp_dir_path = f"{BASE_DIR}/experiments/gnn/{EXP_NAME}"
+exp_dir_path = f"{BASE_DIR}/dss/experiments/gnn/{EXP_NAME}"
 if not os.path.exists(exp_dir_path):
     os.makedirs(exp_dir_path)
 df_origin = pd.read_csv(DSS_DATA_CSV)

@@ -16,7 +16,7 @@ EXP_NAME = "gcn_init"
 NUM_COMBINED_GRAPHS = 1
 OVERWRITE = True
 IS_SUPERVISED = False  # regular GCN for supervised, GVAE for unsupervised
-GNN_EXP_RESULTS_DIR = f"{BASE_DIR}/experiments/gnn"
+GNN_EXP_RESULTS_DIR = f"{BASE_DIR}/dss/experiments/gnn"
 PARAMS = {
     "epochs": [250],
     "hidden_dims": [
