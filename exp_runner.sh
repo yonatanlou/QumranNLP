@@ -1,15 +1,31 @@
 #!/bin/bash
 export PYTHONPATH="${PYTHONPATH}:/Users/yonatanlou/dev/QumranNLP"
-readonly csv_name=/Users/yonatanlou/dev/QumranNLP/data/processed_data/dss/df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv
-#data_generation runner for making the data:
-#python data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $csv_name
+readonly dss_csv_name='data/processed_data/dss/df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv'
+readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP=10_2024_15_01.csv'
 
+###DSS
+#run for creating the data:
+#python data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $dss_csv_name
 
 # run for baselines
-#python src/baselines/main.py --domain dss --results-dir experiments/baselines --train-frac 0.7 --val-frac 0.1
+#python src/baselines/main.py --domain dss --results-dir experiments/dss/baselines --train-frac 0.7 --val-frac 0.1
 
 # run for supervised GNN
-#python src/gnn/hyperparameter_gnn_main.py --dataset all --domain dss --num-combined-graphs 2 --exp-name gcn_init --results-dir experiments/gnn --is_supervised
+#python src/gnn/hyperparameter_gnn_main.py --dataset all --domain dss --num-combined-graphs 2 --exp-name gcn_init --results-dir experiments/dss/gnn --is_supervised
 
 # run for unsupervised GNN
-python src/gnn/hyperparameter_gnn_main.py --dataset all --domain dss --num-combined-graphs 1 --exp-name gvae_init --results-dir experiments/gnn
+#python src/gnn/hyperparameter_gnn_main.py --dataset all --domain dss --num-combined-graphs 1 --exp-name gvae_init --results-dir experiments/dss/gnn
+
+
+###Bible
+#run for creating the data:
+#python src/data_generation/bible_data_gen.py --chunk_size 100 --max_overlap 10 --output_file $bible_csv_name
+
+# run for baselines
+#python src/baselines/bible_baseline.py --domain bible --results-dir experiments/bible/baselines --train-frac 0.7 --val-frac 0.1
+
+# run for supervised GNN
+python src/gnn/hyperparameter_gnn_main.py --dataset all --domain bible --num-combined-graphs 1 --exp-name gcn_hm_opt --results-dir experiments/bible/gnn --is_supervised
+
+# run for unsupervised GNN
+#python src/gnn/hyperparameter_gnn_main.py --dataset all --domain bible --num-combined-graphs 1 --exp-name gvae_init --results-dir experiments/bible/gnn

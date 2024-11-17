@@ -33,7 +33,7 @@ print(params)
 from datetime import datetime
 from tqdm import tqdm
 
-ALL_EXP_BASE_DIR = f"{BASE_DIR}/dss/experiments/pre_processing"
+ALL_EXP_BASE_DIR = f"{BASE_DIR}/experiments/dss/pre_processing"
 if RERUN:
     from src.data_generation.dss_data_gen import generate_data
 

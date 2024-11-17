@@ -84,6 +84,7 @@ def vectorize_text(df, text_column, vectorizer_type):
         vectorizer_matrix = vectorizer.fit_transform(df[text_column])
     elif vectorizer_type == "starr":
         starr_cols = get_starr_features()
+        assert all(col in df.columns for col in starr_cols)
         vectorizer_matrix = df[starr_cols].to_numpy()
 
     elif vectorizer_type in BERT_MODELS:

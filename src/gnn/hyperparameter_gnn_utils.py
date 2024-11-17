@@ -4,11 +4,10 @@ import pandas as pd
 from tqdm import tqdm
 import torch
 
-from src.baselines.utils import create_adjacency_matrix
+from src.baselines.utils import get_adj_matrix_by_chunks_structure
 from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixGenerator
 from src.gnn.model import GCN, train, train_gvae, GVAE
 from src.gnn.utils import get_data_object
-from base_utils import measure_time
 
 
 def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=False):
@@ -95,7 +94,7 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
 
 
 def run_single_gvae_model(
-    origin_df, processed_vectorizers, dataset, param_dict, verbose=False
+    adjacency_matrix_all, processed_vectorizers, dataset, param_dict, verbose=False
 ):
     df = dataset.df
     masks = {
@@ -123,11 +122,6 @@ def run_single_gvae_model(
         gvae.parameters(), lr=param_dict["learning_rate"], weight_decay=5e-4
     )
 
-    adjacency_matrix_all = create_adjacency_matrix(
-        origin_df,
-        context_similiarity_window=3,
-        composition_level=False,
-    )
     adjacency_matrix_tmp = adjacency_matrix_all[dataset.relevant_idx_to_embeddings, :][
         :, dataset.relevant_idx_to_embeddings
     ]
@@ -162,9 +156,11 @@ def run_gnn_exp(
     is_supervised,
     verbose=False,
 ):
-    print(f"{datetime.now()} - started")
+    print(
+        f"{datetime.now()} - started, running over {len(all_param_dicts)} combinations"
+    )
     final_results = []
-    metric = ""
+    adjacency_matrix_all = get_adj_matrix_by_chunks_structure(dataset, df)
     for param_dict in tqdm(all_param_dicts, desc="Parameter Combinations"):
         if is_supervised:
             model, stats_df = run_single_gnn_model(
@@ -173,7 +169,11 @@ def run_gnn_exp(
 
         else:
             model, stats_df = run_single_gvae_model(
-                df, processed_vectorizers, dataset, param_dict, verbose=verbose
+                adjacency_matrix_all,
+                processed_vectorizers,
+                dataset,
+                param_dict,
+                verbose=verbose,
             )
         final_results.append(stats_df)
     final_df = pd.concat(final_results)

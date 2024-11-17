@@ -6,43 +6,18 @@ import pandas as pd
 from config import BASE_DIR, get_paths_by_domain
 from base_utils import measure_time
 from src.baselines.embeddings import VectorizerProcessor, get_vectorizer_types
-from src.constants import DSS_OPTIONAL_DATASETS, BIBLE_OPTIONAL_DATASETS
+from src.constants import (
+    DSS_OPTIONAL_DATASETS,
+    BIBLE_OPTIONAL_DATASETS,
+    OPTIONAL_DATASET_NAMES,
+)
 from src.gnn.hyperparameter_gnn_utils import run_gnn_exp
-from src.gnn.utils import generate_parameter_combinations
+from src.gnn.utils import (
+    generate_parameter_combinations,
+    create_gnn_params,
+    create_test_gnn_params,
+)
 import os.path
-
-
-EXP_NAME = "gcn_init"
-NUM_COMBINED_GRAPHS = 1
-OVERWRITE = True
-IS_SUPERVISED = False  # regular GCN for supervised, GVAE for unsupervised
-GNN_EXP_RESULTS_DIR = f"{BASE_DIR}/dss/experiments/gnn"
-PARAMS = {
-    "epochs": [250],
-    "hidden_dims": [
-        300,
-        # 500
-    ],
-    "latent_dims": [100],  # only for GVAE
-    "distances": ["cosine"],
-    "learning_rates": [0.001],
-    "thresholds": [0.99],
-    "bert_models": [
-        "dicta-il/BEREL",
-        "dicta-il/dictabert",
-        # "onlplab/alephbert-base",
-        # "dicta-il/MsBERT",
-        "yonatanlou/BEREL-finetuned-DSS-maskedLM",
-        # "yonatanlou/alephbert-base-finetuned-DSS-maskedLM",
-        "yonatanlou/dictabert-finetuned-DSS-maskedLM",
-    ],
-    "adj_types": {
-        "tfidf": {"max_features": 7500},
-        "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
-        "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
-        "starr": {},
-    },
-}
 
 
 @click.command()
@@ -61,24 +36,34 @@ PARAMS = {
 @click.option(
     "--num-combined-graphs",
     type=int,
-    default=NUM_COMBINED_GRAPHS,
+    default=2,
     help="Number of combined graph types",
 )
-@click.option("--exp-name", default=EXP_NAME, help="Experiment name")
+@click.option("--exp-name", default="gcn_init", help="Experiment name")
 @click.option(
-    "--results-dir", default=GNN_EXP_RESULTS_DIR, help="Directory to store the results"
+    "--results-dir",
+    default="experiments/dss/gnn",
+    help="Directory to store the results",
 )
 @click.option(
     "--is_supervised",
-    is_flag=IS_SUPERVISED,
+    is_flag=True,
     help="Run supervised GCN instead of unsupervised GVAE (empty for unsupervised)",
 )
 @measure_time
 def run_gnn_exp_main(
     dataset, domain, num_combined_graphs, exp_name, results_dir, is_supervised
 ):
-    if dataset == "all" and domain == "dss":
-        for dataset in DSS_OPTIONAL_DATASETS:
+    # print all params:
+    print("run params:")
+    print(f"dataset: {dataset}")
+    print(f"domain: {domain}")
+    print(f"num_combined_graphs: {num_combined_graphs}")
+    print(f"exp_name: {exp_name}")
+    print(f"results_dir: {results_dir}")
+    print(f"is_supervised: {is_supervised}")
+    if dataset == "all":
+        for dataset in OPTIONAL_DATASET_NAMES.get(domain):
             run_gnn_hyperparameter_tuning(
                 dataset,
                 domain,
@@ -87,12 +72,20 @@ def run_gnn_exp_main(
                 results_dir,
                 is_supervised,
             )
+    elif dataset in OPTIONAL_DATASET_NAMES.get(domain):
+        run_gnn_hyperparameter_tuning(
+            dataset,
+            domain,
+            num_combined_graphs,
+            exp_name,
+            results_dir,
+            is_supervised,
+        )
+
     else:
-        if (dataset not in DSS_OPTIONAL_DATASETS) or (
-            dataset not in BIBLE_OPTIONAL_DATASETS
-        ):
-            click.echo(f"Invalid dataset: {dataset}.")
-            return
+        raise ValueError(
+            f"Invalid dataset: {dataset} not in {OPTIONAL_DATASET_NAMES.get(domain)=}"
+        )
 
 
 @measure_time
@@ -108,8 +101,6 @@ def run_gnn_hyperparameter_tuning(
     with open(f"{paths['data_path']}/datasets.pkl", "rb") as f:
         processed_datasets = pickle.load(f)
 
-    all_param_dicts = generate_parameter_combinations(PARAMS, num_combined_graphs)
-
     dataset_info = processed_datasets[dataset]
     print(f"Starting with {dataset}")
     exp_dir_path = f"{results_dir}/{exp_name}"
@@ -123,13 +114,14 @@ def run_gnn_hyperparameter_tuning(
         return
 
     df = pd.read_csv(paths["data_csv_path"])
-    vectorizer_types = get_vectorizer_types()
+    vectorizer_types = get_vectorizer_types(domain)
     processor = VectorizerProcessor(
         df, paths["processed_vectorizers_path"], vectorizer_types
     )
     processed_vectorizers = processor.load_or_generate_embeddings()
     df = df.reset_index()
-
+    params = create_gnn_params(domain, is_supervised)
+    all_param_dicts = generate_parameter_combinations(params, num_combined_graphs)
     run_gnn_exp(
         all_param_dicts,
         df,
@@ -137,9 +129,11 @@ def run_gnn_hyperparameter_tuning(
         file_name,
         dataset_info,
         is_supervised,
-        verbose=False,
+        verbose=True,
     )
 
+
+OVERWRITE = True
 
 if __name__ == "__main__":
     run_gnn_exp_main()

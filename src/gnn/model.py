@@ -15,7 +15,11 @@ import warnings
 from base_utils import measure_time
 from src.baselines.create_datasets import QumranDataset
 from src.baselines.features import get_linkage_matrix
-from src.baselines.ml import get_clusterer, unsupervised_evaluation
+from src.baselines.ml import (
+    get_clusterer,
+    unsupervised_evaluation,
+    unsupervised_optimization,
+)
 from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 import scipy.sparse as sp
 
@@ -187,8 +191,8 @@ def train_gvae(
         model.eval()
         with torch.no_grad():
             _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
-        metrics = unsupervised_evaluation(
-            dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+        metrics = unsupervised_optimization(
+            dataset, mu, clustering_algo="agglomerative"
         )
 
         if metrics[unsupervised_metric] >= best_stats[unsupervised_metric]:
@@ -198,16 +202,23 @@ def train_gvae(
 
         if verbose and epoch % 10 == 0:
             print(
-                f"Epoch {epoch:>3} | Loss: {loss:.3f} "
+                f"Epoch {epoch:>3} | Loss: {loss:.3f} | "
                 + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
             )
-            print()
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
         print(f"Best model state loaded (epoch {best_epoch})")
+    else:
+        print("GNN didnt improve from epoch 0")
+    model.eval()
+    with torch.no_grad():
+        _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
+        best_stats_all_metrics = unsupervised_evaluation(
+            dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+        )
 
-    best_stats.update({"epoch": best_epoch})
-    return model, [best_stats]
+    best_stats_all_metrics.update({"epoch": best_epoch})
+    return model, [best_stats_all_metrics]
 
 
 def test(model, data):

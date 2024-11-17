@@ -1,5 +1,6 @@
 import os
 
+import click
 import pandas as pd
 from tqdm import tqdm
 from tf.app import use
@@ -150,12 +151,14 @@ class HebrewBibleProcessor:
             raise ValueError(f"Position {position} not found in {book_name}")
         return self.books_data[book_name][position]
 
-    def get_all_chunks_dataframe(self, chunk_size: int = 100) -> pd.DataFrame:
+    def get_all_chunks_dataframe(
+        self, chunk_size: int = 100, overlap: int = 10
+    ) -> pd.DataFrame:
         """Create a DataFrame containing all chunks from all books."""
         all_chunks = []
 
         for book_name in self.get_book_names():
-            book_chunks = self.get_chunks(book_name, chunk_size)
+            book_chunks = self.get_chunks(book_name, chunk_size, overlap)
             all_chunks.extend(book_chunks)
 
         data = []
@@ -164,10 +167,25 @@ class HebrewBibleProcessor:
             chunk_path = f"{chunk.start_path[0]}:{chunk.start_path[1]}-{chunk.end_path[0]}:{chunk.end_path[1]}"
 
             data.append(
-                {"book_name": chunk.book, "chunk_path": chunk_path, "text": chunk.text}
+                {"book": chunk.book, "sentence_path": chunk_path, "text": chunk.text}
             )
 
         return pd.DataFrame(data)
+
+
+def generate_data_bible(chunk_size, max_overlap, output_file):
+    limit = 6
+    if limit != None:
+        print(
+            "Note! you will produce only 6 books of the Bible. (set limit to None for producing all books)"
+        )
+    processor = HebrewBibleProcessor()
+    df = processor.get_all_chunks_dataframe(chunk_size=chunk_size, overlap=max_overlap)
+
+    output_dir = os.path.dirname(output_file)
+    os.makedirs(output_dir, exist_ok=True)
+    df.to_csv(output_file, index=False)
+    print(f"Saved results to {output_file}")
 
 
 CHUNK_SIZE = 100
@@ -177,11 +195,18 @@ OUTPUT_FILE = (
     f"{BASE_DIR}/data/processed_data/bible/df_{CHUNK_SIZE=}_{MAX_OVERLAP=}_{DATE}.csv"
 )
 
-if __name__ == "__main__":
-    processor = HebrewBibleProcessor(limit=6)
-    df = processor.get_all_chunks_dataframe(chunk_size=CHUNK_SIZE)
 
-    output_dir = os.path.dirname(OUTPUT_FILE)
-    os.makedirs(output_dir, exist_ok=True)
-    df.to_csv(OUTPUT_FILE, index=False)
-    print(f"Saved results to {OUTPUT_FILE}")
+@click.command()
+@click.option("--chunk_size", default=CHUNK_SIZE, help="Number of words per sample.")
+@click.option(
+    "--max_overlap",
+    default=MAX_OVERLAP,
+    help="Max overlap between chunks (end of i-1 and start of i sample)",
+)
+@click.option("--output_file", default=OUTPUT_FILE, help="Full path to output file")
+def bible_data_gen_main(chunk_size: int, max_overlap: int, output_file: [str, None]):
+    return generate_data_bible(chunk_size, max_overlap, output_file)
+
+
+if __name__ == "__main__":
+    bible_data_gen_main()

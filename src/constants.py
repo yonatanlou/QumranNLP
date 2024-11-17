@@ -8,6 +8,10 @@ BERT_MODELS = [
     "yonatanlou/dictabert-finetuned-DSS-maskedLM",
 ]
 
-UNSUPERVISED_METRICS = ["jaccard", "dasgupta", "silhouette"]
+UNSUPERVISED_METRICS = ["jaccard", "dasgupta", "silhouette", "clustering_accuracy"]
 DSS_OPTIONAL_DATASETS = ["dataset_composition", "dataset_scroll", "dataset_sectarian"]
-BIBLE_OPTIONAL_DATASETS = []
+BIBLE_OPTIONAL_DATASETS = ["dataset_book"]
+OPTIONAL_DATASET_NAMES = {
+    "dss": DSS_OPTIONAL_DATASETS,
+    "bible": BIBLE_OPTIONAL_DATASETS,
+}

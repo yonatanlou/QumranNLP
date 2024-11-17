@@ -36,7 +36,7 @@ def make_baselines_results(
 
     df_origin = pd.read_csv(paths["data_csv_path"])
 
-    vectorizers = get_vectorizer_types()
+    vectorizers = get_vectorizer_types(domain)
     processor = VectorizerProcessor(
         df_origin, paths["processed_vectorizers_path"], vectorizers
     )
@@ -87,7 +87,7 @@ def make_baselines_results(
 @click.option(
     "--results-dir",
     type=click.Path(),
-    default=f"{BASE_DIR}/dss/experiments/baselines",
+    default=f"{BASE_DIR}/experiments/dss/baselines",
     help="Directory to store results",
 )
 @click.option(

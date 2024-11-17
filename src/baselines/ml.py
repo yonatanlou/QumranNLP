@@ -3,8 +3,6 @@ from scipy import sparse as sp
 from sklearn.cluster import AgglomerativeClustering, DBSCAN
 from sklearn.cluster import KMeans
 from sklearn.metrics import (
-    adjusted_rand_score,
-    jaccard_score,
     accuracy_score,
     precision_score,
     recall_score,
@@ -16,10 +14,10 @@ from tqdm.auto import tqdm
 
 from base_utils import measure_time
 from src.baselines.features import get_linkage_matrix
-from src.baselines.create_datasets import QumranDataset
+from src.baselines.create_datasets import QumranDataset, BibleDataset
 import warnings
 
-from src.baselines.utils import calculate_jaccard_unsupervised
+from src.baselines.utils import calculate_jaccard_unsupervised, clustering_accuracy
 from src.constants import UNSUPERVISED_METRICS
 
 
@@ -67,20 +65,48 @@ def unsupervised_evaluation(
     dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
     silhouette = silhouette_score(vectorizer_matrix, predicted_labels)
     jaccard = calculate_jaccard_unsupervised(true_labels_encode, predicted_labels)
+    clustering_acc = clustering_accuracy(true_labels_encode, predicted_labels)
 
     metrics = {
         "silhouette": silhouette,
         "jaccard": jaccard,
         "dasgupta": dasgupta,
+        "clustering_accuracy": clustering_acc,
     }
     assert all(k in UNSUPERVISED_METRICS for k in metrics.keys())
 
     return metrics
 
 
+def unsupervised_optimization(
+    dataset: QumranDataset,
+    vectorizer_matrix,
+    clustering_algo="agglomerative",
+):
+    n_clusters = dataset.n_labels
+    label_column = dataset.label
+    df = dataset.df
+
+    if sp.issparse(vectorizer_matrix):
+        vectorizer_matrix = vectorizer_matrix.toarray()
+    clusterer = get_clusterer(clustering_algo, n_clusters)
+
+    df["predicted_cluster"] = clusterer.fit_predict(vectorizer_matrix).astype(str)
+    le = LabelEncoder()
+    le.fit(df[label_column])
+    true_labels_encode = le.transform(df[label_column])
+    predicted_labels = clusterer.labels_
+    silhouette = silhouette_score(vectorizer_matrix, predicted_labels)
+    jaccard = calculate_jaccard_unsupervised(true_labels_encode, predicted_labels)
+
+    metrics = {"silhouette": silhouette, "jaccard": jaccard}
+
+    return metrics
+
+
 @measure_time
 def evaluate_unsupervised_metrics(
-    adjacency_matrix_all, dataset: QumranDataset, vectorizers, path
+    adjacency_matrix_all, dataset: [QumranDataset | BibleDataset], vectorizers, path
 ):
     metrics_list = []
     adjacency_matrix_composition = adjacency_matrix_all[
@@ -95,9 +121,7 @@ def evaluate_unsupervised_metrics(
         metrics["vectorizer_type"] = vectorizer
         metrics_list.append(metrics)
 
-    metrics_df = pd.DataFrame(metrics_list).sort_values(
-        by=["dasgupta", "jaccard"], ascending=False
-    )
+    metrics_df = pd.DataFrame(metrics_list)
     metrics_df.to_csv(f"{path}/{dataset.label}_unsupervised.csv")
     print(f"Saved metrics to {path}/{dataset.label}_unsupervised.csv")
     return metrics_df
