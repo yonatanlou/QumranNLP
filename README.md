@@ -82,9 +82,10 @@ Interesting to see which types of adjacency matrices perform best:
 The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
 
 ## Running Tasks:
-- Talk with Roded about the unsupervised accuracy metric (which is like jaccard but with optimization) https://arxiv.org/pdf/1511.06335
-- Bible validation - make sure the methods are better also in the bible case.
-- Unsupervised metric - rerun the whole results with the silhouette (internal) and Jaccard (external) metrics (discuss Roded about Dasgupta).
+- Talk with Roded about the unsupervised accuracy metric (which is like jaccard but with optimization) https://arxiv.org/pdf/1511.06335, discuss Roded about Dasgupta
+- Bible validation - 
+  - make sure the methods are better also in the bible case. (re-run unsupervised and supervised with different params)
+  - Make a summary of my findings
 - Dendrograms - add significance value on the cut of the dendrograms.
 - Sectarian / non sectarian - 
   - Use the GNN (unsupervised) embeddings.
@@ -93,11 +94,12 @@ The unsupervised GNN (GVAE) currently dosent have good results. will update soon
 - Clustering within scroll - 
   - Use the GNN (unsupervised) embeddings.
   - Fix the labels for the clustering.
-- SBERT - add functionality for sentence-transformers: https://huggingface.co/intfloat/e5-base-v2,https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 
-- BERT + fine-tuning by token for part-of-speech - 
-  - Our original idea is to combine BERT (semantic), trigram/tfidf (lexical) and starr (stylistic). The starr features are not good enough, but I thought of a new method that will create those features in a smarter way. I can fine tune the BEREL model, when my labels are part-of-speech or named-entity (token classification).
-    Those new embeddings will act as the 'stylistic/morphological embeddings'.
-    Then we can combine those embeddings with the raw BERT embeddings for single representation (mean pooling, MLP, or with graph).
+  - Under the line:
+    - SBERT - add functionality for sentence-transformers: https://huggingface.co/intfloat/e5-base-v2,https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 
+    - BERT + fine-tuning by token for part-of-speech - 
+      - Our original idea is to combine BERT (semantic), trigram/tfidf (lexical) and starr (stylistic). The starr features are not good enough, but I thought of a new method that will create those features in a smarter way. I can fine tune the BEREL model, when my labels are part-of-speech or named-entity (token classification).
+        Those new embeddings will act as the 'stylistic/morphological embeddings'.
+        Then we can combine those embeddings with the raw BERT embeddings for single representation (mean pooling, MLP, or with graph).
  
 
 ----- 

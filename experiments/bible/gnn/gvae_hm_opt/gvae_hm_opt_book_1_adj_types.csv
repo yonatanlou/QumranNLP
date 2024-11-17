@@ -1,0 +1,3 @@
+silhouette,jaccard,dasgupta,clustering_accuracy,epoch,num_adjs,epochs,hidden_dim,latent_dim,distance,learning_rate,threshold,bert_model,adj_type,num_edges
+0.10765517,0.14450442121794774,0.7499016767499624,0.35692963752665247,0,1,30,500,100,cosine,0.001,0.99,dicta-il/BEREL,tfidf,219962
+0.13033421,0.14846920571195346,0.8067955130955958,0.3603411513859275,29,1,30,500,100,cosine,0.001,0.99,dicta-il/MsBERT,tfidf,219962

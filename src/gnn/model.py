@@ -185,6 +185,13 @@ def train_gvae(
         optimizer.zero_grad()
         reconstructed_x, mu, logvar = model(data.x, data.edge_index, data.edge_attr)
         loss = vae_loss(reconstructed_x, data.x, mu, logvar)
+        with torch.no_grad():
+            _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
+        metrics = unsupervised_optimization(
+            dataset, mu, clustering_algo="agglomerative"
+        )
+        intrinsic_opt_metric = metrics[unsupervised_metric]
+        loss = loss/(intrinsic_opt_metric if intrinsic_opt_metric != 0 else 0.001)
         loss.backward()
         optimizer.step()
 
@@ -194,7 +201,10 @@ def train_gvae(
         metrics = unsupervised_optimization(
             dataset, mu, clustering_algo="agglomerative"
         )
-
+        print(
+            f"Epoch {epoch:>3} | Loss: {loss:.3f} | "
+            + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
+        )
         if metrics[unsupervised_metric] >= best_stats[unsupervised_metric]:
             best_stats = metrics
             best_epoch = epoch
@@ -216,6 +226,7 @@ def train_gvae(
         best_stats_all_metrics = unsupervised_evaluation(
             dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
         )
+        print(best_stats_all_metrics)
 
     best_stats_all_metrics.update({"epoch": best_epoch})
     return model, [best_stats_all_metrics]

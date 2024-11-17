@@ -29,6 +29,31 @@ def create_gnn_params(domain="dss", is_supervised=False):
         params["adj_types"]["starr"] = {}
     return params
 
+def create_gnn_params_hpo(domain="dss", is_supervised=False):
+    epochs = 500 if is_supervised else 30
+    threshold = 0.99 if domain == "dss" else 0.999
+    params = {
+        "epochs": [epochs],
+        "hidden_dims": [500],
+        "latent_dims": [100],  # only for GVAE
+        "distances": ["cosine"],
+        "learning_rates": [0.001],
+        "thresholds": [
+            # threshold,
+            0.99
+        ],
+        # "bert_models": get_bert_models(domain),
+        "bert_models": ["dicta-il/BEREL","dicta-il/MsBERT",],
+        "adj_types": {
+            "tfidf": {"max_features": 7500},
+            # "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
+            # "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
+        },
+    }
+    if domain == "dss":
+        params["adj_types"]["starr"] = {}
+    return params
+
 
 def create_test_gnn_params():
     params = {
