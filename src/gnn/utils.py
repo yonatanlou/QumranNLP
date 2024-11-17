@@ -3,6 +3,54 @@ from sklearn.preprocessing import LabelEncoder
 from torch_geometric.data import Data
 import numpy as np
 
+from src.baselines.embeddings import get_bert_models
+
+
+def create_gnn_params(domain="dss", is_supervised=False):
+    epochs = 500 if is_supervised else 250
+    threshold = 0.99 if domain == "dss" else 0.999
+    params = {
+        "epochs": [epochs],
+        "hidden_dims": [500],
+        "latent_dims": [512],  # only for GVAE
+        "distances": ["cosine"],
+        "learning_rates": [0.001],
+        "thresholds": [
+            threshold,
+        ],
+        "bert_models": get_bert_models(domain),
+        "adj_types": {
+            "tfidf": {"max_features": 10000},
+            "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
+            "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
+        },
+    }
+    if domain == "dss":
+        params["adj_types"]["starr"] = {}
+    return params
+
+
+def create_test_gnn_params():
+    params = {
+        "epochs": [30],
+        "hidden_dims": [
+            300,
+            # 500
+        ],
+        "latent_dims": [100],  # only for GVAE
+        "distances": ["cosine"],
+        "learning_rates": [0.001],
+        "thresholds": [0.9999],
+        "bert_models": [
+            "dicta-il/BEREL",
+            # "dicta-il/MsBERT"
+        ],
+        "adj_types": {
+            "tfidf": {"max_features": 7500},
+        },
+    }
+    return params
+
 
 def create_param_dict(n_adjs, adj_combinations, meta_params):
     param_dicts = []

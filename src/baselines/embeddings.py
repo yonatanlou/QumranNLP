@@ -62,5 +62,18 @@ class VectorizerProcessor:
         return self.processed_vectorizers
 
 
-def get_vectorizer_types():
-    return BERT_MODELS + ["tfidf", "trigram", "starr"]
+def get_vectorizer_types(domain="dss"):
+    if domain == "dss":
+        return get_bert_models(domain) + ["tfidf", "trigram", "starr"]
+    if domain == "bible":
+        return get_bert_models(domain) + [
+            "tfidf",
+            "trigram",
+        ]
+
+
+def get_bert_models(domain="dss"):
+    if domain == "dss":
+        return BERT_MODELS
+    if domain == "bible":
+        return [model for model in BERT_MODELS if "maskedLM" not in model]

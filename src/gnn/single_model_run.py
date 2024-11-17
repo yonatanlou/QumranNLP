@@ -3,58 +3,69 @@ import pickle
 import pandas as pd
 import torch
 
-from config import BASE_DIR, DATA_PATH
-from src.baselines.embeddings import VectorizerProcessor, get_vectorizer_types
+from config import BASE_DIR, get_paths_by_domain
+from src.baselines.embeddings import (
+    VectorizerProcessor,
+    get_vectorizer_types,
+    get_bert_models,
+)
 
-import os.path
-
+from src.baselines.utils import get_adj_matrix_by_chunks_structure
+from src.constants import UNSUPERVISED_METRICS
 from src.gnn.hyperparameter_gnn_utils import run_single_gnn_model, run_single_gvae_model
 
-BASELINES_DIR = f"{BASE_DIR}/experiments/baselines"
-PROCESSED_VECTORIZERS_PATH = f"{BASELINES_DIR}/processed_vectorizers.pkl"
-EXP_NAME = "gvae_model"
 DATASET_NAME = "dataset_scroll"
 IS_SUPERVISED = False
-MODEL_NAME_TO_SAVE = "gvae_model"
+DOMAIN = "dss"
 
+paths = get_paths_by_domain(DOMAIN)
+with open(f"{paths['data_path']}/datasets.pkl", "rb") as f:
+    processed_datasets = pickle.load(f)
 
-with open(f"{BASELINES_DIR}/datasets.pkl", "rb") as f:
-    datasets = pickle.load(f)
+dataset = processed_datasets[DATASET_NAME]
 
-dataset = datasets[DATASET_NAME]
-exp_dir_path = f"{BASE_DIR}/experiments/gnn/{EXP_NAME}"
-if not os.path.exists(exp_dir_path):
-    os.makedirs(exp_dir_path)
-df_origin = pd.read_csv(DATA_PATH)
+df_origin = pd.read_csv(paths["data_csv_path"])
+vectorizer_types = get_vectorizer_types(DOMAIN)
 
-vectorizer_types = get_vectorizer_types()
-
-processor = VectorizerProcessor(df_origin, PROCESSED_VECTORIZERS_PATH, vectorizer_types)
+processor = VectorizerProcessor(
+    df_origin, paths["processed_vectorizers_path"], vectorizer_types
+)
 processed_vectorizers = processor.load_or_generate_embeddings()
 param_dict = {
     "num_adjs": 1,
-    "epochs": 200,
+    "epochs": 250,
     "hidden_dim": 300,
-    "latent_dim": 768,  # for GVAE
+    "latent_dim": 512,  # for GVAE
     "distance": "cosine",
     "learning_rate": 0.001,
-    "threshold": 0.975,
+    "threshold": 0.99,
     "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
-    "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
+    # "bert_model": "yonatanlou/BEREL-finetuned-DSS-maskedLM",
     # "bert_model": "dicta-il/BEREL",
     # "bert_model": "dicta-il/dictabert",
 }
+EXP_NAME = "trained_gvae_model"
 
-if IS_SUPERVISED:
-    model, stats_df = run_single_gnn_model(
-        processed_vectorizers, dataset, param_dict, verbose=True
+bert_models = get_bert_models(DOMAIN)
+for bert_model in bert_models:
+    param_dict["bert_model"] = bert_model
+    if IS_SUPERVISED:
+        model, stats_df = run_single_gnn_model(
+            processed_vectorizers, dataset, param_dict, verbose=True
+        )
+    else:
+        adjacency_matrix_all = get_adj_matrix_by_chunks_structure(dataset, df_origin)
+        model, stats_df = run_single_gvae_model(
+            adjacency_matrix_all,
+            processed_vectorizers,
+            dataset,
+            param_dict,
+            verbose=True,
+        )
+    model_name_to_save = f"{EXP_NAME}_{bert_model.split('/')[-1]}"
+    torch.save(
+        [model.kwargs, model.state_dict()],
+        f"{BASE_DIR}/models/{model_name_to_save}.pth",
     )
-else:
-    model, stats_df = run_single_gvae_model(
-        df_origin, processed_vectorizers, dataset, param_dict, verbose=True
-    )
-torch.save(
-    [model.kwargs, model.state_dict()],
-    f"{BASE_DIR}/models/{MODEL_NAME_TO_SAVE}.pth",
-)
-print(f"saved model in {BASE_DIR}/models/{MODEL_NAME_TO_SAVE}.pth")
+    print(f"saved model in {BASE_DIR}/models/{model_name_to_save}.pth")
+    print(stats_df[UNSUPERVISED_METRICS].round(4).to_dict(orient="records"))

@@ -1,7 +1,7 @@
 from src.parsers.text_reader import read_text
 from src.parsers.MorphParser import MorphParser
 from os import path
-from utils import root_path, filter_data_by_field, read_yaml
+from base_utils import root_path, filter_data_by_field, read_yaml
 from collections import defaultdict, Counter
 import re
 import pandas as pd

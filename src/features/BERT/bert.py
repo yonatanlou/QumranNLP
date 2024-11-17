@@ -3,7 +3,7 @@ from src.features.BERT.bert_utils import get_preds, get_sentence_vectors
 import re
 
 from config import BASE_DIR
-from utils import Transcriptor
+from base_utils import Transcriptor
 from logger import get_logger
 
 logger = get_logger(__name__)

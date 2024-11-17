@@ -74,17 +74,16 @@ So each node x is a chunk of text represented by a vector of dimension 768 (from
 The edges can constructed via various methods, when the scheme is to define some feature space of the nodes, taking the cosine similiarity between each node, and taking only edges that are most similar (practically zeroing out the <0.99 quantile of the adj matrix)
 We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
 
-![Global tasks comparison](experiments/gnn/comparsion_plot_all_tasks.png "Global tasks comparison")
+![Global tasks comparison](experiments/dss/gnn/comparsion_plot_all_tasks.png "Global tasks comparison")
 
 Interesting to see which types of adjacency matrices perform best:
-![Different adj](experiments/gnn/comparsion_plot_all_tasks_different_adj.png "Different adj")
+![Different adj](experiments/dss/gnn/comparsion_plot_all_tasks_different_adj.png "Different adj")
 
 The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
 
 ## Running Tasks:
-- Intergrate the BERT model MsBERT.
-- Bible validation - i will implement the model on the bible to validate our results with well known labels. For now, I will simply implement classification by book (supervised and unsupervised).
-- Fix the Jaccard computation.
+- Talk with Roded about the unsupervised accuracy metric (which is like jaccard but with optimization) https://arxiv.org/pdf/1511.06335
+- Bible validation - make sure the methods are better also in the bible case.
 - Unsupervised metric - rerun the whole results with the silhouette (internal) and Jaccard (external) metrics (discuss Roded about Dasgupta).
 - Dendrograms - add significance value on the cut of the dendrograms.
 - Sectarian / non sectarian - 
@@ -104,16 +103,8 @@ The unsupervised GNN (GVAE) currently dosent have good results. will update soon
 ----- 
 Could be nice in the future:
 * Guide on how to use your own data (not Qumran).
+* Add both datasets (dss and bible to HF)
 * Medium posts:
   * Unsupervised clustering with dasgupta.
   * Easy implementation of GNN with supervised and unsupervised context. 
   * How to use GNN for text classification with different adj matrices.
-
-More optional things to consider:
-1. More open questions from Jonathan:
-Clustering of Serech Hayachad (חוקים, שירה וכו)
-Clustering for CD.
-Check if there different מזמורים in Hodayot.
-Is Temple Scroll is sectarian?
-Compare Instruction and Mysteries.
-Compare pesharim and catena florilegium.
