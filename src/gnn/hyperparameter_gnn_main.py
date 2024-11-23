@@ -14,8 +14,7 @@ from src.constants import (
 from src.gnn.hyperparameter_gnn_utils import run_gnn_exp
 from src.gnn.utils import (
     generate_parameter_combinations,
-    create_gnn_params,
-    create_test_gnn_params,
+    create_gnn_params
 )
 import os.path
 

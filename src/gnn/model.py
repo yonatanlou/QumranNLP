@@ -180,18 +180,22 @@ def train_gvae(
         dataset, data.x, adjacency_matrix_tmp, clustering_algo="agglomerative"
     )
     best_model_state = None
+    clustering_weight = 3
     model.train()
     for epoch in range(epochs):
         optimizer.zero_grad()
+
         reconstructed_x, mu, logvar = model(data.x, data.edge_index, data.edge_attr)
-        loss = vae_loss(reconstructed_x, data.x, mu, logvar)
         with torch.no_grad():
             _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
         metrics = unsupervised_optimization(
             dataset, mu, clustering_algo="agglomerative"
         )
-        intrinsic_opt_metric = metrics[unsupervised_metric]
-        loss = loss/(intrinsic_opt_metric if intrinsic_opt_metric != 0 else 0.001)
+        clustering_loss = 1 - metrics[unsupervised_metric]
+        recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="mean")
+        kl_los = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
+
+        loss = recon_loss + clustering_weight * clustering_loss + kl_los
         loss.backward()
         optimizer.step()
 
@@ -202,7 +206,7 @@ def train_gvae(
             dataset, mu, clustering_algo="agglomerative"
         )
         print(
-            f"Epoch {epoch:>3} | Loss: {loss:.3f} | "
+            f"Epoch {epoch:>3} | Loss: {loss:.3f} | recon_loss: {recon_loss:.3f} | kl_loss: {kl_los:.3f} | clustering_loss: {clustering_weight * clustering_loss:.3f} | "
             + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
         )
         if metrics[unsupervised_metric] >= best_stats[unsupervised_metric]:
@@ -246,6 +250,11 @@ class GVAE(torch.nn.Module):
         torch.manual_seed(42)
         self.encoder = Encoder(input_dim, hidden_dim, latent_dim)
         self.decoder = Decoder(latent_dim, hidden_dim, input_dim)
+
+        # Add batch normalization layers
+        self.bn_encoder = torch.nn.BatchNorm1d(latent_dim)
+        self.bn_decoder = torch.nn.BatchNorm1d(hidden_dim)
+
         self.kwargs = {
             "input_dim": input_dim,
             "hidden_dim": hidden_dim,
@@ -253,12 +262,15 @@ class GVAE(torch.nn.Module):
         }
 
     def reparameterize(self, mu, logvar):
-        std = torch.exp(0.5 * logvar)
-        eps = torch.randn_like(std)
-        return mu + eps * std
+        if self.training:
+            std = torch.exp(0.5 * logvar)
+            eps = torch.randn_like(std)
+            return mu + eps * std
+        return mu
 
     def forward(self, x, edge_index, edge_attr):
         mu, logvar = self.encoder(x, edge_index, edge_attr)
+        mu = self.bn_encoder(mu)
         z = self.reparameterize(mu, logvar)
         reconstructed_x = self.decoder(z, edge_index, edge_attr)
         return reconstructed_x, mu, logvar
@@ -270,9 +282,11 @@ class Encoder(torch.nn.Module):
         self.gc1 = GCNConv(input_dim, hidden_dim)
         self.gc2_mu = GCNConv(hidden_dim, latent_dim)
         self.gc2_logvar = GCNConv(hidden_dim, latent_dim)
+        self.dropout = torch.nn.Dropout(0.2)
 
     def forward(self, x, edge_index, edge_attr):
         hidden = F.relu(self.gc1(x, edge_index, edge_attr))
+        hidden = self.dropout(hidden)
         mu = self.gc2_mu(hidden, edge_index, edge_attr)
         logvar = self.gc2_logvar(hidden, edge_index, edge_attr)
         return mu, logvar
@@ -287,9 +301,3 @@ class Decoder(torch.nn.Module):
     def forward(self, z, edge_index, edge_attr):
         hidden = F.relu(self.gc1(z, edge_index, edge_attr))
         return self.gc2(hidden, edge_index, edge_attr)
-
-
-def vae_loss(reconstructed_x, x, mu, logvar):
-    reconstruction_loss = F.mse_loss(reconstructed_x, x, reduction="sum")
-    kl_divergence = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-    return reconstruction_loss + kl_divergence

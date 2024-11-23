@@ -7,16 +7,22 @@ from src.baselines.embeddings import get_bert_models
 
 
 def create_gnn_params(domain="dss", is_supervised=False):
-    epochs = 500 if is_supervised else 250
-    threshold = 0.99 if domain == "dss" else 0.999
+    if not is_supervised and domain == "bible":
+        epochs = 100
+    elif is_supervised and domain == "bible":
+        epochs = 750
+    elif is_supervised:
+        epochs = 500
+    else:
+        epochs = 250
     params = {
         "epochs": [epochs],
-        "hidden_dims": [500],
-        "latent_dims": [512],  # only for GVAE
+        "hidden_dims": [300],
+        "latent_dims": [100],  # only for GVAE
         "distances": ["cosine"],
         "learning_rates": [0.001],
         "thresholds": [
-            threshold,
+            0.995 if is_supervised and domain == "bible" else 0.99,
         ],
         "bert_models": get_bert_models(domain),
         "adj_types": {
@@ -29,21 +35,27 @@ def create_gnn_params(domain="dss", is_supervised=False):
         params["adj_types"]["starr"] = {}
     return params
 
+
 def create_gnn_params_hpo(domain="dss", is_supervised=False):
-    epochs = 500 if is_supervised else 30
+    epochs = 500 if is_supervised else 400
     threshold = 0.99 if domain == "dss" else 0.999
     params = {
         "epochs": [epochs],
         "hidden_dims": [500],
         "latent_dims": [100],  # only for GVAE
         "distances": ["cosine"],
-        "learning_rates": [0.001],
+        "learning_rates": [0.0001],
         "thresholds": [
             # threshold,
-            0.99
+            0.99,
+            0.9995,
+            0.95,
         ],
         # "bert_models": get_bert_models(domain),
-        "bert_models": ["dicta-il/BEREL","dicta-il/MsBERT",],
+        "bert_models": [
+            "dicta-il/BEREL",
+            "dicta-il/MsBERT",
+        ],
         "adj_types": {
             "tfidf": {"max_features": 7500},
             # "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
@@ -118,6 +130,7 @@ def get_data_object(X, df, label_column, edge_index, edge_attr, masks):
         test_mask=test_mask,
         num_features=X.shape[1],
         num_classes=len(np.unique(y_numeric)),
+        edge_weight=edge_attr,
     )
 
     print(data)
