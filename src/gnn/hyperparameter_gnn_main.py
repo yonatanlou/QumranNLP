@@ -3,25 +3,24 @@
 import click
 import pickle
 import pandas as pd
-from config import BASE_DIR, get_paths_by_domain
+from config import get_paths_by_domain
 from base_utils import measure_time
 from src.baselines.embeddings import VectorizerProcessor, get_vectorizer_types
 from src.constants import (
     DSS_OPTIONAL_DATASETS,
-    BIBLE_OPTIONAL_DATASETS,
-    OPTIONAL_DATASET_NAMES,
 )
 from src.gnn.hyperparameter_gnn_utils import run_gnn_exp
 from src.gnn.utils import (
     generate_parameter_combinations,
-    create_gnn_params
+    create_gnn_params,
+    extract_datasets,
 )
 import os.path
 
 
 @click.command()
 @click.option(
-    "--dataset",
+    "--datasets",
     default="all",
     help=f"Dataset name to run the experiment on (for dss one of={DSS_OPTIONAL_DATASETS}",
 )
@@ -51,27 +50,19 @@ import os.path
 )
 @measure_time
 def run_gnn_exp_main(
-    dataset, domain, num_combined_graphs, exp_name, results_dir, is_supervised
+    datasets, domain, num_combined_graphs, exp_name, results_dir, is_supervised
 ):
     # print all params:
     print("run params:")
-    print(f"dataset: {dataset}")
+    print(f"dataset: {datasets}")
     print(f"domain: {domain}")
     print(f"num_combined_graphs: {num_combined_graphs}")
     print(f"exp_name: {exp_name}")
     print(f"results_dir: {results_dir}")
     print(f"is_supervised: {is_supervised}")
-    if dataset == "all":
-        for dataset in OPTIONAL_DATASET_NAMES.get(domain):
-            run_gnn_hyperparameter_tuning(
-                dataset,
-                domain,
-                num_combined_graphs,
-                exp_name,
-                results_dir,
-                is_supervised,
-            )
-    elif dataset in OPTIONAL_DATASET_NAMES.get(domain):
+    datasets = extract_datasets(datasets, domain)
+
+    for dataset in datasets:
         run_gnn_hyperparameter_tuning(
             dataset,
             domain,
@@ -79,11 +70,6 @@ def run_gnn_exp_main(
             exp_name,
             results_dir,
             is_supervised,
-        )
-
-    else:
-        raise ValueError(
-            f"Invalid dataset: {dataset} not in {OPTIONAL_DATASET_NAMES.get(domain)=}"
         )
 
 

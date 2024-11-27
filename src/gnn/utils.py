@@ -4,88 +4,41 @@ from torch_geometric.data import Data
 import numpy as np
 
 from src.baselines.embeddings import get_bert_models
+from src.constants import OPTIONAL_DATASET_NAMES
 
 
 def create_gnn_params(domain="dss", is_supervised=False):
     if not is_supervised and domain == "bible":
         epochs = 100
+        learning_rate = 0.0001
     elif is_supervised and domain == "bible":
         epochs = 750
+        learning_rate = 0.001
     elif is_supervised:
         epochs = 500
+        learning_rate = 0.001
     else:
         epochs = 250
+        learning_rate = 0.001
+
     params = {
         "epochs": [epochs],
         "hidden_dims": [300],
         "latent_dims": [100],  # only for GVAE
         "distances": ["cosine"],
-        "learning_rates": [0.001],
+        "learning_rates": [learning_rate],
         "thresholds": [
             0.995 if is_supervised and domain == "bible" else 0.99,
         ],
         "bert_models": get_bert_models(domain),
         "adj_types": {
-            "tfidf": {"max_features": 10000},
-            "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
-            "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
-        },
-    }
-    if domain == "dss":
-        params["adj_types"]["starr"] = {}
-    return params
-
-
-def create_gnn_params_hpo(domain="dss", is_supervised=False):
-    epochs = 500 if is_supervised else 400
-    threshold = 0.99 if domain == "dss" else 0.999
-    params = {
-        "epochs": [epochs],
-        "hidden_dims": [500],
-        "latent_dims": [100],  # only for GVAE
-        "distances": ["cosine"],
-        "learning_rates": [0.0001],
-        "thresholds": [
-            # threshold,
-            0.99,
-            0.9995,
-            0.95,
-        ],
-        # "bert_models": get_bert_models(domain),
-        "bert_models": [
-            "dicta-il/BEREL",
-            "dicta-il/MsBERT",
-        ],
-        "adj_types": {
-            "tfidf": {"max_features": 7500},
+            "tfidf": {"max_features": 7500 if domain == "dss" else 10000},
             # "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
             # "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
         },
     }
     if domain == "dss":
         params["adj_types"]["starr"] = {}
-    return params
-
-
-def create_test_gnn_params():
-    params = {
-        "epochs": [30],
-        "hidden_dims": [
-            300,
-            # 500
-        ],
-        "latent_dims": [100],  # only for GVAE
-        "distances": ["cosine"],
-        "learning_rates": [0.001],
-        "thresholds": [0.9999],
-        "bert_models": [
-            "dicta-il/BEREL",
-            # "dicta-il/MsBERT"
-        ],
-        "adj_types": {
-            "tfidf": {"max_features": 7500},
-        },
-    }
     return params
 
 
@@ -177,3 +130,15 @@ def generate_parameter_combinations(params, num_combined_graphs):
             all_param_dicts.extend(create_param_dict(n, adj_combinations, meta_params))
 
     return all_param_dicts
+
+
+def extract_datasets(datasets, domain) -> list:
+    if datasets == "all":
+        return OPTIONAL_DATASET_NAMES.get(domain)
+    elif "," in datasets:
+        # assert all(datasets.split(",")) in OPTIONAL_DATASET_NAMES.get(domain)
+        return datasets.split(",")
+    elif datasets in OPTIONAL_DATASET_NAMES.get(domain):
+        return [datasets]
+    else:
+        raise ValueError(f"{datasets} - Invalid dataset name.")

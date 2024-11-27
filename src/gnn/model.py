@@ -1,31 +1,20 @@
 import torch
-from sklearn.preprocessing import LabelEncoder
 from torch.nn import functional as F
-
-# from torch_geometric import nn
 from torch_geometric.nn import GCNConv, GATv2Conv
 from sklearn.metrics import (
     precision_score,
     recall_score,
     f1_score,
-    silhouette_score,
 )
 import warnings
 
 from base_utils import measure_time
-from src.baselines.create_datasets import QumranDataset
-from src.baselines.features import get_linkage_matrix
+
 from src.baselines.ml import (
     get_clusterer,
     unsupervised_evaluation,
     unsupervised_optimization,
 )
-from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
-import scipy.sparse as sp
-
-from src.constants import UNSUPERVISED_METRICS
-from src.baselines.utils import calculate_jaccard_unsupervised
-
 
 class GCN(torch.nn.Module):
     def __init__(self, dim_in, dim_h, dim_out, lr):
@@ -184,56 +173,50 @@ def train_gvae(
     model.train()
     for epoch in range(epochs):
         optimizer.zero_grad()
-
         reconstructed_x, mu, logvar = model(data.x, data.edge_index, data.edge_attr)
-        with torch.no_grad():
-            _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
-        metrics = unsupervised_optimization(
-            dataset, mu, clustering_algo="agglomerative"
-        )
-        clustering_loss = 1 - metrics[unsupervised_metric]
-        recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="mean")
-        kl_los = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
+        if (
+            optimizer.defaults["lr"] < 0.001
+        ):  # smaller loss needs smaller learning rates
+            recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="mean")
+            kl_los = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
+        else:
+            recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="sum")
+            kl_los = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
 
-        loss = recon_loss + clustering_weight * clustering_loss + kl_los
+        with torch.no_grad():
+            metrics = unsupervised_optimization(
+                dataset, mu, clustering_algo="agglomerative"
+            )
+        clustering_loss = 1 - metrics[unsupervised_metric]
+        loss = recon_loss + kl_los + clustering_weight * clustering_loss
         loss.backward()
         optimizer.step()
-
         model.eval()
         with torch.no_grad():
             _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
-        metrics = unsupervised_optimization(
-            dataset, mu, clustering_algo="agglomerative"
-        )
-        print(
-            f"Epoch {epoch:>3} | Loss: {loss:.3f} | recon_loss: {recon_loss:.3f} | kl_loss: {kl_los:.3f} | clustering_loss: {clustering_weight * clustering_loss:.3f} | "
-            + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
-        )
-        if metrics[unsupervised_metric] >= best_stats[unsupervised_metric]:
+            metrics = unsupervised_evaluation(
+                dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+            )
+        if verbose and epoch % 10 == 0:
+            print(
+                f"Epoch {epoch:>3} | Loss: {loss:.3f} | recon_loss: {recon_loss:.3f} | kl_loss: {kl_los:.3f} | clustering_loss: {clustering_weight * clustering_loss:.3f} | "
+                + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
+            )
+        if metrics[unsupervised_metric] > best_stats[unsupervised_metric]:
             best_stats = metrics
             best_epoch = epoch
             best_model_state = model.state_dict()
 
-        if verbose and epoch % 10 == 0:
-            print(
-                f"Epoch {epoch:>3} | Loss: {loss:.3f} | "
-                + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
-            )
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
         print(f"Best model state loaded (epoch {best_epoch})")
     else:
         print("GNN didnt improve from epoch 0")
-    model.eval()
-    with torch.no_grad():
-        _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
-        best_stats_all_metrics = unsupervised_evaluation(
-            dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
-        )
-        print(best_stats_all_metrics)
 
-    best_stats_all_metrics.update({"epoch": best_epoch})
-    return model, [best_stats_all_metrics]
+    print(best_stats)
+
+    best_stats.update({"epoch": best_epoch})
+    return model, [best_stats]
 
 
 def test(model, data):
