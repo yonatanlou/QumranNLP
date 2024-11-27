@@ -71,20 +71,29 @@ The code was run with colab [fine-tuning-bert-maskedLM.ipynb](https://colab.rese
 ### GNN
 For implementing different structures in the GNN, ive created a framework which can combine different edge types together (this was implemented before i knew there is a heterogeneous graph implementation in torch-geom).
 So each node x is a chunk of text represented by a vector of dimension 768 (from different BERT models).
-The edges can constructed via various methods, when the scheme is to define some feature space of the nodes, taking the cosine similiarity between each node, and taking only edges that are most similar (practically zeroing out the <0.99 quantile of the adj matrix)
-We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
+The edges can constructed via various methods, when the scheme is to define some feature space of the nodes, taking the cosine similiarity between each node, and taking only edges that are most similar (practically zeroing out the <0.99 quantile of the adj matrix).
 
+#### Supervised classification
+We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
 ![Global tasks comparison](experiments/dss/gnn/comparsion_plot_all_tasks.png "Global tasks comparison")
+
 
 Interesting to see which types of adjacency matrices perform best:
 ![Different adj](experiments/dss/gnn/comparsion_plot_all_tasks_different_adj.png "Different adj")
 
-The unsupervised GNN (GVAE) currently dosent have good results. will update soon.
+#### Unsupervised classification
+For the unsupervised setting, i've used the GVAE (Graph variational auto-encoder) algorithm.
+Its a classic encoder-decoder framework which can work with graphs.
+Ive trained the model for each one of our potential embedders, when the graph was built using tf-idf/starr/trigram.
+The loss function is built by reconstruction error + KL divergence + clustering loss (by sillhouette).
+The clustering is made by hierarchical clustering (agglomerative), number of clusters as number of unique labels per task.
+The following plots shows the difference between different models for the top per each metric:
+TODO add the plots
+
+## Bible validation
+TODO
 
 ## Running Tasks:
-- Talk with Roded about the unsupervised accuracy metric (which is like jaccard but with optimization) https://arxiv.org/pdf/1511.06335, discuss Roded about Dasgupta
-- Bible validation - 
-  - Make a summary of my findings
 - Dendrograms - add significance value on the cut of the dendrograms.
 - Sectarian / non sectarian - 
   - Use the GNN (unsupervised) embeddings.

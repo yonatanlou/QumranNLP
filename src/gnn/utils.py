@@ -33,8 +33,8 @@ def create_gnn_params(domain="dss", is_supervised=False):
         "bert_models": get_bert_models(domain),
         "adj_types": {
             "tfidf": {"max_features": 7500 if domain == "dss" else 10000},
-            # "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
-            # "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
+            "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
+            "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
         },
     }
     if domain == "dss":
