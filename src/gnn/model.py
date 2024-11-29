@@ -16,6 +16,7 @@ from src.baselines.ml import (
     unsupervised_optimization,
 )
 
+
 class GCN(torch.nn.Module):
     def __init__(self, dim_in, dim_h, dim_out, lr):
         super().__init__()
