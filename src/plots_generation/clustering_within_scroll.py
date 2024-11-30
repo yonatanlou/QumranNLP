@@ -8,11 +8,11 @@ from src.baselines.embeddings import VectorizerProcessor, get_bert_models
 from src.baselines.utils import create_adjacency_matrix, set_seed_globally
 from src.gnn.adjacency import AdjacencyMatrixGenerator
 from src.gnn.model import GVAE
-from src.dss_analysis.analysis_utils import (
+from src.plots_generation.analysis_utils import (
     hirerchial_clustering_by_scroll_gnn,
     get_gvae_embeddings,
 )
-from src.dss_analysis.scrolls_labeling import (
+from src.plots_generation.scrolls_labeling import (
     labels_1QS,
     labels_hodayot,
     labels_1QM,

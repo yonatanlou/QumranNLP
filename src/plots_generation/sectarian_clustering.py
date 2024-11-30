@@ -5,7 +5,7 @@ from config import BASE_DIR
 from config import get_paths_by_domain
 
 import scipy
-from src.dss_analysis.analysis_utils import (
+from src.plots_generation.analysis_utils import (
     get_gvae_embeddings,
     generate_dendrogram_plot,
     cluster_and_get_metrics,

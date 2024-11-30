@@ -12,7 +12,7 @@ from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 
 from config import BASE_DIR
 from src.baselines.utils import calculate_jaccard_unsupervised, clustering_accuracy
-from src.dss_analysis.scrolls_labeling import label_sentence_path
+from src.plots_generation.scrolls_labeling import label_sentence_path
 from src.gnn.adjacency import AdjacencyMatrixGenerator
 from src.gnn.model import GVAE
 
