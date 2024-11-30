@@ -7,7 +7,7 @@ from logger import get_logger
 
 from config import BASE_DIR
 from src.features.BERT import bert
-from src.hierarchial_clustering.clustering_utils import generate_books_dict
+from src.dss_analysis.clustering_utils import generate_books_dict
 import datetime
 import os
 from src.parsers import parser_data
