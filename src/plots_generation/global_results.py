@@ -41,12 +41,12 @@ def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_nam
     all_results["vectorizer_type"] = all_results["vectorizer"].apply(
         get_group_by_vectorizer
     )
+    all_results["vectorizer"] = all_results["vectorizer"].str.replace(
+        "yonatanlou/", "", regex=False
+    )
     color_map = generate_color_map(
         all_results, "vectorizer", "vectorizer_type", "RdYlGn", BASE_COLOR_BY_GROUP
     )
-
-    # file_name = f"{BASE_DIR}/experiments/dss/gnn/comparsion_plot_all_tasks.png"
-    # file_name = None
 
     hue_cols = all_results["vectorizer"].unique()
     plot_obj = generate_bar_plot(

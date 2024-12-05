@@ -61,6 +61,9 @@ def generate_dendrogram_plot(
     label_to_plot="sentence_path",
     path_to_save=None,
 ):
+    import scienceplots
+
+    plt.style.use(["science"])
     if label_to_plot not in ["sentence_path", "label", "book", "composition"]:
         raise
     metrics = round_metrics(metrics)

@@ -53,38 +53,6 @@ def get_metrics_per_model(
     embeddings_gvae = get_gvae_embeddings(
         df_, PROCESSED_VECTORIZERS, bert_model, model_file, param_dict
     )
-    # # Generate adjacency matrix
-    # adj_gen = AdjacencyMatrixGenerator(
-    #     vectorizer_type=param_dict["adjacencies"][0]["type"],
-    #     vectorizer_params=param_dict["adjacencies"][0]["params"],
-    #     threshold=param_dict["threshold"],
-    #     distance_metric=param_dict["distance"],
-    #     meta_params=None,
-    #     normalize=True,
-    # )
-    #
-    # # Generate graph
-    # edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df_)
-    #
-    # # Prepare model
-    # model_path = os.path.join(models_dir, model_file)
-    # kwargs, state = torch.load(model_path)
-    #
-    # model = GVAE(**kwargs)
-    # model.load_state_dict(state)
-    # model.eval()
-    #
-    # # Prepare input
-    # X = PROCESSED_VECTORIZERS[bert_model]
-    # X = X[df_.index]
-    # X = X.astype("float32")
-    # X_tensor = torch.FloatTensor(X)
-    #
-    # # Get embeddings
-    # with torch.no_grad():
-    #     _, mu, *_ = model(X_tensor, edge_index, edge_attr)
-    # embeddings_gvae = mu.numpy()
-
     # Labels setup
     labels_all = {
         "['1QM']": labels_1QM,

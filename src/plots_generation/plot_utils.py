@@ -31,7 +31,7 @@ COMPARISON_SCHEMES = {
 
 
 def get_group_by_vectorizer(i):
-    if "yonatanlou" in i:
+    if "maskedLM" in i:
         return "fine_tuned"
     elif "dicta" in i or "onlplab" in i:
         return "pre_trained_bert"
@@ -90,7 +90,9 @@ def generate_bar_plot(
     which_hue_cols=False,
     base_color_by_group=None,
 ):
-    plt.style.use(["science", "no-latex"])
+    import scienceplots
+
+    plt.style.use(["science"])
     # Replace "section" with "sectarian"
     all_results["task"] = all_results["task"].replace("section", "sectarian")
 
@@ -108,7 +110,7 @@ def generate_bar_plot(
     # Iterate through unique tasks
     for task in all_results["task"].unique():
         # Create a new figure for each task
-        plt.figure(figsize=(3.04 * 3, 4))
+        plt.figure(figsize=(3.04 * 3, 4), dpi=200)
 
         # Filter data for the current task
         task_data = all_results[all_results["task"] == task]
@@ -121,7 +123,6 @@ def generate_bar_plot(
                 task_data[hue_col], categories=custom_order, ordered=True
             )
             task_data = task_data.sort_values(hue_col)
-
         # Create the plot
         sns.barplot(
             x=x_col,
@@ -142,8 +143,9 @@ def generate_bar_plot(
         padding = (max_y_col - min_y_col) * 0.1
         plt.ylim(min_y_col - padding, max_y_col + padding)
 
-        plt.xlabel("Model", fontsize=14)
+        plt.xlabel("Model", fontsize=16)
         plt.ylabel(y_col.replace("_", " ").capitalize(), fontsize=14)
+        plt.yticks(fontsize=14)
         # plt.xticks(rotation=45)
 
         # Customize legend
@@ -152,9 +154,11 @@ def generate_bar_plot(
             bbox_to_anchor=(1.05, 1),
             loc="upper left",
             borderaxespad=0.0,
+            fontsize=12,
+            title_fontsize=14,
         )
         plt.grid(alpha=0.5)
-
+        plt.tight_layout()
         # Save figure with task-specific filename
         if filename:
             task_filename = filename.format(task)
@@ -162,9 +166,9 @@ def generate_bar_plot(
                 os.makedirs(os.path.dirname(task_filename))
 
             plt.savefig(task_filename, bbox_inches="tight")
+            print(f"Saved plot to {task_filename}")
 
-        plt.tight_layout()
-        plt.show()
+        # plt.show()
 
 
 def generate_all_results_supervised(
