@@ -1,12 +1,14 @@
 from datetime import datetime
 
 import pandas as pd
+from torch_geometric.nn import to_hetero
+import torch_geometric.transforms as T
 from tqdm import tqdm
 import torch
 
 from src.baselines.utils import get_adj_matrix_by_chunks_structure
 from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixGenerator
-from src.gnn.model import GCN, train, train_gvae, GVAE
+from src.gnn.model import GCN, train, train_gvae, GVAE, HeteroGNN, DMGI, train_dmgi
 from src.gnn.utils import get_data_object
 
 
@@ -20,26 +22,26 @@ def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=Fal
     meta_params = {"processed_vectorizers": processed_vectorizers, "dataset": dataset}
 
     print(f"{datetime.now()} - started - {param_dict}")
-    edge_index, edge_attr, adj_matrix = create_adj_matrix_for_pytorch_geometric(
+
+    adj_generators = create_adj_matrix_for_pytorch_geometric(
         df, param_dict, meta_params
     )
     X = processed_vectorizers[param_dict["bert_model"]]
     X = X[dataset.relevant_idx_to_embeddings]
     data, label_encoder = get_data_object(
-        X, df, dataset.label, edge_index, edge_attr, masks
+        X, df, dataset.label, adj_generators, masks
     )
-    gcn = GCN(
-        data.num_features,
-        param_dict["hidden_dim"],
-        data.num_classes,
-        param_dict["learning_rate"],
-    )
+    data = T.NormalizeFeatures()(data)
+    model = HeteroGNN(data.metadata(), hidden_channels=param_dict["hidden_dim"], out_channels=data["bert"].num_classes,
+                      num_layers=2)
+
 
     # Train the GCN
-    gcn, stats = train(
-        gcn,
+    model, stats = train(
+        model,
         data,
         param_dict["epochs"],
+        param_dict["learning_rate"],
         patience=param_dict["epochs"] / 3,
         verbose=verbose,
     )
@@ -50,11 +52,12 @@ def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=Fal
         stats_df[param] = value
     adj_types_str = " & ".join([adj["type"] for adj in param_dict["adjacencies"]])
     stats_df["adj_type"] = adj_types_str
-    stats_df["num_edges"] = edge_attr.shape[0]
-    return gcn, stats_df
+    stats_df["num_edges"] = data.num_edges
+    return model, stats_df
 
 
-def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
+def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params) -> list[dict]:
+    adj_generators = {}  # will store edge_index, edge_attr, adj_matrix by adj_type
     if param_dict["num_adjs"] == 1:
         adj_info = param_dict["adjacencies"][0]
         adj_gen = AdjacencyMatrixGenerator(
@@ -67,9 +70,9 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
         )
 
         edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
-
+        adj_generators[adj_info["type"]] = (edge_index, edge_attr, adj_matrix)
     else:  # combining more than one graphs together
-        adj_generators = []
+
         for adj_info in param_dict["adjacencies"]:
             adj_gen = AdjacencyMatrixGenerator(
                 vectorizer_type=adj_info["type"],
@@ -77,20 +80,13 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
                 threshold=param_dict["threshold"],
                 distance_metric=param_dict["distance"],
                 meta_params=meta_params,
-                normalize=False,
+                normalize=True,
             )
-            adj_generators.append(adj_gen)
+            edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
+            adj_generators[adj_info["type"]] = (adj_gen.generate_graph(df))
 
-        combined_generator = CombinedAdjacencyMatrixGenerator(
-            adj_generators,
-            combine_method="add",
-            threshold=param_dict["threshold"],
-            normalize=True,
-        )
-        edge_index, edge_attr, adj_matrix = combined_generator.combine_graphs(
-            [df] * param_dict["num_adjs"]
-        )
-    return edge_index, edge_attr, adj_matrix
+
+    return adj_generators
 
 
 def run_single_gvae_model(
@@ -103,31 +99,34 @@ def run_single_gvae_model(
         "test_mask": dataset.test_mask,
     }
     meta_params = {"processed_vectorizers": processed_vectorizers, "dataset": dataset}
-    edge_index, edge_attr, adj_matrix = create_adj_matrix_for_pytorch_geometric(
+    adj_generators = create_adj_matrix_for_pytorch_geometric(
         df, param_dict, meta_params
     )
     print(f"{datetime.now()} - started - {param_dict}")
 
     X = processed_vectorizers[param_dict["bert_model"]]
     X = X[dataset.relevant_idx_to_embeddings]
+
     data, label_encoder = get_data_object(
-        X, df, dataset.label, edge_index, edge_attr, masks
+        X, df, dataset.label, adj_generators, masks
     )
-    gvae = GVAE(
-        data.num_features,
-        param_dict["hidden_dim"],
-        param_dict["latent_dim"],
-    )
+    data = T.NormalizeFeatures()(data)
+    model = DMGI(data['bert'].num_nodes, data['bert'].x.size(-1),
+                 out_channels=param_dict["latent_dim"], num_relations=len(data.edge_types))
+    # gvae = GVAE(
+    #     data.num_features,
+    #     param_dict["hidden_dim"],
+    #     param_dict["latent_dim"],
+    # )
     optimizer = torch.optim.Adam(
-        gvae.parameters(), lr=param_dict["learning_rate"], weight_decay=5e-4
+        model.parameters(), lr=param_dict["learning_rate"], weight_decay=5e-4
     )
 
     adjacency_matrix_tmp = adjacency_matrix_all[dataset.relevant_idx_to_embeddings, :][
         :, dataset.relevant_idx_to_embeddings
     ]
-
-    gvae, stats = train_gvae(
-        gvae,
+    model, stats = train_dmgi(
+        model,
         data,
         optimizer,
         param_dict["epochs"],
@@ -135,6 +134,24 @@ def run_single_gvae_model(
         adjacency_matrix_tmp,
         verbose=verbose,
     )
+    # gvae, stats = train_gvae(
+    #     gvae,
+    #     data,
+    #     optimizer,
+    #     param_dict["epochs"],
+    #     dataset,
+    #     adjacency_matrix_tmp,
+    #     verbose=verbose,
+    # )
+    # gvae, stats = train_gvae(
+    #     gvae,
+    #     data,
+    #     optimizer,
+    #     param_dict["epochs"],
+    #     dataset,
+    #     adjacency_matrix_tmp,
+    #     verbose=verbose,
+    # )
 
     stats_df = pd.DataFrame(stats)
     for param, value in param_dict.items():
@@ -143,8 +160,8 @@ def run_single_gvae_model(
         stats_df[param] = value
     adj_types_str = " & ".join([adj["type"] for adj in param_dict["adjacencies"]])
     stats_df["adj_type"] = adj_types_str
-    stats_df["num_edges"] = edge_attr.shape[0]
-    return gvae, stats_df
+    stats_df["num_edges"] = data.num_edges
+    return model, stats_df
 
 
 def run_gnn_exp(

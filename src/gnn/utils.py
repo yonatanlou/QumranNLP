@@ -1,6 +1,6 @@
 import torch
 from sklearn.preprocessing import LabelEncoder
-from torch_geometric.data import Data
+from torch_geometric.data import Data, HeteroData
 import numpy as np
 
 from src.baselines.embeddings import get_bert_models
@@ -60,7 +60,8 @@ def create_param_dict(n_adjs, adj_combinations, meta_params):
     return param_dicts
 
 
-def get_data_object(X, df, label_column, edge_index, edge_attr, masks):
+def get_data_object(X, df, label_column, adj_generator, masks):
+    data = HeteroData()
     X = X.astype("float32")
     y = df[label_column]
 
@@ -72,19 +73,33 @@ def get_data_object(X, df, label_column, edge_index, edge_attr, masks):
         masks["val_mask"],
         masks["test_mask"],
     )
+    #nodes
+    data["bert"].x = torch.tensor(X, dtype=torch.float)
+    data["bert"].y = torch.tensor(y_numeric, dtype=torch.long)
+    data["bert"].num_features = X.shape[1]
+    data["bert"].num_classes = len(np.unique(y_numeric))
+    data["bert"].train_mask = train_mask
+    data["bert"].val_mask = val_mask
+    data["bert"].test_mask = test_mask
 
-    data = Data(
-        x=torch.tensor(X, dtype=torch.float),
-        edge_index=edge_index,
-        edge_attr=edge_attr,
-        y=torch.tensor(y_numeric, dtype=torch.long),
-        train_mask=train_mask,
-        val_mask=val_mask,
-        test_mask=test_mask,
-        num_features=X.shape[1],
-        num_classes=len(np.unique(y_numeric)),
-        edge_weight=edge_attr,
-    )
+    #edges
+    for adj_type, (edge_index, edge_attr, _) in adj_generator.items():
+        data["bert", adj_type, "bert"].edge_index = edge_index
+        data["bert", adj_type, "bert"].edge_weight = edge_attr
+    # if len(adj_generator) == 1:
+    #     edge_index, edge_attr, adj_matrix = list(adj_generator.values())[0]
+    #     data = Data(
+    #         x=torch.tensor(X, dtype=torch.float),
+    #         edge_index=edge_index,
+    #         edge_attr=edge_attr,
+    #         y=torch.tensor(y_numeric, dtype=torch.long),
+    #         train_mask=train_mask,
+    #         val_mask=val_mask,
+    #         test_mask=test_mask,
+    #         num_features=X.shape[1],
+    #         num_classes=len(np.unique(y_numeric)),
+    #         edge_weight=edge_attr,
+    #     )
 
     print(data)
 

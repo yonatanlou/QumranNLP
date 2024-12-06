@@ -18,15 +18,15 @@ DATASET_NAME = "dataset_scroll"
 IS_SUPERVISED = False
 DOMAIN = "dss"
 
+
+
+
 paths = get_paths_by_domain(DOMAIN)
 with open(f"{paths['data_path']}/datasets.pkl", "rb") as f:
     processed_datasets = pickle.load(f)
-
 dataset = processed_datasets[DATASET_NAME]
-
 df_origin = pd.read_csv(paths["data_csv_path"])
 vectorizer_types = get_vectorizer_types(DOMAIN)
-
 processor = VectorizerProcessor(
     df_origin, paths["processed_vectorizers_path"], vectorizer_types
 )
@@ -56,20 +56,21 @@ def train_single_model(is_supervised, param_dict, bert_model, exp_name):
     print(stats_df[UNSUPERVISED_METRICS].round(4).to_dict(orient="records"))
 
 
-EXP_NAME = "trained_gvae_model"
+EXP_NAME = "hetrogenous_gnn"
 bert_models = get_bert_models(DOMAIN)
 param_dict = {
-    "num_adjs": 1,
+    "num_adjs": 2,
     "epochs": 250,
     "hidden_dim": 300,
     "latent_dim": 100,  # for GVAE
     "distance": "cosine",
     "learning_rate": 0.001,
     "threshold": 0.99,
-    "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
+    "adjacencies": [{"type": "trigram", "params": {"analyzer": "char", "ngram_range": (3, 3)}},{"type": "tfidf", "params": {"max_features": 7500}}],
     "bert_model": "dicta-il/BEREL",
 }
-
-for bert_model in bert_models:
-    param_dict["bert_model"] = bert_model
-    train_single_model(IS_SUPERVISED, param_dict, bert_model, EXP_NAME)
+# for bert_model in bert_models:
+#     param_dict["bert_model"] = bert_model
+#     train_single_model(IS_SUPERVISED, param_dict, bert_model, EXP_NAME)
+bert_model="dicta-il/BEREL"
+train_single_model(IS_SUPERVISED, param_dict, bert_model, EXP_NAME)
