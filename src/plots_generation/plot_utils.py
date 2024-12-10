@@ -94,7 +94,6 @@ def generate_bar_plot(
 
     plt.style.use(["science"])
     # Replace "section" with "sectarian"
-    all_results["task"] = all_results["task"].replace("section", "sectarian")
 
     # Create a custom order based on base_color_by_group
     if base_color_by_group:
@@ -152,7 +151,7 @@ def generate_bar_plot(
         plt.legend(
             title="Vectorizer",
             bbox_to_anchor=(1.05, 1),
-            loc="upper left",
+            loc="lower left",
             borderaxespad=0.0,
             fontsize=12,
             title_fontsize=14,

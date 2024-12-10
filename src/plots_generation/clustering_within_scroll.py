@@ -43,7 +43,7 @@ def get_metrics_per_model(
     set_seed_globally()
     models_dir = f"{BASE_DIR}/models"
     data_csv_path = paths["data_csv_path"]
-    path_to_save = path_to_save + "/GNN_{}.png" if path_to_save else None
+    path_to_save = path_to_save + "/GNN_{}.pdf" if path_to_save else None
     # Default parameter dictionary
     param_dict["bert_model"] = bert_model
 
@@ -55,9 +55,9 @@ def get_metrics_per_model(
     )
     # Labels setup
     labels_all = {
-        "['1QM']": labels_1QM,
+        # "['1QM']": labels_1QM,
         "['1QHa']": labels_hodayot,
-        "['1QS', '1QSa']": labels_1QS,
+        # "['1QS', '1QSa']": labels_1QS,
     }
 
     # Calculate metrics for each scroll
@@ -67,7 +67,7 @@ def get_metrics_per_model(
             df_,
             eval(scroll),
             labels,
-            f"GNN with {bert_model} embeddings + TF-IDF edges",
+            f"Unsupervised Clustering of the Hodayot Composition",
             embeddings_gvae,
             ADJACENCY_MATRIX_ALL,
             label_to_plot,

@@ -77,7 +77,7 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
                 threshold=param_dict["threshold"],
                 distance_metric=param_dict["distance"],
                 meta_params=meta_params,
-                normalize=False,
+                normalize=True,
             )
             adj_generators.append(adj_gen)
 

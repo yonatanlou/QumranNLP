@@ -11,10 +11,10 @@ readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP
 #python src/baselines/main.py --domain dss --results-dir experiments/dss/baselines --train-frac 0.7 --val-frac 0.1
 
 # run for supervised GNN
-#python src/gnn/hyperparameter_gnn_main.py --dataset all --domain dss --num-combined-graphs 2 --exp-name gcn_init --results-dir experiments/dss/gnn --is_supervised
+#python src/gnn/hyperparameter_gnn_main.py --datasets all --domain dss --num-combined-graphs 2 --exp-name gcn_init --results-dir experiments/dss/gnn --is_supervised
 
 # run for unsupervised GNN
-#python src/gnn/hyperparameter_gnn_main.py --datasets dataset_composition,dataset_scroll --domain dss --num-combined-graphs 1 --exp-name gave_init --results-dir experiments/dss/gnn
+python src/gnn/hyperparameter_gnn_main.py --datasets dataset_composition,dataset_scroll --domain dss --num-combined-graphs 2 --exp-name gave_init --results-dir experiments/dss/gnn
 
 # run for training all GVAE models
 
@@ -33,4 +33,4 @@ readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP
 #python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gcn_init --results-dir experiments/bible/gnn --is_supervised
 
 # run for unsupervised GNN
-python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gave_init --results-dir experiments/bible/gnn
+#python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gave_init --results-dir experiments/bible/gnn

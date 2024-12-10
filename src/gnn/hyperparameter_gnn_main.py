@@ -114,7 +114,7 @@ def run_gnn_hyperparameter_tuning(
         file_name,
         dataset_info,
         is_supervised,
-        verbose=True,
+        verbose=False,
     )
 
 

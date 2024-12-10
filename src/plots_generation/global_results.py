@@ -8,10 +8,10 @@ from src.plots_generation.plot_utils import (
     BASE_COLOR_BY_GROUP,
 )
 
-MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
+MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "dasgupta"}
 
 
-def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_name):
+def process_data_for_plot(domain, is_supervised, gnn_exp_name, gnn_name_format):
     # some basic settings
     main_metric = MAIN_METRICS["supervised" if is_supervised else "unsupervised"]
     baseline_dir = f"{BASE_DIR}/experiments/{domain}/baselines"
@@ -36,6 +36,8 @@ def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_nam
         compare_list, tasks, comparison_scheme, main_metric
     )
     all_results = all_results[all_results["vectorizer"] != "dicta-il/MsBERT"]
+    if is_supervised:
+        all_results = all_results[all_results["model"].isin(["MLPClassifier", "GCN"])]
 
     # segment by vectorizer
     all_results["vectorizer_type"] = all_results["vectorizer"].apply(
@@ -43,6 +45,17 @@ def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_nam
     )
     all_results["vectorizer"] = all_results["vectorizer"].str.replace(
         "yonatanlou/", "", regex=False
+    )
+    all_results["task"] = all_results["task"].replace("section", "sectarian")
+    all_results["task"] = all_results["task"].replace("book", "Scroll")
+
+    return all_results
+
+
+def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_name):
+    main_metric = MAIN_METRICS["supervised" if is_supervised else "unsupervised"]
+    all_results = process_data_for_plot(
+        domain, is_supervised, gnn_exp_name, gnn_name_format
     )
     color_map = generate_color_map(
         all_results, "vectorizer", "vectorizer_type", "RdYlGn", BASE_COLOR_BY_GROUP
@@ -62,7 +75,8 @@ def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_nam
 
 
 if __name__ == "__main__":
-    DOMAINS = ["dss", "bible"]
+    # DOMAINS = ["dss", "bible"]
+    DOMAINS = ["dss"]
     SUPERVISED_OPTIONS = [True, False]
 
     for domain in DOMAINS:

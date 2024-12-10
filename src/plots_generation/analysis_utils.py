@@ -28,7 +28,11 @@ def cluster_and_get_metrics(
     df_labeled_for_clustering, embeddings_tmp, adjacency_matrix_tmp, linkage_m
 ):
     n_clusters = len(df_labeled_for_clustering["label"].unique())
-    linkage_matrix = linkage(embeddings_tmp, method=linkage_m)
+    if linkage_m in ["centroid", "ward", "median"]:
+        clust_metric = "euclidean"
+    else:
+        clust_metric = "cosine"
+    linkage_matrix = linkage(embeddings_tmp, method=linkage_m, metric=clust_metric)
 
     # Calculate Jaccard Index
     flat_clusters = fcluster(linkage_matrix, n_clusters, criterion="maxclust")
@@ -55,87 +59,107 @@ def cluster_and_get_metrics(
 def generate_dendrogram_plot(
     df_labeled_for_clustering,
     linkage_matrix,
-    vec_type,
-    metrics,
     title,
+    metrics,
     label_to_plot="sentence_path",
     path_to_save=None,
+    kwargs={},
 ):
     import scienceplots
 
-    plt.style.use(["science"])
+    from matplotlib.lines import Line2D
+
+    # Font sizes and styles for publication
+    XTICK_FONT_SIZE = 17
+    XLAB_FONT_SIZE = 19
+    TITLE_FONT_SIZE = 24
+    LEGEND_FONT_SIZE = 16
+
+    plt.style.use(["science"])  # Ensure science plots with no LaTeX errors
+
     if label_to_plot not in ["sentence_path", "label", "book", "composition"]:
-        raise
-    metrics = round_metrics(metrics)
+        raise ValueError("Invalid label_to_plot value!")
+
+    # Format metrics
+    # metrics = round_metrics(metrics)
     df_labeled_for_clustering["composition"] = df_labeled_for_clustering[
         "composition"
     ].fillna(df_labeled_for_clustering["book"])
+
     # Create a color map based on the 'label' column
     unique_labels = df_labeled_for_clustering["label"].unique()
     label_colors = plt.cm.copper(np.linspace(0, 1, len(unique_labels)))
     color_map = dict(zip(unique_labels, label_colors))
 
     # Plot the dendrogram
-    plt.figure(figsize=(10, 14))  # Swap width and height for vertical orientation
+    fig, ax = plt.subplots(figsize=(7, 18.5), dpi=100)  # Adjusted for two-column LaTeX
+    color_thres = kwargs.get("color_threshold", 0.7)
     dendrogram(
         linkage_matrix,
         labels=df_labeled_for_clustering[label_to_plot].tolist(),
-        orientation="left",  # This makes the dendrogram vertical
-        leaf_font_size=6,
-        leaf_rotation=0,  # Horizontal text for better readability
+        orientation="left",  # Vertical dendrogram
+        leaf_font_size=XTICK_FONT_SIZE,
+        leaf_rotation=0,  # Horizontal labels
+        ax=ax,
+        color_threshold=color_thres * max(linkage_matrix[:, 2]),
     )
-    plt.yticks(fontsize=10)
+    ax.set_title(title, fontsize=TITLE_FONT_SIZE)
+    ax.set_ylabel(label_to_plot.capitalize(), fontsize=XLAB_FONT_SIZE)
+    ax.set_xlabel("Distance", fontsize=XLAB_FONT_SIZE)
 
-    plt.title(f"embeddings: {vec_type}, jaccard:{metrics['jaccard']:.3f}")
-    plt.ylabel(label_to_plot.capitalize())  # Swap x and y labels
-    plt.xlabel("Distance")
-    plt.suptitle(f"{title} scroll clustering")
-    # Color the y-axis labels according to their labels
-    ax = plt.gca()
+    # Customize y-axis labels with colors
     ylbls = ax.get_ymajorticklabels()
-    for idx, lbl in enumerate(ylbls):
-        if (
-            label_to_plot == "sentence_path"
-            or label_to_plot == "book"
-            or label_to_plot == "composition"
-        ):
-            label = df_labeled_for_clustering[
-                df_labeled_for_clustering[label_to_plot] == lbl.get_text()
-            ]["label"].values[0]
-        else:
-            label = lbl.get_text()
+    for lbl in ylbls:
+        text = lbl.get_text()
+        label = df_labeled_for_clustering[
+            df_labeled_for_clustering[label_to_plot] == text
+        ]["label"].values[0]
         lbl.set_color(color_map[label])
         lbl.set_text(label)
 
-    # Add a legend
+    # Add a legend at the bottom
     legend_elements = [
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
             color="w",
             label=label,
             markerfacecolor=color,
-            markersize=10,
+            markersize=8,
         )
         for label, color in color_map.items()
     ]
-    plt.legend(
-        handles=legend_elements, title="Labels", loc="best", bbox_to_anchor=(0, 1)
+    fig.legend(
+        handles=legend_elements,
+        title="Labels",
+        loc="lower center",
+        ncol=2,  # Two-column legend
+        fontsize=LEGEND_FONT_SIZE,
+        title_fontsize=LEGEND_FONT_SIZE,
+        bbox_to_anchor=(0.5, 0),  # Position at the bottom
+        frameon=True,
     )
 
-    plt.tight_layout()
+    # Adjust layout for better spacing
+    # plt.tight_layout(rect=[0, 0.1, 1, 1])  # Reserve space for legend at the bottom
+    plt.subplots_adjust(
+        bottom=0.1, top=0.99
+    )  # Increase bottom margin to accommodate legend
+
+    # plt.tight_layout()
+    # Save or display the plot
     if path_to_save:
-        plt.savefig(path_to_save)
+        plt.savefig(path_to_save, bbox_inches="tight")
         print(f"Saved plot to {path_to_save}")
-    plt.show()
+    # plt.show()
 
 
 def hirerchial_clustering_by_scroll_gnn(
     df: pd.DataFrame,
     curr_scroll: list[str],
     labels: dict,
-    vec_type,
+    title,
     embeddings,
     adjacency_matrix,
     label_to_plot,
@@ -168,9 +192,8 @@ def hirerchial_clustering_by_scroll_gnn(
         generate_dendrogram_plot(
             df_labeled_for_clustering,
             linkage_matrix,
-            vec_type,
+            title,
             metrics,
-            curr_scroll,
             label_to_plot,
             path_to_save,
         )
