@@ -1,41 +1,13 @@
 import pickle
 
 import numpy as np
-from sklearn.model_selection import train_test_split, StratifiedKFold
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+from src.baselines.embeddings import VectorizerProcessor
+from src.baselines.utils import set_seed_globally
 
 MIN_SAMPLES_PER_CLASS = 4
-CLASSES_TO_REMOVE_DUE_TO_COMPARING_CHUNK_SIZE = {
-    "composition": ["the_rule_of_the_congregation", "Barkhi_Nafshi"],
-    "book": [
-        "4Q219",
-        "11Q12",
-        "11Q13",
-        "4Q200",
-        "4Q257",
-        "4Q259",
-        "1QSa",
-        "4Q522",
-        "4Q387",
-        "4Q274",
-        "4Q434",
-        "4Q432",
-        "4Q429",
-        "4Q321a",
-        "4Q422",
-        "4Q158",
-        "4Q161",
-        "4Q366",
-        "4Q415",
-        "4Q368",
-        "4Q400",
-        "4Q397",
-        "4Q365a",
-        "4Q367",
-    ],
-    "section": ["notImplemented"],
-}
-
-
 class QumranDataset:
     def __init__(
         self,
@@ -45,11 +17,14 @@ class QumranDataset:
         val_frac,
         processed_vectorizers,
         specific_scrolls=None,
+        df_frac_remove=0.0
     ):
         print(f"Creating dataset - {label}...")
         self.label = label
         self.specific_scrolls = specific_scrolls
         df["original_index"] = range(len(df))
+        if df_frac_remove > 0: #for unsupervised cross validation
+            df = df.sample(frac=1 - df_frac_remove).reset_index(drop=True)
         self.df = self.process_df_by_label(df)
         self.texts = df["text"].tolist()
         self.labels = self.df[self.label]
@@ -163,15 +138,6 @@ class QumranDataset:
             print(
                 f"No classes were removed. All classes have at least {MIN_SAMPLES_PER_CLASS} samples."
             )
-
-        ## Only made for comparing chunk sizes
-        # self.df = self.df[
-        #     ~(
-        #         self.df[self.label].isin(
-        #             CLASSES_TO_REMOVE_DUE_TO_COMPARING_CHUNK_SIZE[self.label]
-        #         )
-        #     )
-        # ]
         self.df = self.df[self.df[self.label].isin(valid_classes)]
         self.df = self.process_df_by_label(self.df)
         self.df = self.df.reset_index(drop=True)
@@ -211,53 +177,6 @@ class QumranDataset:
         print(f"  - Validation: {sum(self.val_mask)} samples")
         print(f"  - Test: {sum(self.test_mask)} samples")
 
-    #     def split_data(self, random_state=42):
-    #
-    #         # class_counts = self.df[self.label].value_counts()
-    #         # min_samples = int(1 / min(self.test_frac, self.val_frac))
-    #         # print(f"dropping {list(class_counts[class_counts < min_samples].index)} due to low number of samples")
-    #         # valid_classes = class_counts[class_counts >= min_samples].index
-    #         # self.df = self.df[self.df[self.label].isin(valid_classes)]
-    #
-    # #         custom_labels_to_remove = {"composition": ['Pseudo_Jeremiah',
-    # #                                                    '4QMMT',
-    # #                                                    'the_rule_of_the_blessings',
-    # #                                                    'Berakhot',
-    # #                                                    'the_rule_of_the_congregation',
-    # #                                                    'Barkhi_Nafshi'], "book": ['4Q270', '1QpHab', '4Q317', '4Q249z', '4Q525', '4Q163', '4Q319', '4Q417', '4Q416', '4Q427', '4Q403', '4Q496', '4Q372', '11Q17', '4Q321', '4Q428', '3Q15', '4Q216', '4Q271', '4Q269', '4Q267', '4Q258', '4Q176', '4Q177', '4Q286', '4Q422', '4Q423', '4Q252', '4Q251', '4Q221', '4Q174', '4Q171', '4Q524', '4Q169', '11Q11', '1QSa', '1QSb', '4Q256', '4Q385a', '4Q394', '4Q379', '4Q265', '4Q378', '4Q391', '1Q22', '4Q320', '11Q12', '4Q321a', '11Q13', '4Q365a', '4Q366', '4Q522', '4Q367', '4Q161', '4Q158', '4Q400', '4Q219', '4Q200', '4Q259', '4Q434', '4Q432', '4Q429', '4Q261', '4Q387', '4Q274', '4Q257', '4Q415', '4Q397', '4Q368'],
-    # #                                    "section": ["nothing"]
-    # # }
-    # #         print(f"df shape before removing samples {len(self.df)}")
-    # #         self.df = self.df[~self.df[self.label].isin(custom_labels_to_remove[self.label])]
-    # #         print(f"df shape after removing samples{len(self.df)}")
-    # #         self.df = self.df[~self.df[self.label].isin(custom_labels_to_remove[self.label])]
-    #         self.labels = self.df[self.label]
-    #         self.n_labels = self.labels.nunique()
-    #         self.df = self.process_df_by_label(self.df)
-    #         self.df = self.df.reset_index(drop=True)
-    #         if len(self.df) == 0:
-    #             raise ValueError("No classes have enough samples for splitting.")
-    #         train, test = train_test_split(
-    #             self.df,
-    #             test_size=self.test_frac,
-    #             random_state=random_state,
-    #             stratify=self.df[self.label],
-    #         )
-    #         train, val = train_test_split(
-    #             train,
-    #             test_size=self.val_frac,
-    #             random_state=random_state,
-    #             stratify=train[self.label],
-    #         )
-    #         train_mask, val_mask, test_mask = self.create_masks(
-    #             len(self.df),
-    #             train.index.to_list(),
-    #             val.index.to_list(),
-    #             test.index.to_list(),
-    #         )
-    #         self.train_mask = train_mask
-    #         self.val_mask = val_mask
-    #         self.test_mask = test_mask
     def create_masks(self, data_length, train_indices, val_indices, test_indices):
         train_mask = np.zeros(data_length, dtype=bool)
         val_mask = np.zeros(data_length, dtype=bool)
@@ -530,3 +449,35 @@ def save_dataset_for_finetuning(path, dataset):
     }
     with open(path, "wb") as f:
         pickle.dump(dataset_for_fine_tuning, f)
+
+
+def create_dss_datasets(tasks, train_frac, val_frac, paths, vectorizers, df_frac_remove=0, seed=42, save_dataset=True):
+    set_seed_globally(seed)
+    df_origin = pd.read_csv(paths["data_csv_path"])
+
+
+
+    processor = VectorizerProcessor(
+        df_origin, paths["processed_vectorizers_path"], vectorizers
+    )
+    processed_vectorizers = processor.load_or_generate_embeddings()
+
+    dataset_composition = QumranDataset(
+        df_origin, "composition", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    dataset_scroll = QumranDataset(
+        df_origin, "book", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    dataset_sectarian = QumranDataset(
+        df_origin, "section", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    datasets = {
+        "dataset_composition": dataset_composition,
+        "dataset_scroll": dataset_scroll,
+        "dataset_sectarian": dataset_sectarian,
+    }
+    if save_dataset:
+        with open(f"{paths['data_path']}/datasets.pkl", "wb") as f:
+            pickle.dump(datasets, f)
+    datasets = {k: v for k, v in datasets.items() if k.split("_")[1] in tasks}
+    return datasets, df_origin

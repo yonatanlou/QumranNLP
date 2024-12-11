@@ -1,7 +1,5 @@
 import os
-import pickle
 import click
-import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
@@ -10,8 +8,8 @@ from sklearn.svm import LinearSVC
 from base_utils import measure_time
 from config import BASE_DIR, get_paths_by_domain
 from src.baselines.utils import create_adjacency_matrix, set_seed_globally
-from src.baselines.create_datasets import QumranDataset, save_dataset_for_finetuning
-from src.baselines.embeddings import get_vectorizer_types, VectorizerProcessor
+from src.baselines.create_datasets import create_dss_datasets
+from src.baselines.embeddings import get_vectorizer_types
 from src.baselines.ml import evaluate_unsupervised_metrics, evaluate_supervised_metrics
 
 MODELS = [
@@ -33,40 +31,15 @@ def make_baselines_results(
     if not os.path.exists(results_dir):
         os.makedirs(results_dir)
     paths = get_paths_by_domain(domain)
-
-    df_origin = pd.read_csv(paths["data_csv_path"])
-
     vectorizers = get_vectorizer_types(domain)
-    processor = VectorizerProcessor(
-        df_origin, paths["processed_vectorizers_path"], vectorizers
-    )
-    processed_vectorizers = processor.load_or_generate_embeddings()
-    set_seed_globally()
+
+    datasets, df_origin = create_dss_datasets(tasks, train_frac, val_frac, paths, vectorizers, df_frac_remove=0, seed=42, save_dataset=True)
+
     adjacency_matrix_all = create_adjacency_matrix(
         df_origin,
         context_similiarity_window=3,
         composition_level=False,
     )
-
-    dataset_composition = QumranDataset(
-        df_origin, "composition", train_frac, val_frac, processed_vectorizers
-    )
-    dataset_scroll = QumranDataset(
-        df_origin, "book", train_frac, val_frac, processed_vectorizers
-    )
-    dataset_sectarian = QumranDataset(
-        df_origin, "section", train_frac, val_frac, processed_vectorizers
-    )
-    datasets = {
-        "dataset_composition": dataset_composition,
-        "dataset_scroll": dataset_scroll,
-        "dataset_sectarian": dataset_sectarian,
-    }
-
-    with open(f"{paths['data_path']}/datasets.pkl", "wb") as f:
-        pickle.dump(datasets, f)
-
-    datasets = {k: v for k, v in datasets.items() if k.split("_")[1] in tasks}
     for dataset_name, dataset in datasets.items():
         set_seed_globally()
         print(f"calculating metrics for {dataset_name}")
@@ -74,6 +47,8 @@ def make_baselines_results(
             adjacency_matrix_all, dataset, vectorizers, results_dir
         )
         evaluate_supervised_metrics(MODELS, vectorizers, dataset, results_dir)
+
+
 
 
 @click.command()
