@@ -140,10 +140,18 @@ if __name__ == "__main__":
         gvae_embeddings, df_no_nulls, "composition", outlier_threshold=2
     )
 
+    def format_composition(value):
+        if value == "CD":
+            return value
+        formatted_value = value.replace("_", " ").replace(".", " ")
+        return formatted_value.title()
+
+    df_averaged["composition"] = df_averaged["composition"].apply(format_composition)
+
     path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN.pdf"
     metrics_gnn = hirerchial_clustering_by_sectarian(
         df_averaged,
-        f"Unsupervised Clustering by Sectarian/Non Sectarian compositions",
+        f"Unsupervised Clustering by Sectarian Compositions",
         embeddings_averaged,
         "composition",
         {"linkage_m": "centroid", "color_threshold": 0.5},

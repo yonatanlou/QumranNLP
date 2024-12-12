@@ -75,6 +75,12 @@ def generate_dendrogram_plot(
     TITLE_FONT_SIZE = 24
     LEGEND_FONT_SIZE = 16
 
+    # sectarian
+    # XTICK_FONT_SIZE = 20
+    # XLAB_FONT_SIZE = 23
+    # TITLE_FONT_SIZE = 38
+    # LEGEND_FONT_SIZE = 20
+
     plt.style.use(["science"])  # Ensure science plots with no LaTeX errors
 
     if label_to_plot not in ["sentence_path", "label", "book", "composition"]:
@@ -92,7 +98,8 @@ def generate_dendrogram_plot(
     color_map = dict(zip(unique_labels, label_colors))
 
     # Plot the dendrogram
-    fig, ax = plt.subplots(figsize=(7, 18.5), dpi=100)  # Adjusted for two-column LaTeX
+    fig, ax = plt.subplots(figsize=(7, 18.5), dpi=100)
+    # fig, ax = plt.subplots(figsize=(7, 16), dpi=100) #sectarian
     color_thres = kwargs.get("color_threshold", 0.7)
     dendrogram(
         linkage_matrix,
@@ -140,12 +147,11 @@ def generate_dendrogram_plot(
         bbox_to_anchor=(0.5, 0),  # Position at the bottom
         frameon=True,
     )
-
-    # Adjust layout for better spacing
-    # plt.tight_layout(rect=[0, 0.1, 1, 1])  # Reserve space for legend at the bottom
-    plt.subplots_adjust(
-        bottom=0.1, top=0.99
-    )  # Increase bottom margin to accommodate legend
+    plt.subplots_adjust(bottom=0.1, top=0.99)
+    # sectarian
+    # plt.subplots_adjust(
+    #     bottom=0.13, top=0.99
+    # )
 
     # plt.tight_layout()
     # Save or display the plot
