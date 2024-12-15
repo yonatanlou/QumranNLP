@@ -11,10 +11,10 @@ labels_1QS = {
     "1QSa=all": (1000, 1000, 1000, 1000),
 }
 labels_hodayot = {
-    "1QHa=Non-teacher hymns": (3, 1, 8, 28),  # 3:1–8:28+17:38–23:16
+    "1QHa=Community hymns": (3, 1, 8, 28),  # 3:1–8:28+17:38–23:16
     "1QHa=Debated teacher hymns": (9, 1, 10, 19),  # 9:1 – 10:19
     "1QHa=Teacher hymns": (10, 20, 17, 36),  # 10:20 – 17:36
-    "1QHa=Non-teacher hymns_2": (17, 38, 23, 16),  # 3:1–8:28+17:38–23:16
+    "1QHa=Community hymns_2": (17, 38, 23, 16),  # 3:1–8:28+17:38–23:16
     "1QHa=allTheRest": (23, 16, 1, 1),
 }
 labels_1QM = {
@@ -110,7 +110,7 @@ def label_sentence_path(df_labeled_for_clustering, labels, verbose=True):
         df_labeled_for_clustering["label"] != "1QHa=allTheRest"
     ]  # not relevant anymore
     df_labeled_for_clustering["label"] = df_labeled_for_clustering["label"].replace(
-        {"1QHa=Non-teacher hymns_2": "1QHa=Non-teacher hymns"}
+        {"1QHa=Community hymns_2": "1QHa=Community hymns"}
     )
     return df_labeled_for_clustering
 
