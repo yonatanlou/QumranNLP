@@ -1,6 +1,6 @@
 import torch
 from torch.nn import functional as F
-from torch_geometric.nn import GCNConv, GATv2Conv
+from torch_geometric.nn import GCNConv
 from sklearn.metrics import (
     precision_score,
     recall_score,
@@ -11,9 +11,7 @@ import warnings
 from base_utils import measure_time
 
 from src.baselines.ml import (
-    get_clusterer,
     unsupervised_evaluation,
-    unsupervised_optimization,
 )
 
 
@@ -49,28 +47,6 @@ class GCN(torch.nn.Module):
             return h
 
 
-class GAT(torch.nn.Module):
-    def __init__(self, dim_in, dim_h, dim_out, lr, heads=8):
-        super().__init__()
-        torch.manual_seed(42)
-        self.gat1 = GATv2Conv(dim_in, dim_h, heads=heads)
-        self.gat2 = GATv2Conv(dim_h * heads, dim_out, heads=1)
-        self.optimizer = torch.optim.Adam(self.parameters(), lr=lr, weight_decay=5e-4)
-
-    def forward(self, x, edge_index):
-        h = F.dropout(x, p=0.5, training=self.training)
-        h = self.gat1(h, edge_index)
-        h = F.elu(h)
-        h = F.dropout(h, p=0.5, training=self.training)
-        h = self.gat2(h, edge_index)
-        return h, F.log_softmax(h, dim=1)
-
-
-def accuracy(y_pred, y_true):
-    """Calculate accuracy."""
-    return torch.sum(y_pred == y_true) / len(y_true)
-
-
 def accuracy(pred_y, y):
     return ((pred_y == y).sum() / len(y)).item()
 
@@ -95,7 +71,7 @@ def calculate_metrics(y_pred, y_test):
 
 
 @measure_time
-def train(model, data, epochs, patience=20, verbose=True):
+def train_gcn(model, data, epochs, patience=20, verbose=True):
     stats_best = []
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = model.optimizer
@@ -161,7 +137,7 @@ def train(model, data, epochs, patience=20, verbose=True):
 
 
 @measure_time
-def train_gvae(
+def train_gae(
     model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, verbose=True
 ):
     best_epoch = 0
@@ -169,44 +145,36 @@ def train_gvae(
     best_stats = unsupervised_evaluation(
         dataset, data.x, adjacency_matrix_tmp, clustering_algo="agglomerative"
     )
+    best_stats.update({"auc": 0.0, "ap": 0.0})
     best_model_state = None
-    clustering_weight = 3
     model.train()
     for epoch in range(epochs):
         optimizer.zero_grad()
-        reconstructed_x, mu, logvar = model(data.x, data.edge_index, data.edge_attr)
-        if (
-            optimizer.defaults["lr"] < 0.001
-        ):  # smaller loss needs smaller learning rates
-            recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="mean")
-            kl_los = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
-        else:
-            recon_loss = F.mse_loss(reconstructed_x, data.x, reduction="sum")
-            kl_los = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-
-        with torch.no_grad():
-            metrics = unsupervised_optimization(
-                dataset, mu, clustering_algo="agglomerative"
-            )
-        clustering_loss = 1 - metrics[unsupervised_metric]
-        loss = recon_loss + kl_los + clustering_weight * clustering_loss
+        z = model.encode(data.x, data.edge_index, data.edge_attr)
+        loss = model.recon_loss(z, data.edge_index)
+        if hasattr(model, "kl_loss"):
+            loss = loss + (1 / data.num_nodes) * model.kl_loss()
         loss.backward()
         optimizer.step()
-        model.eval()
         with torch.no_grad():
-            _, mu, _ = model(data.x, data.edge_index, data.edge_attr)
+            model.eval()
+            z = model.encode(data.x, data.edge_index, data.edge_attr)
+            neg_edge_index = negative_sampling(data.edge_index, z.size(0))
+            auc, ap = model.test(z, data.edge_index, neg_edge_index)
             metrics = unsupervised_evaluation(
-                dataset, mu, adjacency_matrix_tmp, clustering_algo="agglomerative"
+                dataset, z, adjacency_matrix_tmp, clustering_algo="agglomerative"
             )
-        if verbose and epoch % 10 == 0:
+            metrics["auc"] = auc
+            metrics["ap"] = ap
+
             print(
-                f"Epoch {epoch:>3} | Loss: {loss:.3f} | recon_loss: {recon_loss:.3f} | kl_loss: {kl_los:.3f} | clustering_loss: {clustering_weight * clustering_loss:.3f} | "
-                + " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()])
+                f"{epoch=} | loss:{loss :.3f}",
+                " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()]),
             )
-        if metrics[unsupervised_metric] > best_stats[unsupervised_metric]:
-            best_stats = metrics
-            best_epoch = epoch
-            best_model_state = model.state_dict()
+            if metrics[unsupervised_metric] > best_stats[unsupervised_metric]:
+                best_stats = metrics
+                best_epoch = epoch
+                best_model_state = model.state_dict()
 
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
@@ -220,49 +188,24 @@ def train_gvae(
     return model, [best_stats]
 
 
-def test(model, data):
-    model.eval()
-    _, out = model(data.x, data.edge_index)
-    acc = accuracy(out.argmax(dim=1)[data.test_mask], data.y[data.test_mask])
-    # print(classification_report(data.y[data.test_mask], out.argmax(dim=1)[data.test_mask], target_names=label_encoder.classes_))
-    return acc
+#####################################################################################
+############## New GVAE model #######################################################
+#####################################################################################
+
+EPS = 1e-15
+MAX_LOGSTD = 10
+from torch_geometric.nn.inits import reset
+from torch import Tensor
+from torch_geometric.utils import negative_sampling
+from typing import Optional, Tuple
+import torch
+
+from torch.nn import Module
 
 
-class GVAE(torch.nn.Module):
+class EncoderGAE(torch.nn.Module):
     def __init__(self, input_dim, hidden_dim, latent_dim):
-        super(GVAE, self).__init__()
-        torch.manual_seed(42)
-        self.encoder = Encoder(input_dim, hidden_dim, latent_dim)
-        self.decoder = Decoder(latent_dim, hidden_dim, input_dim)
-
-        # Add batch normalization layers
-        self.bn_encoder = torch.nn.BatchNorm1d(latent_dim)
-        self.bn_decoder = torch.nn.BatchNorm1d(hidden_dim)
-
-        self.kwargs = {
-            "input_dim": input_dim,
-            "hidden_dim": hidden_dim,
-            "latent_dim": latent_dim,
-        }
-
-    def reparameterize(self, mu, logvar):
-        if self.training:
-            std = torch.exp(0.5 * logvar)
-            eps = torch.randn_like(std)
-            return mu + eps * std
-        return mu
-
-    def forward(self, x, edge_index, edge_attr):
-        mu, logvar = self.encoder(x, edge_index, edge_attr)
-        mu = self.bn_encoder(mu)
-        z = self.reparameterize(mu, logvar)
-        reconstructed_x = self.decoder(z, edge_index, edge_attr)
-        return reconstructed_x, mu, logvar
-
-
-class Encoder(torch.nn.Module):
-    def __init__(self, input_dim, hidden_dim, latent_dim):
-        super(Encoder, self).__init__()
+        super(EncoderGAE, self).__init__()
         self.gc1 = GCNConv(input_dim, hidden_dim)
         self.gc2_mu = GCNConv(hidden_dim, latent_dim)
         self.gc2_logvar = GCNConv(hidden_dim, latent_dim)
@@ -273,15 +216,141 @@ class Encoder(torch.nn.Module):
         hidden = self.dropout(hidden)
         mu = self.gc2_mu(hidden, edge_index, edge_attr)
         logvar = self.gc2_logvar(hidden, edge_index, edge_attr)
-        return mu, logvar
+        # return mu, logvar
+        return mu
 
 
-class Decoder(torch.nn.Module):
-    def __init__(self, latent_dim, hidden_dim, output_dim):
-        super(Decoder, self).__init__()
-        self.gc1 = GCNConv(latent_dim, hidden_dim)
-        self.gc2 = GCNConv(hidden_dim, output_dim)
+class InnerProductDecoder(torch.nn.Module):
+    def forward(
+        self,
+        z: Tensor,
+        edge_index: Tensor,
+        sigmoid: bool = True,
+    ) -> Tensor:
+        r"""Decodes the latent variables :obj:`z` into edge probabilities for
+        the given node-pairs :obj:`edge_index`.
 
-    def forward(self, z, edge_index, edge_attr):
-        hidden = F.relu(self.gc1(z, edge_index, edge_attr))
-        return self.gc2(hidden, edge_index, edge_attr)
+        Args:
+            z (torch.Tensor): The latent space :math:`\mathbf{Z}`.
+            edge_index (torch.Tensor): The edge indices.
+            sigmoid (bool, optional): If set to :obj:`False`, does not apply
+                the logistic sigmoid function to the output.
+                (default: :obj:`True`)
+        """
+        value = (z[edge_index[0]] * z[edge_index[1]]).sum(dim=1)
+        return torch.sigmoid(value) if sigmoid else value
+
+    def forward_all(self, z: Tensor, sigmoid: bool = True) -> Tensor:
+        r"""Decodes the latent variables :obj:`z` into a probabilistic dense
+        adjacency matrix.
+
+        Args:
+            z (torch.Tensor): The latent space :math:`\mathbf{Z}`.
+            sigmoid (bool, optional): If set to :obj:`False`, does not apply
+                the logistic sigmoid function to the output.
+                (default: :obj:`True`)
+        """
+        adj = torch.matmul(z, z.t())
+        return torch.sigmoid(adj) if sigmoid else adj
+
+
+class GAE(torch.nn.Module):
+    r"""The Graph Auto-Encoder model from the
+    `"Variational Graph Auto-Encoders" <https://arxiv.org/abs/1611.07308>`_
+    paper based on user-defined encoder and decoder models.
+
+    Args:
+        encoder (torch.nn.Module): The encoder module.
+        decoder (torch.nn.Module, optional): The decoder module. If set to
+            :obj:`None`, will default to the
+            :class:`torch_geometric.nn.models.InnerProductDecoder`.
+            (default: :obj:`None`)
+    """
+
+    def __init__(
+        self, input_dim, hidden_dim, latent_dim, decoder: Optional[Module] = None
+    ):
+        super().__init__()
+        torch.manual_seed(42)
+        self.encoder = EncoderGAE(input_dim, hidden_dim, latent_dim)
+        self.bn_encoder = torch.nn.BatchNorm1d(latent_dim)
+
+        self.decoder = InnerProductDecoder() if decoder is None else decoder
+        GAE.reset_parameters(self)
+        self.kwargs = {
+            "input_dim": input_dim,
+            "hidden_dim": hidden_dim,
+            "latent_dim": latent_dim,
+        }
+
+    def reset_parameters(self):
+        r"""Resets all learnable parameters of the module."""
+        reset(self.encoder)
+        reset(self.decoder)
+
+    def forward(self, *args, **kwargs) -> Tensor:  # pragma: no cover
+        r"""Alias for :meth:`encode`."""
+        return self.encoder(*args, **kwargs)
+
+    def encode(self, *args, **kwargs) -> Tensor:
+        r"""Runs the encoder and computes node-wise latent variables."""
+        return self.encoder(*args, **kwargs)
+
+    def decode(self, *args, **kwargs) -> Tensor:
+        r"""Runs the decoder and computes edge probabilities."""
+        return self.decoder(*args, **kwargs)
+
+    def recon_loss(
+        self, z: Tensor, pos_edge_index: Tensor, neg_edge_index: Optional[Tensor] = None
+    ) -> Tensor:
+        r"""Given latent variables :obj:`z`, computes the binary cross
+        entropy loss for positive edges :obj:`pos_edge_index` and negative
+        sampled edges.
+
+        Args:
+            z (torch.Tensor): The latent space :math:`\mathbf{Z}`.
+            pos_edge_index (torch.Tensor): The positive edges to train against.
+            neg_edge_index (torch.Tensor, optional): The negative edges to
+                train against. If not given, uses negative sampling to
+                calculate negative edges. (default: :obj:`None`)
+        """
+        pos_loss = -torch.log(
+            self.decoder(z, pos_edge_index, sigmoid=True) + EPS
+        ).mean()
+
+        if neg_edge_index is None:
+            neg_edge_index = negative_sampling(pos_edge_index, z.size(0))
+        neg_loss = -torch.log(
+            1 - self.decoder(z, neg_edge_index, sigmoid=True) + EPS
+        ).mean()
+        # recon_loss_x = F.mse_loss(z, x, reduction="mean")
+        return pos_loss + neg_loss
+
+    def test(
+        self, z: Tensor, pos_edge_index: Tensor, neg_edge_index: Tensor
+    ) -> Tuple[Tensor, Tensor]:
+        r"""Given latent variables :obj:`z`, positive edges
+        :obj:`pos_edge_index` and negative edges :obj:`neg_edge_index`,
+        computes area under the ROC curve (AUC) and average precision (AP)
+        scores.
+
+        Args:
+            z (torch.Tensor): The latent space :math:`\mathbf{Z}`.
+            pos_edge_index (torch.Tensor): The positive edges to evaluate
+                against.
+            neg_edge_index (torch.Tensor): The negative edges to evaluate
+                against.
+        """
+        from sklearn.metrics import average_precision_score, roc_auc_score
+
+        pos_y = z.new_ones(pos_edge_index.size(1))
+        neg_y = z.new_zeros(neg_edge_index.size(1))
+        y = torch.cat([pos_y, neg_y], dim=0)
+
+        pos_pred = self.decoder(z, pos_edge_index, sigmoid=True)
+        neg_pred = self.decoder(z, neg_edge_index, sigmoid=True)
+        pred = torch.cat([pos_pred, neg_pred], dim=0)
+
+        y, pred = y.detach().cpu().numpy(), pred.detach().cpu().numpy()
+
+        return roc_auc_score(y, pred), average_precision_score(y, pred)

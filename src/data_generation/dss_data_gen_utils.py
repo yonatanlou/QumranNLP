@@ -131,9 +131,34 @@ def process_scrolls_to_features(
         tmp_df = pd.concat([raw_txt, starr_features], axis=1)
         tmp_df["bib"] = get_majority_bib(samples)
         features_by_sample_dfs.append(tmp_df)
-
     return pd.concat(features_by_sample_dfs, ignore_index=True)
 
+
+def create_data_for_tkn_classificaation(samples, i):
+    data_for_token_classification_scroll = []
+    for chunk in samples:
+        words = []
+        pos = []
+        processed_chunk = {}
+        for word in chunk:
+            tmp_word = clean_text(word["transcript"])
+            if tmp_word == "" or tmp_word == " ":
+                continue
+            if not any(
+                [word["parsed_morph"].get("sp"), word["parsed_morph"].get("cl")]
+            ):
+                continue
+            if word["parsed_morph"].get("cl"):
+                morph = word["parsed_morph"]["cl"]
+            else:
+                morph = word["parsed_morph"]["sp"]
+
+            words.append(tmp_word)
+            pos.append(morph)
+        processed_chunk.update({"tokens": words, "pos": pos, "id": i})
+        i += 1
+        data_for_token_classification_scroll.append(processed_chunk)
+    return data_for_token_classification_scroll, i
 
 def filter_df_by_rules(df_origin):
     df = df_origin

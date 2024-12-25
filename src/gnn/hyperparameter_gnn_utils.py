@@ -6,7 +6,7 @@ import torch
 
 from src.baselines.utils import get_adj_matrix_by_chunks_structure
 from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixGenerator
-from src.gnn.model import GCN, train, train_gvae, GVAE
+from src.gnn.model import GCN, train_gcn, train_gae, GAE
 from src.gnn.utils import get_data_object
 
 
@@ -36,7 +36,7 @@ def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=Fal
     )
 
     # Train the GCN
-    gcn, stats = train(
+    gcn, stats = train_gcn(
         gcn,
         data,
         param_dict["epochs"],
@@ -113,7 +113,7 @@ def run_single_gvae_model(
     data, label_encoder = get_data_object(
         X, df, dataset.label, edge_index, edge_attr, masks
     )
-    gvae = GVAE(
+    gvae = GAE(
         data.num_features,
         param_dict["hidden_dim"],
         param_dict["latent_dim"],
@@ -126,7 +126,7 @@ def run_single_gvae_model(
         :, dataset.relevant_idx_to_embeddings
     ]
 
-    gvae, stats = train_gvae(
+    gvae, stats = train_gae(
         gvae,
         data,
         optimizer,

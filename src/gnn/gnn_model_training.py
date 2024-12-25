@@ -48,28 +48,51 @@ def train_single_model(is_supervised, param_dict, bert_model, exp_name):
             verbose=True,
         )
     model_name_to_save = f"{exp_name}_{param_dict.get('bert_model').split('/')[-1]}"
-    torch.save(
-        [model.kwargs, model.state_dict()],
-        f"{BASE_DIR}/models/{model_name_to_save}.pth",
-    )
-    print(f"saved model in {BASE_DIR}/models/{model_name_to_save}.pth")
+    # torch.save(
+    #     [model.kwargs, model.state_dict()],
+    #     f"{BASE_DIR}/models/{model_name_to_save}.pth",
+    # )
+    # print(f"saved model in {BASE_DIR}/models/{model_name_to_save}.pth")
     print(stats_df[UNSUPERVISED_METRICS].round(4).to_dict(orient="records"))
+    return stats_df
 
 
 EXP_NAME = "trained_gvae_model"
 bert_models = get_bert_models(DOMAIN)
 param_dict = {
     "num_adjs": 1,
-    "epochs": 250,
+    "epochs": 120,
     "hidden_dim": 300,
     "latent_dim": 100,  # for GVAE
     "distance": "cosine",
     "learning_rate": 0.001,
     "threshold": 0.99,
-    "adjacencies": [{"type": "tfidf", "params": {"max_features": 7500}}],
+    "adjacencies": [
+        {"type": "tfidf", "params": {"max_features": 10_000}},
+        # {"type": "bert_model", "params": {"model_name":"yonatanlou/BEREL-finetuned-DSS-pos_cls"}},
+        # {"type": "trigram", "params": {"analyzer": "char", "ngram_range": (3, 3),"max_features": 10_000}},
+        # {"type": "fivergram", "params": {"analyzer": "char", "ngram_range": (2, 2),"max_features": 10_000}},
+        # {"type": "starr", "params": {}},
+    ],
+    # "adjacencies": [{"type": "bert_model", "params": {"model_name":"yonatanlou/BEREL-finetuned-DSS-pos_cls"}}],
     "bert_model": "dicta-il/BEREL",
 }
-
+meta_params = {"processed_vectorizers": processed_vectorizers, "dataset": dataset}
+all_res = []
+bert_models = [
+    "dicta-il/BEREL",
+    "onlplab/alephbert-base",
+    "dicta-il/dictabert",
+    "dicta-il/MsBERT",
+]
 for bert_model in bert_models:
     param_dict["bert_model"] = bert_model
-    train_single_model(IS_SUPERVISED, param_dict, bert_model, EXP_NAME)
+    tmp_res = train_single_model(IS_SUPERVISED, param_dict, bert_model, EXP_NAME)
+    all_res.append(tmp_res)
+
+all_res_df = pd.concat(all_res, axis=0).reset_index(drop=True)
+
+all_res_df.to_csv(
+    "/Users/yonatanlou/dev/QumranNLP/experiments/dss/gnn/unsupervised_schemes/gae/gae_edge_loss_and_sil_loss.csv",
+    index=False,
+)

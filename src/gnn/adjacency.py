@@ -78,7 +78,7 @@ class AdjacencyMatrixGenerator:
         return self.df[self.STARR_FEAT].to_numpy()
 
     def _vectorize_bert(self):
-        model_type = self.vectorizer_params.get("type")
+        model_type = self.vectorizer_params.get("model_name")
         X = self.meta_params.get("processed_vectorizers")[model_type]
         X = X[self.meta_params.get("dataset").relevant_idx_to_embeddings]
         return X
@@ -175,7 +175,7 @@ def normalize_adj_mat(adj):
 
 class CombinedAdjacencyMatrixGenerator(AdjacencyMatrixGenerator):
     def __init__(
-        self, adjacency_generators, combine_method="max", threshold=0.85, normalize=True
+        self, adjacency_generators, combine_method="add", threshold=0.85, normalize=True
     ):
         super().__init__(None, None, threshold)
         self.adjacency_generators = adjacency_generators
