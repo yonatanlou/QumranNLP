@@ -7,9 +7,8 @@ from config import get_paths_by_domain
 
 import scipy
 from src.plots_generation.analysis_utils import (
-    get_gvae_embeddings,
     generate_dendrogram_plot,
-    cluster_and_get_metrics,
+    cluster_and_get_metrics, get_gae_embeddings,
 )
 from src.baselines.utils import (
     set_seed_globally,
@@ -120,24 +119,36 @@ if __name__ == "__main__":
     processed_vectorizers = processor.load_or_generate_embeddings()
 
     bert_model = "dicta-il/BEREL"
-    model_file = "trained_gvae_model_BEREL-finetuned-DSS-maskedLM.pth"
+    model_file = "trained_gae_model_BEREL.pth"
     param_dict = {
-        "num_adjs": 1,
+        "num_adjs": 2,
+        "epochs": 50,
+        "hidden_dim": 300,
         "distance": "cosine",
-        "threshold": 0.97,
+        "learning_rate": 0.001,
+        "threshold": 0.95,
         "adjacencies": [
-            {"type": "tfidf", "params": {"max_features": 4000, "min_df": 0.001}}
+            {"type": "tfidf", "params": {"max_features": 10000, "min_df": 0.001}},
+            {
+                "type": "trigram",
+                "params": {
+                    "analyzer": "char",
+                    "ngram_range": (3, 3),
+                    "min_df": 0.001,
+                    "max_features": 2500,
+                },
+            },
         ],
     }
     df_no_nulls = df[~df["section"].isna()]
     df_no_nulls = df_no_nulls[
         ~(df_no_nulls["composition"].isin(["4QH", "4QM", "4QS", "4QD"]))
     ]
-    gvae_embeddings = get_gvae_embeddings(
+    gae_embeddings = get_gae_embeddings(
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )
     embeddings_averaged, df_averaged = average_embeddings_by_scroll(
-        gvae_embeddings, df_no_nulls, "composition", outlier_threshold=2
+        gae_embeddings, df_no_nulls, "composition", outlier_threshold=2
     )
 
     def format_composition(value):
