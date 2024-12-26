@@ -166,6 +166,6 @@ if __name__ == "__main__":
         f"Unsupervised Clustering by Sectarian Compositions",
         embeddings_averaged,
         "composition",
-        {"linkage_m": "centroid", "color_threshold": 0.6},
+        {"linkage_m": "centroid", "color_threshold": 0.55},
         path_to_save,
     )
