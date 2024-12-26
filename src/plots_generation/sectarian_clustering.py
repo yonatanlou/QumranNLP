@@ -8,7 +8,8 @@ from config import get_paths_by_domain
 import scipy
 from src.plots_generation.analysis_utils import (
     generate_dendrogram_plot,
-    cluster_and_get_metrics, get_gae_embeddings,
+    cluster_and_get_metrics,
+    get_gae_embeddings,
 )
 from src.baselines.utils import (
     set_seed_globally,
@@ -106,6 +107,13 @@ def average_embeddings_by_scroll(
     return averaged_embeddings, new_df
 
 
+def format_composition(value):
+    if value == "CD":
+        return value
+    formatted_value = value.replace("_", " ").replace(".", " ")
+    return formatted_value.title()
+
+
 if __name__ == "__main__":
     exp_dir = f"{BASE_DIR}/experiments/dss/sectarian_similarities"
     DOMAIN = "dss"
@@ -119,22 +127,22 @@ if __name__ == "__main__":
     processed_vectorizers = processor.load_or_generate_embeddings()
 
     bert_model = "dicta-il/BEREL"
-    model_file = "trained_gae_model_BEREL.pth"
+    model_file = "trained_gae_model_BEREL-finetuned-DSS-maskedLM.pth"
     param_dict = {
         "num_adjs": 2,
         "epochs": 50,
         "hidden_dim": 300,
         "distance": "cosine",
         "learning_rate": 0.001,
-        "threshold": 0.95,
+        "threshold": 0.992,
         "adjacencies": [
-            {"type": "tfidf", "params": {"max_features": 10000, "min_df": 0.001}},
+            {"type": "tfidf", "params": {"max_features": 10000, "min_df": 0.01}},
             {
                 "type": "trigram",
                 "params": {
                     "analyzer": "char",
                     "ngram_range": (3, 3),
-                    "min_df": 0.001,
+                    "min_df": 0.01,
                     "max_features": 2500,
                 },
             },
@@ -148,15 +156,8 @@ if __name__ == "__main__":
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )
     embeddings_averaged, df_averaged = average_embeddings_by_scroll(
-        gae_embeddings, df_no_nulls, "composition", outlier_threshold=2
+        gae_embeddings, df_no_nulls, "composition", outlier_threshold=1
     )
-
-    def format_composition(value):
-        if value == "CD":
-            return value
-        formatted_value = value.replace("_", " ").replace(".", " ")
-        return formatted_value.title()
-
     df_averaged["composition"] = df_averaged["composition"].apply(format_composition)
 
     path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN.pdf"
@@ -165,6 +166,6 @@ if __name__ == "__main__":
         f"Unsupervised Clustering by Sectarian Compositions",
         embeddings_averaged,
         "composition",
-        {"linkage_m": "centroid", "color_threshold": 0.5},
+        {"linkage_m": "centroid", "color_threshold": 0.6},
         path_to_save,
     )

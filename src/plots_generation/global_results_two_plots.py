@@ -10,14 +10,14 @@ MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
 
 
 def generate_combined_bar_plot(
-        unsupervised_results,
-        unsupervised_results_dasgupta,
-        x_col,
-        hue_col,
-        color_map,
-        filename,
-        which_hue_cols=None,
-        base_color_by_group=None,
+    unsupervised_results,
+    unsupervised_results_dasgupta,
+    x_col,
+    hue_col,
+    color_map,
+    filename,
+    which_hue_cols=None,
+    base_color_by_group=None,
 ):
     """Generate combined bar plots for unsupervised results."""
     import seaborn as sns
@@ -50,7 +50,7 @@ def generate_combined_bar_plot(
         for group in base_color_by_group.keys():
             group_items = unsupervised_results[
                 unsupervised_results["vectorizer_type"] == group
-                ][hue_col].unique()
+            ][hue_col].unique()
             custom_order.extend(group_items)
 
     # Iterate through tasks and generate plots
@@ -59,10 +59,10 @@ def generate_combined_bar_plot(
 
         task_data_unsupervised = unsupervised_results[
             unsupervised_results["task"] == task
-            ]
+        ]
         task_data_unsupervised_dasgupta = unsupervised_results_dasgupta[
             unsupervised_results_dasgupta["task"] == task
-            ]
+        ]
 
         if which_hue_cols is not None:
             task_data_unsupervised = task_data_unsupervised[
@@ -80,9 +80,13 @@ def generate_combined_bar_plot(
             task_data_unsupervised = task_data_unsupervised.sort_values(hue_col)
 
             task_data_unsupervised_dasgupta[hue_col] = pd.Categorical(
-                task_data_unsupervised_dasgupta[hue_col], categories=custom_order, ordered=True
+                task_data_unsupervised_dasgupta[hue_col],
+                categories=custom_order,
+                ordered=True,
             )
-            task_data_unsupervised_dasgupta = task_data_unsupervised_dasgupta.sort_values(hue_col)
+            task_data_unsupervised_dasgupta = (
+                task_data_unsupervised_dasgupta.sort_values(hue_col)
+            )
 
         # Plot for Jaccard metric
         sns.barplot(
@@ -125,8 +129,10 @@ def generate_combined_bar_plot(
         ax2.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
         ax2.set_ylabel(y_col_unsupervised_2.replace("_", " ").capitalize(), fontsize=14)
         ax2.set_ylim(
-            task_data_unsupervised_dasgupta[y_col_unsupervised_2].min() * (1 - YLIM_STRETCH),
-            task_data_unsupervised_dasgupta[y_col_unsupervised_2].max() * (1 + YLIM_STRETCH),
+            task_data_unsupervised_dasgupta[y_col_unsupervised_2].min()
+            * (1 - YLIM_STRETCH),
+            task_data_unsupervised_dasgupta[y_col_unsupervised_2].max()
+            * (1 + YLIM_STRETCH),
         )
         ax2.tick_params(axis="both", labelsize=XTICK_FONT_SIZE)
         ax2.grid(alpha=0.5)
@@ -168,7 +174,11 @@ def make_combined_bar_plot_unsupervised(domain, file_name):
 
     # Generate color map
     color_map = generate_color_map(
-        supervised_results, "vectorizer", "vectorizer_type", "RdYlGn", BASE_COLOR_BY_GROUP
+        supervised_results,
+        "vectorizer",
+        "vectorizer_type",
+        "RdYlGn",
+        BASE_COLOR_BY_GROUP,
     )
 
     hue_cols = supervised_results["vectorizer"].unique()
@@ -187,10 +197,9 @@ def make_combined_bar_plot_unsupervised(domain, file_name):
 # Execute the function
 make_combined_bar_plot_unsupervised(
     "dss",
-    f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt" + "_{}.pdf",
+    f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt"
+    + "_{}.pdf",
 )
-
-
 
 
 # def make_combined_bar_plot_supervised_unsupervised(domain, file_name):
