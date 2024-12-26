@@ -6,6 +6,8 @@ import numpy as np
 from src.baselines.embeddings import get_bert_models
 from src.constants import OPTIONAL_DATASET_NAMES
 
+THRESHOLD_BETWEEN_GRAPHS = 0.5
+
 
 def create_gnn_params(domain="dss", is_supervised=False):
     if not is_supervised and domain == "bible":
@@ -18,12 +20,12 @@ def create_gnn_params(domain="dss", is_supervised=False):
         epochs = 500
         learning_rate = 0.001
     else:
-        epochs = 250
+        epochs = 50
         learning_rate = 0.001
 
     params = {
         "epochs": [epochs],
-        "hidden_dims": [300],
+        "hidden_dims": [300, 500],
         "latent_dims": [100],  # only for GVAE
         "distances": ["cosine"],
         "learning_rates": [learning_rate],
@@ -34,11 +36,11 @@ def create_gnn_params(domain="dss", is_supervised=False):
         "adj_types": {
             "tfidf": {"max_features": 7500 if domain == "dss" else 10000},
             "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
-            "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
+            # "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
         },
     }
-    if domain == "dss":
-        params["adj_types"]["starr"] = {}
+    # if domain == "dss":
+    #     params["adj_types"]["starr"] = {}
     return params
 
 

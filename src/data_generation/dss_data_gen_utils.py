@@ -160,6 +160,7 @@ def create_data_for_tkn_classificaation(samples, i):
         data_for_token_classification_scroll.append(processed_chunk)
     return data_for_token_classification_scroll, i
 
+
 def filter_df_by_rules(df_origin):
     df = df_origin
     df["n_words"] = df["text"].str.split().apply(len)

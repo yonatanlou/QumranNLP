@@ -7,7 +7,7 @@ import torch
 from src.baselines.utils import get_adj_matrix_by_chunks_structure
 from src.gnn.adjacency import AdjacencyMatrixGenerator, CombinedAdjacencyMatrixGenerator
 from src.gnn.model import GCN, train_gcn, train_gae, GAE
-from src.gnn.utils import get_data_object
+from src.gnn.utils import get_data_object, THRESHOLD_BETWEEN_GRAPHS
 
 
 def run_single_gnn_model(processed_vectorizers, dataset, param_dict, verbose=False):
@@ -84,7 +84,9 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
         combined_generator = CombinedAdjacencyMatrixGenerator(
             adj_generators,
             combine_method="add",
-            threshold=param_dict["threshold"],
+            threshold=meta_params.get("global_threshold")
+            if meta_params.get("global_threshold")
+            else param_dict["threshold"],
             normalize=True,
         )
         edge_index, edge_attr, adj_matrix = combined_generator.combine_graphs(
@@ -93,7 +95,7 @@ def create_adj_matrix_for_pytorch_geometric(df, param_dict, meta_params):
     return edge_index, edge_attr, adj_matrix
 
 
-def run_single_gvae_model(
+def run_single_gae_model(
     adjacency_matrix_all, processed_vectorizers, dataset, param_dict, verbose=False
 ):
     df = dataset.df
@@ -102,7 +104,11 @@ def run_single_gvae_model(
         "val_mask": dataset.val_mask,
         "test_mask": dataset.test_mask,
     }
-    meta_params = {"processed_vectorizers": processed_vectorizers, "dataset": dataset}
+    meta_params = {
+        "processed_vectorizers": processed_vectorizers,
+        "dataset": dataset,
+        "global_threshold": THRESHOLD_BETWEEN_GRAPHS,
+    }
     edge_index, edge_attr, adj_matrix = create_adj_matrix_for_pytorch_geometric(
         df, param_dict, meta_params
     )
@@ -168,7 +174,7 @@ def run_gnn_exp(
             )
 
         else:
-            model, stats_df = run_single_gvae_model(
+            model, stats_df = run_single_gae_model(
                 adjacency_matrix_all,
                 processed_vectorizers,
                 dataset,

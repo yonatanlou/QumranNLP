@@ -14,9 +14,9 @@ readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP
 #python src/gnn/hyperparameter_gnn_main.py --datasets all --domain dss --num-combined-graphs 2 --exp-name gcn_init --results-dir experiments/dss/gnn --is_supervised
 
 # run for unsupervised GNN
-python src/gnn/hyperparameter_gnn_main.py --datasets dataset_composition,dataset_scroll --domain dss --num-combined-graphs 2 --exp-name gave_init --results-dir experiments/dss/gnn
+python src/gnn/hyperparameter_gnn_main.py --datasets dataset_scroll --domain dss --num-combined-graphs 2 --exp-name gae_init --results-dir experiments/dss/gnn
 
-# run for training all GVAE models
+# run for training all GAE models
 
 # run for producing clustering within scroll plots
 

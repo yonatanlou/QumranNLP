@@ -8,12 +8,14 @@ from src.plots_generation.plot_utils import (
     BASE_COLOR_BY_GROUP,
 )
 
-MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "dasgupta"}
+MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
 
 
-def process_data_for_plot(domain, is_supervised, gnn_exp_name, gnn_name_format):
+def process_data_for_plot(
+    domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric
+):
     # some basic settings
-    main_metric = MAIN_METRICS["supervised" if is_supervised else "unsupervised"]
+
     baseline_dir = f"{BASE_DIR}/experiments/{domain}/baselines"
     baseline_gnn_dir = f"{BASE_DIR}/experiments/{domain}/gnn/{gnn_exp_name}"
     task_by_domain = {"dss": ["book", "composition", "section"], "bible": ["book"]}
@@ -47,7 +49,7 @@ def process_data_for_plot(domain, is_supervised, gnn_exp_name, gnn_name_format):
         "yonatanlou/", "", regex=False
     )
     all_results["task"] = all_results["task"].replace("section", "sectarian")
-    all_results["task"] = all_results["task"].replace("book", "Scroll")
+    all_results["task"] = all_results["task"].replace("book", "scroll")
 
     return all_results
 
@@ -77,18 +79,16 @@ def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_nam
 if __name__ == "__main__":
     # DOMAINS = ["dss", "bible"]
     DOMAINS = ["dss"]
-    SUPERVISED_OPTIONS = [True, False]
+    # SUPERVISED_OPTIONS = [True, False]
+    SUPERVISED_OPTIONS = [False]
 
     for domain in DOMAINS:
         for is_supervised in SUPERVISED_OPTIONS:
             # Determine gnn_exp_name based on is_supervised
-            gnn_exp_name = "gcn_init" if is_supervised else "gvae_init"
+            gnn_exp_name = "gcn_init" if is_supervised else "gae_init"
 
             # Determine gnn_name_format based on domain and is_supervised
-            if domain == "dss" and is_supervised:
-                gnn_name_format = "{}_{}_2_adj_types.csv"
-            else:
-                gnn_name_format = "{}_{}_1_adj_types.csv"
+            gnn_name_format = "{}_{}_2_adj_types.csv"
 
             file_name = (
                 f"{BASE_DIR}/reports/plots/global_results/{domain}_{'unsupervised' if not is_supervised else 'supervised'}"

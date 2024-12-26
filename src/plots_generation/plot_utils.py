@@ -92,7 +92,7 @@ def generate_bar_plot(
 ):
     import scienceplots
 
-    plt.style.use(["science"])
+    plt.style.use(["science", "no-latex"])
     # Replace "section" with "sectarian"
 
     # Create a custom order based on base_color_by_group
@@ -167,7 +167,7 @@ def generate_bar_plot(
             plt.savefig(task_filename, bbox_inches="tight")
             print(f"Saved plot to {task_filename}")
 
-        # plt.show()
+        plt.show()
 
 
 def generate_all_results_supervised(
@@ -212,13 +212,13 @@ def generate_all_results_unsupervised(
 
         gnn = pd.read_csv(compare_list[task][1])
         gnn = gnn.rename(columns={"bert_model": "vectorizer_type"})
-        gnn["model"] = "GVAE"
+        gnn["model"] = "GAE"
         gnn["task"] = task
         gnn = gnn.rename(columns={"vectorizer_type": "vectorizer"})
         max_idx = gnn.groupby("vectorizer")[main_metric].idxmax()
 
         max_test_acc_rows = gnn.loc[max_idx]
-        max_test_acc_rows["model"] = "GVAE"
+        max_test_acc_rows["model"] = "GAE"
         max_test_acc_rows["task"] = task
         results.append(max_test_acc_rows[comparison_scheme].to_dict(orient="records"))
 

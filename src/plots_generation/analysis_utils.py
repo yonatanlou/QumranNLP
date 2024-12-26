@@ -12,9 +12,11 @@ from sknetwork.hierarchy import dasgupta_score as calculate_dasgupta_score
 
 from config import BASE_DIR
 from src.baselines.utils import calculate_jaccard_unsupervised, clustering_accuracy
+from src.gnn.hyperparameter_gnn_utils import create_adj_matrix_for_pytorch_geometric
+from src.gnn.utils import THRESHOLD_BETWEEN_GRAPHS
 from src.plots_generation.scrolls_labeling import label_sentence_path
 from src.gnn.adjacency import AdjacencyMatrixGenerator
-from src.gnn.model import GVAE
+from src.gnn.model import GAE
 
 
 def round_metrics(metrics, n=3):
@@ -81,7 +83,7 @@ def generate_dendrogram_plot(
     # TITLE_FONT_SIZE = 38
     # LEGEND_FONT_SIZE = 20
 
-    plt.style.use(["science"])  # Ensure science plots with no LaTeX errors
+    plt.style.use(["science", "no-latex"])  # Ensure science plots with no LaTeX errors
 
     if label_to_plot not in ["sentence_path", "label", "book", "composition"]:
         raise ValueError("Invalid label_to_plot value!")
@@ -206,30 +208,69 @@ def hirerchial_clustering_by_scroll_gnn(
     return metrics
 
 
-def get_gvae_embeddings(df, processed_vectorizers, bert_model, model_file, param_dict):
+# def get_gvae_embeddings(df, processed_vectorizers, bert_model, model_file, param_dict):
+#     param_dict["bert_model"] = bert_model
+#
+#     # Predefined paths and configurations
+#     models_dir = f"{BASE_DIR}/models"
+#     meta_params = {"processed_vectorizers": processed_vectorizers,  "global_threshold":THRESHOLD_BETWEEN_GRAPHS}
+#
+#     edge_index, edge_attr, adj_matrix = create_adj_matrix_for_pytorch_geometric(
+#         df, param_dict, meta_params
+#     )
+#     # # Generate adjacency matrix
+#     # adj_gen = AdjacencyMatrixGenerator(
+#     #     vectorizer_type=param_dict["adjacencies"][0]["type"],
+#     #     vectorizer_params=param_dict["adjacencies"][0]["params"],
+#     #     threshold=param_dict["threshold"],
+#     #     distance_metric=param_dict["distance"],
+#     #     meta_params=None,
+#     #     normalize=True,
+#     # )
+#     #
+#     # # Generate graph
+#     # edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
+#
+#     # Prepare model
+#     model_path = os.path.join(models_dir, model_file)
+#     kwargs, state = torch.load(model_path)
+#
+#     model = GAE(**kwargs)
+#     model.load_state_dict(state)
+#     model.eval()
+#
+#     # Prepare input
+#     X = processed_vectorizers[bert_model]
+#     X = X[df.index]
+#     X = X.astype("float32")
+#     X_tensor = torch.FloatTensor(X)
+#
+#     # Get embeddings
+#     with torch.no_grad():
+#         _, mu, *_ = model(X_tensor, edge_index, edge_attr)
+#     embeddings_gae = mu.numpy()
+#     return embeddings_gae
+
+
+def get_gae_embeddings(df, processed_vectorizers, bert_model, model_file, param_dict):
     param_dict["bert_model"] = bert_model
 
     # Predefined paths and configurations
     models_dir = f"{BASE_DIR}/models"
 
-    # Generate adjacency matrix
-    adj_gen = AdjacencyMatrixGenerator(
-        vectorizer_type=param_dict["adjacencies"][0]["type"],
-        vectorizer_params=param_dict["adjacencies"][0]["params"],
-        threshold=param_dict["threshold"],
-        distance_metric=param_dict["distance"],
-        meta_params=None,
-        normalize=True,
+    meta_params = {
+        "processed_vectorizers": processed_vectorizers,
+        "global_threshold": THRESHOLD_BETWEEN_GRAPHS,
+    }
+
+    edge_index, edge_attr, adj_matrix = create_adj_matrix_for_pytorch_geometric(
+        df, param_dict, meta_params
     )
-
-    # Generate graph
-    edge_index, edge_attr, adj_matrix = adj_gen.generate_graph(df)
-
     # Prepare model
     model_path = os.path.join(models_dir, model_file)
     kwargs, state = torch.load(model_path)
 
-    model = GVAE(**kwargs)
+    model = GAE(**kwargs)
     model.load_state_dict(state)
     model.eval()
 
@@ -241,6 +282,6 @@ def get_gvae_embeddings(df, processed_vectorizers, bert_model, model_file, param
 
     # Get embeddings
     with torch.no_grad():
-        _, mu, *_ = model(X_tensor, edge_index, edge_attr)
-    embeddings_gvae = mu.numpy()
-    return embeddings_gvae
+        mu = model.get_embeddings(X_tensor, edge_index, edge_attr)
+    embeddings_gae = mu.numpy()
+    return embeddings_gae

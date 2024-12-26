@@ -7,10 +7,9 @@ from config import BASE_DIR, get_paths_by_domain
 from src.baselines.embeddings import VectorizerProcessor, get_bert_models
 from src.baselines.utils import create_adjacency_matrix, set_seed_globally
 from src.gnn.adjacency import AdjacencyMatrixGenerator
-from src.gnn.model import GVAE
 from src.plots_generation.analysis_utils import (
     hirerchial_clustering_by_scroll_gnn,
-    get_gvae_embeddings,
+    get_gae_embeddings,
 )
 from src.plots_generation.scrolls_labeling import (
     labels_1QS,
@@ -50,7 +49,7 @@ def get_metrics_per_model(
     # Read and filter DataFrame
     df = pd.read_csv(data_csv_path)
     df_ = df[df["book"].isin(["1QM", "1QSa", "1QS", "1QHa"])]
-    embeddings_gvae = get_gvae_embeddings(
+    embeddings_gvae = get_gae_embeddings(
         df_, PROCESSED_VECTORIZERS, bert_model, model_file, param_dict
     )
     # Labels setup
@@ -71,7 +70,7 @@ def get_metrics_per_model(
             embeddings_gvae,
             ADJACENCY_MATRIX_ALL,
             label_to_plot,
-            {"linkage_m": "ward"},
+            {"linkage_m": "ward", "color_threshold": 0.7},
             path_to_save.format(eval(scroll)) if path_to_save else None,
         )
 
@@ -92,19 +91,27 @@ def get_metrics_per_model(
 if __name__ == "__main__":
     # best by Hodayot
     param_dict = {
-        "num_adjs": 1,
-        "epochs": 500,
+        "num_adjs": 2,
+        "epochs": 50,
         "hidden_dim": 300,
         "distance": "cosine",
         "learning_rate": 0.001,
-        "threshold": 0.97,
+        "threshold": 0.9,
         "adjacencies": [
-            {"type": "tfidf", "params": {"max_features": 4000, "min_df": 0.001}}
+            {"type": "tfidf", "params": {"max_features": 1000, "min_df": 0.001}},
+            {
+                "type": "trigram",
+                "params": {
+                    "analyzer": "char",
+                    "ngram_range": (3, 3),
+                    "min_df": 0.001,
+                    "max_features": 1000,
+                },
+            },
         ],
     }
-
     bert_model = "dicta-il/BEREL"
-    model_file = "trained_gvae_model_BEREL-finetuned-DSS-maskedLM.pth"
+    model_file = "trained_gae_model_BEREL.pth"
     path_to_save = f"{BASE_DIR}/reports/plots"
     result = get_metrics_per_model(
         bert_model,
@@ -113,3 +120,32 @@ if __name__ == "__main__":
         label_to_plot="sentence_path",
         path_to_save=path_to_save,
     )
+
+    # all_res_sim = []
+    # for threshold in [0.8, 0.9,0.95, 0.99]:
+    #     param_dict["threshold"] = threshold
+    #     for bert_model in get_bert_models(DOMAIN):
+    #         for model_file in ['trained_gae_model_BEREL-finetuned-DSS-maskedLM.pth',
+    #                            'trained_gae_model_BEREL.pth',
+    #                            ]:
+    #             for max_f in [1000,5000,10000]:
+    #                 param_dict["adjacencies"][0]["params"]["max_features"] = max_f
+    #                 param_dict["adjacencies"][1]["params"]["max_features"] = max_f
+    #                 for min_df in [0.001,0.005,0.01]:
+    #                     param_dict["adjacencies"][0]["params"]["min_df"] = min_df
+    #                     param_dict["adjacencies"][1]["params"]["min_df"] = min_df
+    #
+    #                     result = get_metrics_per_model(
+    #                         bert_model,
+    #                         model_file,
+    #                         param_dict,
+    #                         label_to_plot=None,
+    #                         path_to_save=None
+    #                     )
+    #                     result[0].update({"threshold": threshold, "bert_model": bert_model, "model_file": model_file, "min_df":min_df,"max_f": max_f})
+    #                     all_res_sim.append(result[0])
+    #                     print(result[0])
+    #                     print()
+    # pd.DataFrame(all_res_sim).to_csv(
+    #     f"/Users/yonatanlou/dev/QumranNLP/experiments/dss/clustering_by_scroll/clustering_within_composition_comp.csv",
+    #     index=False)

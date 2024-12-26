@@ -60,9 +60,11 @@ def unsupervised_evaluation(
     le.fit(df[label_column])
     true_labels_encode = le.transform(df[label_column])
     predicted_labels = clusterer.labels_
-
-    linkage_matrix = get_linkage_matrix(clusterer)
-    dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
+    if clustering_algo == "agglomerative":
+        linkage_matrix = get_linkage_matrix(clusterer)
+        dasgupta = calculate_dasgupta_score(adjacency_matrix, linkage_matrix)
+    else:
+        dasgupta = 0
     silhouette = silhouette_score(vectorizer_matrix, predicted_labels)
     jaccard = calculate_jaccard_unsupervised(true_labels_encode, predicted_labels)
     clustering_acc = clustering_accuracy(true_labels_encode, predicted_labels)

@@ -8,11 +8,18 @@ from sklearn.metrics import (
 )
 import warnings
 
+
 from base_utils import measure_time
+from config import BASE_DIR
+from logger import get_logger
 
 from src.baselines.ml import (
     unsupervised_evaluation,
 )
+from datetime import datetime
+
+date = datetime.today().strftime("%Y-%m-%d")
+logger = get_logger(__name__, f"{BASE_DIR}/logs/{__name__}_{date}.log")
 
 
 class GCN(torch.nn.Module):
@@ -140,12 +147,18 @@ def train_gcn(model, data, epochs, patience=20, verbose=True):
 def train_gae(
     model, data, optimizer, epochs, dataset, adjacency_matrix_tmp, verbose=True
 ):
+    counter = 0
+    patience = 2
+    min_delta = 0.001
+    min_validation_loss = float("inf")
+
     best_epoch = 0
-    unsupervised_metric = "silhouette"
+    unsupervised_metric = "auc"
     best_stats = unsupervised_evaluation(
         dataset, data.x, adjacency_matrix_tmp, clustering_algo="agglomerative"
     )
     best_stats.update({"auc": 0.0, "ap": 0.0})
+    print(f"starting with {best_stats=}")
     best_model_state = None
     model.train()
     for epoch in range(epochs):
@@ -168,9 +181,21 @@ def train_gae(
             metrics["ap"] = ap
 
             print(
-                f"{epoch=} | loss:{loss :.3f}",
+                f"epoch: {epoch} | loss: {loss :.3f} |",
                 " | ".join([f"{k}: {v:.3f}" for k, v in metrics.items()]),
             )
+            # Check for improvement
+            validation_loss = loss.item()
+            if validation_loss < min_validation_loss - min_delta:
+                min_validation_loss = validation_loss
+                counter = 0
+            else:
+                counter += 1
+
+            # Early stopping
+            if counter >= patience:
+                print(f"Early stopping at epoch {epoch}")
+                break
             if metrics[unsupervised_metric] > best_stats[unsupervised_metric]:
                 best_stats = metrics
                 best_epoch = epoch
@@ -215,8 +240,7 @@ class EncoderGAE(torch.nn.Module):
         hidden = F.relu(self.gc1(x, edge_index, edge_attr))
         hidden = self.dropout(hidden)
         mu = self.gc2_mu(hidden, edge_index, edge_attr)
-        logvar = self.gc2_logvar(hidden, edge_index, edge_attr)
-        # return mu, logvar
+
         return mu
 
 
@@ -323,7 +347,7 @@ class GAE(torch.nn.Module):
         neg_loss = -torch.log(
             1 - self.decoder(z, neg_edge_index, sigmoid=True) + EPS
         ).mean()
-        # recon_loss_x = F.mse_loss(z, x, reduction="mean")
+
         return pos_loss + neg_loss
 
     def test(
@@ -354,3 +378,8 @@ class GAE(torch.nn.Module):
         y, pred = y.detach().cpu().numpy(), pred.detach().cpu().numpy()
 
         return roc_auc_score(y, pred), average_precision_score(y, pred)
+
+    def get_embeddings(self, x, edge_index, edge_attr):
+        self.eval()  # Set the model to evaluation mode
+        with torch.no_grad():
+            return self.encoder(x, edge_index, edge_attr)
