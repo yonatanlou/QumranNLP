@@ -233,7 +233,6 @@ class EncoderGAE(torch.nn.Module):
         super(EncoderGAE, self).__init__()
         self.gc1 = GCNConv(input_dim, hidden_dim)
         self.gc2_mu = GCNConv(hidden_dim, latent_dim)
-        self.gc2_logvar = GCNConv(hidden_dim, latent_dim)
         self.dropout = torch.nn.Dropout(0.2)
 
     def forward(self, x, edge_index, edge_attr):
