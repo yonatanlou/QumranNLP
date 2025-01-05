@@ -705,8 +705,8 @@ book,bib,section,composition,genre
 4Q50,bib,,Judg,
 4Q500,nonbib,,,
 4Q501,nonbib,,Lamentation,
-4Q502,nonbib,sectarian_texts,Ritual,Prayer - Liturgy
-4Q503,nonbib,sectarian_texts,daily prayers,Prayer - Liturgy
+4Q502,nonbib,unknown,Ritual Of Marriage,Prayer - Liturgy
+4Q503,nonbib,unknown,daily prayers,Prayer - Liturgy
 4Q504,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
 4Q505,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
 4Q506,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
@@ -716,7 +716,7 @@ book,bib,section,composition,genre
 4Q51,bib,,Samuel,
 4Q510,nonbib,sectarian_texts,Songs_of_Maskil,Prayer - Liturgy
 4Q511,nonbib,sectarian_texts,Songs_of_Maskil,Prayer - Liturgy
-4Q512,nonbib,sectarian_texts,purity ritual,Prayer - Liturgy
+4Q512,nonbib,unknown,purity ritual,Prayer - Liturgy
 4Q513,nonbib,sectarian_texts,Ordinances,Halakha
 4Q514,nonbib,,Ordinances,Halakha
 4Q515,nonbib,,,
