@@ -5,7 +5,7 @@ readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP
 
 ###DSS
 #run for creating the data:
-python data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $dss_csv_name
+python src/data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $dss_csv_name
 
 # run for baselines
 #python src/baselines/main.py --domain dss --results-dir experiments/dss/bert_cls/baselines --train-frac 0.7 --val-frac 0.1

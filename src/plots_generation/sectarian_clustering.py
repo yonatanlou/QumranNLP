@@ -156,11 +156,11 @@ if __name__ == "__main__":
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )
     embeddings_averaged, df_averaged = average_embeddings_by_scroll(
-        gae_embeddings, df_no_nulls, "composition", outlier_threshold=1
+        gae_embeddings, df_no_nulls, "composition", outlier_threshold=3
     )
     df_averaged["composition"] = df_averaged["composition"].apply(format_composition)
 
-    path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN.pdf"
+    path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN_.png"
     metrics_gnn = hirerchial_clustering_by_sectarian(
         df_averaged,
         f"Unsupervised Clustering by Sectarian Compositions",

@@ -12,8 +12,8 @@ labels_1QS = {
 }
 labels_hodayot = {
     "1QHa=Community hymns": (3, 1, 8, 28),  # 3:1–8:28+17:38–23:16
-    "1QHa=Debated teacher hymns": (9, 1, 10, 19),  # 9:1 – 10:19
-    "1QHa=Teacher hymns": (10, 20, 17, 36),  # 10:20 – 17:36
+    "1QHa=Transition material": (9, 1, 9, 40),  # 9:1 – 10:19
+    "1QHa=Teacher hymns": (10, 1, 17, 36),  # 10:20 – 17:36
     "1QHa=Community hymns_2": (17, 38, 23, 16),  # 3:1–8:28+17:38–23:16
     "1QHa=allTheRest": (23, 16, 1, 1),
 }
