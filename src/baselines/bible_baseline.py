@@ -10,13 +10,10 @@ from sklearn.svm import LinearSVC
 from base_utils import measure_time
 from config import BASE_DIR, get_paths_by_domain
 from src.baselines.utils import (
-    create_adjacency_matrix,
     set_seed_globally,
     create_adjacency_matrix_bible,
 )
 from src.baselines.create_datasets import (
-    QumranDataset,
-    save_dataset_for_finetuning,
     BibleDataset,
 )
 from src.baselines.embeddings import get_vectorizer_types, VectorizerProcessor

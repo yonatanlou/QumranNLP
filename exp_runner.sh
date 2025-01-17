@@ -5,7 +5,7 @@ readonly bible_csv_name='data/processed_data/bible/df_CHUNK_SIZE=100_MAX_OVERLAP
 
 ###DSS
 #run for creating the data:
-python src/data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $dss_csv_name
+#python src/data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --pre_processing_tasks "[]" --output_file $dss_csv_name
 
 # run for baselines
 #python src/baselines/main.py --domain dss --results-dir experiments/dss/bert_cls/baselines --train-frac 0.7 --val-frac 0.1
@@ -24,13 +24,13 @@ python src/data_generation/dss_data_gen.py --chunk_size 100 --max_overlap 15 --p
 
 ###Bible
 #run for creating the data:
-#python src/data_generation/bible_data_gen.py --chunk_size 100 --max_overlap 10 --output_file $bible_csv_name
+python src/data_generation/bible_data_gen.py --chunk_size 100 --max_overlap 10 --output_file $bible_csv_name
 
 # run for baselines
-#python src/baselines/bible_baseline.py --domain bible --results-dir experiments/bible/baselines --train-frac 0.7 --val-frac 0.1
+python src/baselines/bible_baseline.py --domain bible --results-dir experiments/bible/baselines --train-frac 0.7 --val-frac 0.1
 
 # run for supervised GNN
-#python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gcn_init --results-dir experiments/bible/gnn --is_supervised
+python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gcn_init_v2 --results-dir experiments/bible/gnn --is_supervised
 
 # run for unsupervised GNN
-#python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gave_init --results-dir experiments/bible/gnn
+python src/gnn/hyperparameter_gnn_main.py --datasets all --domain bible --num-combined-graphs 1 --exp-name gae_init_v2 --results-dir experiments/bible/gnn
