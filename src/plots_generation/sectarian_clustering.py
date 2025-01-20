@@ -88,7 +88,9 @@ def average_embeddings_by_scroll(
             book_indices.shape[0] - valid_embeddings.shape[0],
             "outliers out of",
             book_indices.shape[0],
+            f" for {book}"
         )
+        n_chunks = valid_embeddings.shape[0]
 
         # If no valid embeddings remain after outlier removal, skip this group
         if valid_embeddings.size == 0:
@@ -100,6 +102,7 @@ def average_embeddings_by_scroll(
 
         # Add book info to new DataFrame
         book_df = df_no_nulls[book_mask].head(1).copy()
+        book_df["n_chunks"] = n_chunks
         new_df = pd.concat([new_df, book_df], ignore_index=True)
 
         # Convert averaged embeddings to numpy array
@@ -127,14 +130,15 @@ if __name__ == "__main__":
     processed_vectorizers = processor.load_or_generate_embeddings()
 
     bert_model = "dicta-il/BEREL"
-    model_file = "trained_gae_model_BEREL-finetuned-DSS-maskedLM.pth"
+    # model_file = "trained_gae_model_BEREL-finetuned-DSS-maskedLM.pth"
+    model_file = "trained_gae_model_BEREL.pth"
     param_dict = {
         "num_adjs": 2,
         "epochs": 50,
         "hidden_dim": 300,
         "distance": "cosine",
         "learning_rate": 0.001,
-        "threshold": 0.992,
+        "threshold": 0.98,
         "adjacencies": [
             {"type": "tfidf", "params": {"max_features": 10000, "min_df": 0.01}},
             {
@@ -142,13 +146,15 @@ if __name__ == "__main__":
                 "params": {
                     "analyzer": "char",
                     "ngram_range": (3, 3),
-                    "min_df": 0.01,
-                    "max_features": 2500,
+                    "min_df": 0.1,
+                    "max_features": 7500,
                 },
             },
         ],
     }
-    df_no_nulls = df[~df["section"].isna()]
+    # df_no_nulls = df[~df["section"].isna()]
+    df_no_nulls = df
+    df_no_nulls["section"] = df_no_nulls["section"].fillna("unknown")
     df_no_nulls = df_no_nulls[
         ~(df_no_nulls["composition"].isin(["4QH", "4QM", "4QS", "4QD"]))
     ]
@@ -156,7 +162,7 @@ if __name__ == "__main__":
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )
     embeddings_averaged, df_averaged = average_embeddings_by_scroll(
-        gae_embeddings, df_no_nulls, "composition", outlier_threshold=3
+        gae_embeddings, df_no_nulls, "composition", outlier_threshold=2.5
     )
     df_averaged["composition"] = df_averaged["composition"].apply(format_composition)
 
@@ -166,6 +172,6 @@ if __name__ == "__main__":
         f"Unsupervised Clustering by Sectarian Compositions",
         embeddings_averaged,
         "composition",
-        {"linkage_m": "centroid", "color_threshold": 0.55},
+        {"linkage_m": "centroid", "color_threshold": 0.5},
         path_to_save,
     )
