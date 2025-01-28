@@ -514,8 +514,8 @@ book,bib,section,composition,genre
 4Q378,nonbib,unknown,Apocr_Joshua,rewritten prophets
 4Q379,nonbib,unknown,Apocr_Joshua,rewritten prophets
 4Q38,bib,,Deut,
-4Q380,nonbib,non_sectarian_texts,Collections_of_psalms,Prayer - Liturgy
-4Q381,nonbib,non_sectarian_texts,Collections_of_psalms,Prayer - Liturgy
+4Q380,nonbib,unknown,Collections_of_psalms,Prayer - Liturgy
+4Q381,nonbib,unknown,Collections_of_psalms,Prayer - Liturgy
 4Q382,nonbib,unknown,para.Kings,rewritten prophets
 4Q383,nonbib,,Apocr_Jeremiah,rewritten prophets
 4Q384,nonbib,,Apocr_Jeremiah,rewritten prophets
@@ -538,12 +538,12 @@ book,bib,section,composition,genre
 4Q391,nonbib,unknown,Pseudo_Ezekiel,rewritten prophets
 4Q392,nonbib,,,
 4Q393,nonbib,,,
-4Q394,nonbib,,4QMMT,Halakha
-4Q395,nonbib,,4QMMT,Halakha
-4Q396,nonbib,,4QMMT,Halakha
-4Q397,nonbib,,4QMMT,Halakha
-4Q398,nonbib,,4QMMT,Halakha
-4Q399,nonbib,,4QMMT,Halakha
+4Q394,nonbib,sectarian_texts,4QMMT,Halakha
+4Q395,nonbib,sectarian_texts,4QMMT,Halakha
+4Q396,nonbib,sectarian_texts,4QMMT,Halakha
+4Q397,nonbib,sectarian_texts,4QMMT,Halakha
+4Q398,nonbib,sectarian_texts,4QMMT,Halakha
+4Q399,nonbib,sectarian_texts,4QMMT,Halakha
 4Q4,bib,,Gen,
 4Q40,bib,,Deut,
 4Q400,nonbib,unknown,Shir Shabat,Prayer - Liturgy
@@ -706,7 +706,7 @@ book,bib,section,composition,genre
 4Q500,nonbib,,,
 4Q501,nonbib,,Lamentation,
 4Q502,nonbib,unknown,Ritual Of Marriage,Prayer - Liturgy
-4Q503,nonbib,unknown,daily prayers,Prayer - Liturgy
+4Q503,nonbib,sectarian_texts,daily prayers,Prayer - Liturgy
 4Q504,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
 4Q505,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
 4Q506,nonbib,unknown,Dibre Hameorot,Prayer - Liturgy
