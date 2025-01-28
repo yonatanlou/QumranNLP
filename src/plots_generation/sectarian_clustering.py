@@ -146,32 +146,37 @@ if __name__ == "__main__":
                 "params": {
                     "analyzer": "char",
                     "ngram_range": (3, 3),
-                    "min_df": 0.1,
-                    "max_features": 7500,
+                    "min_df": 0.01,
+                    "max_features": 10000,
                 },
             },
         ],
     }
-    # df_no_nulls = df[~df["section"].isna()]
     df_no_nulls = df
     df_no_nulls["section"] = df_no_nulls["section"].fillna("unknown")
     df_no_nulls = df_no_nulls[
         ~(df_no_nulls["composition"].isin(["4QH", "4QM", "4QS", "4QD"]))
     ]
+    noisy_compositions = [
+        "Para_Gen-Exod", "Beatitudes",
+    ]
+    df_no_nulls = df_no_nulls[
+        ~(df_no_nulls["composition"].isin(noisy_compositions))
+    ]
     gae_embeddings = get_gae_embeddings(
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )
     embeddings_averaged, df_averaged = average_embeddings_by_scroll(
-        gae_embeddings, df_no_nulls, "composition", outlier_threshold=2.5
+        gae_embeddings, df_no_nulls, "composition", outlier_threshold=2
     )
     df_averaged["composition"] = df_averaged["composition"].apply(format_composition)
 
-    path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN_.png"
+    path_to_save = f"{BASE_DIR}/reports/plots/sectarian_dend_GNN_.pdf"
     metrics_gnn = hirerchial_clustering_by_sectarian(
         df_averaged,
         f"Unsupervised Clustering by Sectarian Compositions",
         embeddings_averaged,
         "composition",
-        {"linkage_m": "centroid", "color_threshold": 0.5},
+        {"linkage_m": "ward", "color_threshold": 0.4},
         path_to_save,
     )
