@@ -55,7 +55,7 @@ class QumranDataset:
         self.label = label
         self.specific_scrolls = specific_scrolls
         df["original_index"] = range(len(df))
-        if df_frac_remove > 0: #for unsupervised cross validation
+        if df_frac_remove > 0:  # for unsupervised cross validation
             df = df.sample(frac=1 - df_frac_remove).reset_index(drop=True)
         self.df = self.process_df_by_label(df)
         self.texts = df["text"].tolist()
@@ -537,7 +537,18 @@ def save_dataset_for_finetuning(path, dataset):
     }
     with open(path, "wb") as f:
         pickle.dump(dataset_for_fine_tuning, f)
-def create_dss_datasets(tasks, train_frac, val_frac, paths, vectorizers, df_frac_remove=0, seed=42, save_dataset=True):
+
+
+def create_dss_datasets(
+    tasks,
+    train_frac,
+    val_frac,
+    paths,
+    vectorizers,
+    df_frac_remove=0,
+    seed=42,
+    save_dataset=True,
+):
     set_seed_globally(seed)
     df_origin = pd.read_csv(paths["data_csv_path"])
     processor = VectorizerProcessor(
@@ -546,13 +557,31 @@ def create_dss_datasets(tasks, train_frac, val_frac, paths, vectorizers, df_frac
     processed_vectorizers = processor.load_or_generate_embeddings()
 
     dataset_composition = QumranDataset(
-        df_origin, "composition", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+        df_origin,
+        "composition",
+        train_frac,
+        val_frac,
+        processed_vectorizers,
+        specific_scrolls=None,
+        df_frac_remove=df_frac_remove,
     )
     dataset_scroll = QumranDataset(
-        df_origin, "book", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+        df_origin,
+        "book",
+        train_frac,
+        val_frac,
+        processed_vectorizers,
+        specific_scrolls=None,
+        df_frac_remove=df_frac_remove,
     )
     dataset_sectarian = QumranDataset(
-        df_origin, "section", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+        df_origin,
+        "section",
+        train_frac,
+        val_frac,
+        processed_vectorizers,
+        specific_scrolls=None,
+        df_frac_remove=df_frac_remove,
     )
     datasets = {
         "dataset_composition": dataset_composition,

@@ -44,6 +44,44 @@ def create_gnn_params(domain="dss", is_supervised=False):
     return params
 
 
+def create_gnn_params_cv(domain="dss", is_supervised=False):
+    if not is_supervised and domain == "bible":
+        epochs = 100
+        learning_rate = 0.0001
+    elif is_supervised and domain == "bible":
+        epochs = 750
+        learning_rate = 0.001
+    elif is_supervised:
+        epochs = 500
+        learning_rate = 0.001
+    else:
+        epochs = 50
+        learning_rate = 0.001
+
+    params = {
+        "epochs": [epochs],
+        "hidden_dims": [300, 500],
+        "latent_dims": [100],  # only for GVAE
+        "distances": ["cosine"],
+        "learning_rates": [learning_rate],
+        "thresholds": [
+            0.995 if is_supervised and domain == "bible" else 0.99,
+        ],
+        "bert_models": [
+            "dicta-il/BEREL",
+            "onlplab/alephbert-base",
+        ],
+        "adj_types": {
+            "tfidf": {"max_features": 7500 if domain == "dss" else 10000},
+            "trigram": {"analyzer": "char", "ngram_range": (3, 3)},
+            # "BOW-n_gram": {"analyzer": "word", "ngram_range": (1, 1)},
+        },
+    }
+    # if domain == "dss":
+    #     params["adj_types"]["starr"] = {}
+    return params
+
+
 def create_param_dict(n_adjs, adj_combinations, meta_params):
     param_dicts = []
     for adjs in adj_combinations:
