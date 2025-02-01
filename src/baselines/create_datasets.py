@@ -552,7 +552,9 @@ def create_dss_datasets(
     set_seed_globally(seed)
     df_origin = pd.read_csv(paths["data_csv_path"])
     processor = VectorizerProcessor(
-        df_origin, paths["processed_vectorizers_path"], vectorizers
+        df_origin,
+        paths["processed_vectorizers_path"],
+        vectorizers
     )
     processed_vectorizers = processor.load_or_generate_embeddings()
 

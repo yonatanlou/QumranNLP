@@ -42,8 +42,10 @@ def process_data_for_plot(
 ):
     # some basic settings
 
-    baseline_dir = f"{BASE_DIR}/experiments/{domain}/baselines"
-    baseline_gnn_dir = f"{BASE_DIR}/experiments/{domain}/gnn/{gnn_exp_name}"
+    baseline_dir = f"{BASE_DIR}/experiments/{domain}/cross_validation/baselines"
+    baseline_gnn_dir = (
+        f"{BASE_DIR}/experiments/{domain}/cross_validation/gnn/{gnn_exp_name}"
+    )
     task_by_domain = {"dss": ["book", "composition", "section"], "bible": ["book"]}
     if not is_supervised and domain == "dss":
         task_by_domain["dss"].remove("section")

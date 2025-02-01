@@ -1,4 +1,6 @@
 import pandas as pd
+from tqdm import tqdm
+
 from config import get_paths_by_domain, BASE_DIR
 from base_utils import measure_time
 from src.baselines.create_datasets import create_dss_datasets
@@ -9,7 +11,6 @@ from src.baselines.utils import create_adjacency_matrix
 from src.gnn.hyperparameter_gnn_utils import run_gnn_exp
 from src.gnn.utils import (
     generate_parameter_combinations,
-    create_gnn_params,
     create_gnn_params_cv,
 )
 import os.path
@@ -65,7 +66,7 @@ def run_gae_n_iters(
     num_combined_graphs=1,
 ):
     all_results = []
-    for iter in range(n_iters):
+    for iter in tqdm(range(n_iters)):
         iter_df = run_gae_for_cv_evaulation(
             dataset,
             domain,
@@ -118,7 +119,7 @@ def run_unsupervised_baselines_n_iters(
     n_iters, file_name, domain="dss", dataset="dataset_scroll", df_frac_remove=0.1
 ):
     all_results = []
-    for iter in range(n_iters):
+    for iter in tqdm(range(n_iters)):
         iter_df = run_unsupervised_baselines(
             dataset, domain, df_frac_remove=df_frac_remove, seed=iter
         )
@@ -135,25 +136,25 @@ def run_unsupervised_baselines_n_iters(
 
 
 if __name__ == "__main__":
-    df_frac_remove = 0.3
+    df_frac_remove = 0.1
     assert df_frac_remove < 1
     n_iters = int(df_frac_remove**-1)
 
     exp_dir = f"{BASE_DIR}/experiments/dss/cross_validation"
-
-    run_unsupervised_baselines_n_iters(
-        n_iters,
-        file_name=f"{exp_dir}/baselines/composition_unsupervised.csv",
-        domain="dss",
-        dataset="dataset_composition",
-        df_frac_remove=0.1,
-    )
-    run_gae_n_iters(
-        n_iters,
-        domain="dss",
-        dataset="dataset_composition",
-        is_supervised=False,
-        df_frac_remove=df_frac_remove,
-        file_name=f"{exp_dir}/gnn/gae_init/gae_init_composition_2_adj_types.csv",
-        num_combined_graphs=2,
-    )
+    for label in ["scroll", "composition"]:
+        run_unsupervised_baselines_n_iters(
+            n_iters,
+            file_name=f"{exp_dir}/baselines/{label.replace('scroll', 'book')}_unsupervised.csv",
+            domain="dss",
+            dataset=f"dataset_{label}",
+            df_frac_remove=df_frac_remove,
+        )
+        run_gae_n_iters(
+            n_iters,
+            domain="dss",
+            dataset=f"dataset_{label}",
+            is_supervised=False,
+            df_frac_remove=df_frac_remove,
+            file_name=f"{exp_dir}/gnn/gae_init/gae_init_{label.replace('scroll', 'book')}_2_adj_types.csv",
+            num_combined_graphs=2,
+        )

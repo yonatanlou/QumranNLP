@@ -74,7 +74,7 @@ def init_bert_vectorizer(df, text_column, model_name):
 
 def vectorize_text(df, text_column, vectorizer_type):
     if vectorizer_type == "tfidf":
-        vectorizer = TfidfVectorizer()
+        vectorizer = TfidfVectorizer(max_features=7500, min_df=5)
         vectorizer_matrix = vectorizer.fit_transform(df[text_column])
     elif vectorizer_type == "trigram":
         vectorizer = CountVectorizer(ngram_range=(3, 3), analyzer="char")

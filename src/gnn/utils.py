@@ -60,7 +60,7 @@ def create_gnn_params_cv(domain="dss", is_supervised=False):
 
     params = {
         "epochs": [epochs],
-        "hidden_dims": [300, 500],
+        "hidden_dims": [300],
         "latent_dims": [100],  # only for GVAE
         "distances": ["cosine"],
         "learning_rates": [learning_rate],
