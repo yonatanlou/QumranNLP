@@ -42,7 +42,7 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
 ├── reports\
 ├── src\
 
-1. Data - contains the most updated processed data (under processed_data), there are also some yamls for the manual tagging of the scrolls (composition and sectarian labels).
+1. Data - contains the most updated processed data (under processed_data), the qumran_labels.csv contains the labels by scrolls (by multiple labeling schemes: sectarian/composition/genre, etc...).
 2. Experiments - contains the results of multiple experiments.
 3. Models - contains some trained models (mainly GNN's, the fine-tuned models are stored in HF).
 4. Notebooks - contains alot of research notebooks.
@@ -69,7 +69,7 @@ I made the fine-tuning via masked LM scheme with 15% random masking.
 The code was run with colab [fine-tuning-bert-maskedLM.ipynb](https://colab.research.google.com/drive/1N60StbssmT7ssd7ykXP9apKdaVdBa8-7?usp=sharing) for the easy to use GPU 😅. 
 
 ### GNN
-For implementing different structures in the GNN, ive created a framework which can combine different edge types together (this was implemented before i knew there is a heterogeneous graph implementation in torch-geom).
+For implementing different structures in the GNN, ive created a framework which can combine different edge types together (heterogeneous graph didn't work so well, i believe this structure is too complex for this data).
 So each node x is a chunk of text represented by a vector of dimension 768 (from different BERT models).
 The edges can constructed via various methods, when the scheme is to define some feature space of the nodes, taking the cosine similiarity between each node, and taking only edges that are most similar (practically zeroing out the <0.99 quantile of the adj matrix).
 
@@ -82,40 +82,22 @@ Interesting to see which types of adjacency matrices perform best:
 ![Different adj](experiments/dss/gnn/comparsion_plot_all_tasks_different_adj.png "Different adj")
 
 #### Unsupervised classification
-For the unsupervised setting, i've used the GVAE (Graph variational auto-encoder) algorithm.
+For the unsupervised setting, i've used the GAE (Graph auto-encoder) algorithm.
 Its a classic encoder-decoder framework which can work with graphs.
 Ive trained the model for each one of our potential embedders, when the graph was built using tf-idf/starr/trigram.
-The loss function is built by reconstruction error + KL divergence + clustering loss (by sillhouette).
 The clustering is made by hierarchical clustering (agglomerative), number of clusters as number of unique labels per task.
 The following plots shows the difference between different models for the top per each metric:
 TODO add the plots
 
 ## Bible validation
-TODO
+I validate the results of the DSS with the Hebrew bible dataset (same chunking technique, embeddings, etc...). 
+The results are compared with the DSS results which is nice.
 
 ## Running Tasks:
-- Dendrograms - add significance value on the cut of the dendrograms.
-- Sectarian / non sectarian - 
-  - Use the GNN (unsupervised) embeddings.
-  - Plot the sectarian results in a dendogram (representation by scroll, not by chunk).
-  - Making sure that the core sectarian scrolls are - `["1QS", "1QHa", "1QH", "4QH" "1QM", "CD"]`
-- Clustering within scroll - 
-  - Use the GNN (unsupervised) embeddings.
-  - Fix the labels for the clustering.
-  - Conference deadline 03.02.25 - https://www.ancientnlp.com/alp2025/
-  - Under the line:
-    - Implement different type of edge attributes (using the pytorch-geom feature) 
-    - SBERT - add functionality for sentence-transformers: https://huggingface.co/intfloat/e5-base-v2,https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 
-    - BERT + fine-tuning by token for part-of-speech - 
-      - Our original idea is to combine BERT (semantic), trigram/tfidf (lexical) and starr (stylistic). The starr features are not good enough, but I thought of a new method that will create those features in a smarter way. I can fine tune the BEREL model, when my labels are part-of-speech or named-entity (token classification).
-        Those new embeddings will act as the 'stylistic/morphological embeddings'.
-        Then we can combine those embeddings with the raw BERT embeddings for single representation (mean pooling, MLP, or with graph).
- 
+Done
 
 ----- 
 Could be nice in the future:
-* Guide on how to use your own data (not Qumran).
-* Add both datasets (dss and bible to HF)
 * Medium posts:
   * Unsupervised clustering with dasgupta.
   * Easy implementation of GNN with supervised and unsupervised context. 
