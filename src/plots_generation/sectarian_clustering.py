@@ -88,7 +88,7 @@ def average_embeddings_by_scroll(
             book_indices.shape[0] - valid_embeddings.shape[0],
             "outliers out of",
             book_indices.shape[0],
-            f" for {book}"
+            f" for {book}",
         )
         n_chunks = valid_embeddings.shape[0]
 
@@ -158,11 +158,10 @@ if __name__ == "__main__":
         ~(df_no_nulls["composition"].isin(["4QH", "4QM", "4QS", "4QD"]))
     ]
     noisy_compositions = [
-        "Para_Gen-Exod", "Beatitudes",
+        "Para_Gen-Exod",
+        "Beatitudes",
     ]
-    df_no_nulls = df_no_nulls[
-        ~(df_no_nulls["composition"].isin(noisy_compositions))
-    ]
+    df_no_nulls = df_no_nulls[~(df_no_nulls["composition"].isin(noisy_compositions))]
     gae_embeddings = get_gae_embeddings(
         df_no_nulls, processed_vectorizers, bert_model, model_file, param_dict
     )

@@ -124,8 +124,9 @@ def evaluate_unsupervised_metrics(
         metrics_list.append(metrics)
 
     metrics_df = pd.DataFrame(metrics_list)
-    metrics_df.to_csv(f"{path}/{dataset.label}_unsupervised.csv")
-    print(f"Saved metrics to {path}/{dataset.label}_unsupervised.csv")
+    if path:
+        metrics_df.to_csv(f"{path}/{dataset.label}_unsupervised.csv")
+        print(f"Saved metrics to {path}/{dataset.label}_unsupervised.csv")
     return metrics_df
 
 

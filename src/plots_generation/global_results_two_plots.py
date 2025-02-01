@@ -13,9 +13,7 @@ XTICK_FONT_SIZE = 18
 XLAB_FONT_SIZE = 18
 TITLE_FONT_SIZE = 20
 LEGEND_FONT_SIZE = 18
-YLIM_STRETCH = 0.05
-
-
+YLIM_STRETCH = 0.025
 
 
 def filter_vectorizers(df: pd.DataFrame) -> pd.DataFrame:
@@ -25,14 +23,14 @@ def filter_vectorizers(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot_metric(
-        ax: plt.Axes,
-        data: pd.DataFrame,
-        x_col: str,
-        hue_col: str,
-        y_col: str,
-        color_map: dict,
-        custom_order: list = None,
-        add_legend: bool = False
+    ax: plt.Axes,
+    data: pd.DataFrame,
+    x_col: str,
+    hue_col: str,
+    y_col: str,
+    color_map: dict,
+    custom_order: list = None,
+    add_legend: bool = False,
 ) -> None:
     """
     Plot a bar chart for a specific metric.
@@ -54,8 +52,10 @@ def plot_metric(
         palette=color_map,
         hue_order=custom_order,
         ax=ax,
-        legend=True if add_legend else False
-
+        legend=True if add_legend else False,
+        errorbar=("ci", 90),  # Confidence interval (default is 95)
+        err_kws={"linewidth": 1},  # Thicker error bars
+        capsize=0.05,  # Adds caps to the error bars
     )
     ax.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
     ax.set_ylabel(y_col.replace("_", " ").capitalize(), fontsize=XLAB_FONT_SIZE)
@@ -76,7 +76,7 @@ def generate_combined_bar_plot(
     which_hue_cols: list = None,
     base_color_by_group: dict = None,
     metric_1: str = "jaccard",
-    metric_2: str = "dasgupta"
+    metric_2: str = "dasgupta",
 ) -> None:
     plt.style.use(["science", "no-latex"])
 
@@ -88,9 +88,11 @@ def generate_combined_bar_plot(
     if base_color_by_group:
         custom_order = []
         for group in base_color_by_group:
-            group_items = df_metric_1.loc[
-                df_metric_1["vectorizer_type"] == group, hue_col
-            ].unique().tolist()
+            group_items = (
+                df_metric_1.loc[df_metric_1["vectorizer_type"] == group, hue_col]
+                .unique()
+                .tolist()
+            )
             custom_order.extend(group_items)
 
     for task in df_metric_1["task"].unique():
@@ -113,8 +115,26 @@ def generate_combined_bar_plot(
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(19.2, 7.6), dpi=120)
 
-        plot_metric(ax1, data_metric_1, x_col, hue_col, metric_1, color_map, custom_order, add_legend=False)
-        plot_metric(ax2, data_metric_2, x_col, hue_col, metric_2, color_map, custom_order,add_legend=True)
+        plot_metric(
+            ax1,
+            data_metric_1,
+            x_col,
+            hue_col,
+            metric_1,
+            color_map,
+            custom_order,
+            add_legend=False,
+        )
+        plot_metric(
+            ax2,
+            data_metric_2,
+            x_col,
+            hue_col,
+            metric_2,
+            color_map,
+            custom_order,
+            add_legend=True,
+        )
 
         # Add shared legend below the plots using handles from ax2
         # Extract the legend from ax2 and create a shared figure legend.
@@ -132,7 +152,6 @@ def generate_combined_bar_plot(
         if leg is not None:
             leg.remove()
 
-
         plt.subplots_adjust(bottom=0.27)
         if filename:
             task_filename = filename.format(task)
@@ -142,8 +161,9 @@ def generate_combined_bar_plot(
         plt.close(fig)
 
 
-
-def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_name: str) -> None:
+def make_combined_bar_plot_unsupervised(
+    domain: str, metric_1, metric_2, file_name: str
+) -> None:
     """
     Process data and generate combined bar plots for unsupervised results.
 
@@ -156,7 +176,6 @@ def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_na
     df_metric_2 = process_data_for_plot(
         domain, False, "gae_init", "{}_{}_2_adj_types.csv", main_metric=metric_2
     )
-
 
     # Generate a color map for the plots (same vectorizers so the same color map)
     color_map = generate_color_map(
@@ -173,180 +192,15 @@ def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_na
         filename=file_name,
         which_hue_cols=hue_cols,
         base_color_by_group=BASE_COLOR_BY_GROUP,
-        metric_1 = metric_1,
-        metric_2 = metric_2
+        metric_1=metric_1,
+        metric_2=metric_2,
     )
 
 
 if __name__ == "__main__":
     make_combined_bar_plot_unsupervised(
         "dss",
-        "jaccard", "silhouette",
-        f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.png",
+        "jaccard",
+        "dasgupta",
+        f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.pdf",
     )
-
-# def make_combined_bar_plot_supervised_unsupervised(domain, file_name):
-#     # Prepare data for both supervised and unsupervised
-#     supervised_results = process_data_for_plot(
-#         domain, True, "gcn_init", "{}_{}_2_adj_types.csv"
-#     )
-#     unsupervised_results = process_data_for_plot(
-#         domain, False, "gvae_init", "{}_{}_1_adj_types.csv"
-#     )
-#
-#     # Use the existing generate_bar_plot function with modifications
-#     def generate_combined_bar_plot(
-#         supervised_results,
-#         unsupervised_results,
-#         x_col,
-#         hue_col,
-#         color_map,
-#         filename,
-#         which_hue_cols=False,
-#         base_color_by_group=None,
-#     ):
-#         import scienceplots
-#         import seaborn as sns
-#
-#         XTICK_FONT_SIZE = 18
-#         XLAB_FONT_SIZE = 18
-#         TITLE_FONT_SIZE = 20
-#         LEGEND_FONT_SIZE = 18
-#         plt.style.use(["science", "no-latex"])
-#         y_col_supervised = "weighted_f1"
-#         y_col_unsupervised = "jaccard"
-#
-#         # Prepare color order
-#         if base_color_by_group:
-#             custom_order = []
-#             for group in base_color_by_group.keys():
-#                 group_items = supervised_results[
-#                     supervised_results["vectorizer_type"] == group
-#                 ][hue_col].unique()
-#                 custom_order.extend(group_items)
-#         else:
-#             custom_order = None
-#
-#         # Iterate through unique tasks
-#         for task in supervised_results["task"].unique():
-#             # Create a new figure for each task with two subplots
-#             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(3.2 * 6, 3.8 * 2), dpi=120)
-#
-#             # Supervised subplot
-#             task_data_supervised = supervised_results[
-#                 supervised_results["task"] == task
-#             ]
-#             if which_hue_cols is not None:
-#                 task_data_supervised = task_data_supervised[
-#                     task_data_supervised[hue_col].isin(which_hue_cols)
-#                 ]
-#
-#             # Sort the data according to the custom order for supervised
-#             if custom_order:
-#                 task_data_supervised[hue_col] = pd.Categorical(
-#                     task_data_supervised[hue_col], categories=custom_order, ordered=True
-#                 )
-#                 task_data_supervised = task_data_supervised.sort_values(hue_col)
-#
-#             # Create supervised plot
-#             sns.barplot(
-#                 x=x_col,
-#                 y=y_col_supervised,
-#                 hue=hue_col,
-#                 data=task_data_supervised,
-#                 palette=color_map,
-#                 hue_order=custom_order,
-#                 ax=ax1,
-#                 legend=False,
-#             )
-#             ax1.set_title(
-#                 f"Supervised {task.capitalize()} classification",
-#                 fontsize=TITLE_FONT_SIZE,
-#             )
-#             ax1.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
-#             ax1.set_ylabel(y_col_supervised.replace("_", " ").capitalize(), fontsize=14)
-#             ax1.tick_params(axis="both", labelsize=XTICK_FONT_SIZE)
-#             ax1.grid(alpha=0.5)
-#             # Unsupervised subplot
-#             task_data_unsupervised = unsupervised_results[
-#                 unsupervised_results["task"] == task
-#             ]
-#             if which_hue_cols is not None:
-#                 task_data_unsupervised = task_data_unsupervised[
-#                     task_data_unsupervised[hue_col].isin(which_hue_cols)
-#                 ]
-#
-#             # Sort the data according to the custom order for unsupervised
-#             if custom_order:
-#                 task_data_unsupervised[hue_col] = pd.Categorical(
-#                     task_data_unsupervised[hue_col],
-#                     categories=custom_order,
-#                     ordered=True,
-#                 )
-#                 task_data_unsupervised = task_data_unsupervised.sort_values(hue_col)
-#
-#             # Create unsupervised plot
-#             sns.barplot(
-#                 x=x_col,
-#                 y=y_col_unsupervised,
-#                 hue=hue_col,
-#                 data=task_data_unsupervised,
-#                 palette=color_map,
-#                 hue_order=custom_order,
-#                 ax=ax2,
-#             )
-#             ax2.set_title(
-#                 f"Unsupervised {task.capitalize()} clustering",
-#                 fontsize=TITLE_FONT_SIZE,
-#             )
-#             ax2.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
-#             ax2.set_ylabel(
-#                 y_col_unsupervised.replace("_", " ").capitalize(), fontsize=14
-#             )
-#             ax2.tick_params(axis="both", labelsize=XTICK_FONT_SIZE)
-#             ax2.grid(alpha=0.5)
-#             handles, labels = ax2.get_legend_handles_labels()
-#             fig.legend(
-#                 handles,
-#                 labels,
-#                 loc="lower center",  # Place the legend at the bottom center of the figure
-#                 ncol=3,  # Split the legend into 2 columns
-#                 fontsize=LEGEND_FONT_SIZE,  # Adjust font size to fit the text
-#                 frameon=True,  # Remove the legend frame for cleaner look
-#             )
-#             ax2.get_legend().remove()  # Remove the legend from the second plot itself
-#
-#             # Adjust layout to make space for the legend
-#             plt.subplots_adjust(bottom=0.27)  # Adjust bottom margin to fit the legend
-#             # Save figure with task-specific filename
-#             if filename:
-#                 task_filename = filename.format(task)
-#                 if not os.path.exists(os.path.dirname(task_filename)):
-#                     os.makedirs(os.path.dirname(task_filename))
-#
-#                 plt.savefig(task_filename, bbox_inches="tight")
-#                 print(f"Saved plot to {task_filename}")
-#             plt.show()
-#             plt.close(fig)  # Close the figure to free up memory
-#
-#     # Generate the combined plot
-#     color_map = generate_color_map(
-#         supervised_results,
-#         "vectorizer",
-#         "vectorizer_type",
-#         "RdYlGn",
-#         BASE_COLOR_BY_GROUP,
-#     )
-#
-#     hue_cols = supervised_results["vectorizer"].unique()
-#     generate_combined_bar_plot(
-#         supervised_results,
-#         unsupervised_results,
-#         x_col="model",
-#         hue_col="vectorizer",
-#         color_map=color_map,
-#         filename=file_name,
-#         which_hue_cols=hue_cols,
-#         base_color_by_group=BASE_COLOR_BY_GROUP,
-#     )
-#

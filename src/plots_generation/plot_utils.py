@@ -211,18 +211,18 @@ def generate_all_results_unsupervised(
         results.append(baseline[comparison_scheme].to_dict(orient="records"))
 
         gnn = pd.read_csv(compare_list[task][1])
-        gnn = gnn.rename(columns={"bert_model": "vectorizer_type"})
+        gnn = gnn[gnn["num_adjs"] == 2]
+        gnn = gnn.rename(columns={"bert_model": "vectorizer"})
         gnn["model"] = "GAE"
         gnn["task"] = task
-        gnn = gnn.rename(columns={"vectorizer_type": "vectorizer"})
-        # max_idx = gnn.groupby("vectorizer")["silhouette"].idxmax()
-        max_idx = gnn.groupby("vectorizer")[main_metric].idxmax()
-
-
-        max_test_acc_rows = gnn.loc[max_idx]
-        max_test_acc_rows["model"] = "GAE"
-        max_test_acc_rows["task"] = task
-        results.append(max_test_acc_rows[comparison_scheme].to_dict(orient="records"))
+        results.append(gnn[comparison_scheme].to_dict(orient="records"))
+        # # max_idx = gnn.groupby("vectorizer")["silhouette"].idxmax()
+        # max_idx = gnn.groupby("vectorizer")[main_metric].idxmax()
+        #
+        # max_test_acc_rows = gnn.loc[max_idx]
+        # max_test_acc_rows["model"] = "GAE"
+        # max_test_acc_rows["task"] = task
+        # results.append(max_test_acc_rows[comparison_scheme].to_dict(orient="records"))
 
     all_results = pd.DataFrame([item for sublist in results for item in sublist])
     all_results = all_results.sort_values(by=main_metric, ascending=False)
@@ -238,6 +238,6 @@ def get_func_by_is_supervised(is_supervised):
 
 BASE_COLOR_BY_GROUP = {
     "classic_text_features": "Reds",  # Clear red gradient
-    "pre_trained_bert": "Greens",  # Clear green gradient
-    "fine_tuned": "Blues",  # Clear blue gradient
+    "pre_trained_bert": "Blues",  # Clear green gradient
+    "fine_tuned": "Greens",  # Clear blue gradient
 }

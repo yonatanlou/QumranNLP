@@ -183,6 +183,7 @@ def run_gnn_exp(
             )
         final_results.append(stats_df)
     final_df = pd.concat(final_results)
-
-    final_df.to_csv(file_name, index=False)
-    print(f"{datetime.now()} - finished, saved to {file_name}")
+    if file_name:
+        final_df.to_csv(file_name, index=False)
+        print(f"{datetime.now()} - finished, saved to {file_name}")
+    return final_df
