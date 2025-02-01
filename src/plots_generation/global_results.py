@@ -7,9 +7,34 @@ from src.plots_generation.plot_utils import (
     get_func_by_is_supervised,
     BASE_COLOR_BY_GROUP,
 )
-
+import pandas as pd
 MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
 
+def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Clean the 'vectorizer' column by keeping only the last part of the path
+    and replacing specific names.
+    """
+    df = df.copy()
+    df = df[df["vectorizer"] != "dicta-il/MsBERT"]
+    # if is_supervised:
+    #     df = df[df["model"].isin(["MLPClassifier", "GCN"])]
+
+    # segment by vectorizer
+    df["vectorizer_type"] = df["vectorizer"].apply(
+        get_group_by_vectorizer
+    )
+    df["task"] = df["task"].replace("section", "sectarian")
+    df["task"] = df["task"].replace("book", "scroll")
+    df["vectorizer"] = df["vectorizer"].str.split("/").str[-1]
+    replacements = {
+        "BEREL-finetuned-DSS-maskedLM": "BEREL-finetuned",
+        "alephbert-base-finetuned-DSS-maskedLM": "AlephBERT-finetuned",
+        "alephbert-base": "AlephBERT",
+    }
+    df["vectorizer"] = df["vectorizer"].replace(replacements)
+
+    return df
 
 def process_data_for_plot(
     domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric
@@ -37,19 +62,8 @@ def process_data_for_plot(
     all_results = get_func_by_is_supervised(is_supervised)(
         compare_list, tasks, comparison_scheme, main_metric
     )
-    all_results = all_results[all_results["vectorizer"] != "dicta-il/MsBERT"]
-    if is_supervised:
-        all_results = all_results[all_results["model"].isin(["MLPClassifier", "GCN"])]
+    all_results = clean_vectorizer_names(all_results)
 
-    # segment by vectorizer
-    all_results["vectorizer_type"] = all_results["vectorizer"].apply(
-        get_group_by_vectorizer
-    )
-    all_results["vectorizer"] = all_results["vectorizer"].str.replace(
-        "yonatanlou/", "", regex=False
-    )
-    all_results["task"] = all_results["task"].replace("section", "sectarian")
-    all_results["task"] = all_results["task"].replace("book", "scroll")
 
     return all_results
 
