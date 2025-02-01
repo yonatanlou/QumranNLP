@@ -16,8 +16,6 @@ LEGEND_FONT_SIZE = 18
 YLIM_STRETCH = 0.05
 
 
-
-
 def filter_vectorizers(df: pd.DataFrame) -> pd.DataFrame:
     """Remove rows with unwanted vectorizer patterns."""
     pattern = "dictabert|starr|finetuned"
@@ -25,14 +23,14 @@ def filter_vectorizers(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot_metric(
-        ax: plt.Axes,
-        data: pd.DataFrame,
-        x_col: str,
-        hue_col: str,
-        y_col: str,
-        color_map: dict,
-        custom_order: list = None,
-        add_legend: bool = False
+    ax: plt.Axes,
+    data: pd.DataFrame,
+    x_col: str,
+    hue_col: str,
+    y_col: str,
+    color_map: dict,
+    custom_order: list = None,
+    add_legend: bool = False,
 ) -> None:
     """
     Plot a bar chart for a specific metric.
@@ -54,8 +52,7 @@ def plot_metric(
         palette=color_map,
         hue_order=custom_order,
         ax=ax,
-        legend=True if add_legend else False
-
+        legend=True if add_legend else False,
     )
     ax.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
     ax.set_ylabel(y_col.replace("_", " ").capitalize(), fontsize=XLAB_FONT_SIZE)
@@ -76,7 +73,7 @@ def generate_combined_bar_plot(
     which_hue_cols: list = None,
     base_color_by_group: dict = None,
     metric_1: str = "jaccard",
-    metric_2: str = "dasgupta"
+    metric_2: str = "dasgupta",
 ) -> None:
     plt.style.use(["science", "no-latex"])
 
@@ -88,9 +85,11 @@ def generate_combined_bar_plot(
     if base_color_by_group:
         custom_order = []
         for group in base_color_by_group:
-            group_items = df_metric_1.loc[
-                df_metric_1["vectorizer_type"] == group, hue_col
-            ].unique().tolist()
+            group_items = (
+                df_metric_1.loc[df_metric_1["vectorizer_type"] == group, hue_col]
+                .unique()
+                .tolist()
+            )
             custom_order.extend(group_items)
 
     for task in df_metric_1["task"].unique():
@@ -113,8 +112,26 @@ def generate_combined_bar_plot(
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(19.2, 7.6), dpi=120)
 
-        plot_metric(ax1, data_metric_1, x_col, hue_col, metric_1, color_map, custom_order, add_legend=False)
-        plot_metric(ax2, data_metric_2, x_col, hue_col, metric_2, color_map, custom_order,add_legend=True)
+        plot_metric(
+            ax1,
+            data_metric_1,
+            x_col,
+            hue_col,
+            metric_1,
+            color_map,
+            custom_order,
+            add_legend=False,
+        )
+        plot_metric(
+            ax2,
+            data_metric_2,
+            x_col,
+            hue_col,
+            metric_2,
+            color_map,
+            custom_order,
+            add_legend=True,
+        )
 
         # Add shared legend below the plots using handles from ax2
         # Extract the legend from ax2 and create a shared figure legend.
@@ -132,7 +149,6 @@ def generate_combined_bar_plot(
         if leg is not None:
             leg.remove()
 
-
         plt.subplots_adjust(bottom=0.27)
         if filename:
             task_filename = filename.format(task)
@@ -142,8 +158,9 @@ def generate_combined_bar_plot(
         plt.close(fig)
 
 
-
-def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_name: str) -> None:
+def make_combined_bar_plot_unsupervised(
+    domain: str, metric_1, metric_2, file_name: str
+) -> None:
     """
     Process data and generate combined bar plots for unsupervised results.
 
@@ -156,7 +173,6 @@ def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_na
     df_metric_2 = process_data_for_plot(
         domain, False, "gae_init", "{}_{}_2_adj_types.csv", main_metric=metric_2
     )
-
 
     # Generate a color map for the plots (same vectorizers so the same color map)
     color_map = generate_color_map(
@@ -173,15 +189,16 @@ def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_na
         filename=file_name,
         which_hue_cols=hue_cols,
         base_color_by_group=BASE_COLOR_BY_GROUP,
-        metric_1 = metric_1,
-        metric_2 = metric_2
+        metric_1=metric_1,
+        metric_2=metric_2,
     )
 
 
 if __name__ == "__main__":
     make_combined_bar_plot_unsupervised(
         "dss",
-        "jaccard", "silhouette",
+        "jaccard",
+        "silhouette",
         f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.png",
     )
 

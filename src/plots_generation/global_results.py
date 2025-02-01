@@ -8,7 +8,9 @@ from src.plots_generation.plot_utils import (
     BASE_COLOR_BY_GROUP,
 )
 import pandas as pd
+
 MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
+
 
 def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -21,9 +23,7 @@ def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
     #     df = df[df["model"].isin(["MLPClassifier", "GCN"])]
 
     # segment by vectorizer
-    df["vectorizer_type"] = df["vectorizer"].apply(
-        get_group_by_vectorizer
-    )
+    df["vectorizer_type"] = df["vectorizer"].apply(get_group_by_vectorizer)
     df["task"] = df["task"].replace("section", "sectarian")
     df["task"] = df["task"].replace("book", "scroll")
     df["vectorizer"] = df["vectorizer"].str.split("/").str[-1]
@@ -35,6 +35,7 @@ def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
     df["vectorizer"] = df["vectorizer"].replace(replacements)
 
     return df
+
 
 def process_data_for_plot(
     domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric
@@ -63,7 +64,6 @@ def process_data_for_plot(
         compare_list, tasks, comparison_scheme, main_metric
     )
     all_results = clean_vectorizer_names(all_results)
-
 
     return all_results
 

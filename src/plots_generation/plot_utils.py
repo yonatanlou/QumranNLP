@@ -218,7 +218,6 @@ def generate_all_results_unsupervised(
         # max_idx = gnn.groupby("vectorizer")["silhouette"].idxmax()
         max_idx = gnn.groupby("vectorizer")[main_metric].idxmax()
 
-
         max_test_acc_rows = gnn.loc[max_idx]
         max_test_acc_rows["model"] = "GAE"
         max_test_acc_rows["task"] = task
