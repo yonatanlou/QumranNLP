@@ -1,7 +1,11 @@
 import pickle
 
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split, StratifiedKFold
+
+from src.baselines.embeddings import VectorizerProcessor
+from src.baselines.utils import set_seed_globally
 
 MIN_SAMPLES_PER_CLASS = 4
 CLASSES_TO_REMOVE_DUE_TO_COMPARING_CHUNK_SIZE = {
@@ -530,3 +534,30 @@ def save_dataset_for_finetuning(path, dataset):
     }
     with open(path, "wb") as f:
         pickle.dump(dataset_for_fine_tuning, f)
+def create_dss_datasets(tasks, train_frac, val_frac, paths, vectorizers, df_frac_remove=0, seed=42, save_dataset=True):
+    set_seed_globally(seed)
+    df_origin = pd.read_csv(paths["data_csv_path"])
+    processor = VectorizerProcessor(
+        df_origin, paths["processed_vectorizers_path"], vectorizers
+    )
+    processed_vectorizers = processor.load_or_generate_embeddings()
+
+    dataset_composition = QumranDataset(
+        df_origin, "composition", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    dataset_scroll = QumranDataset(
+        df_origin, "book", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    dataset_sectarian = QumranDataset(
+        df_origin, "section", train_frac, val_frac, processed_vectorizers, specific_scrolls=None, df_frac_remove=df_frac_remove
+    )
+    datasets = {
+        "dataset_composition": dataset_composition,
+        "dataset_scroll": dataset_scroll,
+        "dataset_sectarian": dataset_sectarian,
+    }
+    if save_dataset:
+        with open(f"{paths['data_path']}/datasets.pkl", "wb") as f:
+            pickle.dump(datasets, f)
+    datasets = {k: v for k, v in datasets.items() if k.split("_")[1] in tasks}
+    return datasets, df_origin
