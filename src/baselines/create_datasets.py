@@ -49,11 +49,14 @@ class QumranDataset:
         val_frac,
         processed_vectorizers,
         specific_scrolls=None,
+        df_frac_remove=0,
     ):
         print(f"Creating dataset - {label}...")
         self.label = label
         self.specific_scrolls = specific_scrolls
         df["original_index"] = range(len(df))
+        if df_frac_remove > 0: #for unsupervised cross validation
+            df = df.sample(frac=1 - df_frac_remove).reset_index(drop=True)
         self.df = self.process_df_by_label(df)
         self.texts = df["text"].tolist()
         self.labels = self.df[self.label]
