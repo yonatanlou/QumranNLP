@@ -20,7 +20,7 @@ YLIM_STRETCH = 0.05
 
 def filter_vectorizers(df: pd.DataFrame) -> pd.DataFrame:
     """Remove rows with unwanted vectorizer patterns."""
-    pattern = "dictabert|starr"
+    pattern = "dictabert|starr|finetuned"
     return df[~df["vectorizer"].str.contains(pattern, regex=True)]
 
 
@@ -58,7 +58,7 @@ def plot_metric(
 
     )
     ax.set_xlabel("Model", fontsize=XLAB_FONT_SIZE)
-    ax.set_ylabel(y_col.replace("_", " ").capitalize(), fontsize=14)
+    ax.set_ylabel(y_col.replace("_", " ").capitalize(), fontsize=XLAB_FONT_SIZE)
     ymin = data[y_col].min() * (1 - YLIM_STRETCH)
     ymax = data[y_col].max() * (1 + YLIM_STRETCH)
     ax.set_ylim(ymin, ymax)
@@ -123,7 +123,7 @@ def generate_combined_bar_plot(
             handles,
             labels,
             loc="lower center",
-            ncol=3,
+            ncol=2,
             fontsize=LEGEND_FONT_SIZE,
             frameon=True,
         )
@@ -181,7 +181,7 @@ def make_combined_bar_plot_unsupervised(domain: str, metric_1, metric_2, file_na
 if __name__ == "__main__":
     make_combined_bar_plot_unsupervised(
         "dss",
-        "jaccard", "dasgupta",
+        "jaccard", "silhouette",
         f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.png",
     )
 
