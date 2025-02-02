@@ -213,7 +213,7 @@ def generate_all_results_unsupervised(
         gnn = pd.read_csv(compare_list[task][1])
         gnn = gnn[gnn["num_adjs"] == 2]
         gnn = gnn.rename(columns={"bert_model": "vectorizer"})
-        gnn["model"] = "GAE"
+        gnn["model"] = "GNN"
         gnn["task"] = task
         results.append(gnn[comparison_scheme].to_dict(orient="records"))
         # # max_idx = gnn.groupby("vectorizer")["silhouette"].idxmax()

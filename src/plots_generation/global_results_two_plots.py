@@ -144,6 +144,7 @@ def generate_combined_bar_plot(
             labels,
             loc="lower center",
             ncol=2,
+            bbox_to_anchor=(0.5, 0.09),
             fontsize=LEGEND_FONT_SIZE,
             frameon=True,
         )

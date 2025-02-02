@@ -112,7 +112,7 @@ def generate_dendrogram_plot(
         ax=ax,
         color_threshold=color_thres * max(linkage_matrix[:, 2]),
     )
-    ax.set_title(title, fontsize=TITLE_FONT_SIZE)
+    # ax.set_title(title, fontsize=TITLE_FONT_SIZE)
     ax.set_ylabel(label_to_plot.capitalize(), fontsize=XLAB_FONT_SIZE)
     ax.set_xlabel("Distance", fontsize=XLAB_FONT_SIZE)
 
