@@ -6,7 +6,7 @@ from logger import get_logger
 
 
 from config import BASE_DIR
-from src.features.BERT import bert
+from src.archive.BERT import bert
 from src.plots_generation.clustering_utils import generate_books_dict
 import datetime
 import os
