@@ -109,7 +109,7 @@ def generate_bar_plot(
     # Iterate through unique tasks
     for task in all_results["task"].unique():
         # Create a new figure for each task
-        plt.figure(figsize=(3.04 * 3, 4), dpi=200)
+        fig = plt.figure(figsize=(3.04 * 3, 5))
 
         # Filter data for the current task
         task_data = all_results[all_results["task"] == task]
@@ -146,15 +146,17 @@ def generate_bar_plot(
         plt.ylabel(y_col.replace("_", " ").capitalize(), fontsize=14)
         plt.yticks(fontsize=14)
         # plt.xticks(rotation=45)
-
+        plt.subplots_adjust(bottom=0.2)
         # Customize legend
         plt.legend(
             title="Vectorizer",
-            bbox_to_anchor=(1.05, 1),
-            loc="lower left",
-            borderaxespad=0.0,
-            fontsize=12,
-            title_fontsize=14,
+            bbox_to_anchor=(0.5, -0.6),
+            loc="lower center",
+            ncol=3,
+            frameon=True,
+            # borderaxespad=0.0,
+            fontsize=10,
+            title_fontsize=12,
         )
         plt.grid(alpha=0.5)
         plt.tight_layout()
