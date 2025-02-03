@@ -49,6 +49,8 @@ It will run over all of the scrolls (bib and nonbib), will generate starr featur
 5. Reports - contains the results of most of the experiments.
 6. Src - contains the code for the main ETL, feature engineering, experiments, model training.
 
+
+---
 ## Running Research
 ### Topic modeling
 After trying multiple methods for getting the optimal number of topics 
@@ -76,7 +78,7 @@ The edges can constructed via various methods, when the scheme is to define some
 #### Supervised classification
 We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
 ![Global tasks comparison supervised](reports/plots/global_results/dss_supervised_composition.png "Global tasks comparison")
-![Global tasks comparison supervised](reports/plots/global_results/dss_supervised_scroll.png "Global tasks comparison")
+![Global tasks comparison supervised](reports/plots/global_results/dss_supervised_Scroll.png "Global tasks comparison")
 
 
 
