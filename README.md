@@ -9,10 +9,10 @@ pip install -r requirements.txt
 ```
 
 ## Reproducibility
-Reproducibility in the academic workd is pretty sucks. Ive tried to make this whole repo reproducible as much as i can.
+Reproducibility in the academic world is pretty sucks. Ive tried to make this whole repo reproducible as much as i can.
 If you are reading this, you are probably wish to use the Qumran data, so the data pipelines will be pretty easy to use (`src/ETL/main_ETL.py`).
 In case you are here for the machine learning, algorithms or visualizations, Ive tried to make it robust as i can to the data.
-In any case, i will post a guide so how to use your own data in the future.
+In any case, all of the scripts can be easily run with the `exp_runner.sh` script.
 
 
 
@@ -75,7 +75,9 @@ The edges can constructed via various methods, when the scheme is to define some
 
 #### Supervised classification
 We can see that for the global tasks (scroll, composition and sectarian classification) the GNN always outperform the rest of the methods.
-![Global tasks comparison](experiments/dss/gnn/comparsion_plot_all_tasks.png "Global tasks comparison")
+![Global tasks comparison supervised](reports/plots/global_results/dss_supervised_composition.png "Global tasks comparison")
+![Global tasks comparison supervised](reports/plots/global_results/dss_supervised_scroll.png "Global tasks comparison")
+
 
 
 Interesting to see which types of adjacency matrices perform best:
@@ -87,18 +89,17 @@ Its a classic encoder-decoder framework which can work with graphs.
 Ive trained the model for each one of our potential embedders, when the graph was built using tf-idf/starr/trigram.
 The clustering is made by hierarchical clustering (agglomerative), number of clusters as number of unique labels per task.
 The following plots shows the difference between different models for the top per each metric:
-TODO add the plots
+![Global tasks comparison supervised](reports/plots/global_results/dss_unsupervised_composition.png "Global tasks comparison")
 
 ## Bible validation
-I validate the results of the DSS with the Hebrew bible dataset (same chunking technique, embeddings, etc...). 
+I validate the results of the DSS with the Hebrew bible dataset (same chunking technique, embeddings, etc...).
 The results are compared with the DSS results which is nice.
+![Global tasks comparison supervised](reports/plots/global_results/bible_unsupervised_book.png "Global tasks comparison")
 
-## Running Tasks:
-Done
+
 
 ----- 
-Could be nice in the future:
-* Medium posts:
-  * Unsupervised clustering with dasgupta.
+Tasks:
+* Posts:
   * Easy implementation of GNN with supervised and unsupervised context. 
   * How to use GNN for text classification with different adj matrices.
