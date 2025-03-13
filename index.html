@@ -30,8 +30,9 @@
         header {
             background-color: var(--secondary-color);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.5rem 2rem;
             box-shadow: var(--box-shadow);
+            text-align: center;
         }
 
         main {
@@ -43,11 +44,34 @@
         h1 {
             margin: 0;
             font-size: 2.2rem;
+            text-align: center;
         }
 
         .subtitle {
             opacity: 0.8;
             margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .abstract {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .abstract h2 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .abstract p {
+            margin-bottom: 0.7rem;
         }
 
         .plot-container {
@@ -64,12 +88,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-align: center;
         }
 
         .plot-header h2 {
             margin: 0;
             color: var(--secondary-color);
             font-size: 1.5rem;
+            text-align: center;
         }
 
         .plot-description {
@@ -131,16 +157,25 @@
                 width: 100% !important;
                 height: 400px !important;
             }
+
+            .abstract {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Dead sea scrolls text embeddings using GNN</h1>
-        <div class="subtitle">Interactive scatter plots for data analysis</div>
+        <h1>Dead sea scrolls unsupervised clustering</h1>
+        <div class="subtitle">Integrating Semantic and Statistical Features for Authorial Clustering of Qumran Scrolls </div>
     </header>
 
     <main>
+            <div class="abstract">
+            <h2>Abstract</h2>
+            <p>We present a novel framework for authorial classification and clustering of the Qumran Dead Sea Scrolls (DSS). Our approach combines modern Hebrew BERT embeddings with traditional natural language processing features in a graph neural network (GNN) architecture.</p>
+            <p>Our results outperform baseline methods on both the Dead Sea Scrolls and a validation dataset of the Hebrew Bible. In particular, we leverage our model to provide significant insights into long-standing debates, including the classification of sectarian and non-sectarian texts and the division of the Hodayot collection of hymns.</p>
+        </div>
         <div class="plot-container">
             <div class="plot-header">
                 <h2>Figure 1: Clusters by sectarian/non-sectarian</h2>
