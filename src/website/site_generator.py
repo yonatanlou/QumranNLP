@@ -20,10 +20,3 @@ with open(output_path, "w") as f:
     f.write(html_output)
 
 print(f"Enhanced HTML file written to: {output_path}")
-#
-# # Write the combined HTML to a file
-# output_path = "/Users/yonatanlou/dev/QumranNLP/index1.html"
-# with open(output_path, "w") as f:
-#     f.write(html_str)
-#
-# print(f"Enhanced HTML file written to: {output_path}")
