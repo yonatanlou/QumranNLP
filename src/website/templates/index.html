@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dead sea scrolls unsupervised clustering</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern clean styling */
+        :root {
+    --primary-color: #5D6D7E;         /* Muted slate blue */
+    --secondary-color: #34495E;       /* Dark slate */
+    --background-color: #F5F5F5;      /* Light gray */
+    --card-color: #FFFFFF;            /* White */
+    --text-color: #2C3E50;            /* Dark blue-gray */
+    --accent-color: #2C3E50;          /* Dark accent color */
+    --border-radius: 6px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    text-align: center;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1.8rem 2rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Libre Baskerville', 'Georgia', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-family: 'Libre Baskerville', 'Georgia', serif;
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-align: center;
+}
+
+.subtitle {
+    opacity: 0.85;
+    margin-top: 0.6rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.abstract {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.75rem 2.5rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    border-left: 4px solid var(--accent-color);
+}
+
+.abstract h2 {
+    color: var(--accent-color);
+    margin-top: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.abstract p {
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+
+.plot-container {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.plot-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0,0,0,0.01);
+}
+
+.plot-header h2 {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.plot-description {
+    padding: 1rem 1.5rem;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    text-align: center;
+}
+
+.plot-content {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1.8rem;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.controls button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.controls button:hover {
+    background-color: rgba(44, 62, 80, 0.1);
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    .abstract {
+        padding: 1.25rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dead sea scrolls unsupervised clustering</h1>
+        <div class="subtitle">Integrating Semantic and Statistical Features for Authorial Clustering of Qumran Scrolls</div>
+    </header>
+
+    <main>
+        <div class="abstract">
+            <h2>Abstract</h2>
+            <p>We present a novel framework for authorial classification and clustering of the Qumran Dead Sea Scrolls (DSS). Our approach combines modern Hebrew BERT embeddings with traditional natural language processing features in a graph neural network (GNN) architecture.</p>
+            <p>Our results outperform baseline methods on both the Dead Sea Scrolls and a validation dataset of the Hebrew Bible. In particular, we leverage our model to provide significant insights into long-standing debates, including the classification of sectarian and non-sectarian texts and the division of the Hodayot collection of hymns.</p>
+        </div>
+
+        <div class="plot-container">
+            <div class="plot-header">
+                <div class="controls">
+                    <button title="Download as PNG" onclick="downloadPlot('figure1')">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button title="Fullscreen" onclick="toggleFullscreen('plot-content-1')">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+                <h2>Clustering by sectarian/non-sectarian</h2>
+                <div style="width: 92px;"></div>
+            </div>
+            <div class="plot-description">
+                <p>The colors in this visualization shows the distribution of text clusters across sectarian and non-sectarian.</p>
+            </div>
+            <div id="plot-content-1" class="plot-content">
+                {{ fig1|safe }}
+            </div>
+        </div>
+
+        <div class="plot-container">
+            <div class="plot-header">
+                <div class="controls">
+                    <button title="Download as PNG" onclick="downloadPlot('figure2')">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button title="Fullscreen" onclick="toggleFullscreen('plot-content-2')">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+                <h2>Clustering by Composition</h2>
+                <div style="width: 92px;"></div>
+            </div>
+            <div class="plot-description">
+                <p>The colors in this visualization shows the distribution of text clusters across different compositions.</p>
+            </div>
+            <div id="plot-content-2" class="plot-content">
+                {{ fig2|safe }}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+                   <p>
+        © 2025
+        <a href="https://www.cs.tau.ac.il/~roded/" target="_blank" style="text-decoration: none; color: inherit;">
+            Roded Sharan Lab
+        </a>
+        | Created with Plotly.js
+    </p>
+    <a href="https://github.com/yonatanlou/QumranNLP" target="_blank" style="text-decoration: none; margin-top: 5px;">
+        <img src="https://img.icons8.com/?size=100&id=3tC9EQumUAuq&format=png&color=FFFFFF" alt="GitHub" width="24" height="24">
+    </a>
+    </footer>
+
+    <script>
+        // Utility functions for download and fullscreen
+        function downloadPlot(plotId) {
+            Plotly.downloadImage(
+                document.getElementById(plotId),
+                {format: 'png', width: 1200, height: 800, filename: 'dss-plot-' + plotId}
+            );
+        }
+
+        function toggleFullscreen(elementId) {
+            const element = document.getElementById(elementId);
+            if (!document.fullscreenElement) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
