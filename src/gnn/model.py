@@ -11,7 +11,7 @@ import warnings
 
 from base_utils import measure_time
 from config import BASE_DIR
-from logger import get_logger
+#from logger import get_logger
 
 from src.baselines.ml import (
     unsupervised_evaluation,
@@ -19,7 +19,7 @@ from src.baselines.ml import (
 from datetime import datetime
 
 date = datetime.today().strftime("%Y-%m-%d")
-logger = get_logger(__name__, f"{BASE_DIR}/logs/{__name__}_{date}.log")
+#logger = get_logger(__name__, f"{BASE_DIR}/logs/{__name__}_{date}.log")
 
 
 class GCN(torch.nn.Module):
