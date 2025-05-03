@@ -1,4 +1,7 @@
 # QumranNLP
+🎉 Our paper was accepted to the **ALP 2025** workshop at **NAACL 2025**!  
+📄 [Integrating Semantic and Statistical Features for Authorial Clustering of Qumran Scrolls](https://aclanthology.org/2025.alp-1.2/)
+
 ## Development
 Create a new env (however you want, here a suggestion):
 ```shell

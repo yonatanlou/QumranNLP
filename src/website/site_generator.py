@@ -1,11 +1,13 @@
 from jinja2 import Environment, FileSystemLoader
-
 from config import BASE_DIR
 from src.website.data_processing import generate_scatter_plots
+import os
+
+TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
 
 fig1, fig2 = generate_scatter_plots()
 
-env = Environment(loader=FileSystemLoader("templates"))
+env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 template = env.get_template("index.html")
 
 # Render the template with the Plotly figures embedded
