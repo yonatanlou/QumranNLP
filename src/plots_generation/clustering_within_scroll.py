@@ -25,7 +25,7 @@ DATA_CSV_PATH = paths["data_csv_path"]
 df = pd.read_csv(DATA_CSV_PATH)
 
 
-vectorizers = get_bert_models(DOMAIN) + ["trigram", "tfidf", "starr"]
+vectorizers = (get_bert_models(DOMAIN) or []) + ["trigram", "tfidf", "starr"]
 processor = VectorizerProcessor(df, paths["processed_vectorizers_path"], vectorizers)
 PROCESSED_VECTORIZERS = processor.load_or_generate_embeddings()
 ADJACENCY_MATRIX_ALL = create_adjacency_matrix(
@@ -88,6 +88,61 @@ def get_metrics_per_model(
     return all_results
 
 
+def get_metrics_per_vectorizer(
+    vectorizer_name: str, label_to_plot, path_to_save=None
+) -> list:
+    # Predefined paths and configurations
+    set_seed_globally()
+    data_csv_path = paths["data_csv_path"]
+    path_to_save = path_to_save + "/{}_clustering_{}.pdf" if path_to_save else None
+    
+    # Read and filter DataFrame
+    df = pd.read_csv(data_csv_path)
+    df_ = df[df["book"].isin(["1QM", "1QSa", "1QS", "1QHa"])].copy()
+    
+    # Get embeddings from processor
+    embeddings = PROCESSED_VECTORIZERS[vectorizer_name]
+    embeddings = embeddings[df_.index]
+    
+    # Labels setup
+    labels_all = {
+        # "['1QM']": labels_1QM,
+        "['1QHa']": labels_hodayot,
+        # "['1QS', '1QSa']": labels_1QS,
+    }
+
+    # Calculate metrics for each scroll
+    all_results = []
+    for scroll, labels in labels_all.items():
+        # Create title based on vectorizer method
+        method_title = f"Unsupervised Clustering using {vectorizer_name.upper()} Embeddings"
+        
+        metrics_vectorizer = hirerchial_clustering_by_scroll_gnn(
+            df_,
+            eval(scroll),
+            labels,
+            method_title,
+            embeddings,
+            ADJACENCY_MATRIX_ALL,
+            label_to_plot,
+            {"linkage_m": "ward", "color_threshold": 0.7},
+            path_to_save.format(vectorizer_name, eval(scroll)) if path_to_save else None,
+        )
+
+        # Add metadata to results
+        metrics_vectorizer.update(
+            {
+                "scroll": scroll,
+                "vectorizer": vectorizer_name,
+                "method": "direct_embedding",
+            }
+        )
+
+        all_results.append(metrics_vectorizer)
+
+    return all_results
+
+
 if __name__ == "__main__":
     # best by Hodayot
     param_dict = {
@@ -113,6 +168,8 @@ if __name__ == "__main__":
     bert_model = "dicta-il/BEREL"
     model_file = "trained_gae_model_BEREL.pth"
     path_to_save = f"{BASE_DIR}/reports/plots"
+    
+    print("Running clustering with GAE embeddings...")
     result = get_metrics_per_model(
         bert_model,
         model_file,
@@ -120,32 +177,21 @@ if __name__ == "__main__":
         label_to_plot="sentence_path",
         path_to_save=path_to_save,
     )
+    print(f"GAE results: {result}")
+    
+    print("Running clustering with TF-IDF embeddings...")
+    tfidf_result = get_metrics_per_vectorizer(
+        "tfidf",
+        label_to_plot="sentence_path",
+        path_to_save=path_to_save,
+    )
+    print(f"TF-IDF results: {tfidf_result}")
 
-    # all_res_sim = []
-    # for threshold in [0.8, 0.9,0.95, 0.99]:
-    #     param_dict["threshold"] = threshold
-    #     for bert_model in get_bert_models(DOMAIN):
-    #         for model_file in ['trained_gae_model_BEREL-finetuned-DSS-maskedLM.pth',
-    #                            'trained_gae_model_BEREL.pth',
-    #                            ]:
-    #             for max_f in [1000,5000,10000]:
-    #                 param_dict["adjacencies"][0]["params"]["max_features"] = max_f
-    #                 param_dict["adjacencies"][1]["params"]["max_features"] = max_f
-    #                 for min_df in [0.001,0.005,0.01]:
-    #                     param_dict["adjacencies"][0]["params"]["min_df"] = min_df
-    #                     param_dict["adjacencies"][1]["params"]["min_df"] = min_df
-    #
-    #                     result = get_metrics_per_model(
-    #                         bert_model,
-    #                         model_file,
-    #                         param_dict,
-    #                         label_to_plot=None,
-    #                         path_to_save=None
-    #                     )
-    #                     result[0].update({"threshold": threshold, "bert_model": bert_model, "model_file": model_file, "min_df":min_df,"max_f": max_f})
-    #                     all_res_sim.append(result[0])
-    #                     print(result[0])
-    #                     print()
-    # pd.DataFrame(all_res_sim).to_csv(
-    #     f"/Users/yonatanlou/dev/QumranNLP/experiments/dss/clustering_by_scroll/clustering_within_composition_comp.csv",
-    #     index=False)
+    print("Running clustering with trigram embeddings...")
+    trigram_result = get_metrics_per_vectorizer(
+        "trigram",
+        label_to_plot="sentence_path",
+        path_to_save=path_to_save,
+    )
+    print(f"Trigram results: {trigram_result}")
+
