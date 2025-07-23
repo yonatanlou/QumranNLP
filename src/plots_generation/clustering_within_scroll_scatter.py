@@ -218,7 +218,7 @@ def get_scatter_plots_per_model(
             df_,
             eval(scroll),
             labels,
-            f"Unsupervised Clustering of the Hodayot Composition",
+            f"Unsupervised Clustering of the Using GNN Embeddings (BEREL based)",
             embeddings_gvae,
             ADJACENCY_MATRIX_ALL,
             label_to_plot,
