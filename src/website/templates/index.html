@@ -9,11 +9,11 @@
     <style>
         /* Modern clean styling */
         :root {
-    --primary-color: #5D6D7E;         /* Muted slate blue */
+    --primary-color: #5D6D7E;       /* Muted slate blue */
     --secondary-color: #34495E;       /* Dark slate */
     --background-color: #F5F5F5;      /* Light gray */
-    --card-color: #FFFFFF;            /* White */
-    --text-color: #2C3E50;            /* Dark blue-gray */
+    --card-color: #FFFFFF;          /* White */
+    --text-color: #2C3E50;          /* Dark blue-gray */
     --accent-color: #2C3E50;          /* Dark accent color */
     --border-radius: 6px;
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -198,6 +198,34 @@ footer {
             </p>
         </div>
 
+        <div class="plot-container" style="border-left: 4px solid var(--accent-color);">
+            <div class="plot-header">
+                <div style="width: 92px;"></div>
+                <h2 style="color: var(--secondary-color); font-size: 1.6rem;">
+                    Interactive Clustering Analysis
+                </h2>
+                <div style="width: 92px;"></div>
+            </div>
+            <div class="plot-description" style="font-style: normal; padding: 1.5rem; color: var(--text-color);">
+                <p style="font-size: 1.1rem; margin-bottom: 0;">
+                    Interactive analysis of the Hodayot composition, comparing between Teacher Hymns and Community Hymns.
+                </p>
+            </div>
+            <div class="plot-content" style="padding: 1.5rem 1.5rem 2rem;">
+                <a href="reports/plots/clustering_within_scroll_scatter_plots.html" 
+                    target="_blank" 
+                    style="display: inline-block; background-color: var(--primary-color); color: white; 
+                            padding: 15px 30px; border-radius: 25px; text-decoration: none; 
+                            font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; 
+                            box-shadow: var(--box-shadow);"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)';"
+                    onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='var(--box-shadow)';">
+                    <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>
+                    Launch Interactive Analysis
+                </a>
+            </div>
+        </div>
+
         <div class="plot-container">
             <div class="plot-header">
                 <div class="controls">
@@ -242,7 +270,7 @@ footer {
     </main>
 
     <footer>
-                   <p>
+                    <p>
         © 2025
         <a href="https://www.cs.tau.ac.il/~roded/" target="_blank" style="text-decoration: none; color: inherit;">
             Roded Sharan Lab
