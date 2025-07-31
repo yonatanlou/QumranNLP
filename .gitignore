@@ -175,4 +175,4 @@ cython_debug/
 .vscode
 .idea
 .DS_Store
-.CLAUDE
+.CLAUDE.md

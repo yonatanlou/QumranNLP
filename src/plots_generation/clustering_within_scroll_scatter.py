@@ -54,7 +54,20 @@ def generate_2d_embeddings(embeddings, method="tsne", random_state=42):
     return embeddings_2d
 
 
-def create_scatter_plot(df_labeled, embeddings_2d, title, method_name, scroll_name, plot_id):
+def generate_3d_embeddings(embeddings, method="tsne", random_state=42):
+    """Generate 3D embeddings using t-SNE or PCA"""
+    if method == "tsne":
+        reducer = TSNE(n_components=3, random_state=random_state, perplexity=min(30, embeddings.shape[0]-1))
+    elif method == "pca":
+        reducer = PCA(n_components=3, random_state=random_state)
+    else:
+        raise ValueError("Method should be either 'tsne' or 'pca'")
+    
+    embeddings_3d = reducer.fit_transform(embeddings)
+    return embeddings_3d
+
+
+def create_scatter_plot(df_labeled, embeddings, title, method_name, scroll_name, plot_id, is_3d=False):
     """Create a plotly scatter plot for the clustering visualization"""
     
     # Create unique colors for each label
@@ -67,61 +80,121 @@ def create_scatter_plot(df_labeled, embeddings_2d, title, method_name, scroll_na
     
     for label in unique_labels:
         mask = df_labeled["label"] == label
-        embeddings_subset = embeddings_2d[mask]
+        embeddings_subset = embeddings[mask]
         sentence_paths = df_labeled[mask]["sentence_path"].tolist()
         
-        # Add normal trace for each label
-        fig.add_trace(go.Scatter(
-            x=embeddings_subset[:, 0],
-            y=embeddings_subset[:, 1],
-            mode='markers',
-            name=label,
-            marker=dict(
-                color=color_map[label],
-                size=8,
-                line=dict(width=1, color='black')
-            ),
-            text=sentence_paths,
-            customdata=sentence_paths,  # Store sentence paths for JavaScript access
-            hovertemplate='<b>%{text}</b><br>Label: ' + label + '<extra></extra>',
-            visible=True
-        ))
-        
-        # Add highlight trace for each label (initially invisible)
-        fig.add_trace(go.Scatter(
-            x=embeddings_subset[:, 0],
-            y=embeddings_subset[:, 1],
-            mode='markers',
-            name=f'{label}_highlight',
-            marker=dict(
-                color='red',
-                size=12,
-                line=dict(width=2, color='darkred'),
-                symbol='star'
-            ),
-            text=sentence_paths,
-            customdata=sentence_paths,
-            hovertemplate='<b>%{text}</b><br>Label: ' + label + ' (SELECTED)<extra></extra>',
-            visible=False,
-            showlegend=False
-        ))
+        if is_3d:
+            # Add normal trace for each label (3D)
+            fig.add_trace(go.Scatter3d(
+                x=embeddings_subset[:, 0],
+                y=embeddings_subset[:, 1],
+                z=embeddings_subset[:, 2],
+                mode='markers',
+                name=label,
+                marker=dict(
+                    color=color_map[label],
+                    size=5,
+                    line=dict(width=1, color='black')
+                ),
+                text=sentence_paths,
+                customdata=sentence_paths,  # Store sentence paths for JavaScript access
+                hovertemplate='<b>%{text}</b><br>Label: ' + label + '<extra></extra>',
+                visible=True
+            ))
+            
+            # Add highlight trace for each label (initially invisible, 3D)
+            fig.add_trace(go.Scatter3d(
+                x=embeddings_subset[:, 0],
+                y=embeddings_subset[:, 1],
+                z=embeddings_subset[:, 2],
+                mode='markers',
+                name=f'{label}_highlight',
+                marker=dict(
+                    color='red',
+                    size=8,
+                    line=dict(width=2, color='darkred'),
+                    symbol='diamond'
+                ),
+                text=sentence_paths,
+                customdata=sentence_paths,
+                hovertemplate='<b>%{text}</b><br>Label: ' + label + ' (SELECTED)<extra></extra>',
+                visible=False,
+                showlegend=False
+            ))
+        else:
+            # Add normal trace for each label (2D)
+            fig.add_trace(go.Scatter(
+                x=embeddings_subset[:, 0],
+                y=embeddings_subset[:, 1],
+                mode='markers',
+                name=label,
+                marker=dict(
+                    color=color_map[label],
+                    size=8,
+                    line=dict(width=1, color='black')
+                ),
+                text=sentence_paths,
+                customdata=sentence_paths,  # Store sentence paths for JavaScript access
+                hovertemplate='<b>%{text}</b><br>Label: ' + label + '<extra></extra>',
+                visible=True
+            ))
+            
+            # Add highlight trace for each label (initially invisible, 2D)
+            fig.add_trace(go.Scatter(
+                x=embeddings_subset[:, 0],
+                y=embeddings_subset[:, 1],
+                mode='markers',
+                name=f'{label}_highlight',
+                marker=dict(
+                    color='red',
+                    size=12,
+                    line=dict(width=2, color='darkred'),
+                    symbol='star'
+                ),
+                text=sentence_paths,
+                customdata=sentence_paths,
+                hovertemplate='<b>%{text}</b><br>Label: ' + label + ' (SELECTED)<extra></extra>',
+                visible=False,
+                showlegend=False
+            ))
     
-    fig.update_layout(
-        title=f"{title}<br><sub>{method_name} - {scroll_name}</sub>",
-        xaxis_title=f"Component 1",
-        yaxis_title=f"Component 2",
-        font=dict(size=12),
-        width=800,
-        height=600,
-        showlegend=True,
-        legend=dict(
-            x=1.02,
-            y=1,
-            bgcolor='rgba(255,255,255,0.8)',
-            bordercolor='black',
-            borderwidth=1
+    if is_3d:
+        fig.update_layout(
+            title=f"{title}<br><sub>{method_name} 3D - {scroll_name}</sub>",
+            scene=dict(
+                xaxis_title="Component 1",
+                yaxis_title="Component 2",
+                zaxis_title="Component 3"
+            ),
+            font=dict(size=12),
+            width=800,
+            height=600,
+            showlegend=True,
+            legend=dict(
+                x=1.02,
+                y=1,
+                bgcolor='rgba(255,255,255,0.8)',
+                bordercolor='black',
+                borderwidth=1
+            )
         )
-    )
+    else:
+        fig.update_layout(
+            title=f"{title}<br><sub>{method_name} 2D - {scroll_name}</sub>",
+            xaxis_title=f"Component 1",
+            yaxis_title=f"Component 2",
+            font=dict(size=12),
+            width=800,
+            height=600,
+            showlegend=True,
+            legend=dict(
+                x=1.02,
+                y=1,
+                bgcolor='rgba(255,255,255,0.8)',
+                bordercolor='black',
+                borderwidth=1
+            )
+        )
     
     return fig
 
@@ -135,6 +208,7 @@ def scatter_clustering_by_scroll_gnn(
     adjacency_matrix,
     label_to_plot: str,
     reduction_method: str = "tsne",
+    is_3d: bool = False,
     kwargs=None,
 ):
     """Generate scatter plot clustering visualization similar to hierarchical clustering function"""
@@ -165,19 +239,23 @@ def scatter_clustering_by_scroll_gnn(
         df_labeled_for_clustering, embeddings_tmp, adjacency_matrix_tmp, linkage_m
     )
     
-    # Generate 2D embeddings for visualization
-    embeddings_2d = generate_2d_embeddings(embeddings_tmp, method=reduction_method)
+    # Generate embeddings for visualization based on dimensionality
+    if is_3d:
+        embeddings_vis = generate_3d_embeddings(embeddings_tmp, method=reduction_method)
+    else:
+        embeddings_vis = generate_2d_embeddings(embeddings_tmp, method=reduction_method)
     
     # Create scatter plot
     scroll_str = str(curr_scroll)
     plot_id = f"{reduction_method}_{hash(title) % 10000}"  # Create unique plot ID
     fig = create_scatter_plot(
         df_labeled_for_clustering, 
-        embeddings_2d, 
+        embeddings_vis, 
         title, 
         reduction_method.upper(),
         scroll_str,
-        plot_id
+        plot_id,
+        is_3d=is_3d
     )
     
     return fig, metrics, df_labeled_for_clustering
@@ -188,7 +266,8 @@ def get_scatter_plots_per_model(
     model_file: str, 
     param_dict: dict, 
     label_to_plot: str,
-    reduction_method: str = "tsne"
+    reduction_method: str = "tsne",
+    is_3d: bool = False
 ) -> tuple[list, list]:
     """Generate scatter plots for GNN model embeddings"""
     
@@ -223,6 +302,7 @@ def get_scatter_plots_per_model(
             ADJACENCY_MATRIX_ALL,
             label_to_plot,
             reduction_method,
+            is_3d,
         )
 
         # Add metadata to results
@@ -245,7 +325,8 @@ def get_scatter_plots_per_model(
 def get_scatter_plots_per_vectorizer(
     vectorizer_name: str, 
     label_to_plot: str,
-    reduction_method: str = "tsne"
+    reduction_method: str = "tsne",
+    is_3d: bool = False
 ) -> tuple[list, list]:
     """Generate scatter plots for direct vectorizer embeddings"""
     
@@ -282,6 +363,7 @@ def get_scatter_plots_per_vectorizer(
             ADJACENCY_MATRIX_ALL,
             label_to_plot,
             reduction_method,
+            is_3d,
         )
 
         # Add metadata to results
@@ -497,14 +579,29 @@ def save_combined_html(plots_list, dataframes_list, output_path):
                                     const highlightText = matchingIndices.map(idx => normalTrace.text[idx]);
                                     const highlightCustomData = matchingIndices.map(idx => normalTrace.customdata[idx]);
                                     
-                                    // Update the highlight trace
-                                    const update = {{
-                                        x: [highlightX],
-                                        y: [highlightY],
-                                        text: [highlightText],
-                                        customdata: [highlightCustomData],
-                                        visible: [true]
-                                    }};
+                                    // Check if this is a 3D plot (has z data)
+                                    let update;
+                                    if (normalTrace.z && normalTrace.z.length > 0) {{
+                                        // 3D plot
+                                        const highlightZ = matchingIndices.map(idx => normalTrace.z[idx]);
+                                        update = {{
+                                            x: [highlightX],
+                                            y: [highlightY],
+                                            z: [highlightZ],
+                                            text: [highlightText],
+                                            customdata: [highlightCustomData],
+                                            visible: [true]
+                                        }};
+                                    }} else {{
+                                        // 2D plot
+                                        update = {{
+                                            x: [highlightX],
+                                            y: [highlightY],
+                                            text: [highlightText],
+                                            customdata: [highlightCustomData],
+                                            visible: [true]
+                                        }};
+                                    }}
                                     
                                     Plotly.restyle(plotDiv, update, [traceIndex]);
                                 }} else {{
@@ -599,40 +696,46 @@ if __name__ == "__main__":
     all_results = []
     all_dataframes = []
     
-    print("Generating scatter plots with GAE embeddings...")
-    gae_plots, gae_results, gae_dataframes = get_scatter_plots_per_model(
-        bert_model,
-        model_file,
-        param_dict,
-        label_to_plot="sentence_path",
-        reduction_method="tsne"
-    )
-    all_plots.extend(gae_plots)
-    all_results.extend(gae_results)
-    all_dataframes.extend(gae_dataframes)
-    print(f"GAE results: {gae_results}")
-    
-    print("Generating scatter plots with TF-IDF embeddings...")
-    tfidf_plots, tfidf_results, tfidf_dataframes = get_scatter_plots_per_vectorizer(
-        "tfidf",
-        label_to_plot="sentence_path",
-        reduction_method="tsne"
-    )
-    all_plots.extend(tfidf_plots)
-    all_results.extend(tfidf_results)
-    all_dataframes.extend(tfidf_dataframes)
-    print(f"TF-IDF results: {tfidf_results}")
+    # Generate both 2D and 3D plots
+    for is_3d in [False, True]:
+        dimension_label = "3D" if is_3d else "2D"
+        print(f"Generating {dimension_label} scatter plots with GAE embeddings...")
+        gae_plots, gae_results, gae_dataframes = get_scatter_plots_per_model(
+            bert_model,
+            model_file,
+            param_dict,
+            label_to_plot="sentence_path",
+            reduction_method="tsne",
+            is_3d=is_3d
+        )
+        all_plots.extend(gae_plots)
+        all_results.extend(gae_results)
+        all_dataframes.extend(gae_dataframes)
+        print(f"GAE {dimension_label} results: {gae_results}")
+        
+        print(f"Generating {dimension_label} scatter plots with TF-IDF embeddings...")
+        tfidf_plots, tfidf_results, tfidf_dataframes = get_scatter_plots_per_vectorizer(
+            "tfidf",
+            label_to_plot="sentence_path",
+            reduction_method="tsne",
+            is_3d=is_3d
+        )
+        all_plots.extend(tfidf_plots)
+        all_results.extend(tfidf_results)
+        all_dataframes.extend(tfidf_dataframes)
+        print(f"TF-IDF {dimension_label} results: {tfidf_results}")
 
-    print("Generating scatter plots with trigram embeddings...")
-    trigram_plots, trigram_results, trigram_dataframes = get_scatter_plots_per_vectorizer(
-        "trigram",
-        label_to_plot="sentence_path",
-        reduction_method="tsne"
-    )
-    all_plots.extend(trigram_plots)
-    all_results.extend(trigram_results)
-    all_dataframes.extend(trigram_dataframes)
-    print(f"Trigram results: {trigram_results}")
+        print(f"Generating {dimension_label} scatter plots with trigram embeddings...")
+        trigram_plots, trigram_results, trigram_dataframes = get_scatter_plots_per_vectorizer(
+            "trigram",
+            label_to_plot="sentence_path",
+            reduction_method="tsne",
+            is_3d=is_3d
+        )
+        all_plots.extend(trigram_plots)
+        all_results.extend(trigram_results)
+        all_dataframes.extend(trigram_dataframes)
+        print(f"Trigram {dimension_label} results: {trigram_results}")
 
     # Save combined HTML with interactive features
     output_html_path = os.path.join(output_dir, "clustering_within_scroll_scatter_plots.html")
