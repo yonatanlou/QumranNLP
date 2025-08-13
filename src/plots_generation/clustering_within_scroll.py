@@ -42,7 +42,7 @@ def get_metrics_per_model(
     set_seed_globally()
     models_dir = f"{BASE_DIR}/models"
     data_csv_path = paths["data_csv_path"]
-    path_to_save = path_to_save + "/GNN_{}.pdf" if path_to_save else None
+    path_to_save = path_to_save + "/GNN_{}.png" if path_to_save else None
     # Default parameter dictionary
     param_dict["bert_model"] = bert_model
 
@@ -94,7 +94,7 @@ def get_metrics_per_vectorizer(
     # Predefined paths and configurations
     set_seed_globally()
     data_csv_path = paths["data_csv_path"]
-    path_to_save = path_to_save + "/{}_clustering_{}.pdf" if path_to_save else None
+    path_to_save = path_to_save + "/{}_clustering_{}.png" if path_to_save else None
     
     # Read and filter DataFrame
     df = pd.read_csv(data_csv_path)

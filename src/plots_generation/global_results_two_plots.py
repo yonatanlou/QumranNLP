@@ -203,5 +203,5 @@ if __name__ == "__main__":
         "dss",
         "jaccard",
         "dasgupta",
-        f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.pdf",
+        f"{BASE_DIR}/reports/plots/global_results/global_unsupervised_gae_results_2_plt_{{}}_.png",
     )
