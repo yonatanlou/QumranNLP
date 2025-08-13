@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DSS_DATA_PATH = f"{BASE_DIR}/data/processed_data/dss"
-DSS_DATA_CSV = f"{DSS_DATA_PATH}/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=15_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
+DSS_DATA_CSV = f"{DSS_DATA_PATH}/filtered_df_CHUNK_SIZE=100_MAX_OVERLAP=0_PRE_PROCESSING_TASKS=[]_2024_02_09.csv"
 DSS_PROCESSED_VECTORIZERS_PATH = f"{DSS_DATA_PATH}/processed_vectorizers.pkl"  # The processed embeddings of DSS_DATA_CSV will be stored here
 
 BIBLE_DATA_PATH = f"{BASE_DIR}/data/processed_data/bible"
