@@ -147,7 +147,8 @@ def make_simple_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, f
 
     # Create plot for each task
     for task in plot_data["task"].unique():
-        fig = plt.figure(figsize=(3.04 * 3, 5))
+        print(f"producing for {task=}")
+        fig = plt.figure(figsize=(6, 6))
         task_data = plot_data[plot_data["task"] == task]
 
         sns.barplot(
@@ -155,12 +156,7 @@ def make_simple_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, f
             y=main_metric,
             data=task_data,
             palette=bar_colors,
-            order=label_order,
-        )
-
-        plt.title(
-            f"{main_metric.replace('_', ' ').capitalize()} for {task.capitalize()}",
-            fontsize=16,
+            order=label_order
         )
 
         # Adjust y-axis limits
@@ -180,7 +176,7 @@ def make_simple_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, f
             task_filename = file_name.format(task)
             if not os.path.exists(os.path.dirname(task_filename)):
                 os.makedirs(os.path.dirname(task_filename))
-            plt.savefig(task_filename, bbox_inches="tight")
+            plt.savefig(task_filename, bbox_inches="tight", dpi=600)
             print(f"Saved plot to {task_filename}")
 
         plt.show()
@@ -202,7 +198,7 @@ if __name__ == "__main__":
 
             file_name = (
                 f"{BASE_DIR}/reports/plots/global_results/{domain}_{'unsupervised' if not is_supervised else 'supervised'}"
-                + "_test_{}.png"
+                + "_v2_600dpi_{}.png"
             )
 
             # Define which bars to show (vectorizer + model combinations)

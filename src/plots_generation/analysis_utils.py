@@ -100,7 +100,7 @@ def generate_dendrogram_plot(
     color_map = dict(zip(unique_labels, label_colors))
 
     # Plot the dendrogram
-    fig, ax = plt.subplots(figsize=(7, 18.5), dpi=100)
+    fig, ax = plt.subplots(figsize=(7, 18.5))
     # fig, ax = plt.subplots(figsize=(7, 16), dpi=100) #sectarian
     color_thres = kwargs.get("color_threshold", 0.7)
     dendrogram(
@@ -158,7 +158,7 @@ def generate_dendrogram_plot(
     # plt.tight_layout()
     # Save or display the plot
     if path_to_save:
-        plt.savefig(path_to_save, bbox_inches="tight")
+        plt.savefig(path_to_save, bbox_inches="tight",dpi=300)
         print(f"Saved plot to {path_to_save}")
     # plt.show()
 
