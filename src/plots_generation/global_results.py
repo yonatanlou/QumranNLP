@@ -12,13 +12,17 @@ import pandas as pd
 MAIN_METRICS = {"supervised": "weighted_f1", "unsupervised": "jaccard"}
 
 
-def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
+def clean_vectorizer_names(df: pd.DataFrame, specific_vectorizers=None) -> pd.DataFrame:
     """
     Clean the 'vectorizer' column by keeping only the last part of the path
     and replacing specific names.
     """
     df = df.copy()
     df = df[df["vectorizer"] != "dicta-il/MsBERT"]
+    if specific_vectorizers:
+        df = df[df["vectorizer"].isin(specific_vectorizers)]
+
+
     # if is_supervised:
     #     df = df[df["model"].isin(["MLPClassifier", "GCN"])]
 
@@ -38,7 +42,7 @@ def clean_vectorizer_names(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def process_data_for_plot(
-    domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric
+    domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric, specific_vectorizers=None
 ):
     # some basic settings
 
@@ -65,15 +69,16 @@ def process_data_for_plot(
     all_results = get_func_by_is_supervised(is_supervised)(
         compare_list, tasks, comparison_scheme, main_metric
     )
-    all_results = clean_vectorizer_names(all_results)
+    all_results = clean_vectorizer_names(all_results, specific_vectorizers)
 
     return all_results
 
 
-def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_name):
-    main_metric = MAIN_METRICS["supervised" if is_supervised else "unsupervised"]
+def make_bar_plot(domain, is_supervised, gnn_exp_name, gnn_name_format, file_name, main_metric=None, specific_vectorizers=None):
+    if not main_metric:
+        main_metric = MAIN_METRICS["supervised" if is_supervised else "unsupervised"]
     all_results = process_data_for_plot(
-        domain, is_supervised, gnn_exp_name, gnn_name_format
+        domain, is_supervised, gnn_exp_name, gnn_name_format, main_metric, specific_vectorizers
     )
     color_map = generate_color_map(
         all_results, "vectorizer", "vectorizer_type", "RdYlGn", BASE_COLOR_BY_GROUP
@@ -108,8 +113,9 @@ if __name__ == "__main__":
 
             file_name = (
                 f"{BASE_DIR}/reports/plots/global_results/{domain}_{'unsupervised' if not is_supervised else 'supervised'}"
-                + "_{}.png"
+                + "_test_{}.png"
             )
             make_bar_plot(
-                domain, is_supervised, gnn_exp_name, gnn_name_format, file_name
+                domain, is_supervised, gnn_exp_name, gnn_name_format, file_name, "dasgupta",
+                specific_vectorizers=["dicta-il/BEREL", "tfidf", "trigram"]
             )

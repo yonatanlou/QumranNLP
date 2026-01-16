@@ -166,7 +166,7 @@ def generate_bar_plot(
             if not os.path.exists(os.path.dirname(task_filename)):
                 os.makedirs(os.path.dirname(task_filename))
 
-            plt.savefig(task_filename, bbox_inches="tight")
+            plt.savefig(task_filename, bbox_inches="tight", dpi=300)
             print(f"Saved plot to {task_filename}")
 
         plt.show()
